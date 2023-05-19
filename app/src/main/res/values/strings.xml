@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">geniusgym</string>
     <string name="home">首頁</string>
-    <string name="branch">分店資訊</string>
+    <string name="branch">分店</string>
     <string name="social">社群</string>
     <string name="notification">通知</string>
     <string name="setting">設定</string>
