@@ -27,7 +27,7 @@ class CoActivity : AppCompatActivity() {
                 navigateController.navigate(R.id.coHomeFragment)
             }
             includeCalendar.coachMotionLayout.setOnClickListener {
-                navigateController.navigate(R.id.coCalendarFragment)
+                navigateController.navigate(R.id.settingFragment)
             }
         }
     }

@@ -14,4 +14,8 @@
         android:name="com.example.geniusgym.coach.CoCalendarFragment"
         android:label="@string/co_calendar"
         tools:layout="@layout/fragment_co_calendar" />
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.example.geniusgym.setting.SettingFragment"
+        android:label="SettingFragment" />
 </navigation>

@@ -7,4 +7,8 @@
     <string name="tvSettingWorkScheNoti">自主訓練時間提醒</string>
     <string name="tvSettingPrivacyShowEnable">健康資訊隱私</string>
     <string name="tvSettingSocial">社群設定</string>
+    <string name="etSettingSocialNickName">請輸入暱稱</string>
+    <string name="etSettingSocialIntro">請輸入簡介</string>
+    <string name="tvSettingNickName">暱稱：</string>
+    <string name="tvSettingSocialIntro">簡介：</string>
 </resources>

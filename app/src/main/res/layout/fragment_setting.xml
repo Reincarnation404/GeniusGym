@@ -42,7 +42,7 @@
                 <LinearLayout
                     android:id="@+id/linearLayout"
                     android:layout_width="335dp"
-                    android:layout_height="245dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="28dp"
                     android:layout_marginTop="12dp"
                     android:orientation="horizontal"
@@ -62,12 +62,10 @@
 
                         <TextView
                             android:id="@+id/tvNotifiedEnable"
+                            style="@style/SettingStyleText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="3sp"
-                            android:layout_marginBottom="3sp"
-                            android:text="@string/tvSettingNotifiedEnable"
-                            android:textSize="23sp" />
+                            android:text="@string/tvSettingNotifiedEnable" />
 
                         <View
                             android:id="@+id/divider2"
@@ -77,12 +75,10 @@
 
                         <TextView
                             android:id="@+id/tvClassNoEnable"
+                            style="@style/SettingStyleText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="3sp"
-                            android:layout_marginBottom="3sp"
-                            android:text="@string/tvSettingClassNoEnable"
-                            android:textSize="23sp" />
+                            android:text="@string/tvSettingClassNoEnable" />
 
                         <View
                             android:id="@+id/divider3"
@@ -92,12 +88,10 @@
 
                         <TextView
                             android:id="@+id/tvNewClassEnable"
+                            style="@style/SettingStyleText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="3sp"
-                            android:layout_marginBottom="3sp"
-                            android:text="@string/tvSettingNewClassEnable"
-                            android:textSize="23sp" />
+                            android:text="@string/tvSettingNewClassEnable" />
 
                         <View
                             android:id="@+id/divider4"
@@ -107,12 +101,10 @@
 
                         <TextView
                             android:id="@+id/tvClassScheNoti"
+                            style="@style/SettingStyleText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="3sp"
-                            android:layout_marginBottom="3sp"
-                            android:text="@string/tvSettingClassScheNoti"
-                            android:textSize="23sp" />
+                            android:text="@string/tvSettingClassScheNoti" />
 
                         <View
                             android:id="@+id/divider5"
@@ -122,12 +114,10 @@
 
                         <TextView
                             android:id="@+id/tvWorkScheNoti"
+                            style="@style/SettingStyleText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="3sp"
-                            android:layout_marginBottom="3sp"
-                            android:text="@string/tvSettingWorkScheNoti"
-                            android:textSize="23sp" />
+                            android:text="@string/tvSettingWorkScheNoti" />
 
                         <View
                             android:id="@+id/divider6"
@@ -137,12 +127,10 @@
 
                         <TextView
                             android:id="@+id/tvPrivacyShowEnable"
+                            style="@style/SettingStyleText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="3sp"
-                            android:layout_marginBottom="3sp"
-                            android:text="@string/tvSettingPrivacyShowEnable"
-                            android:textSize="23sp" />
+                            android:text="@string/tvSettingPrivacyShowEnable" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -158,11 +146,9 @@
 
                         <Switch
                             android:id="@+id/sNotifiedEnable"
+                            style="@style/SettingStyleSwitch"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="3sp"
-                            android:layout_marginBottom="3sp"
-                            android:textSize="25sp" />
+                            android:layout_height="wrap_content" />
 
                         <View
                             android:id="@+id/divider1_2"
@@ -172,11 +158,9 @@
 
                         <Switch
                             android:id="@+id/sClassNoEnable"
+                            style="@style/SettingStyleSwitch"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="3sp"
-                            android:layout_marginBottom="3sp"
-                            android:textSize="25sp" />
+                            android:layout_height="wrap_content" />
 
                         <View
                             android:id="@+id/divider1_3"
@@ -186,11 +170,9 @@
 
                         <Switch
                             android:id="@+id/sNewClassEnable"
+                            style="@style/SettingStyleSwitch"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="3sp"
-                            android:layout_marginBottom="3sp"
-                            android:textSize="25sp" />
+                            android:layout_height="wrap_content" />
 
                         <View
                             android:id="@+id/divider1_4"
@@ -200,11 +182,9 @@
 
                         <Switch
                             android:id="@+id/sClassScheNoti"
+                            style="@style/SettingStyleSwitch"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="3sp"
-                            android:layout_marginBottom="3sp"
-                            android:textSize="25sp" />
+                            android:layout_height="wrap_content" />
 
                         <View
                             android:id="@+id/divider1_5"
@@ -214,11 +194,9 @@
 
                         <Switch
                             android:id="@+id/sWorkScheNoti"
+                            style="@style/SettingStyleSwitch"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="3sp"
-                            android:layout_marginBottom="3sp"
-                            android:textSize="25sp" />
+                            android:layout_height="wrap_content" />
 
                         <View
                             android:id="@+id/divider1_6"
@@ -228,17 +206,10 @@
 
                         <Switch
                             android:id="@+id/sPrivacyShowEnable"
+                            style="@style/SettingStyleSwitch"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="3sp"
-                            android:layout_marginBottom="3sp"
-                            android:textSize="25sp" />
+                            android:layout_height="wrap_content" />
 
-                        <View
-                            android:id="@+id/divider1_7"
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:background="?android:attr/listDivider" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -253,12 +224,88 @@
                     app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
                 <ImageView
-                    android:id="@+id/imageView5"
+                    android:id="@+id/ivSocial"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginTop="12dp"
+
+                    app:layout_constraintStart_toStartOf="@+id/tvSocial"
+                    app:layout_constraintTop_toBottomOf="@+id/tvSocial"
+                    app:srcCompat="@drawable/a005"
+                    tools:src="@drawable/a005" />
+
+                <TextView
+                    android:id="@+id/tvSocialNickName"
+                    style="@style/SettingStyleText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tools:layout_editor_absoluteX="30dp"
-                    tools:layout_editor_absoluteY="431dp"
-                    tools:src="@tools:sample/avatars" />
+                    android:layout_marginTop="12dp"
+                    android:text="@string/tvSettingNickName"
+                    app:layout_constraintStart_toStartOf="@+id/ivSocial"
+                    app:layout_constraintTop_toBottomOf="@+id/ivSocial" />
+
+                <EditText
+                    android:id="@+id/etSocialNickName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#808080"
+                    android:ems="10"
+                    android:enabled="false"
+                    android:hint="@string/etSettingSocialNickName"
+                    android:inputType="textPersonName"
+                    android:nextFocusDown="@+id/etSocialNickName"
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="#808080"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvSocialNickName"
+                    app:layout_constraintStart_toEndOf="@+id/tvSocialNickName"
+                    app:layout_constraintTop_toTopOf="@+id/tvSocialNickName"
+                    app:layout_constraintVertical_bias="0.571" />
+
+                <TextView
+                    android:id="@+id/tvSocialIntro"
+                    style="@style/SettingStyleText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="@string/tvSettingSocialIntro"
+                    app:layout_constraintBottom_toBottomOf="@+id/etSocialIntro"
+                    app:layout_constraintEnd_toStartOf="@+id/etSocialIntro"
+                    app:layout_constraintTop_toTopOf="@+id/etSocialIntro" />
+
+                <EditText
+                    android:id="@+id/etSocialIntro"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:ems="10"
+                    android:enabled="false"
+                    android:gravity="start|top"
+                    android:hint="@string/etSettingSocialIntro"
+                    android:inputType="textMultiLine"
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="#808080"
+                    app:layout_constraintStart_toStartOf="@+id/etSocialNickName"
+                    app:layout_constraintTop_toBottomOf="@+id/etSocialNickName" />
+
+                <ImageView
+                    android:id="@+id/ivSocialNickName"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="12dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/etSocialNickName"
+                    app:layout_constraintStart_toEndOf="@+id/etSocialNickName"
+                    app:layout_constraintTop_toTopOf="@+id/etSocialNickName"
+                    app:srcCompat="@drawable/ic_setting_edit" />
+
+                <ImageView
+                    android:id="@+id/ivSocialIntro"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="12dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/etSocialIntro"
+                    app:layout_constraintStart_toEndOf="@+id/etSocialIntro"
+                    app:layout_constraintTop_toTopOf="@+id/etSocialIntro"
+                    app:srcCompat="@drawable/ic_setting_edit" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
