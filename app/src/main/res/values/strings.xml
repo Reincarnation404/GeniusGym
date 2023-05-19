@@ -7,6 +7,12 @@
     <string name="setting">設定</string>
     <string name="member">會員</string>
     <string name="title_activity_main_me">MainMeActivity</string>
-
+    <string name="btBuMenuCoachDataManage">教練資料管理</string>
+    <string name="btBuMenuMemberDataManage">會員資料管理</string>
+    <string name="btBuMenuBusinessDataManage">員工資料管理</string>
+    <string name="btBuMenuClassDataManage">課程資料管理</string>
+    <string name="btBuMenuNotification">公告</string>
+    <string name="btBuMenuPostManage">貼文審查</string>
+    <string name="bu_menu_title">公司端主選單</string>
 
 </resources>
