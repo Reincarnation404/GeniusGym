@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/navigation_co">
-
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_co"
+    app:startDestination="@id/coCalendarFragment">
+    <fragment
+        android:id="@+id/coHomeFragment"
+        android:name="com.example.geniusgym.coach.CoHomeFragment"
+        android:label="@string/home"
+        tools:layout="@layout/fragment_co_home" />
+    <fragment
+        android:id="@+id/coCalendarFragment"
+        android:name="com.example.geniusgym.coach.CoCalendarFragment"
+        android:label="@string/co_calendar"
+        tools:layout="@layout/fragment_co_calendar" />
 </navigation>

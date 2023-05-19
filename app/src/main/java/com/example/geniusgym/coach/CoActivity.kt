@@ -1,41 +1,34 @@
 package com.example.geniusgym.coach
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
+import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.geniusgym.R
-import com.example.geniusgym.coach.databinding.ActivityCo2Binding
+import com.example.geniusgym.databinding.ActivityCo2Binding
 
 class CoActivity : AppCompatActivity() {
 
-    private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityCo2Binding
+    private lateinit var navigateController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        binding = ActivityCo2Binding.inflate(layoutInflater)
+        binding = ActivityCo2Binding.inflate(LayoutInflater.from(this))
         setContentView(binding.root)
-
-        setSupportActionBar(binding.toolbar)
-
-        val navController = findNavController(R.id.nav_host_fragment_content_co2)
-        appBarConfiguration = AppBarConfiguration(navController.graph)
-        setupActionBarWithNavController(navController, appBarConfiguration)
-
-        binding.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-        }
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment_content_co2)
-        return navController.navigateUp(appBarConfiguration)
-                || super.onSupportNavigateUp()
+    override fun onStart() {
+        super.onStart()
+        navigateController = findNavController(R.id.fragmentCoContainerView)
+        with(binding){
+            includeHome.homeMontionLayout.setOnClickListener {
+                navigateController.navigate(R.id.coHomeFragment)
+            }
+            includeCalendar.coachMotionLayout.setOnClickListener {
+                navigateController.navigate(R.id.coCalendarFragment)
+            }
+        }
     }
 }

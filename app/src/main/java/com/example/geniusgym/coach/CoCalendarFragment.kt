@@ -8,18 +8,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.example.geniusgym.R
-import com.example.geniusgym.databinding.FragmentCoHomeBinding
+import com.example.geniusgym.databinding.FragmentCoCalendarBinding
 
-class CoHomeFragment : Fragment() {
+class CoCalendarFragment : Fragment() {
 
-    private lateinit var binding: FragmentCoHomeBinding
+
+    private lateinit var binding: FragmentCoCalendarBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        val viewModel : CoHomeViewModel by viewModels()
-        binding = FragmentCoHomeBinding.inflate(inflater, container, false)
+    ): View? {
+        val viewModel: CoCalendarViewModel by viewModels()
+        binding = FragmentCoCalendarBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
         return binding.root
