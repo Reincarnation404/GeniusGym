@@ -7,12 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.geniusgym.R
 import com.example.geniusgym.databinding.FragmentMeBranchBinding
 
 class MeBranchFragment : Fragment() {
     private lateinit var binding: FragmentMeBranchBinding
-    private val viewModel:MeBranchViewModel by viewModels()
+    private val viewModel: MeBranchViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -23,5 +24,15 @@ class MeBranchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        with(binding) {
+            meRecycle.layoutManager =
+                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+            meRecycle.adapter = MeBranchAdapter(viewModel.stores!!)
+        }
+
+
     }
+
+
 }

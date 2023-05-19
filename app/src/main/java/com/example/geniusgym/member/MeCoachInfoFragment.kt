@@ -25,7 +25,7 @@ class MeCoachInfoFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(MeCoachInfoViewModel::class.java)
+        viewModel = ViewModelProvider(this)[MeCoachInfoViewModel::class.java]
         // TODO: Use the ViewModel
     }
 
