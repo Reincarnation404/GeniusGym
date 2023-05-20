@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 
 class MeBranchViewModel : ViewModel() {
 
-    private val _stores : MutableList<Store>?  = null
-    val stores : List<Store>? = _stores
+    private val _storeBeans : MutableList<StoreBean>?  = null
+    val storeBeans : List<StoreBean>? = _storeBeans
 
 }

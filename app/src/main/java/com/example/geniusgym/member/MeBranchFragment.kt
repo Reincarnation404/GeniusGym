@@ -1,6 +1,5 @@
 package com.example.geniusgym.member
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.geniusgym.R
 import com.example.geniusgym.databinding.FragmentMeBranchBinding
 
 class MeBranchFragment : Fragment() {
@@ -26,9 +24,9 @@ class MeBranchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         with(binding) {
-            meRecycle.layoutManager =
+            meRecycleBranch.layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-            meRecycle.adapter = MeBranchAdapter(viewModel.stores!!)
+            meRecycleBranch.adapter = MeBranchAdapter(viewModel.storeBeans!!)
         }
 
 

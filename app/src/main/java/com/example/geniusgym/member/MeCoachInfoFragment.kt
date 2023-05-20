@@ -6,27 +6,32 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.geniusgym.R
+import com.example.geniusgym.databinding.FragmentMeCoachInfoBinding
 
 class MeCoachInfoFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = MeCoachInfoFragment()
-    }
-
-    private lateinit var viewModel: MeCoachInfoViewModel
-
+    private val viewModel:MeCoachInfoViewModel by viewModels()
+    private lateinit var binding: FragmentMeCoachInfoBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_me_coach_info, container, false)
+    ): View {
+        binding = FragmentMeCoachInfoBinding.inflate(LayoutInflater.from(requireContext()))
+        return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this)[MeCoachInfoViewModel::class.java]
-        // TODO: Use the ViewModel
-    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        with(binding){
 
+            recycMeCoachinfo.adapter = MeCoachInfoAdapter(viewModel.coachinfos!!)
+            recycMeCoachinfo.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+
+        }
+
+
+    }
 }

@@ -12,6 +12,8 @@
     <string name="bt_coachInfo">教練資訊</string>
     <string name="opentime">開店時間</string>
     <string name="closetime">關店時間</string>
+    <string name="experience">經歷</string>
+    <string name="optional_courses">: 可選課程列表</string>
 
 
 </resources>

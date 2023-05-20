@@ -7,7 +7,7 @@
     tools:context=".member.MeBranchFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/me_recycle"
+        android:id="@+id/me_recycle_branch"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
