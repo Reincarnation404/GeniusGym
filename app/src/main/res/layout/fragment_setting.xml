@@ -36,11 +36,11 @@
                     android:layout_marginTop="50dp"
                     android:text="@string/tvHead"
                     android:textSize="30sp"
-                    app:layout_constraintStart_toStartOf="@+id/linearLayout"
+                    app:layout_constraintStart_toStartOf="@+id/linearLayout01"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <LinearLayout
-                    android:id="@+id/linearLayout"
+                    android:id="@+id/linearLayout01"
                     android:layout_width="335dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="28dp"
@@ -50,6 +50,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/tvHead">
 
                     <LinearLayout
+                        android:id="@+id/llSettings"
                         android:layout_width="278dp"
                         android:layout_height="match_parent"
                         android:orientation="vertical">
@@ -134,6 +135,7 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/llSettingSwitchs"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical">
@@ -220,8 +222,8 @@
                     android:layout_marginTop="12dp"
                     android:text="@string/tvSettingSocial"
                     android:textSize="30sp"
-                    app:layout_constraintStart_toStartOf="@+id/linearLayout"
-                    app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+                    app:layout_constraintStart_toStartOf="@+id/linearLayout01"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout01" />
 
                 <ImageView
                     android:id="@+id/ivSocial"
@@ -306,6 +308,106 @@
                     app:layout_constraintStart_toEndOf="@+id/etSocialIntro"
                     app:layout_constraintTop_toTopOf="@+id/etSocialIntro"
                     app:srcCompat="@drawable/ic_setting_edit" />
+
+                <LinearLayout
+                    android:id="@+id/linearLayout02"
+                    android:layout_width="346dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="@+id/linearLayout01"
+                    app:layout_constraintStart_toStartOf="@+id/linearLayout01"
+                    app:layout_constraintTop_toBottomOf="@+id/etSocialIntro">
+
+                    <LinearLayout
+                        android:id="@+id/llSocialSettings"
+                        android:layout_width="278dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <View
+                            android:id="@+id/divider"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="?android:attr/listDivider" />
+
+                        <TextView
+                            android:id="@+id/tvSocialFollowEnabled"
+                            style="@style/SettingStyleText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/tvSettingSocialFollowEnabled" />
+
+                        <View
+                            android:id="@+id/divider7"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="?android:attr/listDivider" />
+
+                        <TextView
+                            android:id="@+id/tvSocialAllowInfoAccess"
+                            style="@style/SettingStyleText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/tvSettingSocialAllowInfoAccess" />
+
+                        <View
+                            android:id="@+id/divider8"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="?android:attr/listDivider" />
+
+                        <TextView
+                            android:id="@+id/tvSocialAllowFansCountsAccess"
+                            style="@style/SettingStyleText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/tvSettingSocialAllowFansCountsAccess" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/llSocialSwitchs"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <View
+                            android:id="@+id/divider1_"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="?android:attr/listDivider" />
+
+                        <Switch
+                            android:id="@+id/sSocialFollowEnabled"
+                            style="@style/SettingStyleSwitch"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                        <View
+                            android:id="@+id/divider1_7"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="?android:attr/listDivider" />
+
+                        <Switch
+                            android:id="@+id/sSocialAllowInfoAccess"
+                            style="@style/SettingStyleSwitch"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+
+                        <View
+                            android:id="@+id/divider1_8"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="?android:attr/listDivider" />
+
+                        <Switch
+                            android:id="@+id/sSocialAllowFansCountsAccess"
+                            style="@style/SettingStyleSwitch"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                </LinearLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>

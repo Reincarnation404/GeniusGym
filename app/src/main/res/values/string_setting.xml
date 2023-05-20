@@ -11,4 +11,7 @@
     <string name="etSettingSocialIntro">請輸入簡介</string>
     <string name="tvSettingNickName">暱稱：</string>
     <string name="tvSettingSocialIntro">簡介：</string>
+    <string name="tvSettingSocialFollowEnabled">允許追蹤</string>
+    <string name="tvSettingSocialAllowInfoAccess">允許查看個人檔案資訊</string>
+    <string name="tvSettingSocialAllowFansCountsAccess">允許查看粉絲與追蹤者</string>
 </resources>

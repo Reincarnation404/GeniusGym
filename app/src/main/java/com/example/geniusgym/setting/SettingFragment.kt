@@ -34,6 +34,9 @@ class SettingFragment : Fragment(), View.OnClickListener {
             tvPrivacyShowEnable.setOnClickListener(this@SettingFragment)
             ivSocialNickName.setOnClickListener(this@SettingFragment)
             ivSocialIntro.setOnClickListener(this@SettingFragment)
+            tvSocialFollowEnabled.setOnClickListener(this@SettingFragment)
+            tvSocialAllowInfoAccess.setOnClickListener(this@SettingFragment)
+            tvSocialAllowFansCountsAccess.setOnClickListener(this@SettingFragment)
             etSocialNickName.setOnEditorActionListener { _, actionId, _ ->
                 if (finish(actionId)) {
                     etSocialNickName.isEnabled = false
@@ -53,7 +56,7 @@ class SettingFragment : Fragment(), View.OnClickListener {
         }
     }
 
-    fun finish(actionId: Int): Boolean {
+    private fun finish(actionId: Int): Boolean {
         return actionId == EditorInfo.IME_ACTION_NEXT ||
                 actionId == EditorInfo.IME_ACTION_DONE ||
                 actionId == EditorInfo.IME_NULL
@@ -69,6 +72,13 @@ class SettingFragment : Fragment(), View.OnClickListener {
                 R.id.tvWorkScheNoti -> sWorkScheNoti.isChecked = !sWorkScheNoti.isChecked
                 R.id.tvPrivacyShowEnable -> sPrivacyShowEnable.isChecked =
                     !sPrivacyShowEnable.isChecked
+                R.id.tvSocialFollowEnabled -> sSocialFollowEnabled.isChecked =
+                    !sSocialFollowEnabled.isChecked
+                R.id.tvSocialAllowInfoAccess -> sSocialAllowInfoAccess.isChecked =
+                    !sSocialAllowInfoAccess.isChecked
+                R.id.tvSocialAllowFansCountsAccess -> sSocialAllowFansCountsAccess.isChecked =
+                    !sSocialAllowFansCountsAccess.isChecked
+
                 R.id.ivSocialNickName -> {
                     etSocialNickName.isEnabled = !etSocialNickName.isEnabled
                     etSocialNickName.requestFocus()
