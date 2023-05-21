@@ -37,14 +37,14 @@ class SettingFragment : Fragment(), View.OnClickListener {
             tvSocialFollowEnabled.setOnClickListener(this@SettingFragment)
             tvSocialAllowInfoAccess.setOnClickListener(this@SettingFragment)
             tvSocialAllowFansCountsAccess.setOnClickListener(this@SettingFragment)
-            etSocialNickName.setOnEditorActionListener { _, actionId, _ ->
+            /*etSocialNickName.setOnEditorActionListener { _, actionId, _ ->
                 if (finish(actionId)) {
                     etSocialNickName.isEnabled = false
                     true
                 } else {
                     false // 返回 false 表示未處理該事件
                 }
-            }
+            }*/
             etSocialIntro.setOnEditorActionListener { _, actionId, _ ->
                 if (finish(actionId)) {
                     etSocialNickName.isEnabled = false
