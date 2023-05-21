@@ -43,7 +43,11 @@
         android:id="@+id/buNotificaitonManageFragment"
         android:name="com.example.geniusgym.business.BuNotificationManageFragment"
         android:label="fragment_bu_notificaiton_manage"
-        tools:layout="@layout/fragment_bu_notificaiton_manage" />
+        tools:layout="@layout/fragment_bu_notificaiton_manage" >
+        <action
+            android:id="@+id/action_buNotificaitonManage_to_buAddNotification"
+            app:destination="@id/buAddNotificationFragment" />
+    </fragment>
     <fragment
         android:id="@+id/buBusinessDataFragment"
         android:name="com.example.geniusgym.business.BuBusinessDataFragment"
@@ -59,4 +63,9 @@
         android:name="com.example.geniusgym.business.BuPostManageFragment"
         android:label="fragment_bu_post_manage"
         tools:layout="@layout/fragment_bu_post_manage" />
+    <fragment
+        android:id="@+id/buAddNotificationFragment"
+        android:name="com.example.geniusgym.business.BuAddNotificationFragment"
+        android:label="fragment_bu_add_notification"
+        tools:layout="@layout/fragment_bu_add_notification" />
 </navigation>
