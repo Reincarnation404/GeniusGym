@@ -7,7 +7,6 @@ import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.geniusgym.R
-import com.example.geniusgym.coach.CoCalendarClassListViewModel
 import com.example.geniusgym.coach.CoCalendarMemberListViewModel
 import com.example.geniusgym.coach.calendarMemberList.model.ClassItem
 import com.example.geniusgym.databinding.FragmentCoCalendarClassCardviewBinding
@@ -43,7 +42,7 @@ class ClassItemAdapter(private var items: List<ClassItem>) :
             itemView.setOnClickListener {
                 Navigation.findNavController(it)
                     .navigate(
-                        R.id.action_coCalenderListFragment_to_coCalendarMemberListFragment,
+                        R.id.action_coCalendarTestFragment_to_coCalendarMemberListFragment2,
                         bundle
                     )
             }

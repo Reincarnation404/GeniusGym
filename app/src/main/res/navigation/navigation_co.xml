@@ -18,4 +18,16 @@
         android:id="@+id/settingFragment"
         android:name="com.example.geniusgym.setting.SettingFragment"
         android:label="SettingFragment" />
+    <fragment
+        android:id="@+id/coCalendarTestFragment"
+        android:name="com.example.geniusgym.coach.calendarMemberList.CoCalendarTestFragment"
+        android:label="CoCalendarTestFragment" >
+        <action
+            android:id="@+id/action_coCalendarTestFragment_to_coCalendarMemberListFragment2"
+            app:destination="@id/coCalendarMemberListFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/coCalendarMemberListFragment2"
+        android:name="com.example.geniusgym.coach.CoCalendarMemberListFragment"
+        android:label="CoCalendarMemberListFragment" />
 </navigation>

@@ -1,11 +1,14 @@
-package com.example.geniusgym.coach
+package com.example.geniusgym.coach.calendarMemberList
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.geniusgym.coach.calendarMemberList.model.ClassItem
+import java.time.LocalDate
 
-// 這代表 ClassList 頁面載入時會有的東西
-class CoCalendarClassListViewModel : ViewModel() {
+class CoCalendarTestViewModel : ViewModel() {
+    val textDate: MutableLiveData<String> by lazy { MutableLiveData<String>() }
+    val Date: MutableLiveData<LocalDate> by lazy { MutableLiveData<LocalDate>() }
+
     private var itemList = listOf<ClassItem>()
     val items: MutableLiveData<List<ClassItem>> by lazy { MutableLiveData<List<ClassItem>>() }
     init {

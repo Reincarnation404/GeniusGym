@@ -6,5 +6,5 @@ import java.time.LocalDate
 
 class CoCalendarViewModel : ViewModel() {
     val textDate: MutableLiveData<String> by lazy { MutableLiveData<String>() }
-    val Date: MutableLiveData<LocalDate> by lazy{MutableLiveData<LocalDate>()}
+    val Date: MutableLiveData<LocalDate> by lazy { MutableLiveData<LocalDate>() }
 }

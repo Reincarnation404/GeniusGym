@@ -37,6 +37,7 @@ class CoCalenderClassListFragment : Fragment() {
                     (rvCoCaClList.adapter as ClassItemAdapter).updateItem(items)
                 }
             }
+            println(viewModel?.items?.value)
         }
     }
 }
