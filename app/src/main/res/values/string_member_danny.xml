@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tvUsername">姓名</string>
+    <string name="etUsername">顯示姓名</string>
+    <string name="tvPhoneNumber">電話號碼</string>
+    <string name="etPhoneNumber">顯示電話號碼</string>
+    <string name="tvMeNumber">會員編號</string>
+    <string name="etMeNumber">顯示會員編號</string>
+    <string name="tvAdmi">上次入場時間</string>
+    <string name="etAdmi">顯示上次入場時間</string>
+    <string name="tvMeStart">會員起訖日</string>
+    <string name="etMeStart">顯示會員起訖日</string>
+    <string name="etMeName">顯示會員姓名</string>
+    <string name="tvMePoints">點數餘額</string>
+    <string name="btTopup">儲值</string>
+    <string name="etShowPoints">顯示點數餘額</string>
+    <string name="tvMePointsTr">點數交易紀錄</string>
+    <string name="etPointTime">顯示儲值年月日</string>
+    <string name="etPointsChange">顯示儲值點數</string>
+    <string name="etAddPoint">儲值點數</string>
+    <string name="btAddPoint">點數台幣</string>
+    <string name="etCardNum">卡號</string>
+    <string name="etCardHolder">持卡人姓名</string>
+
+
+</resources>
