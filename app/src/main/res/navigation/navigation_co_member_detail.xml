@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_co_member_detail"
+    app:startDestination="@id/coCalenderMemberStaticFragment">
+
+    <fragment
+        android:id="@+id/coCalenderMemberStaticFragment"
+        android:name="com.example.geniusgym.coach.calendarMemberListDetail.controller.CoCalenderMemberStaticFragment"
+        android:label="fragment_co_calender_member_detail"
+        tools:layout="@layout/fragment_co_calender_member_static" />
+    <fragment
+        android:id="@+id/coCalenderMemberRecordFragment"
+        android:name="com.example.geniusgym.coach.calendarMemberListDetail.controller.CoCalenderMemberRecordFragment"
+        android:label="fragment_co_calender_member_record"
+        tools:layout="@layout/fragment_co_calender_member_record" />
+</navigation>

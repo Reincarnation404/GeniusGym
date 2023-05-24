@@ -2,6 +2,7 @@ package com.example.geniusgym.coach
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -10,12 +11,14 @@ import com.example.geniusgym.databinding.ActivityCo2Binding
 
 class CoActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityCo2Binding
+    public lateinit var binding: ActivityCo2Binding
     private lateinit var navigateController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val viewModel : CoViewModel by viewModels()
         binding = ActivityCo2Binding.inflate(LayoutInflater.from(this))
+        binding.viewModel = viewModel
         setContentView(binding.root)
     }
 
