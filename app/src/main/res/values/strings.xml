@@ -7,6 +7,7 @@
     <string name="setting">設定</string>
     <string name="member">會員</string>
     <string name="title_activity_main_me">MainMeActivity</string>
+
     <!-- 公司端String -->
     <string name="btBuMenuCoachDataManage">教練資料管理</string>
     <string name="btBuMenuMemberDataManage">會員資料管理</string>
@@ -24,5 +25,6 @@
     <string name="btBuAddNotiCancel">取消</string>
     <string name="spBuAddChooseBranch">點擊選擇分店</string>
     <string name="spBuAddChooseTarget">點擊選擇對象</string>
+
 
 </resources>
