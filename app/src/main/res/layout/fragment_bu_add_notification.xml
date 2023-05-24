@@ -141,7 +141,7 @@
                     android:layout_height="50dp"
                     android:background="@color/white"
                     android:gravity="center|left"
-                    android:hint="@string/tvBuAddChooseDate"
+                    android:hint="@string/tvBuAddChooseDateTime"
                     android:imeOptions="flagNoExtractUi"
                     android:paddingLeft="16dp"
                     android:textColorHint="#CDC7D2" />
@@ -168,6 +168,28 @@
                     android:background="@color/white"
                     android:hint="@string/tietBuAddNotiText"
                     android:text="@={viewModel.text}" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilBuAddNotiPic"
+                style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="221dp"
+                android:paddingHorizontal="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tilBuAddNotiText"
+
+                >
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tietBuAddNotiPic"
+                    android:layout_width="match_parent"
+                    android:layout_height="176dp"
+                    android:background="@color/white"
+                    android:hint="@string/tietBuAddNotiPic" />
+
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
@@ -183,7 +205,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/btBuAddNotiCancel"
-                app:layout_constraintTop_toBottomOf="@+id/tilBuAddNotiText"
+                app:layout_constraintTop_toBottomOf="@+id/tilBuAddNotiPic"
                 app:layout_constraintVertical_bias="0.0" />
 
             <Button
@@ -198,7 +220,7 @@
                 android:textSize="24sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tilBuAddNotiText"
+                app:layout_constraintTop_toBottomOf="@+id/tilBuAddNotiPic"
                 app:layout_constraintVertical_bias="0.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

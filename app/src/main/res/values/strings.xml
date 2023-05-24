@@ -35,8 +35,9 @@
     <string name="btBuAddNotiCancel">取消</string>
     <string name="spBuAddChooseBranch">點擊選擇分店</string>
     <string name="spBuAddChooseTarget">點擊選擇對象</string>
-    <string name="tvBuAddChooseDate">點擊選擇日期</string>
-    <string name="tvBuAddChooseTime">點擊選擇時間</string>
+    <string name="tvBuAddChooseDateTime">點擊選擇日期&amp;時間</string>
+    <string name="bu_add_choose_branch_confirm">確認</string>
+    <string name="tietBuAddNotiPic">點擊選擇照片</string>
 
 
 
