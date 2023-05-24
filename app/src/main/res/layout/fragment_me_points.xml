@@ -15,14 +15,14 @@
         android:layout_marginTop="35dp"
         android:hint="@string/tvMePoints"
         android:text="點數餘額"
-        android:textSize="30sp"
+        android:textSize="39sp"
         app:layout_constraintEnd_toStartOf="@+id/imageView2"
         app:layout_constraintHorizontal_bias="0.064"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/etTopup"
+        android:id="@+id/btTopup"
         android:layout_width="115dp"
         android:layout_height="57dp"
         android:layout_marginBottom="35dp"
@@ -71,28 +71,17 @@
     <LinearLayout
         android:layout_width="389dp"
         android:layout_height="396dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="20dp"
         android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/btTopup"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="230dp">
+        app:layout_constraintStart_toStartOf="parent" >
 
-        <EditText
-            android:id="@+id/etShowPointsDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="@string/etShowDate"
-            android:inputType="textPersonName" />
-
-        <EditText
-            android:id="@+id/etAddPoints"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="@string/etAddPoints"
-            android:inputType="textPersonName" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
     </LinearLayout>
 
