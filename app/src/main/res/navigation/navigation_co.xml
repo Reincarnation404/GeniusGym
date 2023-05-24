@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_co"
+    app:startDestination="@id/coCalendarTestFragment">
+    <fragment
+        android:id="@+id/coHomeFragment"
+        android:name="com.example.geniusgym.coach.CoHomeFragment"
+        android:label="@string/home"
+        tools:layout="@layout/fragment_co_home" />
+
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.example.geniusgym.setting.SettingFragment"
+        android:label="SettingFragment" />
+    <fragment
+        android:id="@+id/coCalendarTestFragment"
+        android:name="com.example.geniusgym.coach.calendarMemberList.CoCalendarClassFragment"
+        android:label="CoCalendarTestFragment" >
+        <action
+            android:id="@+id/action_coCalendarTestFragment_to_coCalendarMemberListFragment2"
+            app:destination="@id/coCalendarMemberListFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/coCalendarMemberListFragment2"
+        android:name="com.example.geniusgym.coach.CoCalendarMemberListFragment"
+        android:label="CoCalendarMemberListFragment" />
+</navigation>

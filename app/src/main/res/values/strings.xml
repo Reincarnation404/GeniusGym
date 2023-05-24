@@ -7,6 +7,7 @@
     <string name="setting">設定</string>
     <string name="member">會員</string>
     <string name="title_activity_main_me">MainMeActivity</string>
+
     <string name="bt_LessonStore">課程商店</string>
     <string name="bt_MapDirect">地圖導覽</string>
     <string name="bt_coachInfo">教練資訊</string>
@@ -14,6 +15,7 @@
     <string name="closetime">關店時間</string>
     <string name="experience">經歷</string>
     <string name="optional_courses">: 可選課程列表</string>
+
 
 
 </resources>
