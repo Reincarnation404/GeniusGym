@@ -1,12 +1,22 @@
 <resources>
     <string name="app_name">geniusgym</string>
     <string name="home">首頁</string>
-    <string name="branch">分店資訊</string>
+    <string name="branch">分店</string>
     <string name="social">社群</string>
     <string name="notification">通知</string>
     <string name="setting">設定</string>
     <string name="member">會員</string>
     <string name="title_activity_main_me">MainMeActivity</string>
+
+
+    <string name="bt_LessonStore">課程商店</string>
+    <string name="bt_MapDirect">地圖導覽</string>
+    <string name="bt_coachInfo">教練資訊</string>
+    <string name="opentime">開店時間</string>
+    <string name="closetime">關店時間</string>
+    <string name="experience">經歷</string>
+    <string name="optional_courses">: 可選課程列表</string>
+
     <string name="tv_Login_Title">快樂運動，快樂瘦身</string>
     <string name="tv_Login_Remind">還沒有帳號者，請儘速至櫃臺聯繫</string>
     <string name="bt_Login_Confirm">確認</string>
@@ -35,6 +45,9 @@
     <string name="btBuAddNotiCancel">取消</string>
     <string name="spBuAddChooseBranch">點擊選擇分店</string>
     <string name="spBuAddChooseTarget">點擊選擇對象</string>
+    <string name="tvBuAddChooseDate">點擊選擇日期</string>
+    <string name="tvBuAddChooseTime">點擊選擇時間</string>
+
 
 
 

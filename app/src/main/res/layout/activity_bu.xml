@@ -27,12 +27,14 @@
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fcvActiBu"
         android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:defaultNavHost="true"
-        app:navGraph="@navigation/navigation_bu"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp" />
+        app:layout_constraintBottom_toTopOf="@+id/bu_bottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appbar_bytiv"
+        app:navGraph="@navigation/navigation_bu" />
 
     <LinearLayout
         android:id="@+id/bu_bottom"
@@ -44,7 +46,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fcvActiBu">
+        >
 
 
         <include
