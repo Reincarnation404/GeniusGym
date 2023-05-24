@@ -1,4 +1,4 @@
-package com.example.geniusgym.business
+package com.example.geniusgym.business.viewModel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

@@ -1,16 +1,15 @@
 package com.example.geniusgym.business
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
-import android.widget.Toolbar
 import androidx.fragment.app.Fragment
 import androidx.core.view.MenuHost
 import androidx.core.view.MenuProvider
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.Navigation
 import com.example.geniusgym.R
+import com.example.geniusgym.business.viewModel.BuNotificationManageViewModel
 import com.example.geniusgym.databinding.FragmentBuNotificaitonManageBinding
 
 class BuNotificationManageFragment : Fragment() {

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
 import com.example.geniusgym.R
+import com.example.geniusgym.business.viewModel.BuMenuViewModel
 import com.example.geniusgym.databinding.FragmentBuMenuBinding
 
 class BuMenuFragment : Fragment() {

@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.geniusgym.R
+import com.example.geniusgym.business.viewModel.BuBusinessDataViewModel
 
 class BuBusinessDataFragment : Fragment() {
 
