@@ -28,7 +28,7 @@ class BuNotificationManageFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         with(binding){
             setupMenu()
-            fabBuAddNotification.setOnClickListener {
+            fabBuNotiManageAddNotification.setOnClickListener {
                 Navigation.findNavController(it).navigate(R.id.action_buNotificaitonManage_to_buAddNotification)
             }
         }

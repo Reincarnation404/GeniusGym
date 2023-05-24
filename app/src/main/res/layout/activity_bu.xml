@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".business.BuActivity">
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbar"
+        android:id="@+id/appbar_bytiv"
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
+            android:id="@+id/toolbar_bytiv"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary">
@@ -25,7 +25,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentContainerView2"
+        android:id="@+id/fcvActiBu"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -35,7 +35,7 @@
         tools:layout_editor_absoluteY="1dp" />
 
     <LinearLayout
-        android:id="@+id/me_bottom"
+        android:id="@+id/bu_bottom"
         android:layout_width="0dp"
         android:layout_height="56dp"
         android:background="@color/good_yellow"
@@ -44,7 +44,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragmentContainerView2">
+        app:layout_constraintTop_toBottomOf="@+id/fcvActiBu">
 
 
         <include

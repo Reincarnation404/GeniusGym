@@ -24,22 +24,22 @@ class BuMenuFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         with(binding){
-            btMemberDataManage.setOnClickListener {
+            btBuMenuMemberDataManage.setOnClickListener {
                 Navigation.findNavController(it).navigate(R.id.action_buMenu_to_buMemberData)
             }
-            btCoachDataManage.setOnClickListener {
+            btBuMenuCoachDataManage.setOnClickListener {
                 Navigation.findNavController(it).navigate(R.id.action_buMenu_to_buCoachData)
             }
-            btBusinessDataManage.setOnClickListener {
+            btBuMenuBusinessDataManage.setOnClickListener {
                 Navigation.findNavController(it).navigate(R.id.action_buMenu_to_buBusinessData)
             }
-            btClassDataManage.setOnClickListener {
+            btBuMenuClassDataManage.setOnClickListener {
                 Navigation.findNavController(it).navigate(R.id.action_buMenu_to_buClassData)
             }
-            btNotificationManage.setOnClickListener {
+            btBuMenuNotificationManage.setOnClickListener {
                 Navigation.findNavController(it).navigate(R.id.action_buMenu_to_buNotificaitonManage)
             }
-            btPostManage.setOnClickListener {
+            btBuMenuPostManage.setOnClickListener {
                 Navigation.findNavController(it).navigate(R.id.action_buMenu_to_buPostManage)
             }
         }

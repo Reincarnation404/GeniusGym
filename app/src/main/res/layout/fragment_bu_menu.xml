@@ -6,24 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".business.BuMenuFragment">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbar"
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary">
-
-        </androidx.appcompat.widget.Toolbar>
-
-    </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScrollView"
@@ -42,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <Button
-                android:id="@+id/btBusinessDataManage"
+                android:id="@+id/btBuMenuBusinessDataManage"
                 android:layout_width="291dp"
                 android:layout_height="83dp"
                 android:layout_marginTop="10dp"
@@ -51,10 +33,10 @@
                 android:textSize="30sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btMemberDataManage" />
+                app:layout_constraintTop_toBottomOf="@+id/btBuMenuMemberDataManage" />
 
             <Button
-                android:id="@+id/btNotificationManage"
+                android:id="@+id/btBuMenuNotificationManage"
                 android:layout_width="291dp"
                 android:layout_height="83dp"
                 android:layout_marginTop="10dp"
@@ -63,10 +45,10 @@
                 android:textSize="30sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btClassDataManage" />
+                app:layout_constraintTop_toBottomOf="@+id/btBuMenuClassDataManage" />
 
             <Button
-                android:id="@+id/btClassDataManage"
+                android:id="@+id/btBuMenuClassDataManage"
                 android:layout_width="291dp"
                 android:layout_height="83dp"
                 android:layout_marginTop="10dp"
@@ -78,7 +60,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/btBusinessDataManage" />
 
             <Button
-                android:id="@+id/btMemberDataManage"
+                android:id="@+id/btBuMenuMemberDataManage"
                 android:layout_width="291dp"
                 android:layout_height="83dp"
                 android:layout_marginTop="10dp"
@@ -87,10 +69,10 @@
                 android:textSize="30sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btCoachDataManage" />
+                app:layout_constraintTop_toBottomOf="@+id/btBuMenuCoachDataManage" />
 
             <Button
-                android:id="@+id/btCoachDataManage"
+                android:id="@+id/btBuMenuCoachDataManage"
                 android:layout_width="291dp"
                 android:layout_height="83dp"
                 android:layout_marginTop="80dp"
@@ -102,7 +84,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
-                android:id="@+id/btPostManage"
+                android:id="@+id/btBuMenuPostManage"
                 android:layout_width="291dp"
                 android:layout_height="83dp"
                 android:layout_marginTop="10dp"
@@ -111,7 +93,7 @@
                 android:textSize="30sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btNotificationManage" />
+                app:layout_constraintTop_toBottomOf="@+id/btBuMenuNotificationManage" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
