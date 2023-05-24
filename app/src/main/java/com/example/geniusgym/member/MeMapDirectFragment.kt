@@ -53,7 +53,9 @@ class MeMapDirectFragment : Fragment() {
         )
 //                移動的位置超過設定的數據
             .setMinUpdateDistanceMeters(1000f).build()
+
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
+
         locationCallback = object : LocationCallback() {
             //          如果沒超過設定的距離，就不會重新更新畫面
             override fun onLocationResult(locationResult: LocationResult) {
@@ -78,16 +80,39 @@ class MeMapDirectFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val locationName = arguments?.getString("branchlocation")
+
         checkLocationSettings()
+
+        with(binding){
+            mapView.onCreate(savedInstanceState)
+            mapView.onStart()
+            mapView.getMapAsync{ googleMap ->
+                map = googleMap
+            }
+            if (locationName != null) {
+                geocode(locationName)?.let { addressDestination ->
+                    direct(
+                        latLng.latitude,
+                        latLng.longitude,
+                        addressDestination.latitude,
+                        addressDestination.longitude
+                    )
+                }
+            }else{
+                Toast.makeText(requireContext(), "載入錯誤，請重新啟動app", Toast.LENGTH_SHORT).show()
+            }
+        }
 
     }
 
     override fun onStart() {
         super.onStart()
+//        如果允許後，切到app的設定在關掉時，在oStart()請求再次允許
         requestPermissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
     }
 
     private fun updateMyLocation() {
+
         if (ActivityCompat.checkSelfPermission(
                 requireContext(),
                 Manifest.permission.ACCESS_FINE_LOCATION
@@ -186,7 +211,7 @@ class MeMapDirectFragment : Fragment() {
         val builder = LocationSettingsRequest.Builder()
             .addLocationRequest(locationRequest)
 
-        val task = LocationServices.getSettingsClient(requireActivity())
+        val task = LocationServices.getSettingsClient(requireContext())
             .checkLocationSettings(builder.build())
 
         task.addOnSuccessListener(requireActivity()) {
