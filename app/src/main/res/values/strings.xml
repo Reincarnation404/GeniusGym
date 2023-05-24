@@ -7,6 +7,16 @@
     <string name="setting">設定</string>
     <string name="member">會員</string>
     <string name="title_activity_main_me">MainMeActivity</string>
+    <string name="tv_Login_Title">快樂運動，快樂瘦身</string>
+    <string name="tv_Login_Remind">還沒有帳號者，請儘速至櫃臺聯繫</string>
+    <string name="bt_Login_Confirm">確認</string>
+    <string name="ht_Login_Account">請輸入帳號</string>
+    <string name="ht_Login_Password">請輸入密碼</string>
+    <string name="tv_Login_Forget">忘記密碼</string>
+    <string name="tv_LoginForget_Title">忘記密碼</string>
+    <string name="tv_LoginForget_Remind">請輸入您當時申請的手機號碼或電子郵件</string>
+    <string name="ht_LoginForget_Number">請輸入手機密碼或Email</string>
+    <string name="tv_LoginForget_Confirm">確認</string>
 
     <!-- 公司端String -->
     <string name="btBuMenuCoachDataManage">教練資料管理</string>
@@ -25,6 +35,7 @@
     <string name="btBuAddNotiCancel">取消</string>
     <string name="spBuAddChooseBranch">點擊選擇分店</string>
     <string name="spBuAddChooseTarget">點擊選擇對象</string>
+
 
 
 </resources>
