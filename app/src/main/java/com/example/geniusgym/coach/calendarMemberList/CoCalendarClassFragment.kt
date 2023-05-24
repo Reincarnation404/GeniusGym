@@ -12,6 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.geniusgym.R
 import com.example.geniusgym.coach.calendarMemberList.controller.ClassItemAdapter
+import com.example.geniusgym.coach.calendarMemberList.viewmodel.CoCalendarClassViewModel
 import com.example.geniusgym.databinding.FragmentCoCalendarTestBinding
 import java.time.DayOfWeek
 import java.time.LocalDate

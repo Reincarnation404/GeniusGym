@@ -1,6 +1,5 @@
 package com.example.geniusgym.coach
 
-import androidx.lifecycle.ViewModelProvider
 import com.example.geniusgym.coach.calendarMemberList.model.ClassItem
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,8 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.geniusgym.R
 import com.example.geniusgym.coach.calendarMemberList.controller.MemberItemAdapter
+import com.example.geniusgym.coach.calendarMemberList.viewmodel.CoCalendarMemberListViewModel
 import com.example.geniusgym.databinding.FragmentCoCalendarMemberListBinding
 
 class CoCalendarMemberListFragment : Fragment() {

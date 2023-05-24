@@ -7,7 +7,7 @@ import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.geniusgym.R
-import com.example.geniusgym.coach.CoCalendarMemberListViewModel
+import com.example.geniusgym.coach.calendarMemberList.viewmodel.CoCalendarMemberListViewModel
 import com.example.geniusgym.coach.calendarMemberList.model.ClassItem
 import com.example.geniusgym.databinding.FragmentCoCalendarClassCardviewBinding
 

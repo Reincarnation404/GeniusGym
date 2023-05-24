@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.geniusgym.coach.CoHomeViewModel" />
+            type="com.example.geniusgym.coach.calendarMemberList.viewmodel.CoHomeViewModel" />
     </data>
 
     <FrameLayout

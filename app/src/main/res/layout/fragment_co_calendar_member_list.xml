@@ -6,7 +6,7 @@
     <data>
 <variable
     name="viewModel"
-    type="com.example.geniusgym.coach.CoCalendarMemberListViewModel" />
+    type="com.example.geniusgym.coach.calendarMemberList.viewmodel.CoCalendarMemberListViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

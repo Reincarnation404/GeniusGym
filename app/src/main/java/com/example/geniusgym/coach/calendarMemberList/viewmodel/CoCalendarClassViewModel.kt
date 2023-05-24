@@ -1,4 +1,4 @@
-package com.example.geniusgym.coach.calendarMemberList
+package com.example.geniusgym.coach.calendarMemberList.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
