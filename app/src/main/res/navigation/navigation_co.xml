@@ -25,5 +25,14 @@
     <fragment
         android:id="@+id/coCalendarMemberListFragment2"
         android:name="com.example.geniusgym.coach.CoCalendarMemberListFragment"
-        android:label="CoCalendarMemberListFragment" />
+        android:label="CoCalendarMemberListFragment" >
+        <action
+            android:id="@+id/action_coCalendarMemberListFragment2_to_coCalendarMemberDetailFragment"
+            app:destination="@id/coCalendarMemberDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/coCalendarMemberDetailFragment"
+        android:name="com.example.geniusgym.coach.CoCalendarMemberDetailFragment"
+        android:label="fragment_co_calendar_member_detail"
+        tools:layout="@layout/fragment_co_calendar_member_detail" />
 </navigation>
