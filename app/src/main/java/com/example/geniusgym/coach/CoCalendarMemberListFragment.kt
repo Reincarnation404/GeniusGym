@@ -1,21 +1,22 @@
 package com.example.geniusgym.coach
 
 import androidx.lifecycle.ViewModelProvider
+import com.example.geniusgym.coach.calendarMemberList.model.ClassItem
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.geniusgym.R
+import com.example.geniusgym.coach.calendarMemberList.controller.MemberItemAdapter
 import com.example.geniusgym.databinding.FragmentCoCalendarMemberListBinding
 
 class CoCalendarMemberListFragment : Fragment() {
 
-
-
     private lateinit var binding:FragmentCoCalendarMemberListBinding
-
+    private lateinit var classid:String
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -29,12 +30,24 @@ class CoCalendarMemberListFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        arguments?.let{bundle ->
-            bundle.getSerializable("Class")?.let{
 
+        with(binding){
+            arguments?.let{bundle ->
+                bundle.getSerializable("Class")?.let{
+                    val classItem = it as ClassItem
+                    val classId = classItem.id
+                    viewModel?.search(classId)
+                    rvCoCaMe.layoutManager = LinearLayoutManager(requireContext())
+                    viewModel?.items?.observe(viewLifecycleOwner){items ->
+                        if(rvCoCaMe.adapter == null){
+                            rvCoCaMe.adapter = MemberItemAdapter(items)
+                        }else{
+                            (rvCoCaMe.adapter as MemberItemAdapter).updateItem(items)
+                        }
+                    }
+                }
             }
         }
 
     }
-
 }

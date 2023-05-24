@@ -30,6 +30,7 @@ class CoCalendarClassListViewModel : ViewModel() {
         val itemList = mutableListOf<ClassItem>()
         itemList.add(
             ClassItem(
+                id = "123",
                 startTime = "12:00",
                 endTime = "14:00",
                 date = "2023-05-25",
@@ -38,6 +39,7 @@ class CoCalendarClassListViewModel : ViewModel() {
         )
         itemList.add(
             ClassItem(
+                id = "456",
                 startTime = "13:00",
                 endTime = "14:00",
                 date = "2023-05-26",

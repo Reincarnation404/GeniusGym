@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.geniusgym.coach.calendarMemberList.CoCalendarTestViewModel" />
+            type="com.example.geniusgym.coach.calendarMemberList.CoCalendarClassViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -28,6 +28,7 @@
             android:id="@+id/llCoCaDayOfWeekt"
             android:layout_width="409dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
             android:background="#1C1B1F"
             android:backgroundTint="#1C1B1F"
             android:gravity="center"

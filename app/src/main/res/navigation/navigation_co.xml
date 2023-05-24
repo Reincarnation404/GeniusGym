@@ -3,24 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_co"
-    app:startDestination="@id/coCalendarFragment">
+    app:startDestination="@id/coCalendarTestFragment">
     <fragment
         android:id="@+id/coHomeFragment"
         android:name="com.example.geniusgym.coach.CoHomeFragment"
         android:label="@string/home"
         tools:layout="@layout/fragment_co_home" />
-    <fragment
-        android:id="@+id/coCalendarFragment"
-        android:name="com.example.geniusgym.coach.CoCalendarFragment"
-        android:label="@string/co_calendar"
-        tools:layout="@layout/fragment_co_calendar" />
+
     <fragment
         android:id="@+id/settingFragment"
         android:name="com.example.geniusgym.setting.SettingFragment"
         android:label="SettingFragment" />
     <fragment
         android:id="@+id/coCalendarTestFragment"
-        android:name="com.example.geniusgym.coach.calendarMemberList.CoCalendarTestFragment"
+        android:name="com.example.geniusgym.coach.calendarMemberList.CoCalendarClassFragment"
         android:label="CoCalendarTestFragment" >
         <action
             android:id="@+id/action_coCalendarTestFragment_to_coCalendarMemberListFragment2"
