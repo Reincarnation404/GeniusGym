@@ -7,8 +7,24 @@
     <string name="setting">設定</string>
     <string name="member">會員</string>
     <string name="title_activity_main_me">MainMeActivity</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- 公司端String -->
+    <string name="btBuMenuCoachDataManage">教練資料管理</string>
+    <string name="btBuMenuMemberDataManage">會員資料管理</string>
+    <string name="btBuMenuBusinessDataManage">員工資料管理</string>
+    <string name="btBuMenuClassDataManage">課程資料管理</string>
+    <string name="btBuMenuNotification">公告</string>
+    <string name="btBuMenuPostManage">貼文審查</string>
+    <string name="bu_menu_title">公司端主選單</string>
+    <string name="buOptionMenuElse">請再點選一次</string>
+    <string name="tietBuAddNotiSender">發文者</string>
+    <string name="tietBuAddNotiTitle">標題</string>
+    <string name="tietBuAddNotiText">內文</string>
+    <string name="btBuAddNotiSaveNoti">儲存</string>
+    <string name="BuAddNotiErrEmpty">不可空白</string>
+    <string name="btBuAddNotiCancel">取消</string>
+    <string name="spBuAddChooseBranch">點擊選擇分店</string>
+    <string name="spBuAddChooseTarget">點擊選擇對象</string>
 
 
 </resources>
