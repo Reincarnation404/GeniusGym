@@ -21,6 +21,16 @@
     <string name="btAddPoint">點數台幣</string>
     <string name="etCardNum">卡號</string>
     <string name="etCardHolder">持卡人姓名</string>
+    <string name="etVali">有效期(MM/YY)</string>
+    <string name="etSecurityCode">安全碼</string>
+    <string name="btCreditCard">確認送出</string>
+    <string-array name="creditcard">
+        <item>國泰世華</item>
+        <item>中國信託</item>
+        <item>台灣郵政</item>
+        <item>台新銀行</item>
+    </string-array>
 
+    <!-- hint是提醒user輸入東西（會顯示）， 板手text 是開發者自己看而已  -->
 
 </resources>

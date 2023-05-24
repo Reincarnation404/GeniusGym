@@ -124,16 +124,41 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilBuAddNotiText"
+                android:id="@+id/tilBuAddChooseDate"
                 style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox.Dense"
-                android:layout_width="0dp"
-                android:layout_height="221dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
 
                 android:paddingHorizontal="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tilBuAddChooseTarget">
+
+                <TextView
+                    android:id="@+id/tvBuAddChooseDate"
+                    android:layout_width="377dp"
+                    android:layout_height="50dp"
+                    android:background="@color/white"
+                    android:gravity="center|left"
+                    android:hint="@string/tvBuAddChooseDate"
+                    android:imeOptions="flagNoExtractUi"
+                    android:paddingLeft="16dp"
+                    android:textColorHint="#CDC7D2" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilBuAddNotiText"
+                style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox.Dense"
+                android:layout_width="0dp"
+                android:layout_height="221dp"
+                app:layout_constraintTop_toBottomOf="@+id/tilBuAddChooseDate"
+                android:paddingHorizontal="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_editor_absoluteY="326dp">
 
 
                 <com.google.android.material.textfield.TextInputEditText
