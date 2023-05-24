@@ -9,6 +9,16 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="285dp"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="hint" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="285dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="@+id/textInputLayout2"
@@ -16,10 +26,11 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout2">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etVali"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#F4F1F1"
-            android:hint="hint" />
+            android:hint="@string/etVali" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
