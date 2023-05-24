@@ -19,6 +19,8 @@
     <string name="etPointsChange">顯示儲值點數</string>
     <string name="etAddPoint">儲值點數</string>
     <string name="btAddPoint">點數台幣</string>
+    <string name="etCardNum">卡號</string>
+    <string name="etCardHolder">持卡人姓名</string>
 
 
 </resources>
