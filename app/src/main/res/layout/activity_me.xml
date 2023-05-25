@@ -36,6 +36,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
+        `
+
         <include
             android:id="@+id/included_branch"
             layout="@layout/bottomitem_member_branch"

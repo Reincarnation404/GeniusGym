@@ -35,4 +35,14 @@
         android:name="com.example.geniusgym.social.SocialFragment"
         android:label="@string/social"
         tools:layout="@layout/fragment_social" />
+    <fragment
+        android:id="@+id/mePointsFragment"
+        android:name="com.example.geniusgym.member.MePointsFragment"
+        android:label="fragment_me_points"
+        tools:layout="@layout/fragment_me_points" />
+    <fragment
+        android:id="@+id/meCreditCard"
+        android:name="com.example.geniusgym.member.MeCreditCard"
+        android:label="fragment_me_credit_card"
+        tools:layout="@layout/fragment_me_credit_card" />
 </navigation>

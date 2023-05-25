@@ -47,7 +47,7 @@ class MemberItemAdapter(private var items: List<MemberItem>) :
             itemView.setOnClickListener {
                 Navigation.findNavController(it)
                     .navigate(
-                        R.id.action_coCalendarTestFragment_to_coCalendarMemberListFragment2,
+                        R.id.action_coCalendarMemberListFragment2_to_coCalendarMemberDetailFragment,
                         bundle
                     )
             }

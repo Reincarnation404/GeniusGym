@@ -39,12 +39,12 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="25dp"
         android:ems="10"
-        android:hint="@string/etShowPoints"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.948"
         app:layout_constraintStart_toStartOf="@+id/tvMePoints"
-        tools:layout_editor_absoluteY="94dp" />
+        tools:layout_editor_absoluteY="94dp"
+        tools:text="顯示點數餘額" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -80,7 +80,8 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            tools:listitem="@layout/me_points_record_cardview" />
 
     </LinearLayout>
 
