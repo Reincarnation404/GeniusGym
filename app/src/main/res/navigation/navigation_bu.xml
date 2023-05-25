@@ -33,7 +33,11 @@
         android:id="@+id/buMemberDataFragment"
         android:name="com.example.geniusgym.business.BuMemberDataFragment"
         android:label="fragment_bu_member_data"
-        tools:layout="@layout/fragment_bu_member_data" />
+        tools:layout="@layout/fragment_bu_member_data" >
+        <action
+            android:id="@+id/action_buMemberData_to_buMemberDataAdd"
+            app:destination="@id/buMemberDataAddFragment" />
+    </fragment>
     <fragment
         android:id="@+id/buCoachDataFragment"
         android:name="com.example.geniusgym.business.BuCoachDataFragment"
@@ -68,4 +72,9 @@
         android:name="com.example.geniusgym.business.BuAddNotificationFragment"
         android:label="fragment_bu_add_notification"
         tools:layout="@layout/fragment_bu_add_notification" />
+    <fragment
+        android:id="@+id/buMemberDataAddFragment"
+        android:name="com.example.geniusgym.business.BuMemberDataAddFragment"
+        android:label="fragment_bu_member_data_add"
+        tools:layout="@layout/fragment_bu_member_data_add" />
 </navigation>

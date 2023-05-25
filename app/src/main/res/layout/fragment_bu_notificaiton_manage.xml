@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <androidx.core.widget.NestedScrollView
-        android:id="@+id/nestedScrollView"
+        android:id="@+id/BuMenuScrollView"
         android:layout_width="0dp"
 
 
