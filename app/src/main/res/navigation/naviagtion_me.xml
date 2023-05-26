@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/meHomeFragment"
-        android:name="com.example.geniusgym.member.MeHomeFragment"
+        android:name="com.example.geniusgym.member.controller.MeHomeFragment"
         android:label="@string/home"
         tools:layout="@layout/fragment_me_home" />
     <fragment
         android:id="@+id/meBranchFragment"
-        android:name="com.example.geniusgym.member.MeBranchFragment"
+        android:name="com.example.geniusgym.member.controller.MeBranchFragment"
         android:label="@string/branch"
         tools:layout="@layout/fragment_me_branch" />
     <fragment

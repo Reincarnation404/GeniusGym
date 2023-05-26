@@ -2,8 +2,11 @@ package com.example.geniusgym.member
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
+import androidx.navigation.NavOptions
+import androidx.navigation.NavOptionsBuilder
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -21,6 +24,7 @@ class MeActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         navController = navHostFragment.navController
 //        將底部導覽的頁面用map的key、value存儲
+        setSupportActionBar(binding.toolbarMebr)
         val destinationMap = mapOf(
             R.id.meHomeFragment to binding.includedHome.homeMontionLayout,
             R.id.meBranchFragment to binding.includedBranch.branchMontionLayout,
@@ -35,6 +39,7 @@ class MeActivity : AppCompatActivity() {
             navController,
             AppBarConfiguration(destinationMap.keys)
         )
+
 //      使用遍例的方法將每個map中的layout(也就是底部導覽的元件)設置點擊時，會跳轉到哪一個頁面
         destinationMap.forEach{map ->
             map.value.setOnClickListener {

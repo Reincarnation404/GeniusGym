@@ -1,4 +1,4 @@
-package com.example.geniusgym.member
+package com.example.geniusgym.member.controller
 
 import android.Manifest
 import android.app.Activity
@@ -22,6 +22,7 @@ import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.geniusgym.databinding.FragmentMeMapDirectBinding
+import com.example.geniusgym.member.viewmodel.MeMapDirectViewModel
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.*
 import com.google.android.gms.maps.CameraUpdateFactory

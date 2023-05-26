@@ -4,8 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.PopupWindow
+import androidx.navigation.NavOptions
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.example.geniusgym.R
 import com.example.geniusgym.databinding.PopupwindowMeBranchBinding
 import com.example.geniusgym.databinding.RecycleCellMeBranchBinding
 
@@ -25,26 +28,41 @@ class MeBranchAdapter(val storeBeans: List<StoreBean>) : RecyclerView.Adapter<Me
         holder.binding.tvBranchTitle.text = storeBeans[position].bh_name.toString()
         holder.binding.tvPhonenumber.text = storeBeans[position].bh_cell.toString()
         holder.binding.tvAddress.text = storeBeans[position].bh_address.toString()
-        holder.binding.btImgBranch.setOnClickListener {
-            val binding_popup = PopupwindowMeBranchBinding.inflate(LayoutInflater.from(it.context))
+        holder.binding.btImgBranch.setOnClickListener {  btview ->
+            val binding_popup = PopupwindowMeBranchBinding.inflate(LayoutInflater.from(btview.context))
             val popup_window = PopupWindow(binding_popup.root)
+            popup_window.isOutsideTouchable = true
+            popup_window.isFocusable = true
+
+
+            val  options : NavOptions = NavOptions.Builder()
+                .setLaunchSingleTop(true)
+                .setPopUpTo(R.id.meBranchFragment , inclusive = false, saveState = true)
+
+                .build()
 //            val bundle = Bundle()
 //            bundle.putInt("branch", storeBeans[position].bh_id)
             with(binding_popup){
                 btCoach.setOnClickListener {
-//                TODO: 頁面跳轉
+                    btview.findNavController().navigate(R.id.action_meBranchDetailFragment_to_meCoachInfoFragment)
+                    popup_window.dismiss()
                 }
+
+
                 btDirect.setOnClickListener {
-                 val bundle = Bundle()
-                    bundle.putString("branchlocation", storeBeans[position].bh_address)
+//                 val bundle = Bundle()
+//                    bundle.putString("branchlocation", storeBeans[position].bh_address)
+                    btview.findNavController().navigate(R.id.action_meBranchDetailFragment_to_meMapDirectFragment)
+                    popup_window.dismiss()
                 }
                 btStore.setOnClickListener {
-//                TODO: 頁面跳轉
+                    btview.findNavController().navigate(R.id.action_meBranchDetailFragment_to_meShoppingFragment)
+                    popup_window.dismiss()
                 }
             }
             popup_window.width = ViewGroup.LayoutParams.WRAP_CONTENT
             popup_window.height = ViewGroup.LayoutParams.WRAP_CONTENT
-            popup_window.showAsDropDown(it, 0, 0)
+            popup_window.showAsDropDown(btview, 0, 0)
 
         }
 //        TODO 時間格式要等可以串接了再調整，因此缺營業時間

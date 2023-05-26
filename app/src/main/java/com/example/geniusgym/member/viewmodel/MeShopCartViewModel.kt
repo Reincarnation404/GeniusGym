@@ -1,4 +1,4 @@
-package com.example.geniusgym.member
+package com.example.geniusgym.member.viewmodel
 
 import androidx.lifecycle.ViewModel
 

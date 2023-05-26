@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.geniusgym.R
 import com.example.geniusgym.databinding.RecycleCellMeCoachinfoBinding
 
 class MeCoachInfoAdapter(val coaches: List<CoachBean>) : RecyclerView.Adapter<MeCoachInfoAdapter.MyViewHolder>() {
@@ -23,7 +24,12 @@ class MeCoachInfoAdapter(val coaches: List<CoachBean>) : RecyclerView.Adapter<Me
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         with(holder.binding){
             coachName.text = coaches[position].c_name
-            coachPicture.setImageDrawable(coaches[position].c_pic)
+            if (coaches[position].c_pic == null){
+                coachPicture.setImageResource(R.drawable.a005)
+            }else{
+
+            }
+
             this.root.setOnClickListener {
                 val bundle = Bundle()
                 bundle.putSerializable("CoachInfo", coaches[position])
