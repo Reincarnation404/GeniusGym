@@ -11,9 +11,6 @@ import com.example.geniusgym.member.viewmodel.MeShoppingViewModel
 
 class MeShoppingFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = MeShoppingFragment()
-    }
 
     private val viewModel: MeShoppingViewModel by viewModels()
     override fun onCreateView(

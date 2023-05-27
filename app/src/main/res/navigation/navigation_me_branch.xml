@@ -26,7 +26,11 @@
         android:id="@+id/meCoachInfoFragment"
         android:name="com.example.geniusgym.member.controller.MeCoachInfoFragment"
         android:label="fragment_me_coach_info"
-        tools:layout="@layout/fragment_me_coach_info" />
+        tools:layout="@layout/fragment_me_coach_info" >
+        <action
+            android:id="@+id/action_meCoachInfoFragment_to_meCoachInfoDetailFragment"
+            app:destination="@id/meCoachInfoDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/meMapDirectFragment"
         android:name="com.example.geniusgym.member.controller.MeMapDirectFragment"
@@ -37,4 +41,9 @@
         android:name="com.example.geniusgym.member.controller.MeShoppingFragment"
         android:label="fragment_me_shopping"
         tools:layout="@layout/fragment_me_shopping" />
+    <fragment
+        android:id="@+id/meCoachInfoDetailFragment"
+        android:name="com.example.geniusgym.member.controller.MeCoachInfoDetailFragment"
+        android:label="fragment_me_coach_info_detail"
+        tools:layout="@layout/fragment_me_coach_info_detail" />
 </navigation>

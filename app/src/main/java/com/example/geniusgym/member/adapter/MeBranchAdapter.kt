@@ -1,5 +1,6 @@
 package com.example.geniusgym.member.adapter
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.PopupWindow
@@ -34,28 +35,20 @@ class MeBranchAdapter(val storeBeans: List<StoreBean>) : RecyclerView.Adapter<Me
             popup_window.isOutsideTouchable = true
             popup_window.isFocusable = true
 
-
-            val  options : NavOptions = NavOptions.Builder()
-                .setLaunchSingleTop(true)
-                .setPopUpTo(R.id.meBranchFragment , inclusive = false, saveState = true)
-
-                .build()
-//            val bundle = Bundle()
-//            bundle.putInt("branch", storeBeans[position].bh_id)
             with(binding_popup){
-                btCoach.setOnClickListener {
+                btMeCoach.setOnClickListener {
                     btview.findNavController().navigate(R.id.action_meBranchDetailFragment_to_meCoachInfoFragment)
                     popup_window.dismiss()
                 }
 
 
-                btDirect.setOnClickListener {
-//                 val bundle = Bundle()
-//                    bundle.putString("branchlocation", storeBeans[position].bh_address)
-                    btview.findNavController().navigate(R.id.action_meBranchDetailFragment_to_meMapDirectFragment)
+                btMeDirect.setOnClickListener {
+                    val bundle = Bundle()
+                    bundle.putString("branchlocation", storeBeans[position].bh_address)
+                    btview.findNavController().navigate(R.id.action_meBranchDetailFragment_to_meMapDirectFragment, bundle)
                     popup_window.dismiss()
                 }
-                btStore.setOnClickListener {
+                btMeShop.setOnClickListener {
                     btview.findNavController().navigate(R.id.action_meBranchDetailFragment_to_meShoppingFragment)
                     popup_window.dismiss()
                 }

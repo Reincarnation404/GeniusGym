@@ -6,6 +6,7 @@ import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.geniusgym.R
 import com.example.geniusgym.databinding.RecycleCellMeCoachinfoBinding
@@ -41,7 +42,7 @@ class MeCoachInfoAdapter(val coaches: List<CoachBean>) : RecyclerView.Adapter<Me
             this.root.setOnClickListener {
                 val bundle = Bundle()
                 bundle.putSerializable("CoachInfo", coaches[position])
-//                TODO:跳轉到另一個頁面
+                root.findNavController().navigate(R.id.action_meCoachInfoFragment_to_meCoachInfoDetailFragment, bundle)
             }
 
         }
