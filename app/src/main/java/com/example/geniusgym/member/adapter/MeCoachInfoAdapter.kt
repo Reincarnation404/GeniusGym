@@ -1,11 +1,16 @@
-package com.example.geniusgym.member
+package com.example.geniusgym.member.adapter
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.geniusgym.R
 import com.example.geniusgym.databinding.RecycleCellMeCoachinfoBinding
+import com.example.geniusgym.member.model.CoachBean
+import java.io.ByteArrayInputStream
 
 class MeCoachInfoAdapter(val coaches: List<CoachBean>) : RecyclerView.Adapter<MeCoachInfoAdapter.MyViewHolder>() {
 
@@ -27,8 +32,11 @@ class MeCoachInfoAdapter(val coaches: List<CoachBean>) : RecyclerView.Adapter<Me
             if (coaches[position].c_pic == null){
                 coachPicture.setImageResource(R.drawable.a005)
             }else{
-
+                val bis = ByteArrayInputStream(coaches[position].c_pic)
+                val drawable = BitmapFactory.decodeStream(bis)
+                coachPicture.setImageBitmap(drawable)
             }
+
 
             this.root.setOnClickListener {
                 val bundle = Bundle()

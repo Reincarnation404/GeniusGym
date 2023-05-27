@@ -11,12 +11,15 @@
         tools:layout="@layout/fragment_me_branch_detail" >
         <action
             android:id="@+id/action_meBranchDetailFragment_to_meShoppingFragment"
+            app:popUpTo="@id/meBranchDetailFragment"
             app:destination="@id/meShoppingFragment" />
         <action
             android:id="@+id/action_meBranchDetailFragment_to_meCoachInfoFragment"
+            app:popUpTo="@id/meBranchDetailFragment"
             app:destination="@id/meCoachInfoFragment" />
         <action
             android:id="@+id/action_meBranchDetailFragment_to_meMapDirectFragment"
+            app:popUpTo="@id/meBranchDetailFragment"
             app:destination="@id/meMapDirectFragment" />
     </fragment>
     <fragment

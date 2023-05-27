@@ -6,20 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.geniusgym.R
 import com.example.geniusgym.databinding.FragmentMeBranchBinding
-import com.example.geniusgym.member.MeBranchAdapter
 import com.example.geniusgym.member.viewmodel.MeBranchViewModel
 
 class MeBranchFragment : Fragment() {
     private lateinit var binding: FragmentMeBranchBinding
     private val viewModel: MeBranchViewModel by viewModels()
-    private lateinit var controller: NavController
+    private lateinit var navHostFragment : NavHostFragment
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,9 +25,18 @@ class MeBranchFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        binding.fragmentContainerView2.getFragment<MeBranchDetailFragment>()
-        val navHostFragment = childFragmentManager.findFragmentById(R.id.nav_me_branch) as NavHostFragment
-        val navController = navHostFragment.navController
+        navHostFragment = NavHostFragment.create(R.navigation.navigation_me_branch)
+        childFragmentManager.beginTransaction()
+            .replace(R.id.nav_me_branch, navHostFragment)
+            .setPrimaryNavigationFragment(navHostFragment)
+            .commit()
+
+
+
     }
 
+    override fun onResume() {
+        super.onResume()
+        val navController = navHostFragment.navController
+    }
 }

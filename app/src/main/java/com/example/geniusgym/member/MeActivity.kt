@@ -2,7 +2,9 @@ package com.example.geniusgym.member
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
@@ -54,5 +56,30 @@ class MeActivity : AppCompatActivity() {
             destinationMap[destination.id]?.transitionToEnd()
 
         }
+
+//        onBackPressedDispatcher.addCallback(this, OnBackPresseClick)
+
+
+
     }
+
+    private val OnBackPresseClick = object : OnBackPressedCallback(true){
+        override fun handleOnBackPressed() {
+            val alertDialog = AlertDialog.Builder(this@MeActivity)
+            alertDialog.setTitle("確定要離開嗎")
+
+            alertDialog.setPositiveButton("確定"){dialog, which ->
+                dialog.dismiss()
+                finish()
+            }
+            alertDialog.setNegativeButton("取消"){dialog, which ->
+                dialog.dismiss()
+            }
+            alertDialog.show()
+        }
+
+    }
+
+
+
 }

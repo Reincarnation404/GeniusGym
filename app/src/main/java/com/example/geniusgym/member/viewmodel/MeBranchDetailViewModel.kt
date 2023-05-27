@@ -1,7 +1,7 @@
 package com.example.geniusgym.member.viewmodel
 
 import androidx.lifecycle.ViewModel
-import com.example.geniusgym.member.StoreBean
+import com.example.geniusgym.member.model.StoreBean
 
 class MeBranchDetailViewModel : ViewModel() {
     private val _storeBeans : MutableList<StoreBean> by lazy { mutableListOf() }

@@ -1,6 +1,5 @@
-package com.example.geniusgym.member
+package com.example.geniusgym.member.adapter
 
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.PopupWindow
@@ -11,10 +10,11 @@ import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.geniusgym.R
 import com.example.geniusgym.databinding.PopupwindowMeBranchBinding
 import com.example.geniusgym.databinding.RecycleCellMeBranchBinding
+import com.example.geniusgym.member.model.StoreBean
 
 class MeBranchAdapter(val storeBeans: List<StoreBean>) : RecyclerView.Adapter<MeBranchAdapter.MyViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MeBranchAdapter.MyViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val binding = RecycleCellMeBranchBinding.inflate(LayoutInflater.from(parent.context))
 
         return MyViewHolder(binding)
@@ -24,7 +24,7 @@ class MeBranchAdapter(val storeBeans: List<StoreBean>) : RecyclerView.Adapter<Me
         return storeBeans.size
     }
 
-    override fun onBindViewHolder(holder: MeBranchAdapter.MyViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.binding.tvBranchTitle.text = storeBeans[position].bh_name.toString()
         holder.binding.tvPhonenumber.text = storeBeans[position].bh_cell.toString()
         holder.binding.tvAddress.text = storeBeans[position].bh_address.toString()
