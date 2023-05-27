@@ -2,237 +2,251 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".business.BuMemberDataAddFragment">
+
+    tools:context=".business.BuClassDataAddFragment">
     <data>
         <variable
             name="viewModel"
-            type="com.example.geniusgym.business.viewModel.BuMemberDataAddViewModel" />
+            type="com.example.geniusgym.business.viewModel.BuClassDataAddViewModel" />
     </data>
-<androidx.constraintlayout.widget.ConstraintLayout 
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <androidx.core.widget.NestedScrollView
-        android:id="@+id/nestedScrollView"
-        android:layout_width="0dp"
-        android:layout_height="595dp"
-        android:layout_marginTop="65dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            tools:layout_conversion_absoluteHeight="577dp"
-            tools:layout_conversion_absoluteWidth="405dp"
-            tools:layout_editor_absoluteX="3dp"
-            tools:layout_editor_absoluteY="73dp">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilBuAddMemDataName"
+                android:id="@+id/tilBuAddClassDataName"
                 style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
+                android:layout_marginTop="20dp"
                 android:paddingHorizontal="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tietBuAddMemDataName"
+                    android:id="@+id/tietBuAddClassDataName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
-                    android:hint="@string/tietBuAddMemDataName" />
+                    android:hint="@string/tietBuAddClassDataName" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilBuAddMemDataID"
+                android:id="@+id/tilBuAddClassDataID"
                 style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:paddingHorizontal="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tilBuAddMemDataName">
+                app:layout_constraintTop_toBottomOf="@id/tilBuAddClassDataName">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tietBuAddMemDataID"
+                    android:id="@+id/tietBuAddClassDataID"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
-                    android:hint="@string/tietBuAddMemDataID" />
+                    android:hint="@string/tietBuAddClassDataID" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilBuAddMemDataPwd"
+                android:id="@+id/tilBuAddClassDataStartTime"
                 style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:paddingHorizontal="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tilBuAddMemDataID">
+                app:layout_constraintTop_toBottomOf="@id/tilBuAddClassDataID">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tietBuAddMemDataPwd"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                <TextView
+                    android:id="@+id/tietBuAddClassDataStartTime"
+                    android:layout_width="380dp"
+                    android:layout_height="60dp"
+                    android:gravity="center|left"
+                    android:imeOptions="flagNoExtractUi"
+                    android:paddingLeft="16dp"
+                    android:textColorHint="#CDC7D2"
                     android:background="@color/white"
-                    android:hint="@string/tietBuAddMemDataPwd" />
+                    android:hint="@string/tietBuAddClassDataStartTime" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilBuAddMemDataGen"
+                android:id="@+id/tilBuAddClassDataEndTime"
                 style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:paddingHorizontal="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tilBuAddMemDataPwd">
+                app:layout_constraintTop_toBottomOf="@id/tilBuAddClassDataStartTime">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tietBuAddMemDataGen"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                <TextView
+                    android:id="@+id/tietBuAddClassDataEndTime"
+                    android:layout_width="380dp"
+                    android:layout_height="60dp"
+                    android:gravity="center|left"
+                    android:imeOptions="flagNoExtractUi"
+                    android:paddingLeft="16dp"
+                    android:textColorHint="#CDC7D2"
                     android:background="@color/white"
-                    android:hint="@string/tietBuAddMemDataGen" />
+                    android:hint="@string/tietBuAddClassDataEndTime" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilBuAddMemDataCell"
+                android:id="@+id/tilBuAddClassDataBranch"
                 style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:paddingHorizontal="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tilBuAddMemDataGen">
+                app:layout_constraintTop_toBottomOf="@id/tilBuAddClassDataEndTime">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tietBuAddMemDataCell"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                <TextView
+                    android:id="@+id/tvBuAddClassDataBranch"
+                    android:layout_width="380dp"
+                    android:layout_height="60dp"
+                    android:gravity="center|left"
+                    android:imeOptions="flagNoExtractUi"
+                    android:paddingLeft="16dp"
+                    android:textColorHint="#CDC7D2"
                     android:background="@color/white"
-                    android:hint="@string/tietBuAddMemDataCell" />
+                    android:hint="@string/tvBuAddClassDataBranch" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilBuAddMemDataTwid"
+                android:id="@+id/tilBuAddClassDataPlace"
                 style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:paddingHorizontal="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tilBuAddMemDataCell">
+                app:layout_constraintTop_toBottomOf="@id/tilBuAddClassDataBranch">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tietBuAddMemDataTwid"
+                    android:id="@+id/tietBuAddClassDataPlace"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
-                    android:hint="@string/tietBuAddMemDataTwid" />
+                    android:hint="@string/tietBuAddClassDataPlace" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilBuAddMemDataAddr"
+                android:id="@+id/tilBuAddClassDataPoint"
                 style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:paddingHorizontal="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tilBuAddMemDataTwid">
+                app:layout_constraintTop_toBottomOf="@id/tilBuAddClassDataPlace">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tietBuAddMemDataAddr"
+                    android:id="@+id/tietBuAddClassDataPoint"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
-                    android:hint="@string/tietBuAddMemDataAddr" />
+                    android:hint="@string/tietBuAddClassDataPoint" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilBuAddMemDataEmail"
+                android:id="@+id/tilBuAddClassDataLimit"
                 style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:paddingHorizontal="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tilBuAddMemDataAddr">
+                app:layout_constraintTop_toBottomOf="@id/tilBuAddClassDataPoint">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tietBuAddMemDataEmail"
+                    android:id="@+id/tietBuAddClassDataLimit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
-                    android:hint="@string/tietBuAddMemDataEmail" />
+                    android:hint="@string/tietBuAddClassDataLimit" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilBuAddMemDataExpireDate"
+                android:id="@+id/tilBuAddClassDataRegiStartTime"
                 style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
                 android:paddingHorizontal="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tilBuAddMemDataEmail">
+                app:layout_constraintTop_toBottomOf="@id/tilBuAddClassDataLimit">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tietBuAddMemDataExpireDate"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                <TextView
+                    android:id="@+id/tietBuAddClassDataRegiStartTime"
+                    android:layout_width="380dp"
+                    android:layout_height="60dp"
+                    android:gravity="center|left"
+                    android:imeOptions="flagNoExtractUi"
+                    android:paddingLeft="16dp"
+                    android:textColorHint="#CDC7D2"
                     android:background="@color/white"
-                    android:hint="@string/tietBuAddMemDataExpireDate" />
+                    android:hint="@string/tietBuAddClassDataRegiStartTime" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <Button
-                android:id="@+id/btBuAddMemDataSave"
-                android:layout_width="155dp"
-                android:layout_height="84dp"
-                android:layout_marginStart="27dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginEnd="40dp"
-                android:text="@string/btBuAddNotiSaveNoti"
-                android:textColor="#000000"
-                android:textSize="24sp"
-                app:layout_constraintBottom_toBottomOf="parent"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilBuAddClassDataRegiEndTime"
+                style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/btBuAddMemDataCancel"
-                app:layout_constraintTop_toBottomOf="@+id/tilBuAddMemDataExpireDate"
-                app:layout_constraintVertical_bias="0.0" />
-
-            <Button
-                android:id="@+id/btBuAddMemDataCancel"
-                android:layout_width="155dp"
-                android:layout_height="84dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="40dp"
-                android:backgroundTint="@color/white"
-                android:text="@string/btBuAddNotiCancel"
-                android:textColor="#000000"
-                android:textSize="24sp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tilBuAddMemDataExpireDate"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintTop_toBottomOf="@id/tilBuAddClassDataRegiStartTime">
+
+                <TextView
+                    android:id="@+id/tietBuAddClassDataRegiEndTime"
+                    android:layout_width="380dp"
+                    android:layout_height="60dp"
+                    android:gravity="center|left"
+                    android:imeOptions="flagNoExtractUi"
+                    android:paddingLeft="16dp"
+                    android:textColorHint="#CDC7D2"
+                    android:background="@color/white"
+                    android:hint="@string/tietBuAddClassDataRegiEndTime" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilBuAddClassDataIntro"
+                style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="221dp"
+                android:paddingHorizontal="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tilBuAddClassDataRegiEndTime">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tietBuAddClassDataIntro"
+                    android:layout_width="match_parent"
+                    android:layout_height="176dp"
+                    android:background="@color/white"
+                    android:hint="@string/tietBuAddClassDataIntro" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

@@ -62,12 +62,15 @@ class BuAddNotificationFragment : Fragment() {
 
             tietBuAddNotiText.setTextColor(Color.BLACK)
 
+            // todo pic的挑選或拍照
+
             btBuAddNotiCancel.setOnClickListener {
                 Navigation.findNavController(it).popBackStack()
             }
 
             btBuAddNotiSaveNoti.setOnClickListener {
                 Toast.makeText(activity, "發送成功", Toast.LENGTH_LONG).show()
+                //todo btBuAddNotiSaveNoti的資料儲存與頁面跳轉
             }
 
         }
@@ -92,13 +95,10 @@ class BuAddNotificationFragment : Fragment() {
                     }
                 }
                 updateSpBuAddChooseBranch(selectedBranches)
-
             }
             // false代表要點擊按鈕方能關閉，預設為true
             .setCancelable(true)
             .show()
-
-
     }
     private fun updateSpBuAddChooseBranch(branches: List<String>) {
         binding.spBuAddChooseBranch.text = branches.joinToString("、")

@@ -42,7 +42,11 @@
         android:id="@+id/buCoachDataFragment"
         android:name="com.example.geniusgym.business.BuCoachDataFragment"
         android:label="fragment_bu_coach_data"
-        tools:layout="@layout/fragment_bu_coach_data" />
+        tools:layout="@layout/fragment_bu_coach_data" >
+        <action
+            android:id="@+id/action_buCoachData_to_buCoachDataAdd"
+            app:destination="@id/buCoachDataAddFragment" />
+    </fragment>
     <fragment
         android:id="@+id/buNotificaitonManageFragment"
         android:name="com.example.geniusgym.business.BuNotificationManageFragment"
@@ -56,12 +60,20 @@
         android:id="@+id/buBusinessDataFragment"
         android:name="com.example.geniusgym.business.BuBusinessDataFragment"
         android:label="fragment_bu_business_data"
-        tools:layout="@layout/fragment_bu_business_data" />
+        tools:layout="@layout/fragment_bu_business_data" >
+        <action
+            android:id="@+id/action_buBusinessData_to_buBusinessDataAdd"
+            app:destination="@id/buBusinessDataAddFragment" />
+    </fragment>
     <fragment
         android:id="@+id/buClassDataFragment"
         android:name="com.example.geniusgym.business.BuClassDataFragment"
         android:label="fragment_bu_class_data"
-        tools:layout="@layout/fragment_bu_class_data" />
+        tools:layout="@layout/fragment_bu_class_data" >
+        <action
+            android:id="@+id/action_buClassDataFragment_to_buClassDataAddFragment"
+            app:destination="@id/buClassDataAddFragment" />
+    </fragment>
     <fragment
         android:id="@+id/buPostManageFragment"
         android:name="com.example.geniusgym.business.BuPostManageFragment"
@@ -77,4 +89,19 @@
         android:name="com.example.geniusgym.business.BuMemberDataAddFragment"
         android:label="fragment_bu_member_data_add"
         tools:layout="@layout/fragment_bu_member_data_add" />
+    <fragment
+        android:id="@+id/buCoachDataAddFragment"
+        android:name="com.example.geniusgym.business.BuCoachDataAddFragment"
+        android:label="fragment_bu_coach_data_add"
+        tools:layout="@layout/fragment_bu_coach_data_add" />
+    <fragment
+        android:id="@+id/buBusinessDataAddFragment"
+        android:name="com.example.geniusgym.business.BuBusinessDataAddFragment"
+        android:label="fragment_bu_business_data_add"
+        tools:layout="@layout/fragment_bu_business_data_add" />
+    <fragment
+        android:id="@+id/buClassDataAddFragment"
+        android:name="com.example.geniusgym.business.BuClassDataAddFragment"
+        android:label="fragment_bu_class_data_add"
+        tools:layout="@layout/fragment_bu_class_data_add" />
 </navigation>
