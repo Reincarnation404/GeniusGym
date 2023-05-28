@@ -54,8 +54,6 @@
     <string name="NaviMemBodyInfo">身體數據</string>
     <string name="NaviMemSetting">設定</string>
 
-
-
     <!--credit card spinner -->
     <string-array name="creditcard">
         <item>國泰世華</item>
@@ -63,7 +61,6 @@
         <item>台灣郵政</item>
         <item>台新銀行</item>
     </string-array>
-
 
     <!-- hint是提醒user輸入東西（會顯示）， 板手text 是開發者自己看而已  -->
 
