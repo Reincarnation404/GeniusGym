@@ -16,7 +16,7 @@
     </androidx.cardview.widget.CardView>
 
     <EditText
-        android:id="@+id/etPointTime"
+        android:id="@+id/etPerTime"
         android:layout_width="202dp"
         android:layout_height="48dp"
         android:ems="10"

@@ -17,7 +17,6 @@
     <string name="tvMePointsTr">點數交易紀錄</string>
     <string name="etPointTime">顯示儲值年月日</string>
     <string name="etPointsChange">顯示儲值點數</string>
-    <string name="etAddPoint">儲值點數</string>
     <string name="btAddPoint">點數台幣</string>
     <string name="etCardNum">卡號</string>
     <string name="etCardHolder">持卡人姓名</string>
@@ -39,6 +38,13 @@
     <string name="tvCardApplySafeCode">安全碼</string>
     <string name="tvCardApplyPhoneNum">手機號碼</string>
     <string name="btCardApply">確認綁定</string>
+    <string name="tvPerTrainDay1">一</string>
+    <string name="tvPerTrainDay2">二</string>
+    <string name="tvPerTrainDay3">三</string>
+    <string name="tvPerTrainDay4">四</string>
+    <string name="tvPerTrainDay5">五</string>
+    <string name="tvPerTrainDay6">六</string>
+    <string name="tvPerTrainDay7">日</string>
 
     <!-- navigation drawer -->
     <string name="NaviMem">個人資料</string>
@@ -55,7 +61,6 @@
         <item>台灣郵政</item>
         <item>台新銀行</item>
     </string-array>
-
 
     <!-- hint是提醒user輸入東西（會顯示）， 板手text 是開發者自己看而已  -->
 

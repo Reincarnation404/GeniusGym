@@ -60,4 +60,9 @@
         android:name="com.example.geniusgym.member.MeCardApply"
         android:label="fragment_me_card_apply"
         tools:layout="@layout/fragment_me_card_apply" />
+    <fragment
+        android:id="@+id/mePersonalTrain"
+        android:name="com.example.geniusgym.member.MePersonalTrain"
+        android:label="fragment_me_personal_train"
+        tools:layout="@layout/fragment_me_personal_train" />
 </navigation>
