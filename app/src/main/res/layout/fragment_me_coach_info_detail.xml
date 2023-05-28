@@ -24,12 +24,14 @@
                 android:id="@+id/ivMeCoachPic"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 tools:src="@tools:sample/avatars" />
 
             <TextView
                 android:id="@+id/tvMeCoachName"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                tools:text="我好帥" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -42,6 +44,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="28dp"
+                android:ems="18"
                 android:text="TextView" />
         </LinearLayout>
     </ScrollView>

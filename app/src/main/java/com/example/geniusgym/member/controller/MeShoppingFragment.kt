@@ -7,17 +7,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.example.geniusgym.R
+import com.example.geniusgym.databinding.FragmentMeShoppingBinding
 import com.example.geniusgym.member.viewmodel.MeShoppingViewModel
 
 class MeShoppingFragment : Fragment() {
 
-
-    private val viewModel: MeShoppingViewModel by viewModels()
+    private lateinit var binding : FragmentMeShoppingBinding
+//    private val viewModel: MeShoppingViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_me_shopping, container, false)
+    ): View {
+        binding = FragmentMeShoppingBinding.inflate(LayoutInflater.from(requireContext()))
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
