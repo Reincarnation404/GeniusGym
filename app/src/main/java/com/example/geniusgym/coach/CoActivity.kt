@@ -35,6 +35,9 @@ class CoActivity : AppCompatActivity() {
             includeSocial.socialMontionLayout.setOnClickListener {
                 navigateController.navigate(R.id.settingFragment)
             }
+            includeNotification.notificationMontionLayout.setOnClickListener {
+                navigateController.navigate(R.id.coCalenderMemberStaticFragment)
+            }
         }
     }
 }

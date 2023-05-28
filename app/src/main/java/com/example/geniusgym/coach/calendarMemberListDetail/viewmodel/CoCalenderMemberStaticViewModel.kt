@@ -2,17 +2,19 @@ package com.example.geniusgym.coach.calendarMemberListDetail.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.geniusgym.coach.calendarMemberList.model.BodyDataItem
 import com.example.geniusgym.coach.calendarMemberList.model.ExerciseItem
 import java.time.LocalDate
 
 class CoCalenderMemberStaticViewModel : ViewModel() {
-    val memberName : MutableLiveData<String> by lazy { MutableLiveData<String>() }
+ //   val memberName : MutableLiveData<String> by lazy { MutableLiveData<String>() }
     val memberStatistic : MutableLiveData<String> by lazy { MutableLiveData<String>() }
     val textDate: MutableLiveData<String> by lazy { MutableLiveData<String>() }
-    val Date: MutableLiveData<LocalDate> by lazy { MutableLiveData<LocalDate>() }
+    val date: MutableLiveData<LocalDate> by lazy { MutableLiveData<LocalDate>() }
     private var itemList = listOf<ExerciseItem>()
-    val items: MutableLiveData<List<ExerciseItem>> by lazy { MutableLiveData<List<ExerciseItem>>() }
-    val item: MutableLiveData<ExerciseItem> by lazy { MutableLiveData<ExerciseItem>() }
+    val exerciseItems: MutableLiveData<List<ExerciseItem>> by lazy { MutableLiveData<List<ExerciseItem>>() }
+    val exerciseItem: MutableLiveData<ExerciseItem> by lazy { MutableLiveData<ExerciseItem>() }
+    private var exerciseLists = listOf<ExerciseItem>()
     init {
         load()
     }
@@ -24,13 +26,27 @@ class CoCalenderMemberStaticViewModel : ViewModel() {
                 searchItem(item, input.trim())
             }
         }
-        items.value = searchList
+        exerciseItems.value = searchList
     }
 
     private fun searchItem(item: ExerciseItem, searchText: String): Boolean {
         return item.sportUpdateTime.contains(searchText, ignoreCase = false)
     }
     private fun load(){
-        //TODO
+        val exerciseList = mutableListOf<ExerciseItem>()
+        memberStatistic.value ="生理性別：戰鬥直升機\n年齡：19\n身高：169 cm\n體重：169 kg\n體脂：40 %"
+        exerciseList.add(
+            ExerciseItem(
+                memberId = "R05221016",
+                sportName = "旋轉無養",
+                sportUpdateTime = "2023-06-12 23:59:59",
+                sportWeight = "100",
+                sportFreq = "4",
+                sportSet = "3",
+                sportCoach = "田聖潔"
+            )
+        )
+        this.exerciseLists =  exerciseList
+        this.exerciseItems.value = this.exerciseLists
     }
 }

@@ -82,6 +82,7 @@ class CoCalendarClassFragment : Fragment(), View.OnClickListener {
     }
 
     override fun onClick(v: View?) {
+        println("MeMESetOnClickListenre")
         with(binding) {
             when (v?.id) {
                 R.id.tvDate -> {

@@ -36,7 +36,7 @@
         android:label="fragment_co_calendar_member_detail"
         tools:layout="@layout/fragment_co_calendar_member_detail" />
     <fragment
-        android:id="@+id/coCalenderMemberStaticFragment2"
+        android:id="@+id/coCalenderMemberStaticFragment"
         android:name="com.example.geniusgym.coach.calendarMemberListDetail.controller.CoCalenderMemberStaticFragment"
         android:label="CoCalenderMemberStaticFragment" >
         <action

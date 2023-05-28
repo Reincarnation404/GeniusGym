@@ -25,7 +25,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="right|center_vertical"
-                android:text ="@{viewModel.item.sportName}"
+                android:text ="@{viewModel.exerciseItem.sportName}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
