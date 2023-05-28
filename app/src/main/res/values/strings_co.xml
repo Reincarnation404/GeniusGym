@@ -9,5 +9,6 @@
     <string name="tvCoCaDayOf7">日</string>
     <string name="tvCoCaMeDetail">身體數據</string>
     <string name="tvCoCaMeRecord">自主紀錄</string>
+    <string name="tvCoCaMeStExerciseDialog">運動記錄</string>
 
 </resources>

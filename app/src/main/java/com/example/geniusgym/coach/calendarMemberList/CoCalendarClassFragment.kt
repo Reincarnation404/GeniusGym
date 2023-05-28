@@ -55,7 +55,7 @@ class CoCalendarClassFragment : Fragment(), View.OnClickListener {
                 weekDay(tvCoCaDayOf6t, firstDayOrWeek.plusDays(5)),
                 weekDay(tvCoCaDayOf7t, firstDayOrWeek.plusDays(6))
             )
-            tvDatet.setOnClickListener(this@CoCalendarClassFragment)
+            tvDate.setOnClickListener(this@CoCalendarClassFragment)
             for (textview in weekList) {
                 textview.textview.setOnClickListener(this@CoCalendarClassFragment)
             }
@@ -84,7 +84,7 @@ class CoCalendarClassFragment : Fragment(), View.OnClickListener {
     override fun onClick(v: View?) {
         with(binding) {
             when (v?.id) {
-                R.id.tvDatet -> {
+                R.id.tvDate -> {
                     val calendar = Calendar.getInstance()
                     val datePickerDialog = DatePickerDialog(
                         requireContext(),
@@ -111,6 +111,7 @@ class CoCalendarClassFragment : Fragment(), View.OnClickListener {
                     )
 
                     datePickerDialog.show()
+                    println("Haha")
                 }
                 R.id.tvCoCaDayOf1t -> {
                     selectDay(1)
