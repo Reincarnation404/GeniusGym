@@ -9,5 +9,4 @@ data class StoreBean(
     var bh_cell: String = "02-27120589",
     var bh_start_time: String = "09:00",
     var bh_ed_time: String = "18:00"
-
 )

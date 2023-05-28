@@ -6,24 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".member.MeActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbar_mebr"
+    <LinearLayout
+        android:id="@+id/appbar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_mebr"
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar_mebr"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:titleTextColor="@color/black">
+            android:layout_height="wrap_content">
 
-        </androidx.appcompat.widget.Toolbar>
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar_mebr"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:titleTextColor="@color/black">
 
-    </com.google.android.material.appbar.AppBarLayout>
+            </androidx.appcompat.widget.Toolbar>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+    </LinearLayout>
+
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView"
@@ -34,7 +42,7 @@
         app:layout_constraintBottom_toTopOf="@+id/me_bottom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appbar_mebr"
+        app:layout_constraintTop_toBottomOf="@+id/appbar_layout"
         app:navGraph="@navigation/naviagtion_me" />
 
     <LinearLayout
