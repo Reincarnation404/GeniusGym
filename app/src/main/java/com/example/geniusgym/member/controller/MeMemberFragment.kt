@@ -1,4 +1,4 @@
-package com.example.geniusgym.member
+package com.example.geniusgym.member.controller
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.NavHostFragment
 import com.example.geniusgym.R
+import com.example.geniusgym.member.MeMemberViewModel
 
 class MeMemberFragment : Fragment() {
 

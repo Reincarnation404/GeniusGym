@@ -5,7 +5,7 @@
     android:id="@+id/ConstraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".member.MePointsFragment" >
+    tools:context=".member.controller.MePointsFragment" >
 
     <TextView
         android:id="@+id/tvMePoints"
