@@ -40,6 +40,15 @@
     <string name="tvCardApplyPhoneNum">手機號碼</string>
     <string name="btCardApply">確認綁定</string>
 
+    <!-- navigation drawer -->
+    <string name="NaviMem">個人資料</string>
+    <string name="NaviMemClass">個人課表</string>
+    <string name="NaviMemPoints">個人點數</string>
+    <string name="NaviMemTrain">自主訓練紀錄</string>
+    <string name="NaviMemBodyInfo">身體數據</string>
+    <string name="NaviMemSetting">設定</string>
+
+    <!--credit card spinner -->
     <string-array name="creditcard">
         <item>國泰世華</item>
         <item>中國信託</item>
