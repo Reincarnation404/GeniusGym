@@ -1,4 +1,4 @@
-package com.example.geniusgym.coach.calendarMemberList
+package com.example.geniusgym.coach.calendarMemberListDetail.controller
 
 import android.app.DatePickerDialog
 import android.graphics.Color
@@ -9,82 +9,71 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.geniusgym.R
 import com.example.geniusgym.coach.calendarMemberList.controller.ClassItemAdapter
-import com.example.geniusgym.coach.calendarMemberList.viewmodel.CoCalendarClassViewModel
-import com.example.geniusgym.databinding.FragmentCoCalendarTestBinding
+import com.example.geniusgym.coach.calendarMemberListDetail.viewmodel.CoCalenderMemberStaticViewModel
+import com.example.geniusgym.databinding.FragmentCoCalenderMemberStaticBinding
 import java.time.DayOfWeek
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.temporal.TemporalAdjusters
 import java.util.*
 
-class CoCalendarClassFragment : Fragment(), View.OnClickListener {
-    private lateinit var binding: FragmentCoCalendarTestBinding
+class CoCalenderMemberStaticFragment : Fragment(), View.OnClickListener {
+    private lateinit var binding: FragmentCoCalenderMemberStaticBinding
     private lateinit var weekList: MutableList<weekDay>
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
-        val viewModel: CoCalendarClassViewModel by viewModels()
-
-        binding = FragmentCoCalendarTestBinding.inflate(inflater, container, false)
+        val viewModel: CoCalenderMemberStaticViewModel by viewModels()
+        binding = FragmentCoCalenderMemberStaticBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
         return binding.root
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val date = LocalDate.now()
         val firstDayOrWeek = date.with(TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY))
 
-
         with(binding) {
             viewModel?.textDate?.value =
                 LocalDate.now().format(DateTimeFormatter.ISO_LOCAL_DATE).toString()
             weekList = mutableListOf(
-                weekDay(tvCoCaDayOf1t, firstDayOrWeek),
-                weekDay(tvCoCaDayOf2t, firstDayOrWeek.plusDays(1)),
-                weekDay(tvCoCaDayOf3t, firstDayOrWeek.plusDays(2)),
-                weekDay(tvCoCaDayOf4t, firstDayOrWeek.plusDays(3)),
-                weekDay(tvCoCaDayOf5t, firstDayOrWeek.plusDays(4)),
-                weekDay(tvCoCaDayOf6t, firstDayOrWeek.plusDays(5)),
-                weekDay(tvCoCaDayOf7t, firstDayOrWeek.plusDays(6))
+                weekDay(tvCoCaMeStExerciseDayOf1, firstDayOrWeek),
+                weekDay(tvCoCaMeStExerciseDayOf2, firstDayOrWeek.plusDays(1)),
+                weekDay(tvCoCaMeStExerciseDayOf3, firstDayOrWeek.plusDays(2)),
+                weekDay(tvCoCaMeStExerciseDayOf4, firstDayOrWeek.plusDays(3)),
+                weekDay(tvCoCaMeStExerciseDayOf5, firstDayOrWeek.plusDays(4)),
+                weekDay(tvCoCaMeStExerciseDayOf6, firstDayOrWeek.plusDays(5)),
+                weekDay(tvCoCaMeStExerciseDayOf7, firstDayOrWeek.plusDays(6))
             )
-            tvDate.setOnClickListener(this@CoCalendarClassFragment)
-            for (textview in weekList) {
-                textview.textview.setOnClickListener(this@CoCalendarClassFragment)
+            tvCoCaMeStecerciseRecordDate.setOnClickListener { this@CoCalenderMemberStaticFragment }
+            for (day in weekList) {
+                day.textview.setOnClickListener { this@CoCalenderMemberStaticFragment }
             }
             val dayOfWeek = date.dayOfWeek.value
-            selectDay(dayOfWeek)
-
-            rvClassListt.layoutManager = LinearLayoutManager(requireContext())
-            viewModel?.items?.observe(viewLifecycleOwner){items ->
-                if(rvClassListt.adapter == null){
-                    rvClassListt.adapter = ClassItemAdapter(items)
-                }else{
-                    (rvClassListt.adapter as ClassItemAdapter).updateItem(items)
-                }
-            }
         }
     }
 
-    private fun pad(number: Int): String {
-        return if (number >= 10) {
-            number.toString()
-        } else {
-            "0$number"
+    private class weekDay(var textview: TextView, var date: LocalDate)
+
+    private fun selectDay(index: Int) {
+        for (day in weekList) {
+            day.textview.setBackgroundColor(Color.parseColor("#1C1B1F"))
         }
+        weekList[index - 1].textview.setBackgroundResource(R.color.teal_700)
+        binding.viewModel?.textDate?.value = weekList[index - 1].date.toString()
+        binding.viewModel?.search(binding.viewModel?.textDate?.value)
+        println("Haha")
     }
 
     override fun onClick(v: View?) {
         with(binding) {
             when (v?.id) {
-                R.id.tvDate -> {
+                R.id.tvCoCaMeStExerciseDialog -> {
                     val calendar = Calendar.getInstance()
                     val datePickerDialog = DatePickerDialog(
                         requireContext(),
@@ -109,43 +98,32 @@ class CoCalendarClassFragment : Fragment(), View.OnClickListener {
                         calendar.get(Calendar.MONTH),
                         calendar.get(Calendar.DAY_OF_MONTH)
                     )
-
                     datePickerDialog.show()
-                    println("Haha")
                 }
-                R.id.tvCoCaDayOf1t -> {
-                    selectDay(1)
-
-                }
-                R.id.tvCoCaDayOf2t -> {
-                    selectDay(2)
-                }
-                R.id.tvCoCaDayOf3t -> {
-                    selectDay(3)
-                }
-                R.id.tvCoCaDayOf4t -> selectDay(4)
-                R.id.tvCoCaDayOf5t -> selectDay(5)
-                R.id.tvCoCaDayOf6t -> selectDay(6)
-                R.id.tvCoCaDayOf7t -> selectDay(7)
+                R.id.tvCoCaMeStExerciseDayOf1 -> selectDay(1)
+                R.id.tvCoCaMeStExerciseDayOf2 -> selectDay(2)
+                R.id.tvCoCaMeStExerciseDayOf3 -> selectDay(3)
+                R.id.tvCoCaMeStExerciseDayOf4 -> selectDay(4)
+                R.id.tvCoCaMeStExerciseDayOf5 -> selectDay(5)
+                R.id.tvCoCaMeStExerciseDayOf6 -> selectDay(6)
+                R.id.tvCoCaMeStExerciseDayOf7 -> selectDay(7)
                 else -> {}
             }
             viewModel?.items?.observe(viewLifecycleOwner) { items ->
-                if (rvClassListt.adapter == null) {
-                    rvClassListt.adapter = ClassItemAdapter(items)
+                if (rvCoCaMeSportStatistic.adapter == null) {
+                    rvCoCaMeSportStatistic.adapter = StatisticAdapter(items)
                 } else {
-                    (rvClassListt.adapter as ClassItemAdapter).updateItem(items)
+                    (rvCoCaMeSportStatistic.adapter as StatisticAdapter).updateItem(items)
                 }
             }
         }
     }
 
-    private fun selectDay(index: Int) {
-        for (day in weekList) {
-            day.textview.setBackgroundColor(Color.parseColor("#1C1B1F"))
+    private fun pad(number: Int): String {
+        return if (number >= 10) {
+            number.toString()
+        } else {
+            "0$number"
         }
-        weekList[index - 1].textview.setBackgroundResource(R.color.teal_700)
-        binding.viewModel?.textDate?.value = weekList[index - 1].date.toString()
-        binding.viewModel?.search(binding.viewModel?.textDate?.value)
     }
-    private class weekDay(var textview:TextView, var date:LocalDate)
 }

@@ -43,7 +43,7 @@ class MemberItemAdapter(private var items: List<MemberItem>) :
         val bundle = Bundle()
         with(holder) {
             itemViewBinding.viewModel?.item?.value = item
-            bundle.putSerializable("Class", item)
+            bundle.putSerializable("Member", item)
             itemView.setOnClickListener {
                 Navigation.findNavController(it)
                     .navigate(
