@@ -1,4 +1,4 @@
-package com.example.geniusgym.member
+package com.example.geniusgym.member.controller
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -7,25 +7,26 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.geniusgym.R
+import com.example.geniusgym.member.MeNaviDrawerViewModel
 
-class MeCardPayment : Fragment() {
+class MeNaviDrawer : Fragment() {
 
     companion object {
-        fun newInstance() = MeCardPayment()
+        fun newInstance() = MeNaviDrawer()
     }
 
-    private lateinit var viewModel: MeCardPaymentViewModel
+    private lateinit var viewModel: MeNaviDrawerViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_me_card_payment, container, false)
+        return inflater.inflate(R.layout.fragment_me_navi_drawer, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(MeCardPaymentViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(MeNaviDrawerViewModel::class.java)
         // TODO: Use the ViewModel
     }
 
