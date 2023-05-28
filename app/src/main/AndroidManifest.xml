@@ -30,8 +30,8 @@
             android:exported="true"></activity>
         <activity
             android:name=".member.MeActivity"
-            android:exported="true">
 
+            android:exported="true">
 
         </activity>
         <activity
