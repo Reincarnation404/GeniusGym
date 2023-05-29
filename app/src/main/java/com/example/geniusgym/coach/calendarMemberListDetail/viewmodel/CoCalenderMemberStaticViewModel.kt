@@ -20,8 +20,10 @@ class CoCalenderMemberStaticViewModel : ViewModel() {
     }
     fun search(input: String?) {
         val searchList = if (input == null || input.isEmpty()) {
+            println("input == null || input.isEmpty()")
             itemList
         } else {
+            println("!input == null && !input.isEmpty()")
             itemList.filter { item ->
                 searchItem(item, input.trim())
             }
@@ -30,7 +32,8 @@ class CoCalenderMemberStaticViewModel : ViewModel() {
     }
 
     private fun searchItem(item: ExerciseItem, searchText: String): Boolean {
-        return item.sportUpdateTime.contains(searchText, ignoreCase = false)
+        val answers = item.sportUpdateTime.contains(searchText, ignoreCase = true)
+        return answers
     }
     private fun load(){
         val exerciseList = mutableListOf<ExerciseItem>()
@@ -39,14 +42,26 @@ class CoCalenderMemberStaticViewModel : ViewModel() {
             ExerciseItem(
                 memberId = "R05221016",
                 sportName = "旋轉無養",
-                sportUpdateTime = "2023-06-12 23:59:59",
+                sportUpdateTime = "2023-05-30 23:59:59",
                 sportWeight = "100",
                 sportFreq = "4",
                 sportSet = "3",
                 sportCoach = "田聖潔"
             )
         )
-        this.exerciseLists =  exerciseList
-        this.exerciseItems.value = this.exerciseLists
+        exerciseList.add(
+            ExerciseItem(
+                memberId = "R05221017",
+                sportName = "旋轉有養",
+                sportUpdateTime = "2023-05-30 23:59:59",
+                sportWeight = "100",
+                sportFreq = "4",
+                sportSet = "3",
+                sportCoach = "聖潔聖潔"
+            )
+        )
+
+        this.itemList =  exerciseList
+        this.exerciseItems.value =  this.itemList
     }
 }

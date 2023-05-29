@@ -2,16 +2,19 @@ package com.example.geniusgym.coach.calendarMemberListDetail.controller
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.geniusgym.R
-import com.example.geniusgym.coach.calendarMemberList.model.ClassItem
 import com.example.geniusgym.coach.calendarMemberList.model.ExerciseItem
 import com.example.geniusgym.coach.calendarMemberListDetail.viewmodel.CoCalenderMemberStaticViewModel
 import com.example.geniusgym.databinding.FragmentCoCalendarMemberStaticCardviewBinding
 
-class StatisticAdapter(private var items: List<ExerciseItem>) :
+class StatisticAdapter(
+    private var items: List<ExerciseItem>,
+    private var requireActivity: FragmentActivity
+) :
     RecyclerView.Adapter<StatisticAdapter.ExerciseViewHolder>() {
 
     class ExerciseViewHolder(val itemViewBinding: FragmentCoCalendarMemberStaticCardviewBinding) :
@@ -31,9 +34,9 @@ class StatisticAdapter(private var items: List<ExerciseItem>) :
     override fun onBindViewHolder(holder: ExerciseViewHolder, position: Int) {
         val item = items[position]
         with(holder) {
+            itemViewBinding.viewModel?.exerciseItem?.value = item
             itemView.setOnClickListener {
-                Navigation.findNavController(it)
-                    .navigate(R.id.action_coCalenderMemberStaticFragment2_to_coCalenderMemberStaticSmallFragment)
+                Navigation.findNavController(it).navigate(R.id.coCalenderMemberStaticSmallFragment)
             }
         }
     }

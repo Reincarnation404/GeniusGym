@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.geniusgym.R
 import com.example.geniusgym.coach.CoActivity
 import com.example.geniusgym.coach.calendarMemberListDetail.viewmodel.CoCalenderMemberStaticViewModel
@@ -65,9 +66,18 @@ class CoCalenderMemberStaticFragment : Fragment(), View.OnClickListener {
             for (day in weekList) {
                 day.textview.setOnClickListener(this@CoCalenderMemberStaticFragment)
             }
+
             val dayOfWeek = date.dayOfWeek.value
+            selectDay(dayOfWeek)
 
-
+            rvCoCaMeSportStatistic.layoutManager = LinearLayoutManager(requireContext())
+            viewModel?.exerciseItems?.observe(viewLifecycleOwner) { items ->
+                if (rvCoCaMeSportStatistic.adapter == null) {
+                    rvCoCaMeSportStatistic.adapter = StatisticAdapter(items, requireActivity())
+                } else {
+                    (rvCoCaMeSportStatistic.adapter as StatisticAdapter).updateItem(items)
+                }
+            }
         }
     }
 
@@ -126,7 +136,7 @@ class CoCalenderMemberStaticFragment : Fragment(), View.OnClickListener {
             }
             viewModel?.exerciseItems?.observe(viewLifecycleOwner) { items ->
                 if (rvCoCaMeSportStatistic.adapter == null) {
-                    rvCoCaMeSportStatistic.adapter = StatisticAdapter(items)
+                    rvCoCaMeSportStatistic.adapter = StatisticAdapter(items, requireActivity())
                 } else {
                     (rvCoCaMeSportStatistic.adapter as StatisticAdapter).updateItem(items)
                 }

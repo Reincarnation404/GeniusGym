@@ -28,7 +28,7 @@ class CoCalendarMemberDetailFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        val mainActivity = requireActivity() as CoActivity
+        val coActivity = requireActivity() as CoActivity
         with(binding){
             tvCoCaMeDetail.setOnClickListener{
                 println("tvCoCaMeDetail")
@@ -44,9 +44,7 @@ class CoCalendarMemberDetailFragment : Fragment() {
         arguments?.let{bundle ->
             bundle.getSerializable("Member")?.let {
                 val member = it as MemberItem
-                println("0-0" + member.name)
-                mainActivity.binding.viewModel?.name?.value = member.name
-                println("0-1" + member.name)
+                coActivity.binding.viewModel?.name?.value = member.name
             }
         }
     }
