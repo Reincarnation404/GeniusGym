@@ -167,7 +167,7 @@ class BuAddNotificationFragment : Fragment() {
             timeListener,
             calendar.get(Calendar.HOUR_OF_DAY),
             calendar.get(Calendar.MINUTE),
-            false
+            true
         )
         timePickerDialog.show()
     }

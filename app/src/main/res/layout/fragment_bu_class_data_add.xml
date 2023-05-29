@@ -77,7 +77,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tilBuAddClassDataID">
 
                 <TextView
-                    android:id="@+id/tietBuAddClassDataStartTime"
+                    android:id="@+id/tvBuAddClassDataStartTime"
                     android:layout_width="380dp"
                     android:layout_height="60dp"
                     android:gravity="center|left"
@@ -85,7 +85,8 @@
                     android:paddingLeft="16dp"
                     android:textColorHint="#CDC7D2"
                     android:background="@color/white"
-                    android:hint="@string/tietBuAddClassDataStartTime" />
+                    android:hint="@string/tietBuAddClassDataStartTime"
+                    android:text="@={viewModel.startTime}"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -99,7 +100,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tilBuAddClassDataStartTime">
 
                 <TextView
-                    android:id="@+id/tietBuAddClassDataEndTime"
+                    android:id="@+id/tvBuAddClassDataEndTime"
                     android:layout_width="380dp"
                     android:layout_height="60dp"
                     android:gravity="center|left"
@@ -197,7 +198,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tilBuAddClassDataLimit">
 
                 <TextView
-                    android:id="@+id/tietBuAddClassDataRegiStartTime"
+                    android:id="@+id/tvBuAddClassDataRegiStartTime"
                     android:layout_width="380dp"
                     android:layout_height="60dp"
                     android:gravity="center|left"
@@ -219,7 +220,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tilBuAddClassDataRegiStartTime">
 
                 <TextView
-                    android:id="@+id/tietBuAddClassDataRegiEndTime"
+                    android:id="@+id/tvBuAddClassDataRegiEndTime"
                     android:layout_width="380dp"
                     android:layout_height="60dp"
                     android:gravity="center|left"
@@ -247,6 +248,38 @@
                     android:hint="@string/tietBuAddClassDataIntro" />
 
             </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btBuAddClassDataSave"
+                android:layout_width="155dp"
+                android:layout_height="84dp"
+                android:layout_marginStart="27dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="40dp"
+                android:text="@string/btBuAddNotiSaveNoti"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.75"
+                app:layout_constraintStart_toEndOf="@+id/btBuAddClassDataCancel"
+                app:layout_constraintTop_toBottomOf="@+id/tilBuAddClassDataIntro"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <Button
+                android:id="@+id/btBuAddClassDataCancel"
+                android:layout_width="155dp"
+                android:layout_height="84dp"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="@color/white"
+                android:text="@string/btBuAddNotiCancel"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tilBuAddClassDataIntro"
+                app:layout_constraintVertical_bias="0.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
