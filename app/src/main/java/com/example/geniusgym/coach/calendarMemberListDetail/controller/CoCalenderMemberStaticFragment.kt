@@ -73,7 +73,7 @@ class CoCalenderMemberStaticFragment : Fragment(), View.OnClickListener {
             rvCoCaMeSportStatistic.layoutManager = LinearLayoutManager(requireContext())
             viewModel?.exerciseItems?.observe(viewLifecycleOwner) { items ->
                 if (rvCoCaMeSportStatistic.adapter == null) {
-                    rvCoCaMeSportStatistic.adapter = StatisticAdapter(items, requireActivity())
+                    rvCoCaMeSportStatistic.adapter = StatisticAdapter(items)
                 } else {
                     (rvCoCaMeSportStatistic.adapter as StatisticAdapter).updateItem(items)
                 }
@@ -136,7 +136,7 @@ class CoCalenderMemberStaticFragment : Fragment(), View.OnClickListener {
             }
             viewModel?.exerciseItems?.observe(viewLifecycleOwner) { items ->
                 if (rvCoCaMeSportStatistic.adapter == null) {
-                    rvCoCaMeSportStatistic.adapter = StatisticAdapter(items, requireActivity())
+                    rvCoCaMeSportStatistic.adapter = StatisticAdapter(items)
                 } else {
                     (rvCoCaMeSportStatistic.adapter as StatisticAdapter).updateItem(items)
                 }

@@ -26,17 +26,26 @@
         tools:layout="@layout/fragment_co_calender_member_static_small" />
     <fragment
         android:id="@+id/coCalenderMemberRecordOxFragment2"
-        android:name="com.example.geniusgym.coach.calendarMemberListDetail.CoCalenderMemberRecordOxFragment"
+        android:name="com.example.geniusgym.coach.calendarMemberListDetail.controller.CoCalenderMemberRecordOxFragment"
         android:label="fragment_co_calender_member_record_ox"
         tools:layout="@layout/fragment_co_calender_member_record_ox" />
     <fragment
         android:id="@+id/coCalenderMemberRecordAnoxFragment"
         android:name="com.example.geniusgym.coach.calendarMemberListDetail.CoCalenderMemberRecordAnoxFragment"
         android:label="fragment_co_calender_member_record_anox"
-        tools:layout="@layout/fragment_co_calender_member_record_anox" />
+        tools:layout="@layout/fragment_co_calender_member_record_anox" >
+        <action
+            android:id="@+id/action_coCalenderMemberRecordAnoxFragment_to_coCalenderMemberRecordAnoxSmallFragment"
+            app:destination="@id/coCalenderMemberRecordAnoxSmallFragment" />
+    </fragment>
     <fragment
         android:id="@+id/coCalenderMemberRecordAllFragment"
         android:name="com.example.geniusgym.coach.calendarMemberListDetail.CoCalenderMemberRecordAllFragment"
         android:label="fragment_co_calender_member_record_all"
         tools:layout="@layout/fragment_co_calender_member_record_all" />
+    <fragment
+        android:id="@+id/coCalenderMemberRecordAnoxSmallFragment"
+        android:name="com.example.geniusgym.coach.calendarMemberListDetail.controller.CoCalenderMemberRecordAnoxSmallFragment"
+        android:label="fragment_co_calender_member_record_anox_small"
+        tools:layout="@layout/fragment_co_calender_member_record_anox_small" />
 </navigation>

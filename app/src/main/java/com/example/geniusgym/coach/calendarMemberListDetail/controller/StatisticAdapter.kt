@@ -2,7 +2,6 @@ package com.example.geniusgym.coach.calendarMemberListDetail.controller
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
@@ -12,8 +11,7 @@ import com.example.geniusgym.coach.calendarMemberListDetail.viewmodel.CoCalender
 import com.example.geniusgym.databinding.FragmentCoCalendarMemberStaticCardviewBinding
 
 class StatisticAdapter(
-    private var items: List<ExerciseItem>,
-    private var requireActivity: FragmentActivity
+    private var items: List<ExerciseItem>
 ) :
     RecyclerView.Adapter<StatisticAdapter.ExerciseViewHolder>() {
 

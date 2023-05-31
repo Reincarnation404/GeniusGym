@@ -5,5 +5,8 @@
         <item name="android:textSize">18sp</item>
         <item name="android:layout_height">35dp</item>
     </style>
+    <style name="tlCoCaMeRe" parent="TextAppearance.AppCompat.Medium">
+        <item name="android:textSize">18sp</item>
+    </style>
 
 </resources>
