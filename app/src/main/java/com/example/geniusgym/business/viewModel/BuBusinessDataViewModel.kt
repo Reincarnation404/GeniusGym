@@ -29,7 +29,7 @@ class BuBusinessDataViewModel : ViewModel() {
         } else {
             val searchBubuzList = mutableListOf<testBuBusiness>()
             BuBusinessList.forEach { bubuz ->
-                if (bubuz.b_name.contains(newText, true)) {
+                if (bubuz.b_name!!.contains(newText, true)) {
                     searchBubuzList.add(bubuz)
                 }
             }
@@ -40,10 +40,9 @@ class BuBusinessDataViewModel : ViewModel() {
     /** 模擬取得遠端資料 */
     private fun loadBuBusiness() {
         val BuBusinessList = mutableListOf<testBuBusiness>()
-        BuBusinessList.add(testBuBusiness(R.drawable.seaotter2,"Tiv水水"))
-        BuBusinessList.add(testBuBusiness(R.drawable.seaotter2,"Tiv美美"))
-        BuBusinessList.add(testBuBusiness(R.drawable.seaotter2,"Tiv漂漂"))
-
+        BuBusinessList.add(testBuBusiness("b01","內壢分店","a123","Tiv水水","女","0912345678","H212345678","桃園內壢","2023/5/31 14:30","2027/6/1 00:00","2023/5/31 14:30","b99","123@gmail.com",R.drawable.seaotter2,true))
+        BuBusinessList.add(testBuBusiness("b02","中壢分店","a456","Tiv美美","女","0987654321","H287654321","桃園中壢","2023/5/31 14:30","2027/6/1 00:00","2023/5/31 14:30","b99","456@gmail.com",R.drawable.seaotter2,true))
+        BuBusinessList.add(testBuBusiness("b03","桃園分店","a789","Tiv漂漂","女","0918273645","H218273645","桃園桃園","2023/5/31 14:30","2027/6/1 00:00","2023/5/31 14:30","b99","789@gmail.com",R.drawable.seaotter2,true))
         this.BuBusinessList = BuBusinessList
         this.bubuzz.value = this.BuBusinessList
     }

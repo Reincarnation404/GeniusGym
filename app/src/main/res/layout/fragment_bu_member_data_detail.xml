@@ -2,11 +2,11 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".business.BuCoachDataAddFragment">
+    tools:context=".business.BuMemberDataDetailFragment">
     <data>
         <variable
             name="viewModel"
-            type="com.example.geniusgym.business.viewModel.BuCoachDataAddViewModel" />
+            type="com.example.geniusgym.business.viewModel.BuMemberViewModel" />
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
@@ -18,7 +18,6 @@
         android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -32,7 +31,7 @@
             tools:layout_editor_absoluteY="73dp">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilBuAddCoaDataName"
+                android:id="@+id/tilBuAddMemDataDetailName"
                 style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -43,15 +42,18 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tietBuAddCoaDataName"
+                    android:id="@+id/tietBuAddMemDataDetailName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
-                    android:hint="@string/tietBuAddCoaDataName" />
+                    android:enabled="false"
+                    android:hint="@string/tietBuAddMemDataName"
+                    android:text="@{viewModel.member.m_name}"
+                    android:textColor="@color/black"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilBuAddCoaDataID"
+                android:id="@+id/tilBuAddMemDataDetailID"
                 style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -59,19 +61,21 @@
                 android:paddingHorizontal="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tilBuAddCoaDataName">
+                app:layout_constraintTop_toBottomOf="@id/tilBuAddMemDataDetailName">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tietBuAddCoaDataID"
+                    android:id="@+id/tietBuAddMemDataDetailID"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
-                    android:hint="@string/tietBuAddCoaDataID"
+                    android:enabled="false"
+                    android:hint="@string/tietBuAddMemDataID"
+                    android:text="@{viewModel.member.m_id}"
                     android:textColor="@color/black"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilBuAddCoaDataPwd"
+                android:id="@+id/tilBuAddMemDataDetailPwd"
                 style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -79,19 +83,21 @@
                 android:paddingHorizontal="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tilBuAddCoaDataID">
+                app:layout_constraintTop_toBottomOf="@id/tilBuAddMemDataDetailID">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tietBuAddCoaDataPwd"
+                    android:id="@+id/tietBuAddMemDataDetailPwd"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
-                    android:hint="@string/tietBuAddCoaDataPwd"
+                    android:enabled="false"
+                    android:hint="@string/tietBuAddMemDataPwd"
+                    android:text="@{viewModel.member.m_pwd}"
                     android:textColor="@color/black"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilBuAddCoaDataGen"
+                android:id="@+id/tilBuAddMemDataDetailGen"
                 style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -99,19 +105,21 @@
                 android:paddingHorizontal="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tilBuAddCoaDataPwd">
+                app:layout_constraintTop_toBottomOf="@id/tilBuAddMemDataDetailPwd">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tietBuAddCoaDataGen"
+                    android:id="@+id/tietBuAddMemDataDetailGen"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
-                    android:hint="@string/tietBuAddCoaDataGen"
+                    android:enabled="false"
+                    android:hint="@string/tietBuAddMemDataGen"
+                    android:text="@{viewModel.member.m_gen}"
                     android:textColor="@color/black"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilBuAddCoaDataCell"
+                android:id="@+id/tilBuAddMemDataDetailCell"
                 style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -119,19 +127,21 @@
                 android:paddingHorizontal="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tilBuAddCoaDataGen">
+                app:layout_constraintTop_toBottomOf="@id/tilBuAddMemDataDetailGen">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tietBuAddCoaDataCell"
+                    android:id="@+id/tietBuAddMemDataDetailCell"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
-                    android:hint="@string/tietBuAddCoaDataCell"
+                    android:enabled="false"
+                    android:hint="@string/tietBuAddMemDataCell"
+                    android:text="@{viewModel.member.m_cell}"
                     android:textColor="@color/black"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilBuAddCoaDataTwid"
+                android:id="@+id/tilBuAddMemDataDetailTwid"
                 style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -139,19 +149,21 @@
                 android:paddingHorizontal="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tilBuAddCoaDataCell">
+                app:layout_constraintTop_toBottomOf="@id/tilBuAddMemDataDetailCell">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tietBuAddCoaDataTwid"
+                    android:id="@+id/tietBuAddMemDataDetailTwid"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
-                    android:hint="@string/tietBuAddCoaDataTwid"
-                    android:textColor="@color/black"/>
+                    android:enabled="false"
+                    android:hint="@string/tietBuAddMemDataTwid"
+                    android:text="@{viewModel.member.m_twid}"
+                    android:textColor="@color/black" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilBuAddCoaDataAddr"
+                android:id="@+id/tilBuAddMemDataDetailAddr"
                 style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -159,19 +171,21 @@
                 android:paddingHorizontal="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tilBuAddCoaDataTwid">
+                app:layout_constraintTop_toBottomOf="@id/tilBuAddMemDataDetailTwid">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tietBuAddCoaDataAddr"
+                    android:id="@+id/tietBuAddMemDataDetailAddr"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
-                    android:hint="@string/tietBuAddCoaDataAddr"
+                    android:enabled="false"
+                    android:hint="@string/tietBuAddMemDataAddr"
+                    android:text="@{viewModel.member.m_addr}"
                     android:textColor="@color/black"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilBuAddCoaDataEmail"
+                android:id="@+id/tilBuAddMemDataDetailEmail"
                 style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -179,121 +193,45 @@
                 android:paddingHorizontal="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tilBuAddCoaDataAddr">
+                app:layout_constraintTop_toBottomOf="@id/tilBuAddMemDataDetailAddr">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tietBuAddCoaDataEmail"
+                    android:id="@+id/tietBuAddMemDataDetailEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
-                    android:hint="@string/tietBuAddCoaDataEmail"
+                    android:enabled="false"
+                    android:hint="@string/tietBuAddMemDataEmail"
+                    android:text="@{viewModel.member.m_email}"
                     android:textColor="@color/black"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilBuAddCoaDataOBDate"
+                android:id="@+id/tilBuAddMemDataDetailExpireDate"
                 style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
-                android:paddingHorizontal="20dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tilBuAddCoaDataEmail">
-
-                <TextView
-                    android:id="@+id/tvBuAddCoaDataOBDate"
-                    android:layout_width="380dp"
-                    android:layout_height="60dp"
-                    android:background="@color/white"
-                    android:gravity="center|left"
-                    android:hint="@string/tietBuAddCoaDataOBDate"
-                    android:imeOptions="flagNoExtractUi"
-                    android:paddingLeft="16dp"
-                    android:textColorHint="#CDC7D2"
-                    android:textColor="@color/black"/>
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilBuAddCoaDataChooseBranch"
-                style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox.Dense"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-
-                android:paddingHorizontal="20dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tilBuAddCoaDataOBDate">
-
-                <TextView
-                    android:id="@+id/spBuAddCoaDataChooseBranch"
-                    android:layout_width="377dp"
-                    android:layout_height="50dp"
-                    android:background="@color/white"
-                    android:gravity="center|left"
-                    android:hint="@string/spBuAddChooseBranch"
-                    android:imeOptions="flagNoExtractUi"
-                    android:paddingLeft="16dp"
-                    android:textColorHint="#CDC7D2"
-                    android:textColor="@color/black"/>
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilBuAddCoaDataIntro"
-                style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox.Dense"
-                android:layout_width="match_parent"
-                android:layout_height="221dp"
-                android:paddingHorizontal="20dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tilBuAddCoaDataChooseBranch">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tietBuAddCoaDataIntro"
-                    android:layout_width="match_parent"
-                    android:layout_height="176dp"
-                    android:background="@color/white"
-                    android:hint="@string/tietBuAddCoaDataIntro"
-                    android:textColor="@color/black"/>
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <Button
-                android:id="@+id/btBuAddCoaDataSave"
-                android:layout_width="155dp"
-                android:layout_height="84dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="34dp"
                 android:layout_marginBottom="20dp"
-                android:text="@string/btBuAddNotiSaveNoti"
-                android:textColor="#000000"
-                android:textSize="24sp"
+                android:paddingHorizontal="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tilBuAddCoaDataIntro"
-                app:layout_constraintVertical_bias="0.0" />
-
-            <Button
-                android:id="@+id/btBuAddCoaDataCancel"
-                android:layout_width="155dp"
-                android:layout_height="84dp"
-                android:layout_marginStart="34dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:backgroundTint="@color/white"
-                android:text="@string/btBuAddNotiCancel"
-                android:textColor="#000000"
-                android:textSize="24sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/btBuAddCoaDataSave"
-                app:layout_constraintHorizontal_bias="0.363"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tilBuAddCoaDataIntro"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintTop_toBottomOf="@id/tilBuAddMemDataDetailEmail">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tietBuAddMemDataDetailExpireDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:enabled="false"
+                    android:hint="@string/tietBuAddMemDataExpireDate"
+                    android:text="@{viewModel.member.m_ed_time}"
+                    android:textColor="@color/black"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.findViewTreeLifecycleOwner
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import com.example.geniusgym.R
 import com.example.geniusgym.business.model.testBuMember
 import com.example.geniusgym.business.viewModel.BuMemberViewModel
 import com.example.geniusgym.databinding.FragmentBuMemberDataItemBinding
@@ -50,8 +52,8 @@ class BuMemberDataAdapter(private var bumembers: List<testBuMember>):
             val bundle = Bundle()
             bundle.putSerializable("bumember", bumember)
             itemView.setOnClickListener {
-                // 點擊list要跳到資料顯示頁面
-                //Navigation.findNavController(it) .navigate(R.id.action_friendsFragment_to_friendDetailFragment, bundle)
+                //點擊list要跳到資料顯示頁面
+                Navigation.findNavController(it).navigate(R.id.buMemberDataDetailFragment, bundle)
             }
         }
     }

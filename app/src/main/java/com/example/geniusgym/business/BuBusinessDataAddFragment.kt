@@ -35,25 +35,9 @@ class BuBusinessDataAddFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         with(binding){
-            tietBuAddBuzDataName.setTextColor(Color.BLACK)
-
-            tietBuAddBuzDataID.setTextColor(Color.BLACK)
-
             tvBuAddBuzDataBranch.setOnClickListener {
                 showBranchSelection()
             }
-
-            tietBuAddBuzDataPwd.setTextColor(Color.BLACK)
-
-            tietBuAddBuzDataGen.setTextColor(Color.BLACK)
-
-            tietBuAddBuzDataCell.setTextColor(Color.BLACK)
-
-            tietBuAddBuzDataTwid.setTextColor(Color.BLACK)
-
-            tietBuAddBuzDataAddr.setTextColor(Color.BLACK)
-
-            tietBuAddBuzDataEmail.setTextColor(Color.BLACK)
 
             tvBuAddBuzDataOBDate.setOnClickListener {
                 tvBuAddBuzDataOBDate.showSoftInputOnFocus = false

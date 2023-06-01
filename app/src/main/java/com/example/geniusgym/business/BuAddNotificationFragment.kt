@@ -22,7 +22,6 @@ import java.util.*
 
 class BuAddNotificationFragment : Fragment() {
     private lateinit var binding: FragmentBuAddNotificationBinding
-    private lateinit var viewModel: BuAddNotificationViewModel
     private val calendar = Calendar.getInstance()
 
     override fun onCreateView(
@@ -37,14 +36,7 @@ class BuAddNotificationFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
-
         with(binding){
-
-            tietBuAddNotiSender.setTextColor(Color.BLACK)
-
-            tietBuAddNotiTitle.setTextColor(Color.BLACK)
-
             spBuAddChooseBranch.setOnClickListener {
                 spBuAddChooseBranch.showSoftInputOnFocus = false
                 showBranchSelection()
@@ -60,7 +52,6 @@ class BuAddNotificationFragment : Fragment() {
                 openDateTimeDialogs()
             }
 
-            tietBuAddNotiText.setTextColor(Color.BLACK)
 
             // todo pic的挑選或拍照
 

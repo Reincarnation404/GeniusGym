@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.findViewTreeLifecycleOwner
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import com.example.geniusgym.R
 import com.example.geniusgym.business.model.testBuBusiness
 import com.example.geniusgym.business.viewModel.BuBusinessViewModel
 import com.example.geniusgym.databinding.FragmentBuBusinessDataItemBinding
@@ -49,7 +51,7 @@ class BuBusinessDataAdapter(private var bubuzz: List<testBuBusiness>):
             bundle.putSerializable("bubuz", bubuz)
             itemView.setOnClickListener {
                 // 點擊list要跳到資料顯示頁面
-                //Navigation.findNavController(it) .navigate(R.id.action_friendsFragment_to_friendDetailFragment, bundle)
+                Navigation.findNavController(it) .navigate(R.id.buBusinessDataDetailFragment, bundle)
             }
         }
     }

@@ -48,7 +48,8 @@
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:hint="@string/tietBuAddNotiTitle"
-                    android:text="@={viewModel.title}"/>
+                    android:text="@={viewModel.title}"
+                    android:textColor="@color/black"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -69,7 +70,8 @@
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:hint="@string/tietBuAddNotiSender"
-                    android:text="@={viewModel.sender}" />
+                    android:text="@={viewModel.sender}"
+                    android:textColor="@color/black"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -93,7 +95,8 @@
                     android:hint="@string/spBuAddChooseBranch"
                     android:imeOptions="flagNoExtractUi"
                     android:paddingLeft="16dp"
-                    android:textColorHint="#CDC7D2" />
+                    android:textColorHint="#CDC7D2"
+                    android:textColor="@color/black"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -118,7 +121,8 @@
                     android:hint="@string/spBuAddChooseTarget"
                     android:imeOptions="flagNoExtractUi"
                     android:paddingLeft="16dp"
-                    android:textColorHint="#CDC7D2" />
+                    android:textColorHint="#CDC7D2"
+                    android:textColor="@color/black"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -143,7 +147,8 @@
                     android:hint="@string/tvBuAddChooseDateTime"
                     android:imeOptions="flagNoExtractUi"
                     android:paddingLeft="16dp"
-                    android:textColorHint="#CDC7D2" />
+                    android:textColorHint="#CDC7D2"
+                    android:textColor="@color/black"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -166,7 +171,8 @@
                     android:layout_height="176dp"
                     android:background="@color/white"
                     android:hint="@string/tietBuAddNotiText"
-                    android:text="@={viewModel.text}" />
+                    android:text="@={viewModel.text}"
+                    android:textColor="@color/black"/>
 
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -178,9 +184,7 @@
                 android:layout_height="221dp"
                 android:paddingHorizontal="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tilBuAddNotiText"
-
-                >
+                app:layout_constraintTop_toBottomOf="@+id/tilBuAddNotiText">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tietBuAddNotiPic"

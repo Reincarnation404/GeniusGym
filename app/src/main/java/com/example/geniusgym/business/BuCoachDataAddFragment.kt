@@ -1,5 +1,6 @@
 package com.example.geniusgym.business
 
+import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.graphics.Color
 import androidx.lifecycle.ViewModelProvider
@@ -34,28 +35,16 @@ class BuCoachDataAddFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         with(binding){
-            tietBuAddCoaDataName.setTextColor(Color.BLACK)
-
-            tietBuAddCoaDataID.setTextColor(Color.BLACK)
-
-            tietBuAddCoaDataPwd.setTextColor(Color.BLACK)
-
-            tietBuAddCoaDataGen.setTextColor(Color.BLACK)
-
-            tietBuAddCoaDataCell.setTextColor(Color.BLACK)
-
-            tietBuAddCoaDataTwid.setTextColor(Color.BLACK)
-
-            tietBuAddCoaDataAddr.setTextColor(Color.BLACK)
-
-            tietBuAddCoaDataEmail.setTextColor(Color.BLACK)
 
             tvBuAddCoaDataOBDate.setOnClickListener {
                 tvBuAddCoaDataOBDate.showSoftInputOnFocus = false
                 openDateTimeDialogs()
             }
 
-            tietBuAddCoaDataIntro.setTextColor(Color.BLACK)
+            spBuAddCoaDataChooseBranch.setOnClickListener {
+                spBuAddCoaDataChooseBranch.showSoftInputOnFocus = false
+                showBranchSelection()
+            }
 
             //todo btBuAddCoaDataSave的資料儲存與頁面跳轉
 
@@ -90,5 +79,31 @@ class BuCoachDataAddFragment : Fragment() {
     }
 
 
+    private fun showBranchSelection(){
+        var choice = arrayOf("分店A","分店B","分店C","分店D")
+        var selectchoice = booleanArrayOf(false,false,false,false)
 
+
+        AlertDialog.Builder(view?.context)
+            // 設定標題文字
+            .setTitle(R.string.spBuAddChooseBranch)
+            .setMultiChoiceItems(choice,selectchoice){ _, position, checked ->
+                selectchoice[position] = checked
+            }
+            .setPositiveButton(R.string.bu_add_choose_branch_confirm){ _, _ ->
+                val selectedBranches = mutableListOf<String>()
+                for (i in choice.indices) {
+                    if (selectchoice[i]) {
+                        selectedBranches.add(choice[i])
+                    }
+                }
+                updateSpBuAddChooseBranch(selectedBranches)
+            }
+            // false代表要點擊按鈕方能關閉，預設為true
+            .setCancelable(true)
+            .show()
+    }
+    private fun updateSpBuAddChooseBranch(branches: List<String>) {
+        binding.spBuAddCoaDataChooseBranch.text = branches.joinToString("、")
+    }
 }
