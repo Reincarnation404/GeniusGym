@@ -6,27 +6,22 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import com.example.geniusgym.R
+import com.example.geniusgym.databinding.FragmentMeMemberDetailBinding
+import com.example.geniusgym.member.viewmodel.MeMemberDetailViewModel
 
 class MeMemberDetailFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = MeMemberDetailFragment()
-    }
-
-    private lateinit var viewModel: MeMemberDetailViewModel
+    private lateinit var binding: FragmentMeMemberDetailBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_me_member_detail, container, false)
+        val viewModel: MeMemberDetailViewModel by viewModels()
+        binding = FragmentMeMemberDetailBinding.inflate(inflater, container ,false)
+        binding.viewmodel = viewModel
+        binding.lifecycleOwner = this
+        return binding.root
     }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(MeMemberDetailViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
-
 }

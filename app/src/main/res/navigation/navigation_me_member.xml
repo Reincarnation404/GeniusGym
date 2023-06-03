@@ -9,17 +9,32 @@
         android:id="@+id/mePointsFragment"
         android:name="com.example.geniusgym.member.MePointsFragment"
         android:label="fragment_me_points"
-        tools:layout="@layout/fragment_me_points" />
+        tools:layout="@layout/fragment_me_points" >
+        <action
+            android:id="@+id/action_mePointsFragment_to_meCardPayment"
+            app:destination="@id/meCardPayment" />
+        <action
+            android:id="@+id/action_mePointsFragment_to_meCreditCard"
+            app:destination="@id/meCreditCard" />
+    </fragment>
     <fragment
         android:id="@+id/meCreditCard"
         android:name="com.example.geniusgym.member.MeCreditCard"
         android:label="fragment_me_credit_card"
-        tools:layout="@layout/fragment_me_credit_card" />
+        tools:layout="@layout/fragment_me_credit_card" >
+        <action
+            android:id="@+id/action_meCreditCard_to_meCardApply"
+            app:destination="@id/meCardApply" />
+    </fragment>
     <fragment
         android:id="@+id/meCardPayment"
         android:name="com.example.geniusgym.member.MeCardPayment"
         android:label="fragment_me_card_payment"
-        tools:layout="@layout/fragment_me_card_payment" />
+        tools:layout="@layout/fragment_me_card_payment" >
+        <action
+            android:id="@+id/action_meCardPayment_to_meTradeCheck"
+            app:destination="@id/meTradeCheck" />
+    </fragment>
     <fragment
         android:id="@+id/meCardApply"
         android:name="com.example.geniusgym.member.MeCardApply"
@@ -38,5 +53,16 @@
     <fragment
         android:id="@+id/meMemberDetailFragment"
         android:name="com.example.geniusgym.member.controller.MeMemberDetailFragment"
-        android:label="MeMemberDetailFragment" />
+        android:label="MeMemberDetailFragment" >
+        <action
+            android:id="@+id/action_meMemberDetailFragment_to_mePersonalTrain"
+            app:destination="@id/mePersonalTrain" />
+        <action
+            android:id="@+id/action_meMemberDetailFragment_to_mePointsFragment"
+            app:destination="@id/mePointsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/meNaviDrawer"
+        android:name="com.example.geniusgym.member.controller.MeNaviDrawer"
+        android:label="MeNaviDrawer" />
 </navigation>
