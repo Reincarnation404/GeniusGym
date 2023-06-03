@@ -6,7 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.example.geniusgym.coach.calendarMemberListDetail.viewmodel.CoCalenderMemberRecordOxBigViewModel
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.geniusgym.coach.calendarMemberListDetail.viewmodel.CoCalenderMemberRecordOxViewModel
 import com.example.geniusgym.databinding.FragmentCoCalenderMemberRecordOxBinding
 
 
@@ -17,12 +18,24 @@ class CoCalenderMemberRecordOxFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        val viewmodel : CoCalenderMemberRecordOxBigViewModel by viewModels()
+        val viewmodel: CoCalenderMemberRecordOxViewModel by viewModels()
         binding = FragmentCoCalenderMemberRecordOxBinding.inflate(inflater, container, false)
         binding.viewModel = viewmodel
         binding.lifecycleOwner = this
         return binding.root
     }
 
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        with(binding) {
+            rvCoCaMeReOx.layoutManager = LinearLayoutManager(requireContext())
+            viewModel?.items?.observe(viewLifecycleOwner) { items ->
+                if (rvCoCaMeReOx.adapter == null) {
+                    rvCoCaMeReOx.adapter = CoCaMeReOxAdapter(items)
+                } else {
+                    (rvCoCaMeReOx.adapter as CoCaMeReOxAdapter).update(items)
+                }
+            }
+        }
+    }
 }

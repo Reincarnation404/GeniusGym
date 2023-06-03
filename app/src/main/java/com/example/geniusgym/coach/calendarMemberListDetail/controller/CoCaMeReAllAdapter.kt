@@ -4,31 +4,32 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.findViewTreeLifecycleOwner
+import androidx.lifecycle.findViewTreeViewModelStoreOwner
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.geniusgym.R
 import com.example.geniusgym.coach.calendarMemberListDetail.model.SportSmallItem
-import com.example.geniusgym.coach.calendarMemberListDetail.viewmodel.CoCalenderMemberRecordAnoxSmallViewModel
-import com.example.geniusgym.databinding.FragmentCoCalendarMemberAnoxSmallcataCardviewBinding
+import com.example.geniusgym.coach.calendarMemberListDetail.viewmodel.CoCalenderMemberRecordAllViewModel
+import com.example.geniusgym.coach.calendarMemberListDetail.viewmodel.CoCalenderMemberRecordAllcardViewModel
+import com.example.geniusgym.databinding.FragmentCoCalendarMemberAllCardviewBinding
 
-class CoCaMeReAnSmallAdapter(
-    private var items: List<SportSmallItem>
-) :
-    RecyclerView.Adapter<CoCaMeReAnSmallAdapter.OxSmallItemViewHolder>() {
-    class OxSmallItemViewHolder(val itemViewBinding: FragmentCoCalendarMemberAnoxSmallcataCardviewBinding) :
+class CoCaMeReAllAdapter(private var items: List<SportSmallItem>) :
+    RecyclerView.Adapter<CoCaMeReAllAdapter.CoCaMeReAllViewHolder>() {
+    class CoCaMeReAllViewHolder(val itemViewBinding: FragmentCoCalendarMemberAllCardviewBinding) :
         RecyclerView.ViewHolder(itemViewBinding.root)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OxSmallItemViewHolder {
-        val itemViewBinding = FragmentCoCalendarMemberAnoxSmallcataCardviewBinding.inflate(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CoCaMeReAllViewHolder {
+        val itemViewBinding = FragmentCoCalendarMemberAllCardviewBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
         )
-        itemViewBinding.viewModel = CoCalenderMemberRecordAnoxSmallViewModel()
+        itemViewBinding.viewModel = CoCalenderMemberRecordAllcardViewModel()
         itemViewBinding.lifecycleOwner = parent.findViewTreeLifecycleOwner()
-        return OxSmallItemViewHolder(itemViewBinding)
+        return CoCaMeReAllViewHolder(itemViewBinding)
     }
-    override fun onBindViewHolder(holder: OxSmallItemViewHolder, position: Int) {
+
+    override fun onBindViewHolder(holder: CoCaMeReAllViewHolder, position: Int) {
         val item = items[position]
         val bundle = Bundle()
         with(holder){
@@ -43,9 +44,9 @@ class CoCaMeReAnSmallAdapter(
     override fun getItemCount(): Int {
         return items.size
     }
-    fun update(items : List<SportSmallItem>){
+
+    fun update(items: List<SportSmallItem>){
         this.items = items
         notifyDataSetChanged()
     }
-
 }

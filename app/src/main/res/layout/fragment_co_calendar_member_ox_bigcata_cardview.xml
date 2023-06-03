@@ -3,15 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="viewModel"
-            type="com.example.geniusgym.coach.calendarMemberListDetail.viewmodel.CoCalenderMemberRecordOxBigViewModel" />
+            type="com.example.geniusgym.coach.calendarMemberListDetail.viewmodel.CoCalenderMemberRecordOxViewModel" />
     </data>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="3sp">
+        android:layout_margin="3sp"
+        android:foreground="?selectableItemBackground">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

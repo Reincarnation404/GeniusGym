@@ -12,11 +12,11 @@ import com.example.geniusgym.coach.calendarMemberListDetail.viewmodel.CoCalender
 import com.example.geniusgym.databinding.FragmentCoCalendarMemberAnoxBigcataCardviewBinding
 
 class CoCaMeReAnBigAdapter(private var items: List<SportBigItem>) :
-    RecyclerView.Adapter<CoCaMeReAnBigAdapter.OxBigItemViewHolder>() {
-    class OxBigItemViewHolder(val itemViewBinding: FragmentCoCalendarMemberAnoxBigcataCardviewBinding) :
+    RecyclerView.Adapter<CoCaMeReAnBigAdapter.AnBigItemViewHolder>() {
+    class AnBigItemViewHolder(val itemViewBinding: FragmentCoCalendarMemberAnoxBigcataCardviewBinding) :
         RecyclerView.ViewHolder(itemViewBinding.root)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OxBigItemViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AnBigItemViewHolder {
         val itemViewBinding = FragmentCoCalendarMemberAnoxBigcataCardviewBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
@@ -24,10 +24,10 @@ class CoCaMeReAnBigAdapter(private var items: List<SportBigItem>) :
         )
         itemViewBinding.viewModel = CoCalenderMemberRecordAnoxBigViewModel()
         itemViewBinding.lifecycleOwner = parent.findViewTreeLifecycleOwner()
-        return OxBigItemViewHolder(itemViewBinding)
+        return AnBigItemViewHolder(itemViewBinding)
 
     }
-    override fun onBindViewHolder(holder: OxBigItemViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: AnBigItemViewHolder, position: Int) {
         val item = items[position]
         val bundle = Bundle()
         with(holder){

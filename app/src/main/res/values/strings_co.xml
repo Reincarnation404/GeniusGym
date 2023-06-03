@@ -13,5 +13,6 @@
     <string name="pageCoCalenderMemberRecordOx">有氧</string>
     <string name="pageCoCalenderMemberRecordAnox">無氧</string>
     <string name="pageCoCalenderMemberRecordAll">全部運動</string>
+    <string name="svCoCaMeReAll">請輸入欲搜尋的運動名字</string>
 
 </resources>

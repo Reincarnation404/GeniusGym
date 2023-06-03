@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.geniusgym.coach.calendarMemberListDetail.viewmodel.CoCalenderMemberRecordAnoxBigViewModel" />
+            type="com.example.geniusgym.coach.calendarMemberListDetail.viewmodel.CoCalenderMemberRecordAllcardViewModel" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -19,7 +19,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/tvCoCaMeAnBcCard"
+                android:id="@+id/tvCoCaMeAllCard"
                 style="@style/SettingStyleText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -27,19 +27,19 @@
                 android:gravity="right|center_vertical"
                 android:text="@{viewModel.item.name}"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/ivCoCaMeAnBcCard"
+                app:layout_constraintEnd_toEndOf="@+id/ivCoCaMeAllCard"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/ivCoCaMeAnBcCard"
+                android:id="@+id/ivCoCaMeAllCard"
                 android:layout_width="36dp"
                 android:layout_height="33dp"
                 android:layout_weight="0.3"
                 android:foregroundGravity="center_vertical"
-                app:layout_constraintBottom_toBottomOf="@+id/tvCoCaMeAnBcCard"
+                app:layout_constraintBottom_toBottomOf="@+id/tvCoCaMeAllCard"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tvCoCaMeAnBcCard"
+                app:layout_constraintTop_toTopOf="@+id/tvCoCaMeAllCard"
                 app:srcCompat="@drawable/ic_chevron_right" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
