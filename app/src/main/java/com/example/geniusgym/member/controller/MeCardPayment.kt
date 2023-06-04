@@ -1,4 +1,4 @@
-package com.example.geniusgym.member
+package com.example.geniusgym.member.controller
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.geniusgym.R
+import com.example.geniusgym.member.MeCardPaymentViewModel
 
 class MeCardPayment : Fragment() {
 
