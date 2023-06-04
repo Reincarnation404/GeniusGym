@@ -43,8 +43,7 @@ class CoCalendarMemberDetailFragment : Fragment() {
         }
         arguments?.let{bundle ->
             bundle.getSerializable("Member")?.let {
-                val member = it as MemberItem
-                coActivity.binding.viewModel?.name?.value = member.name
+                coActivity.binding.viewModel?.member?.value = it as MemberItem
             }
         }
     }

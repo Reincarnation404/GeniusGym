@@ -14,5 +14,8 @@
     <string name="pageCoCalenderMemberRecordAnox">無氧</string>
     <string name="pageCoCalenderMemberRecordAll">全部運動</string>
     <string name="svCoCaMeReAll">請輸入欲搜尋的運動名字</string>
+    <string name="tietCoCaMeReAfWeightInput">重量（公斤）</string>
+    <string name="tietCoCaMeReAfTimes">次數</string>
+    <string name="btCoCaMeReAfSend">送出</string>
 
 </resources>
