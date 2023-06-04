@@ -6,23 +6,28 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
 import com.example.geniusgym.R
 import com.example.geniusgym.coach.calendarMemberListDetail.viewmodel.CoCalenderMemberStaticSmallViewModel
-import com.example.geniusgym.databinding.FragmentCoCalenderMemberStaticSmallBinding
 
 class CoCalenderMemberStaticSmallFragment : Fragment() {
-    private lateinit var binding: FragmentCoCalenderMemberStaticSmallBinding
+
+    companion object {
+        fun newInstance() = CoCalenderMemberStaticSmallFragment()
+    }
+
+    private lateinit var viewModel: CoCalenderMemberStaticSmallViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        val viewModel : CoCalenderMemberStaticSmallViewModel by viewModels()
-        binding = FragmentCoCalenderMemberStaticSmallBinding.inflate(inflater, container, false)
-        binding.viewModel = viewModel
-        binding.lifecycleOwner = this
-        return binding.root
+    ): View? {
+        return inflater.inflate(R.layout.fragment_co_calender_member_static_small, container, false)
     }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        viewModel = ViewModelProvider(this).get(CoCalenderMemberStaticSmallViewModel::class.java)
+        // TODO: Use the ViewModel
+    }
+
 }

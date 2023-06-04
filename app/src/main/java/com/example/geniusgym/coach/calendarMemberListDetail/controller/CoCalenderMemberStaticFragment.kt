@@ -9,8 +9,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.geniusgym.R
-import com.example.geniusgym.coach.calendarMemberList.controller.ClassItemAdapter
+import com.example.geniusgym.coach.CoActivity
 import com.example.geniusgym.coach.calendarMemberListDetail.viewmodel.CoCalenderMemberStaticViewModel
 import com.example.geniusgym.databinding.FragmentCoCalenderMemberStaticBinding
 import java.time.DayOfWeek
@@ -33,12 +34,23 @@ class CoCalenderMemberStaticFragment : Fragment(), View.OnClickListener {
         return binding.root
     }
 
+    override fun onResume() {
+        super.onResume()
+        val mainActivity = requireActivity() as CoActivity
+        with(binding){
+            tvCoCaMeStHead.text = mainActivity.binding.viewModel?.name?.value
+            println("1" + mainActivity.binding.viewModel?.name?.value)
+            println("2" + tvCoCaMeStHead.text.toString())
+        }
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val date = LocalDate.now()
         val firstDayOrWeek = date.with(TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY))
 
+
         with(binding) {
+
             viewModel?.textDate?.value =
                 LocalDate.now().format(DateTimeFormatter.ISO_LOCAL_DATE).toString()
             weekList = mutableListOf(
@@ -50,13 +62,25 @@ class CoCalenderMemberStaticFragment : Fragment(), View.OnClickListener {
                 weekDay(tvCoCaMeStExerciseDayOf6, firstDayOrWeek.plusDays(5)),
                 weekDay(tvCoCaMeStExerciseDayOf7, firstDayOrWeek.plusDays(6))
             )
-            tvCoCaMeStecerciseRecordDate.setOnClickListener { this@CoCalenderMemberStaticFragment }
+            tvCoCaMeStecerciseRecordDate.setOnClickListener(this@CoCalenderMemberStaticFragment)
             for (day in weekList) {
-                day.textview.setOnClickListener { this@CoCalenderMemberStaticFragment }
+                day.textview.setOnClickListener(this@CoCalenderMemberStaticFragment)
             }
+
             val dayOfWeek = date.dayOfWeek.value
+            selectDay(dayOfWeek)
+
+            rvCoCaMeSportStatistic.layoutManager = LinearLayoutManager(requireContext())
+            viewModel?.exerciseItems?.observe(viewLifecycleOwner) { items ->
+                if (rvCoCaMeSportStatistic.adapter == null) {
+                    rvCoCaMeSportStatistic.adapter = StatisticAdapter(items)
+                } else {
+                    (rvCoCaMeSportStatistic.adapter as StatisticAdapter).updateItem(items)
+                }
+            }
         }
     }
+
 
     private class weekDay(var textview: TextView, var date: LocalDate)
 
@@ -72,16 +96,17 @@ class CoCalenderMemberStaticFragment : Fragment(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         with(binding) {
+            println("SetOnClickListener----")
             when (v?.id) {
-                R.id.tvCoCaMeStExerciseDialog -> {
+                R.id.tvCoCaMeStecerciseRecordDate -> {
                     val calendar = Calendar.getInstance()
                     val datePickerDialog = DatePickerDialog(
                         requireContext(),
                         { _, year, month, day ->
                             viewModel?.textDate?.value = "$year-${pad(month + 1)}-${pad(day)}"
-                            viewModel?.Date?.value =
+                            viewModel?.date?.value =
                                 LocalDate.parse("$year-${pad(month + 1)}-${pad(day)}")
-                            val firstDayOfWeek = viewModel?.Date?.value?.with(
+                            val firstDayOfWeek = viewModel?.date?.value?.with(
                                 TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY)
                             )
                             firstDayOfWeek?.let {
@@ -89,7 +114,7 @@ class CoCalenderMemberStaticFragment : Fragment(), View.OnClickListener {
                                     weekList[i].date = it.plusDays(i.toLong())
                                 }
                             }
-                            val dayOfWeek = viewModel?.Date?.value?.dayOfWeek?.value
+                            val dayOfWeek = viewModel?.date?.value?.dayOfWeek?.value
                             if (dayOfWeek != null) {
                                 selectDay(dayOfWeek)
                             }
@@ -109,7 +134,7 @@ class CoCalenderMemberStaticFragment : Fragment(), View.OnClickListener {
                 R.id.tvCoCaMeStExerciseDayOf7 -> selectDay(7)
                 else -> {}
             }
-            viewModel?.items?.observe(viewLifecycleOwner) { items ->
+            viewModel?.exerciseItems?.observe(viewLifecycleOwner) { items ->
                 if (rvCoCaMeSportStatistic.adapter == null) {
                     rvCoCaMeSportStatistic.adapter = StatisticAdapter(items)
                 } else {

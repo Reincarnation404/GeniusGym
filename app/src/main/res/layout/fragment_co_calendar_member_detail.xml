@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.example.geniusgym.coach.calendarMemberList.viewmodel.CoCalendarMemberDetailViewModel" />
@@ -11,7 +11,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -41,23 +41,18 @@
                 android:textSize="24sp" />
         </LinearLayout>
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="703dp"
-            android:layout_marginTop="1dp"
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/fcvCoCaMe"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="2dp"
+            app:defaultNavHost="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
-
-            <androidx.fragment.app.FragmentContainerView
-                android:id="@+id/fcvCoCaMe"
-                android:name="androidx.navigation.fragment.NavHostFragment"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:defaultNavHost="true"
-                app:navGraph="@navigation/navigation_co_member_detail" />
-        </FrameLayout>
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+            app:navGraph="@navigation/navigation_co_member_detail" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
