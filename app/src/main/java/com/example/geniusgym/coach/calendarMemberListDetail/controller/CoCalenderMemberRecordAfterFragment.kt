@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.geniusgym.coach.CoActivity
 import com.example.geniusgym.coach.calendarMemberListDetail.model.SportSmallItem
 import com.example.geniusgym.coach.calendarMemberListDetail.viewmodel.CoCalenderMemberRecordAfterViewModel
@@ -44,6 +45,22 @@ class CoCalenderMemberRecordAfterFragment : Fragment() {
                 viewModel?.m_id = member.memberId
                 viewModel?.name?.value = member.name
             }
+
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        with(binding){
+            rvCoCaMeReAf.layoutManager = LinearLayoutManager(requireContext())
+            viewModel?.recordItems?.observe(viewLifecycleOwner){items ->
+                if(rvCoCaMeReAf.adapter == null){
+                    rvCoCaMeReAf.adapter = CoCaMeReAfAdapter(items)
+                }else{
+                    (rvCoCaMeReAf.adapter as CoCaMeReAfAdapter).update(items)
+                }
+            }
+        }
+
     }
 }

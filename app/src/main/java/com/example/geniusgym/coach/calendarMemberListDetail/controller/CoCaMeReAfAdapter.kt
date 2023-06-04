@@ -8,7 +8,7 @@ import com.example.geniusgym.coach.calendarMemberListDetail.model.SportRecordIte
 import com.example.geniusgym.coach.calendarMemberListDetail.viewmodel.CoCalenderMemberRecordAfterViewModel
 import com.example.geniusgym.databinding.FragmentCoCalendarMemberRecordAfterCardviewBinding
 
-class CoCaMeReAfAdapter(private var items: List<SportRecordItem>) :
+class CoCaMeReAfAdapter(private var items: MutableList<SportRecordItem>) :
     RecyclerView.Adapter<CoCaMeReAfAdapter.CoCaMeReAfViewHolder>() {
     class CoCaMeReAfViewHolder(val itemViewBinding: FragmentCoCalendarMemberRecordAfterCardviewBinding) :
         RecyclerView.ViewHolder(itemViewBinding.root)
@@ -29,10 +29,19 @@ class CoCaMeReAfAdapter(private var items: List<SportRecordItem>) :
         val item = items[position]
         with(holder){
             itemViewBinding.viewModel?.recordItem?.value = item
+            itemViewBinding.ivCoCaReAfCardRemove.setOnClickListener {
+                items.remove(item)
+                notifyDataSetChanged()
+            }
         }
     }
 
     override fun getItemCount(): Int {
         return items.size
+    }
+
+    fun update(items: MutableList<SportRecordItem>){
+        this.items = items
+        notifyDataSetChanged()
     }
 }

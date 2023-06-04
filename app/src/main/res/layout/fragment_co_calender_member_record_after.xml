@@ -53,6 +53,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/tietCoCaMeReAfWeightInput"
                 android:layout_width="match_parent"
+                android:text="@={viewModel.weight}"
                 android:layout_height="wrap_content"
                 android:hint="@string/tietCoCaMeReAfWeightInput" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -70,6 +71,8 @@
                 android:id="@+id/tietCoCaMeReAfTimes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="@={viewModel.freq}"
+
                 android:hint="@string/tietCoCaMeReAfTimes" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -79,6 +82,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="140dp"
             android:layout_marginEnd="16dp"
+            android:onClick="@{_->viewModel.onClick()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_co_ca_me_re_af_add" />
@@ -94,14 +98,28 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvCoCaMeReAf"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="24dp"
             android:layout_marginBottom="12dp"
             app:layout_constraintBottom_toTopOf="@+id/btCoCaMeReAfSend"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tilCoCaMeReAfTimes" />
+            app:layout_constraintTop_toBottomOf="@+id/tvCoCaMeReAfErrorMessage" />
+
+        <TextView
+            android:id="@+id/tvCoCaMeReAfErrorMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="@{viewModel.errorMessage}"
+            android:textColor="#FF0000"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tilCoCaMeReAfTimes"
+            tools:text="咩匍" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
