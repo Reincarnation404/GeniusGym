@@ -21,24 +21,22 @@
             android:id="@+id/tvSportSmallItem"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="144dp"
+            android:layout_marginStart="16dp"
             android:text="@{viewModel.sportName}"
-            android:textSize="34sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.164"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="30sp"
+            app:layout_constraintStart_toEndOf="@+id/tvMemberName"
+            app:layout_constraintTop_toTopOf="@+id/tvMemberName"
             tools:text="@string/hello_blank_fragment" />
 
         <TextView
             android:id="@+id/tvMemberName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="44dp"
             android:text="@{viewModel.name}"
-            android:textSize="34sp"
-            app:layout_constraintEnd_toEndOf="@+id/tvSportSmallItem"
-            app:layout_constraintStart_toStartOf="@+id/tvSportSmallItem"
+            android:textSize="30sp"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -77,7 +75,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/ivCoCaMeReAfAddSmallTerm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="140dp"
@@ -120,6 +118,28 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tilCoCaMeReAfTimes"
             tools:text="咩匍" />
+
+        <TextView
+            android:id="@+id/tvCoCaMeReAfDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="26dp"
+            android:text="@{viewModel.textDate}"
+            android:textSize="23sp"
+            app:layout_constraintBottom_toBottomOf="@+id/ivCoCaMeReAfAddSmallTerm"
+            app:layout_constraintEnd_toStartOf="@+id/ivCoCaMeReAfAddSmallTerm"
+            app:layout_constraintTop_toTopOf="@+id/ivCoCaMeReAfAddSmallTerm"
+            app:layout_constraintVertical_bias="0.529" />
+
+        <TextView
+            android:id="@+id/tvCoCaMeReAfDateHead"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tvCoCaMeReAfDateHead"
+            android:textSize="23sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvCoCaMeReAfDate"
+            app:layout_constraintEnd_toStartOf="@+id/tvCoCaMeReAfDate"
+            app:layout_constraintTop_toTopOf="@+id/tvCoCaMeReAfDate" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

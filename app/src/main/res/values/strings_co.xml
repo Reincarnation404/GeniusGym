@@ -17,5 +17,10 @@
     <string name="tietCoCaMeReAfWeightInput">重量（公斤）</string>
     <string name="tietCoCaMeReAfTimes">次數</string>
     <string name="btCoCaMeReAfSend">送出</string>
+    <string name="txtCoCaMeReAfAdapterYes">確定</string>
+    <string name="txtCoCaMeReAfAdapterCancel">取消</string>
+    <string name="txtCoCaMeReAfAdapterDialogMessage">您確定要刪除嗎？</string>
+    <string name="txtCoCaMeReAfSendDialogMessage">您確定要記錄這組嗎？</string>
+    <string name="tvCoCaMeReAfDateHead">日期：</string>
 
 </resources>

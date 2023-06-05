@@ -16,16 +16,11 @@ class CoCalenderMemberRecordAfterViewModel : ViewModel() {
     val sportName: MutableLiveData<String> by lazy { MutableLiveData<String>() }
     val weight: MutableLiveData<String> by lazy { MutableLiveData<String>() }
     val freq: MutableLiveData<String> by lazy { MutableLiveData<String>() }
+    val textDate: MutableLiveData<String> by lazy { MutableLiveData<String>() }
     var sc_id: String = ""
     var m_id: String = ""
-    val recordList = mutableListOf<SportRecordItem>()
-    /*init {
-        load()
-    }
+    private val recordList = mutableListOf<SportRecordItem>()
 
-    private fun load() {
-        recordItems.value = arrayListOf()
-    }*/
 
     fun onClick() {
 
@@ -41,8 +36,10 @@ class CoCalenderMemberRecordAfterViewModel : ViewModel() {
             sc_name = sportName?.value,
             sc_weight = weight?.value,
             sc_freq = freq?.value,
-            c_id = "RRRRR"
+            c_id = "RRRRR",
+            updateTime = ""
         )
+        println("AfterViewModel" + textDate?.value)
         recordList.add(item)
         recordItems.value = recordList
     }

@@ -2,44 +2,46 @@ package com.example.geniusgym.coach.calendarMemberListDetail.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.geniusgym.coach.calendarMemberList.model.BodyDataItem
-import com.example.geniusgym.coach.calendarMemberList.model.ExerciseItem
+import com.example.geniusgym.coach.CoActivity
+
+import com.example.geniusgym.coach.calendarMemberList.model.MemberItem
+import com.example.geniusgym.coach.calendarMemberListDetail.model.SportRecordBigItem
+import com.example.geniusgym.coach.calendarMemberListDetail.model.SportRecordItem
 import java.time.LocalDate
 
 class CoCalenderMemberStaticViewModel : ViewModel() {
- //   val memberName : MutableLiveData<String> by lazy { MutableLiveData<String>() }
     val memberStatistic : MutableLiveData<String> by lazy { MutableLiveData<String>() }
     val textDate: MutableLiveData<String> by lazy { MutableLiveData<String>() }
     val date: MutableLiveData<LocalDate> by lazy { MutableLiveData<LocalDate>() }
-    private var itemList = listOf<ExerciseItem>()
-    val exerciseItems: MutableLiveData<List<ExerciseItem>> by lazy { MutableLiveData<List<ExerciseItem>>() }
-    val exerciseItem: MutableLiveData<ExerciseItem> by lazy { MutableLiveData<ExerciseItem>() }
-    private var exerciseLists = listOf<ExerciseItem>()
+    var itemList = listOf<SportRecordBigItem>()
+    val sportRecordBigItems: MutableLiveData<List<SportRecordBigItem>> by lazy { MutableLiveData<List<SportRecordBigItem>>() }
+    val sportRecordBigLists: MutableLiveData<List<SportRecordBigItem>> by lazy { MutableLiveData<List<SportRecordBigItem>>() }
+    val sportRecordBigItem: MutableLiveData<SportRecordBigItem> by lazy { MutableLiveData<SportRecordBigItem>() }
+    private var exerciseLists = listOf<SportRecordItem>()
+    val member: MutableLiveData<MemberItem> by lazy { MutableLiveData<MemberItem>() }
+
     init {
         load()
     }
     fun search(input: String?) {
         val searchList = if (input == null || input.isEmpty()) {
-            println("input == null || input.isEmpty()")
             itemList
         } else {
-            println("!input == null && !input.isEmpty()")
             itemList.filter { item ->
                 searchItem(item, input.trim())
             }
         }
-        exerciseItems.value = searchList
+        sportRecordBigItems.value = searchList
     }
 
-    private fun searchItem(item: ExerciseItem, searchText: String): Boolean {
-        val answers = item.sportUpdateTime.contains(searchText, ignoreCase = true)
-        return answers
+    private fun searchItem(item: SportRecordBigItem, searchText: String): Boolean {
+        return item.time!!.contains(searchText, ignoreCase = true)
     }
     private fun load(){
-        val exerciseList = mutableListOf<ExerciseItem>()
+        /*val exerciseList = mutableListOf<SportRecordItem>()
         memberStatistic.value ="生理性別：戰鬥直升機\n年齡：19\n身高：169 cm\n體重：169 kg\n體脂：40 %"
         exerciseList.add(
-            ExerciseItem(
+            SportRecordItem(
                 memberId = "R05221016",
                 sportName = "旋轉無養",
                 sportUpdateTime = "2023-05-30 23:59:59",
@@ -50,7 +52,7 @@ class CoCalenderMemberStaticViewModel : ViewModel() {
             )
         )
         exerciseList.add(
-            ExerciseItem(
+            SportRecordItem(
                 memberId = "R05221017",
                 sportName = "旋轉有養",
                 sportUpdateTime = "2023-05-30 23:59:59",
@@ -61,7 +63,11 @@ class CoCalenderMemberStaticViewModel : ViewModel() {
             )
         )
 
-        this.itemList =  exerciseList
-        this.exerciseItems.value =  this.itemList
+        this.itemList =  exerciseList*/
+        val item = this.sportRecordBigLists?.value
+        if (item != null) {
+            this.itemList = item
+            this.sportRecordBigItems.value = this.itemList
+        }
     }
 }

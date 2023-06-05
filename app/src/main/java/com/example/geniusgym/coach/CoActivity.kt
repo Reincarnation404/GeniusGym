@@ -7,12 +7,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.example.geniusgym.R
+import com.example.geniusgym.coach.calendarMemberListDetail.model.SportRecordBigItem
+import com.example.geniusgym.coach.calendarMemberListDetail.model.SportRecordItem
 import com.example.geniusgym.databinding.ActivityCo2Binding
 
 class CoActivity : AppCompatActivity() {
 
     public lateinit var binding: ActivityCo2Binding
     private lateinit var navigateController: NavController
+    public var memberSportRecord =  mutableListOf<SportRecordBigItem>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

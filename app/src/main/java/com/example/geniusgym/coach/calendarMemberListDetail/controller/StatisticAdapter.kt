@@ -6,12 +6,14 @@ import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.geniusgym.R
-import com.example.geniusgym.coach.calendarMemberList.model.ExerciseItem
+import com.example.geniusgym.coach.calendarMemberListDetail.model.SportRecordBigItem
+import com.example.geniusgym.coach.calendarMemberListDetail.model.SportRecordItem
+
 import com.example.geniusgym.coach.calendarMemberListDetail.viewmodel.CoCalenderMemberStaticViewModel
 import com.example.geniusgym.databinding.FragmentCoCalendarMemberStaticCardviewBinding
 
 class StatisticAdapter(
-    private var items: List<ExerciseItem>
+    private var items: List<SportRecordBigItem>
 ) :
     RecyclerView.Adapter<StatisticAdapter.ExerciseViewHolder>() {
 
@@ -32,7 +34,7 @@ class StatisticAdapter(
     override fun onBindViewHolder(holder: ExerciseViewHolder, position: Int) {
         val item = items[position]
         with(holder) {
-            itemViewBinding.viewModel?.exerciseItem?.value = item
+            itemViewBinding.viewModel?.sportRecordBigItem?.value = item
             itemView.setOnClickListener {
                 Navigation.findNavController(it).navigate(R.id.coCalenderMemberStaticSmallFragment)
             }
@@ -42,7 +44,7 @@ class StatisticAdapter(
     override fun getItemCount(): Int {
         return items.size
     }
-    fun updateItem(items: List<ExerciseItem>){
+    fun updateItem(items: List<SportRecordBigItem>){
         this.items = items
         notifyDataSetChanged()
     }

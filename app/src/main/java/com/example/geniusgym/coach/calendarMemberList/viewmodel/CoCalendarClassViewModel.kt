@@ -36,7 +36,7 @@ class CoCalendarClassViewModel : ViewModel() {
                 id = "1234",
                 startTime = "12:00",
                 endTime = "14:00",
-                date = "2023-05-25",
+                date = "2023-06-05",
                 className = "螺璇有氧"
             )
         )
@@ -45,7 +45,7 @@ class CoCalendarClassViewModel : ViewModel() {
                 id = "1231112",
                 startTime = "13:00",
                 endTime = "14:00",
-                date = "2023-05-25",
+                date = "2023-06-05",
                 className = "突刺有氧"
             )
         )
@@ -54,7 +54,7 @@ class CoCalendarClassViewModel : ViewModel() {
                 id = "12311111",
                 startTime = "15:00",
                 endTime = "16:00",
-                date = "2023-05-25",
+                date = "2023-06-06",
                 className = "倒立有氧"
             )
         )
@@ -63,7 +63,7 @@ class CoCalendarClassViewModel : ViewModel() {
                 id = "456",
                 startTime = "13:00",
                 endTime = "14:00",
-                date = "2023-05-26",
+                date = "2023-06-06",
                 className = "螺璇有氧"
             )
         )
@@ -72,7 +72,7 @@ class CoCalendarClassViewModel : ViewModel() {
                 id = "789",
                 startTime = "13:00",
                 endTime = "15:00",
-                date = "2023-05-27",
+                date = "2023-06-07",
                 className = "螺璇有氧"
             )
         )
@@ -81,7 +81,7 @@ class CoCalendarClassViewModel : ViewModel() {
                 id = "101112",
                 startTime = "13:00",
                 endTime = "16:00",
-                date = "2023-05-28",
+                date = "2023-06-08",
                 className = "螺璇有氧"
             )
         )

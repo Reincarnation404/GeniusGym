@@ -1,7 +1,7 @@
 package com.example.geniusgym.coach.calendarMemberList.model
 import java.io.Serializable
 
-class ExerciseItem (
+class SportRecordItem (
     val memberId:String,
     val sportName: String,
     val sportUpdateTime:String,
