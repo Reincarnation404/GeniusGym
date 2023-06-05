@@ -7,6 +7,8 @@ import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.geniusgym.R
+import com.example.geniusgym.business.model.Member
+
 import com.example.geniusgym.business.model.testBuMember
 import com.example.geniusgym.business.viewModel.BuMemberViewModel
 import com.example.geniusgym.databinding.FragmentBuMemberDataItemBinding
@@ -14,7 +16,7 @@ import com.example.geniusgym.databinding.FragmentBuMemberDataItemBinding
 /**
  * 會員列表所需的Adapter
  */
-class BuMemberDataAdapter(private var bumembers: List<testBuMember>):
+class BuMemberDataAdapter(private var bumembers: List<Member>):
     RecyclerView.Adapter<BuMemberDataAdapter.BuMemberDataViewHolder>(){
 
 
@@ -22,7 +24,7 @@ class BuMemberDataAdapter(private var bumembers: List<testBuMember>):
      * 更新會員列表內容
      * @param bumembers 新的會員列表
      */
-    fun updateBuMember(bumembers: List<testBuMember>) {
+    fun updateBuMember(bumembers: List<Member>) {
         this.bumembers = bumembers
         notifyDataSetChanged()
     }

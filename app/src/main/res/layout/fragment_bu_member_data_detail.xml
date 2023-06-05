@@ -114,7 +114,6 @@
                     android:background="@color/white"
                     android:enabled="false"
                     android:hint="@string/tietBuAddMemDataGen"
-                    android:text="@{viewModel.member.m_gen}"
                     android:textColor="@color/black"/>
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -211,23 +210,54 @@
                 style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
                 android:paddingHorizontal="20dp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tilBuAddMemDataDetailEmail">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <TextView
                     android:id="@+id/tietBuAddMemDataDetailExpireDate"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="380dp"
+                    android:layout_height="60dp"
                     android:background="@color/white"
                     android:enabled="false"
                     android:hint="@string/tietBuAddMemDataExpireDate"
-                    android:text="@{viewModel.member.m_ed_time}"
-                    android:textColor="@color/black"/>
+                    android:text="@{viewModel.member.m_ed_time.toString()}"
+                    android:textColor="@color/black"
+                    android:imeOptions="flagNoExtractUi"
+                    android:paddingLeft="16dp"
+                    android:textColorHint="#CDC7D2"
+                    android:gravity="center|left"/>
             </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btBuAddMemDataDetailModify"
+                android:layout_width="155dp"
+                android:layout_height="84dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:text="@string/btBuDataModify"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tilBuAddMemDataDetailExpireDate" />
+
+            <Button
+                android:id="@+id/btBuAddMemDataDetailSave"
+                android:layout_width="155dp"
+                android:layout_height="84dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:text="@string/btBuAddNotiSaveNoti"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tilBuAddMemDataDetailExpireDate" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

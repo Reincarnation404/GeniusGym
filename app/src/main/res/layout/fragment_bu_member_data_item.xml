@@ -25,7 +25,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             android:scaleType="centerInside"
-            app:imageResource="@{viewModel.member.m_pic}"
+            app:imgBase64="@{viewModel.member.m_picBase64}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

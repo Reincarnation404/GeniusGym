@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".business.BuActivity">
+
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar_bytiv"
-
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="65dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -18,12 +18,9 @@
             android:id="@+id/toolbar_bytiv"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:menu="@menu/bu_option_menu_filter_add_search">
-
-        </androidx.appcompat.widget.Toolbar>
-
+            android:background="?attr/colorPrimary"/>
     </com.google.android.material.appbar.AppBarLayout>
+
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fcvActiBu"
@@ -33,8 +30,8 @@
         app:defaultNavHost="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appbar_bytiv"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appbar_bytiv"
         app:navGraph="@navigation/navigation_bu" />
 
 

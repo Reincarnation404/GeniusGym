@@ -19,7 +19,6 @@ import java.util.*
 
 class BuCoachDataAddFragment : Fragment() {
     private lateinit var binding: FragmentBuCoachDataAddBinding
-
     private val calendar = Calendar.getInstance()
 
     override fun onCreateView(

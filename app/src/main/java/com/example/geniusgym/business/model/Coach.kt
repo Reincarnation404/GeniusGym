@@ -2,7 +2,7 @@ package com.example.geniusgym.business.model
 
 import java.sql.Timestamp
 
-class BuCoach(
+class Coach(
     var c_id: String?,
     var bh_id: Int?,
     var c_pwd: String?,

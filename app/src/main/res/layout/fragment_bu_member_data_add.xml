@@ -201,13 +201,16 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tilBuAddMemDataEmail">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <TextView
                     android:id="@+id/tietBuAddMemDataExpireDate"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="380dp"
+                    android:layout_height="60dp"
                     android:background="@color/white"
                     android:hint="@string/tietBuAddMemDataExpireDate"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black"
+                    android:paddingLeft="16dp"
+                    android:textColorHint="#CDC7D2"
+                    android:gravity="center|left"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
