@@ -1,5 +1,6 @@
 package com.example.geniusgym.coach.calendarMemberListDetail.controller
 
+import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.Context
 import android.graphics.Color
@@ -14,7 +15,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.geniusgym.R
 import com.example.geniusgym.coach.CoActivity
 import com.example.geniusgym.coach.calendarMemberListDetail.model.SportRecordBigItem
-import com.example.geniusgym.coach.calendarMemberListDetail.model.SportRecordItem
 import com.example.geniusgym.coach.calendarMemberListDetail.viewmodel.CoCalenderMemberStaticViewModel
 import com.example.geniusgym.databinding.FragmentCoCalenderMemberStaticBinding
 import com.google.gson.Gson
@@ -45,6 +45,7 @@ class CoCalenderMemberStaticFragment : Fragment(), View.OnClickListener {
         with(binding) {
             val member = coActivity.binding.viewModel?.member?.value
             viewModel?.member?.value = member
+            loadPreferences()
         }
     }
 
@@ -52,9 +53,7 @@ class CoCalenderMemberStaticFragment : Fragment(), View.OnClickListener {
         super.onViewCreated(view, savedInstanceState)
         val date = LocalDate.now()
         val firstDayOrWeek = date.with(TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY))
-        loadPreferences()
-        val coActivity = requireActivity() as CoActivity
-        load_preferences(coActivity)
+
 
         with(binding) {
             viewModel?.textDate?.value =
@@ -93,10 +92,6 @@ class CoCalenderMemberStaticFragment : Fragment(), View.OnClickListener {
         }
     }
 
-    private fun load_preferences(coActivity: CoActivity) {
-
-    }
-
 
     private class weekDay(var textview: TextView, var date: LocalDate)
 
@@ -106,7 +101,10 @@ class CoCalenderMemberStaticFragment : Fragment(), View.OnClickListener {
         }
         weekList[index - 1].textview.setBackgroundResource(R.color.teal_700)
         binding.viewModel?.textDate?.value = weekList[index - 1].date.toString()
-        binding.viewModel?.search(binding.viewModel?.textDate?.value)
+        binding.viewModel?.search(
+            binding.viewModel?.member?.value?.memberId,
+            binding.viewModel?.textDate?.value
+        )
         println("Haha")
     }
 
@@ -171,20 +169,24 @@ class CoCalenderMemberStaticFragment : Fragment(), View.OnClickListener {
     private fun loadPreferences() {
         with(binding) {
             val gson = Gson()
-            val coActivity = requireActivity() as CoActivity
             val preferences = requireActivity().getPreferences(Context.MODE_PRIVATE)
             val sportRecordItemsJson =
-                preferences.getString(coActivity.binding.viewModel?.member?.value?.memberId, "")
+                preferences.getString(viewModel?.member?.value?.memberId, "")
             // 沒有儲存帳號，就無需顯示已經載入
             if (sportRecordItemsJson!!.isEmpty()) {
+                println("nothing")
                 return
             }
             val collectionType = object : TypeToken<MutableList<SportRecordBigItem>>() {}.type
             val sportRecordItems =
-                (gson.fromJson<MutableList<SportRecordBigItem>>(sportRecordItemsJson, collectionType))
-            viewModel?.sportRecordBigLists?.value = sportRecordItems
+                (gson.fromJson<MutableList<SportRecordBigItem>>(
+                    sportRecordItemsJson,
+                    collectionType
+                ))
+            viewModel?.load(sportRecordItems)
+            // viewModel?.sportRecordBigLists?.value = sportRecordItems
 
-            println( viewModel?.sportRecordBigItems?.value)
+            println(viewModel?.sportRecordBigItems?.value)
         }
     }
 }

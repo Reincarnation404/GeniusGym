@@ -25,7 +25,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="right|center_vertical"
-                android:text="@{viewModel.sportRecordBigItem.name}"
+                android:text='@{viewModel.sportRecordBigItem.name + " " + viewModel.sportRecordBigItem.count + " 組數"}'
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/ivCoCaMeAnBcCard"
                 app:layout_constraintStart_toStartOf="parent"

@@ -16,7 +16,8 @@ class SportRecordItem(
 
 class SportRecordBigItem(
     var data: MutableList< SportRecordItem>,
+    var m_id: String?,
     var name: String?,
     var time: String?,
-    var count: Int
+    var count: String?
 )

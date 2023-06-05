@@ -20,54 +20,24 @@ class CoCalenderMemberStaticViewModel : ViewModel() {
     private var exerciseLists = listOf<SportRecordItem>()
     val member: MutableLiveData<MemberItem> by lazy { MutableLiveData<MemberItem>() }
 
-    init {
-        load()
-    }
-    fun search(input: String?) {
+
+    fun search(id:String?,input: String?) {
         val searchList = if (input == null || input.isEmpty()) {
             itemList
         } else {
             itemList.filter { item ->
-                searchItem(item, input.trim())
+                searchItem(id!!,item, input.trim())
             }
         }
         sportRecordBigItems.value = searchList
     }
 
-    private fun searchItem(item: SportRecordBigItem, searchText: String): Boolean {
-        return item.time!!.contains(searchText, ignoreCase = true)
+    private fun searchItem(id:String, item: SportRecordBigItem, searchText: String): Boolean {
+        return item.time!!.contains(searchText, ignoreCase = true) &&
+                item.m_id!!.contains(id,ignoreCase = true)
     }
-    private fun load(){
-        /*val exerciseList = mutableListOf<SportRecordItem>()
-        memberStatistic.value ="生理性別：戰鬥直升機\n年齡：19\n身高：169 cm\n體重：169 kg\n體脂：40 %"
-        exerciseList.add(
-            SportRecordItem(
-                memberId = "R05221016",
-                sportName = "旋轉無養",
-                sportUpdateTime = "2023-05-30 23:59:59",
-                sportWeight = "100",
-                sportFreq = "4",
-                sportSet = "3",
-                sportCoach = "田聖潔"
-            )
-        )
-        exerciseList.add(
-            SportRecordItem(
-                memberId = "R05221017",
-                sportName = "旋轉有養",
-                sportUpdateTime = "2023-05-30 23:59:59",
-                sportWeight = "100",
-                sportFreq = "4",
-                sportSet = "3",
-                sportCoach = "聖潔聖潔"
-            )
-        )
-
-        this.itemList =  exerciseList*/
-        val item = this.sportRecordBigLists?.value
-        if (item != null) {
+    fun load(item : MutableList<SportRecordBigItem>){
             this.itemList = item
             this.sportRecordBigItems.value = this.itemList
-        }
     }
 }

@@ -79,9 +79,10 @@ class CoCalenderMemberRecordAfterFragment : Fragment() {
                             coActivity.memberSportRecord.add(
                                 SportRecordBigItem(
                                     it,
+                                    viewModel?.m_id,
                                     viewModel?.sportName?.value,
                                     viewModel?.textDate?.value,
-                                    it.size
+                                    it.size.toString()
                                 )
                             )
                             val gson = GsonBuilder().create()
