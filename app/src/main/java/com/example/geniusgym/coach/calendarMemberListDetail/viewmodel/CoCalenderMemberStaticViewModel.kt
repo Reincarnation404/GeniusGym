@@ -15,9 +15,7 @@ class CoCalenderMemberStaticViewModel : ViewModel() {
     val date: MutableLiveData<LocalDate> by lazy { MutableLiveData<LocalDate>() }
     var itemList = listOf<SportRecordBigItem>()
     val sportRecordBigItems: MutableLiveData<List<SportRecordBigItem>> by lazy { MutableLiveData<List<SportRecordBigItem>>() }
-    val sportRecordBigLists: MutableLiveData<List<SportRecordBigItem>> by lazy { MutableLiveData<List<SportRecordBigItem>>() }
     val sportRecordBigItem: MutableLiveData<SportRecordBigItem> by lazy { MutableLiveData<SportRecordBigItem>() }
-    private var exerciseLists = listOf<SportRecordItem>()
     val member: MutableLiveData<MemberItem> by lazy { MutableLiveData<MemberItem>() }
 
 

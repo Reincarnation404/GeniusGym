@@ -39,7 +39,7 @@ class CoActivity : AppCompatActivity() {
                 navigateController.navigate(R.id.settingFragment)
             }
             includeNotification.notificationMontionLayout.setOnClickListener {
-                navigateController.navigate(R.id.coCalenderMemberStaticFragment)
+               /* navigateController.navigate(R.id.coCalenderMemberStaticFragment)*/
             }
         }
     }

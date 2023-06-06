@@ -174,7 +174,6 @@ class CoCalenderMemberStaticFragment : Fragment(), View.OnClickListener {
                 preferences.getString(viewModel?.member?.value?.memberId, "")
             // 沒有儲存帳號，就無需顯示已經載入
             if (sportRecordItemsJson!!.isEmpty()) {
-                println("nothing")
                 return
             }
             val collectionType = object : TypeToken<MutableList<SportRecordBigItem>>() {}.type
@@ -183,9 +182,14 @@ class CoCalenderMemberStaticFragment : Fragment(), View.OnClickListener {
                     sportRecordItemsJson,
                     collectionType
                 ))
+            val coActivity = requireActivity() as CoActivity
+            coActivity.memberSportRecord = sportRecordItems
             viewModel?.load(sportRecordItems)
             // viewModel?.sportRecordBigLists?.value = sportRecordItems
-
+            binding.viewModel?.search(
+                binding.viewModel?.member?.value?.memberId,
+                binding.viewModel?.textDate?.value
+            )
             println(viewModel?.sportRecordBigItems?.value)
         }
     }
