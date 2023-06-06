@@ -1,33 +1,50 @@
 package com.example.geniusgym.coach
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import com.example.geniusgym.R
+import com.example.geniusgym.coach.calendarMemberList.model.MemberItem
 import com.example.geniusgym.coach.calendarMemberList.viewmodel.CoCalendarMemberDetailViewModel
+import com.example.geniusgym.databinding.FragmentCoCalendarMemberDetailBinding
 
 class CoCalendarMemberDetailFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = CoCalendarMemberDetailFragment()
-    }
-
-    private lateinit var viewModel: CoCalendarMemberDetailViewModel
-
+    private lateinit var binding:FragmentCoCalendarMemberDetailBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_co_calendar_member_detail, container, false)
+    ): View {
+        val viewModel : CoCalendarMemberDetailViewModel by viewModels()
+        binding = FragmentCoCalendarMemberDetailBinding.inflate(inflater, container, false)
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = this
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(CoCalendarMemberDetailViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
+        val coActivity = requireActivity() as CoActivity
+        with(binding){
+            tvCoCaMeDetail.setOnClickListener{
+                println("tvCoCaMeDetail")
+                Navigation.findNavController(requireActivity(), R.id.fcvCoCaMe).navigate(R.id.coCalenderMemberStaticFragment)
 
+            }
+            tvCoCaMeRecord.setOnClickListener {
+                println("tvCoCaMeRecord")
+                Navigation.findNavController(requireActivity(), R.id.fcvCoCaMe).navigate(R.id.coCalenderMemberRecordFragment)
+
+            }
+        }
+        arguments?.let{bundle ->
+            bundle.getSerializable("Member")?.let {
+                coActivity.binding.viewModel?.member?.value = it as MemberItem
+            }
+        }
+    }
 }

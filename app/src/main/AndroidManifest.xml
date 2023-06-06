@@ -9,6 +9,8 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- 可以 GPS 定位 -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
+
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -29,7 +31,9 @@
             android:exported="true"></activity>
         <activity
             android:name=".member.MeActivity"
-            android:exported="true"></activity>
+            android:exported="true">
+
+        </activity>
         <activity
             android:name=".MainActivity"
             android:exported="true">

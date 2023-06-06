@@ -47,6 +47,7 @@
     <string name="spBuAddChooseTarget">點擊選擇對象</string>
     <string name="tvBuAddChooseDate">點擊選擇日期</string>
     <string name="tvBuAddChooseTime">點擊選擇時間</string>
+
     <string name="tv_Me_Training_Monday">一</string>
     <string name="tv_Me_Training_Tuesday">二</string>
     <string name="etMeTrainingDay1">一</string>
@@ -58,6 +59,14 @@
     <string name="etMeTrainingDay7">日</string>
     <string name="etSportList">運動清單</string>
     <string name="etSportList2">運動清單</string>
+
+
+
+    <string name="me_br_store">分店商城</string>
+
+    <string name="btPaymentConfirm">確認送出</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>
