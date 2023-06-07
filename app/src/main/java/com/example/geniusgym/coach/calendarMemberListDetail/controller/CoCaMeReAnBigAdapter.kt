@@ -36,7 +36,7 @@ class CoCaMeReAnBigAdapter(private var items: List<SportBigItem>) :
             bundle.putSerializable("id", item.id)
             itemView.setOnClickListener {
                 Navigation.findNavController(it)
-                    .navigate(R.id.action_coCalenderMemberRecordFragment_to_coCalenderMemberRecordAnoxSmallFragment)
+                    .navigate(R.id.action_coCalenderMemberRecordFragment_to_coCalenderMemberRecordAnoxSmallFragment,bundle)
             }
         }
     }

@@ -45,6 +45,11 @@ class CoCalenderMemberRecordAllViewModel : ViewModel() {
         list.add(SportSmallItem("2", "3", "蝴蝶機夾胸"))
         list.add(SportSmallItem("2", "4", "繩索下斜夾胸"))
         list.add(SportSmallItem("2", "5", "槓鈴斜上推"))
+        list.add(SportSmallItem("1", "1", "飛輪"))
+        list.add(SportSmallItem("1", "2", "靜態"))
+        list.add(SportSmallItem("1", "3", "心肺訓練"))
+        list.add(SportSmallItem("1", "4", "跑步"))
+        list.add(SportSmallItem("1", "5", "舞蹈"))
 
         this.itemList = list
         this.items.value = this.itemList

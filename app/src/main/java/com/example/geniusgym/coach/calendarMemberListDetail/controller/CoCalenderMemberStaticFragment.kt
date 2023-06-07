@@ -1,6 +1,5 @@
 package com.example.geniusgym.coach.calendarMemberListDetail.controller
 
-import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.Context
 import android.graphics.Color
@@ -74,11 +73,11 @@ class CoCalenderMemberStaticFragment : Fragment(), View.OnClickListener {
 
             val dayOfWeek = date.dayOfWeek.value
             selectDay(dayOfWeek)
-
+            val coActivity = requireActivity() as CoActivity
             rvCoCaMeSportStatistic.layoutManager = LinearLayoutManager(requireContext())
             viewModel?.sportRecordBigItems?.observe(viewLifecycleOwner) { items ->
                 if (rvCoCaMeSportStatistic.adapter == null) {
-                    rvCoCaMeSportStatistic.adapter = StatisticAdapter(items)
+                    rvCoCaMeSportStatistic.adapter = StatisticAdapter(items,coActivity)
                     println("rvCoCaMeSportStatistic.adapter = StatisticAdapter(items)")
                 } else {
                     (rvCoCaMeSportStatistic.adapter as StatisticAdapter).updateItem(items)
@@ -148,9 +147,10 @@ class CoCalenderMemberStaticFragment : Fragment(), View.OnClickListener {
                 R.id.tvCoCaMeStExerciseDayOf7 -> selectDay(7)
                 else -> {}
             }
+            val coActivity = requireActivity() as CoActivity
             viewModel?.sportRecordBigItems?.observe(viewLifecycleOwner) { items ->
                 if (rvCoCaMeSportStatistic.adapter == null) {
-                    rvCoCaMeSportStatistic.adapter = StatisticAdapter(items)
+                    rvCoCaMeSportStatistic.adapter = StatisticAdapter(items, coActivity)
                 } else {
                     (rvCoCaMeSportStatistic.adapter as StatisticAdapter).updateItem(items)
                 }

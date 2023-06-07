@@ -1,8 +1,5 @@
 package com.example.geniusgym.coach.calendarMemberListDetail.model
 
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter.ofPattern
-
 class SportRecordItem(
     var m_id: String?,         // 會員 ID
     var m_name: String?,         // 會員名字
@@ -15,9 +12,9 @@ class SportRecordItem(
 )
 
 class SportRecordBigItem(
-    var data: MutableList< SportRecordItem>,
+    var data: MutableList<SportRecordItem>,
     var m_id: String?,
     var name: String?,
     var time: String?,
     var count: String?
-)
+):java.io.Serializable

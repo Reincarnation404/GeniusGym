@@ -16,6 +16,7 @@ class CoActivity : AppCompatActivity() {
     public lateinit var binding: ActivityCo2Binding
     private lateinit var navigateController: NavController
     public var memberSportRecord =  mutableListOf<SportRecordBigItem>()
+    public var memberSportBigRecord : SportRecordBigItem? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

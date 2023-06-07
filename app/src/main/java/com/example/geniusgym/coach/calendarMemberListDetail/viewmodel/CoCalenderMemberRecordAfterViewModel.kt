@@ -10,8 +10,6 @@ class CoCalenderMemberRecordAfterViewModel : ViewModel() {
     val recordItems: MutableLiveData<MutableList<SportRecordItem>> by lazy { MutableLiveData<MutableList<SportRecordItem>>() }
     val recordItem: MutableLiveData<SportRecordItem> by lazy { MutableLiveData<SportRecordItem>() }
     val errorMessage: MutableLiveData<String> by lazy { MutableLiveData<String>() }
-    val item: MutableLiveData<SportSmallItem> by lazy { MutableLiveData<SportSmallItem>() }
-    val member: MutableLiveData<MemberItem> by lazy { MutableLiveData<MemberItem>() }
     val name: MutableLiveData<String> by lazy { MutableLiveData<String>() }
     val sportName: MutableLiveData<String> by lazy { MutableLiveData<String>() }
     val weight: MutableLiveData<String> by lazy { MutableLiveData<String>() }

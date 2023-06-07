@@ -44,6 +44,7 @@ class CoCalenderMemberRecordAfterFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val coActivity = requireActivity() as CoActivity
+
         with(binding) {
 
             val date = LocalDate.now()
