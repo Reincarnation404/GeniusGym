@@ -16,8 +16,11 @@ import com.example.geniusgym.coach.CoActivity
 import com.example.geniusgym.coach.calendarMemberListDetail.model.SportRecordBigItem
 import com.example.geniusgym.coach.calendarMemberListDetail.viewmodel.CoCalenderMemberStaticViewModel
 import com.example.geniusgym.databinding.FragmentCoCalenderMemberStaticBinding
+import com.example.geniusgym.util.webRequest_spencer
 import com.google.gson.Gson
+import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
+import kotlinx.coroutines.runBlocking
 import java.time.DayOfWeek
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -44,6 +47,7 @@ class CoCalenderMemberStaticFragment : Fragment(), View.OnClickListener {
         with(binding) {
             val member = coActivity.binding.viewModel?.member?.value
             viewModel?.member?.value = member
+            viewModel?.loadStatistic()
             loadPreferences()
         }
     }
@@ -77,20 +81,14 @@ class CoCalenderMemberStaticFragment : Fragment(), View.OnClickListener {
             rvCoCaMeSportStatistic.layoutManager = LinearLayoutManager(requireContext())
             viewModel?.sportRecordBigItems?.observe(viewLifecycleOwner) { items ->
                 if (rvCoCaMeSportStatistic.adapter == null) {
-                    rvCoCaMeSportStatistic.adapter = StatisticAdapter(items,coActivity)
+                    rvCoCaMeSportStatistic.adapter = StatisticAdapter(items, coActivity)
                     println("rvCoCaMeSportStatistic.adapter = StatisticAdapter(items)")
                 } else {
                     (rvCoCaMeSportStatistic.adapter as StatisticAdapter).updateItem(items)
                 }
             }
-            /*viewModel?.sportRecordBigLists?.observe(viewLifecycleOwner){
-                viewModel.itemList = it
-                val temp = viewModel.itemList
-                viewModel.sportRecordBigItems.value = temp
-            }*/
         }
     }
-
 
     private class weekDay(var textview: TextView, var date: LocalDate)
 

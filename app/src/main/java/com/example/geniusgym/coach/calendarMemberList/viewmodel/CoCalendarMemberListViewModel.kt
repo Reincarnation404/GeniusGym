@@ -35,42 +35,42 @@ class CoCalendarMemberListViewModel : ViewModel() {
         itemList.add(
             MemberItem(
                 classId = "1234",
-                memberId = "0001",
+                memberId = "R05221017",
                 name = "美秀集團",
             )
         )
         itemList.add(
             MemberItem(
                 classId = "1234",
-                memberId = "0002",
+                memberId = "R05221018",
                 name = "原子邦妮",
             )
         )
         itemList.add(
             MemberItem(
                 classId = "1234",
-                memberId = "0003",
+                memberId = "R05221019",
                 name = "宋德鶴",
             )
         )
         itemList.add(
             MemberItem(
                 classId = "1234",
-                memberId = "0004",
+                memberId = "R05221020",
                 name = "胡凱兒",
             )
         )
         itemList.add(
             MemberItem(
                 classId = "12311111",
-                memberId = "0005",
+                memberId = "R05221021",
                 name = "康士坦的變化球",
             )
         )
         itemList.add(
             MemberItem(
                 classId = "12311111",
-                memberId = "0006",
+                memberId = "R05221022",
                 name = "FORMOZA",
             )
         )
@@ -78,70 +78,70 @@ class CoCalendarMemberListViewModel : ViewModel() {
         itemList.add(
             MemberItem(
                 classId = "1231112",
-                memberId = "0007",
+                memberId = "R05221023",
                 name = "芒果醬B",
             )
         )
         itemList.add(
             MemberItem(
                 classId = "1231112",
-                memberId = "0008",
+                memberId = "R05221024",
                 name = "Gummy B",
             )
         )
         itemList.add(
             MemberItem(
                 classId = "12311111",
-                memberId = "0009",
+                memberId = "R05221025",
                 name = "步行者",
             )
         )
         itemList.add(
             MemberItem(
                 classId = "12311111",
-                memberId = "0010",
+                memberId = "R05221026",
                 name = "老王樂隊",
             )
         )
         itemList.add(
             MemberItem(
                 classId = "456",
-                memberId = "0011",
+                memberId = "R05221027",
                 name = "草東沒有派對",
             )
         )
         itemList.add(
             MemberItem(
                 classId = "456",
-                memberId = "0012",
+                memberId = "R05221028",
                 name = "血肉果汁機",
             )
         )
         itemList.add(
             MemberItem(
                 classId = "789",
-                memberId = "0013",
+                memberId = "R05221029",
                 name = "甜約翰",
             )
         )
         itemList.add(
             MemberItem(
                 classId = "789",
-                memberId = "0014",
+                memberId = "R05221030",
                 name = "逃走鮑伯",
             )
         )
         itemList.add(
             MemberItem(
                 classId = "101112",
-                memberId = "0015",
+                memberId = "R05221031",
                 name = "胭脂虎",
             )
         )
         itemList.add(
             MemberItem(
                 classId = "101112",
-                memberId = "0016",
+                memberId = "R05221032",
                 name = "賀爾蒙少年",
             )
         )
