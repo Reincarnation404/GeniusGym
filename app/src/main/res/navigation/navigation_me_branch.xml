@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/meBranchDetailFragment"
         android:name="com.example.geniusgym.member.controller.MeBranchDetailFragment"
-        android:label="分店"
+        android:label="@string/meFragmentBranch"
         tools:layout="@layout/fragment_me_branch_detail">
         <action
             android:id="@+id/action_meBranchDetailFragment_to_meShoppingFragment"
@@ -22,7 +22,7 @@
     <fragment
         android:id="@+id/meCoachInfoFragment"
         android:name="com.example.geniusgym.member.controller.MeCoachInfoFragment"
-        android:label="教練介紹"
+        android:label="@string/meCoachInfoFragment"
         tools:layout="@layout/fragment_me_coach_info">
         <action
             android:id="@+id/action_meCoachInfoFragment_to_meCoachInfoDetailFragment"
@@ -31,18 +31,18 @@
     <fragment
         android:id="@+id/MeShoppingDetailFragment"
         android:name="com.example.geniusgym.member.controller.MeShoppingDetailFragment"
-        android:label="商品明細"
+        android:label="@string/meShoppingDetailFragmentItem"
         tools:layout="@layout/fragment_me_shopping_detail" />
     <fragment
         android:id="@+id/meMapDirectFragment"
         android:name="com.example.geniusgym.member.controller.MeMapDirectFragment"
-        android:label="導覽"
+        android:label="@string/meMapDirectFragment"
         tools:layout="@layout/fragment_me_map_direct" />
     <fragment
         android:id="@+id/meShoppingFragment"
         android:name="com.example.geniusgym.member.controller.MeShoppingFragment"
-        android:label="購物車"
-        tools:layout="@layout/fragment_me_shopping" >
+        android:label="@string/meShoppingFragmentStore"
+        tools:layout="@layout/fragment_me_shopping">
         <action
             android:id="@+id/action_meShoppingFragment_to_MeShoppingDetailFragment"
             app:destination="@id/MeShoppingDetailFragment" />
@@ -50,6 +50,6 @@
     <fragment
         android:id="@+id/meCoachInfoDetailFragment"
         android:name="com.example.geniusgym.member.controller.MeCoachInfoDetailFragment"
-        android:label="教練介紹細節"
+        android:label="@string/meCoachInfoDetailFragment"
         tools:layout="@layout/fragment_me_coach_info_detail" />
 </navigation>

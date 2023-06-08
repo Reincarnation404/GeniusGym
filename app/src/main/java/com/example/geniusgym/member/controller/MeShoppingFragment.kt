@@ -18,6 +18,10 @@ import com.example.geniusgym.sharedata.MeShareData
 class MeShoppingFragment : Fragment() {
 
     private lateinit var binding : FragmentMeShoppingBinding
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -25,6 +29,7 @@ class MeShoppingFragment : Fragment() {
         val viewModel: MeShoppingViewModel = ViewModelProvider(this)[MeShoppingViewModel::class.java]
         binding = FragmentMeShoppingBinding.inflate(LayoutInflater.from(requireContext()))
         binding.viewModel = viewModel
+//        TODO: 資料重複、品項沒有間隔
         viewModel.update()
         binding.lifecycleOwner = this
         return binding.root

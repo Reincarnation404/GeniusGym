@@ -58,5 +58,11 @@
     <string name="me_shopping_lesson_date">上課日期: </string>
     <string name="me_shopping_lesson_time">上課時間: </string>
     <string name="me_shopping_lesson_point">點數價格: </string>
+    <string name="meFragmentBranch">分店</string>
+    <string name="meShoppingFragmentStore">商城</string>
+    <string name="meShoppingDetailFragmentItem">商品明細</string>
+    <string name="meCoachInfoDetailFragment">教練介紹細節</string>
+    <string name="meCoachInfoFragment">教練介紹</string>
+    <string name="meMapDirectFragment">導覽</string>
 
 </resources>
