@@ -1,5 +1,6 @@
 package com.example.geniusgym.business.adapter
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,10 +9,10 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.geniusgym.R
 import com.example.geniusgym.business.model.Member
-
-import com.example.geniusgym.business.model.testBuMember
 import com.example.geniusgym.business.viewModel.BuMemberViewModel
 import com.example.geniusgym.databinding.FragmentBuMemberDataItemBinding
+import com.google.gson.JsonObject
+import tw.idv.william.androidwebserver.core.service.requestTask
 
 /**
  * 會員列表所需的Adapter
@@ -19,6 +20,7 @@ import com.example.geniusgym.databinding.FragmentBuMemberDataItemBinding
 class BuMemberDataAdapter(private var bumembers: List<Member>):
     RecyclerView.Adapter<BuMemberDataAdapter.BuMemberDataViewHolder>(){
 
+    val url = "http://10.0.2.2:8080/geninusgym_bg/business"
 
     /**
      * 更新會員列表內容
@@ -48,14 +50,31 @@ class BuMemberDataAdapter(private var bumembers: List<Member>):
         position: Int
     ) {
         val bumember = bumembers[position]
-        with(holder){
-            // 將欲顯示的member物件指派給LiveData，就會自動更新layout檔案的view顯示
-            itemViewBinding.viewModel?.member?.value = bumember
-            val bundle = Bundle()
-            bundle.putSerializable("bumember", bumember)
-            itemView.setOnClickListener {
-                //點擊list要跳到資料顯示頁面
-                Navigation.findNavController(it).navigate(R.id.buMemberDataDetailFragment, bundle)
+        with(holder) {
+            with(itemViewBinding) {
+                // 將欲顯示的member物件指派給LiveData，就會自動更新layout檔案的view顯示
+                viewModel?.member?.value = bumember
+                val bundle = Bundle()
+                bundle.putSerializable("bumember", bumember)
+                itemView.setOnClickListener {
+                    //點擊list要跳到資料顯示頁面
+                    Navigation.findNavController(it)
+                        .navigate(R.id.buMemberDataDetailFragment, bundle)
+                }
+
+                itemView.setOnLongClickListener {
+                    AlertDialog.Builder(it.context)
+                        .setMessage("確定將此用戶停權?")
+                        .setPositiveButton("是"){ _, _ ->
+                            viewModel?.member?.value.run {
+                                requestTask<JsonObject>(url, "DELETE", viewModel?.member?.value)
+                                println(viewModel?.member?.value)
+                            }
+                        }
+                        .setCancelable(true)
+                        .show()
+                    true
+                }
             }
         }
     }

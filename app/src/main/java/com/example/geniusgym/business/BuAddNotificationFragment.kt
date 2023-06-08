@@ -106,7 +106,7 @@ class BuAddNotificationFragment : Fragment() {
         AlertDialog.Builder(view?.context)
             // 設定標題文字
             .setTitle(R.string.spBuAddChooseTarget)
-            .setMultiChoiceItems(choice,selectchoice){ d_, position, checked ->
+            .setMultiChoiceItems(choice,selectchoice){ _, position, checked ->
                 selectchoice[position] = checked
             }.setPositiveButton(R.string.bu_add_choose_branch_confirm){ _, _ ->
                 val selectedTargets = mutableListOf<String>()

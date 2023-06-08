@@ -48,7 +48,7 @@
                     android:background="@color/white"
                     android:enabled="false"
                     android:hint="@string/tietBuAddMemDataName"
-                    android:text="@{viewModel.member.m_name}"
+                    android:text="@={viewModel.member.m_name}"
                     android:textColor="@color/black"/>
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -92,7 +92,7 @@
                     android:background="@color/white"
                     android:enabled="false"
                     android:hint="@string/tietBuAddMemDataPwd"
-                    android:text="@{viewModel.member.m_pwd}"
+                    android:text="@={viewModel.member.m_pwd}"
                     android:textColor="@color/black"/>
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -135,7 +135,7 @@
                     android:background="@color/white"
                     android:enabled="false"
                     android:hint="@string/tietBuAddMemDataCell"
-                    android:text="@{viewModel.member.m_cell}"
+                    android:text="@={viewModel.member.m_cell}"
                     android:textColor="@color/black"/>
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -157,7 +157,7 @@
                     android:background="@color/white"
                     android:enabled="false"
                     android:hint="@string/tietBuAddMemDataTwid"
-                    android:text="@{viewModel.member.m_twid}"
+                    android:text="@={viewModel.member.m_twid}"
                     android:textColor="@color/black" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -179,7 +179,7 @@
                     android:background="@color/white"
                     android:enabled="false"
                     android:hint="@string/tietBuAddMemDataAddr"
-                    android:text="@{viewModel.member.m_addr}"
+                    android:text="@={viewModel.member.m_addr}"
                     android:textColor="@color/black"/>
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -201,7 +201,7 @@
                     android:background="@color/white"
                     android:enabled="false"
                     android:hint="@string/tietBuAddMemDataEmail"
-                    android:text="@{viewModel.member.m_email}"
+                    android:text="@={viewModel.member.m_email}"
                     android:textColor="@color/black"/>
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -222,12 +222,12 @@
                     android:background="@color/white"
                     android:enabled="false"
                     android:hint="@string/tietBuAddMemDataExpireDate"
-                    android:text="@{viewModel.member.m_ed_time.toString()}"
                     android:textColor="@color/black"
                     android:imeOptions="flagNoExtractUi"
                     android:paddingLeft="16dp"
                     android:textColorHint="#CDC7D2"
-                    android:gravity="center|left"/>
+                    android:gravity="center|left"
+                    app:text="@{viewModel.member.m_ed_date}"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button

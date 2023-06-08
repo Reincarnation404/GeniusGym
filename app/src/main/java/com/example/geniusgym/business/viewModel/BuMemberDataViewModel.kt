@@ -13,7 +13,7 @@ import tw.idv.william.androidwebserver.core.service.requestTask
  * 會員列表資料處理
  */
 class BuMemberDataViewModel : ViewModel() {
-    val url = "http://10.0.2.2:8080/geniusgym_bg/business"
+    val url = "http://10.0.2.2:8080/geninusgym_bg/business"
 
     // 原始會員列表
     private var BuMemberList = mutableListOf<Member>()
@@ -23,6 +23,7 @@ class BuMemberDataViewModel : ViewModel() {
     fun inti(){
         val type = object : TypeToken<List<Member>>() {}.type
         members.value = requestTask<List<Member>>(url, respBodyType = type)
+       // println(members.value?.get(0))
     }
 //    init {
 //       // loadBuMember()

@@ -87,5 +87,5 @@ inline fun <reified T> request(
 }
 
 val GSON: Gson = GsonBuilder()
-    .setDateFormat("yyyy/MM/dd HH:mm:ss")
+    .setDateFormat("yyyy-MM-dd HH:mm:ss")
     .create()

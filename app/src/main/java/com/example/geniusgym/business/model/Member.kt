@@ -12,7 +12,7 @@ data class Member(
     var m_twid: String? = null,
     var m_addr: String? = null,
     var m_add_time: Timestamp? = null,
-    var m_ed_time: Timestamp? = null,
+    var m_ed_date: Timestamp? = null,
     var m_modi_time: Timestamp? = null,
     var b_id: String? = null,
     var m_email: String? = null,

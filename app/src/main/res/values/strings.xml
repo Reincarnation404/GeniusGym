@@ -49,6 +49,7 @@
     <string name="bu_add_choose_branch_confirm">確認</string>
     <string name="tietBuAddNotiPic">點擊選擇照片</string>
     <string name="btBuDataModify">修改</string>
+    <string name="tietBuAddModiID">新增/修改人編號</string>
 
     <string name="tietBuAddMemDataName">會員名字</string>
     <string name="tietBuAddMemDataID">會員編號</string>

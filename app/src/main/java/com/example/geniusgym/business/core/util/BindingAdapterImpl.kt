@@ -4,6 +4,7 @@ package com.example.geniusgym.business.core.util
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Build
+import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
@@ -53,4 +54,12 @@ val SDF = SimpleDateFormat("yyyy/MM/dd HH:mm:ss")
 @BindingAdapter("text")
 fun TextView.setText(timestamp: Timestamp){
     text = SDF.format(timestamp)
+}
+
+@BindingAdapter("android:onLongClick")
+fun setOnLongClickListener(view: View, block : () -> Unit) {
+    view.setOnLongClickListener {
+        block()
+        return@setOnLongClickListener true
+    }
 }

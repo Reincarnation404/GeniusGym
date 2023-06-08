@@ -1,19 +1,29 @@
 package com.example.geniusgym.business
 
+import android.app.Activity
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.Intent
 import android.graphics.Color
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.provider.MediaStore
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.databinding.adapters.TextViewBindingAdapter.setText
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.example.geniusgym.business.viewModel.BuMemberDataAddViewModel
 import com.example.geniusgym.R
 import com.example.geniusgym.databinding.FragmentBuMemberDataAddBinding
+import com.google.gson.JsonObject
+import tw.idv.william.androidwebserver.core.service.requestTask
+import java.sql.Timestamp
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -34,16 +44,59 @@ class BuMemberDataAddFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         with(binding){
+            tietBuAddMemDataGen.setText(viewModel?.genToString())
+
+
             tietBuAddMemDataExpireDate.setOnClickListener {
                 tietBuAddMemDataExpireDate.showSoftInputOnFocus = false
                 openDateTimeDialogs()
+                tietBuAddMemDataExpireDate.text = viewModel?.timeToString()
             }
 
             btBuAddMemDataCancel.setOnClickListener {
                 Navigation.findNavController(it).popBackStack()
             }
-        }
 
+            ivBuAddMemPic.setOnClickListener {
+                val intent = Intent(
+                    Intent.ACTION_PICK,
+                    MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+                )
+                pickPictureLauncher.launch(intent)
+            }
+
+            btBuAddMemDataSave.setOnClickListener {
+                viewModel?.member?.value.run{
+                    val m_gender = tietBuAddMemDataGen.text.toString().trim()
+
+                    if (m_gender.isEmpty()) {
+                        println("空的")
+                        return@setOnClickListener
+                    } else {
+                        val gender: Int = when (m_gender) {
+                            "女" -> 0
+                            "男" -> 1
+                            else ->
+                                return@setOnClickListener
+                        }
+                        viewModel?.member?.value?.m_gen = gender
+                        //println(gender)
+
+                        val m_date = tietBuAddMemDataExpireDate.text.toString().trim()
+                        val timestamp = Timestamp.valueOf(m_date)
+                        viewModel?.member?.value?.m_ed_date = timestamp
+
+                        val url = "http://10.0.2.2:8080/geninusgym_bg/business"
+
+                        val respbody = requestTask<JsonObject>(url, "POST", viewModel?.member?.value)
+                        //println(viewModel?.member?.value.toString())
+                        //println(viewModel?.member?.value?.m_ed_date)
+                    }
+                }
+
+            }
+
+        }
     }
 
     private fun openDateTimeDialogs() {
@@ -80,10 +133,18 @@ class BuMemberDataAddFragment : Fragment() {
         timePickerDialog.show()
     }
     private fun updateTvBuAddChooseDate() {
-        val format = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault())
+        val format = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
         val dateTime = format.format(calendar.time)
         binding.tietBuAddMemDataExpireDate.text = dateTime
         binding.tietBuAddMemDataExpireDate.setTextColor(Color.BLACK)
     }
 
+
+
+    private var pickPictureLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                result.data?.data?.let { uri -> binding.ivBuAddMemPic.setImageURI(uri) }
+            }
+        }
 }

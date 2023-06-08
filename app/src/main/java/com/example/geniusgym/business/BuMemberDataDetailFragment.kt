@@ -13,12 +13,16 @@ import com.example.geniusgym.business.model.Member
 import com.example.geniusgym.business.model.testBuMember
 import com.example.geniusgym.business.viewModel.BuMemberViewModel
 import com.example.geniusgym.databinding.FragmentBuMemberDataDetailBinding
+import com.google.gson.JsonObject
+import tw.idv.william.androidwebserver.core.service.requestTask
+import java.sql.Timestamp
 import java.text.SimpleDateFormat
 import java.util.*
 
 class BuMemberDataDetailFragment : Fragment() {
     private lateinit var binding: FragmentBuMemberDataDetailBinding
     private val calendar = Calendar.getInstance()
+    val url = "http://10.0.2.2:8080/geninusgym_bg/business"
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -31,7 +35,7 @@ class BuMemberDataDetailFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        with(binding){
+        with(binding) {
             arguments?.let { bundle ->
                 bundle.getSerializable("bumember")?.let {
                     viewModel?.member?.value = it as Member
@@ -42,7 +46,6 @@ class BuMemberDataDetailFragment : Fragment() {
 
             btBuAddMemDataDetailModify.setOnClickListener {
                 tietBuAddMemDataDetailName.isEnabled = true
-                tietBuAddMemDataDetailID.isEnabled = true
                 tietBuAddMemDataDetailPwd.isEnabled = true
                 tietBuAddMemDataDetailGen.isEnabled = true
                 tietBuAddMemDataDetailCell.isEnabled = true
@@ -53,6 +56,7 @@ class BuMemberDataDetailFragment : Fragment() {
                 tietBuAddMemDataDetailExpireDate.setOnClickListener {
                     tietBuAddMemDataDetailExpireDate.showSoftInputOnFocus = false
                     openDateTimeDialogs()
+                    tietBuAddMemDataDetailExpireDate.text = viewModel?.timeToString()
                 }
                 btBuAddMemDataDetailModify.visibility = View.GONE
                 btBuAddMemDataDetailSave.visibility = View.VISIBLE
@@ -70,13 +74,36 @@ class BuMemberDataDetailFragment : Fragment() {
                 tietBuAddMemDataDetailExpireDate.isEnabled = false
                 btBuAddMemDataDetailSave.visibility = View.GONE
                 btBuAddMemDataDetailModify.visibility = View.VISIBLE
+
+                viewModel?.member?.value.run {
+                    val m_gender = tietBuAddMemDataDetailGen.text.toString().trim()
+
+                    if (m_gender.isEmpty()) {
+                        println("空的")
+                        return@setOnClickListener
+                    } else {
+                        val gender: Int = when (m_gender) {
+                            "女" -> 0
+                            "男" -> 1
+                            else ->
+                                return@setOnClickListener
+                        }
+                        viewModel?.member?.value?.m_gen = gender
+
+                        val m_date = tietBuAddMemDataDetailExpireDate.text.toString().trim()
+                        val timestamp = Timestamp.valueOf(m_date)
+                        viewModel?.member?.value?.m_ed_date = timestamp
+
+
+                        requestTask<JsonObject>(url, "PUT", viewModel?.member?.value)
+                        println(viewModel?.member?.value)
+                    }
+                }
             }
+
+
         }
-
-
     }
-
-
 
     private fun openDateTimeDialogs() {
         val dateListener = DatePickerDialog.OnDateSetListener { _, year, month, day ->
@@ -112,7 +139,7 @@ class BuMemberDataDetailFragment : Fragment() {
         timePickerDialog.show()
     }
     private fun updateTvBuAddChooseDate() {
-        val format = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault())
+        val format = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
         val dateTime = format.format(calendar.time)
         binding.tietBuAddMemDataDetailExpireDate.text = dateTime
         binding.tietBuAddMemDataDetailExpireDate.setTextColor(Color.BLACK)

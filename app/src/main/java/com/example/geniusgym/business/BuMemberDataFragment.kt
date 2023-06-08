@@ -34,6 +34,8 @@ class BuMemberDataFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         with(binding){
            // setupMenu()
+            viewModel?.inti()
+
             rvBuMemberData.layoutManager = LinearLayoutManager(requireContext())
             viewModel?.members?.observe(viewLifecycleOwner) { members ->
                 // adapter為null要建立新的adapter；之後只要呼叫updateFriends(friends)即可
@@ -43,7 +45,7 @@ class BuMemberDataFragment : Fragment() {
                     (rvBuMemberData.adapter as BuMemberDataAdapter).updateBuMember(members)
                 }
             }
-            viewModel?.inti()
+
 
 
 
