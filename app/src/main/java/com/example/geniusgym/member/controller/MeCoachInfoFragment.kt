@@ -4,10 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.geniusgym.databinding.FragmentMeCoachInfoBinding
+import com.example.geniusgym.member.MeActivity
 import com.example.geniusgym.member.adapter.MeCoachInfoAdapter
 import com.example.geniusgym.member.viewmodel.MeCoachInfoViewModel
 
@@ -15,7 +17,7 @@ class MeCoachInfoFragment : Fragment() {
 
     private val viewModel: MeCoachInfoViewModel by viewModels()
     private lateinit var binding: FragmentMeCoachInfoBinding
-
+    private lateinit var activity : AppCompatActivity
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -41,5 +43,9 @@ class MeCoachInfoFragment : Fragment() {
 
         }
 
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
     }
 }

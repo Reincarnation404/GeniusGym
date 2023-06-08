@@ -48,8 +48,15 @@
     <string name="tvBuAddChooseDate">點擊選擇日期</string>
     <string name="tvBuAddChooseTime">點擊選擇時間</string>
 
-    <string name="me_br_store">分店商城</string>
 
+<!--會員端字串    -->
+    <string name="me_br_store">分店商城</string>
     <string name="btPaymentConfirm">確認送出</string>
+    <string name="MeCoachDetail">教練介紹</string>
+    <string name="me_shoping_lessonkind">課程類型: </string>
+    <string name="me_shopping_coachname">指導教練: </string>
+    <string name="me_shopping_lesson_date">上課日期: </string>
+    <string name="me_shopping_lesson_time">上課時間: </string>
+    <string name="me_shopping_lesson_point">點數價格: </string>
 
 </resources>
