@@ -17,6 +17,7 @@ import com.example.geniusgym.coach.calendarMemberListDetail.model.SportRecordBig
 import com.example.geniusgym.coach.calendarMemberListDetail.viewmodel.CoCalenderMemberStaticSmallViewModel
 import com.example.geniusgym.databinding.FragmentCoCalenderMemberStaticSmallBinding
 import com.google.gson.GsonBuilder
+import kotlinx.coroutines.runBlocking
 
 class CoCalenderMemberStaticSmallFragment : Fragment() {
     private lateinit var binding: FragmentCoCalenderMemberStaticSmallBinding
@@ -61,7 +62,7 @@ class CoCalenderMemberStaticSmallFragment : Fragment() {
                     }
                 }
             }
-
+            viewModel?.setID?.value = viewModel?.recordItems?.value?.get(0)?.sd_bigid
             btCoCaMeStSmCancel.setOnClickListener {
                 Navigation.findNavController(it).popBackStack()
             }
@@ -70,6 +71,9 @@ class CoCalenderMemberStaticSmallFragment : Fragment() {
                     if (which == AlertDialog.BUTTON_POSITIVE) {
                         viewModel?.m_id?.let {
                             remove(it)
+                            runBlocking {
+                                viewModel?.sportDataDeleteBigid()
+                            }
                         }
                     }
                     Navigation.findNavController(view).popBackStack()
@@ -90,25 +94,33 @@ class CoCalenderMemberStaticSmallFragment : Fragment() {
                         if (viewModel?.recordItems?.value?.size == 0) {
                             viewModel?.m_id?.let {
                                 remove(it)
+                                runBlocking {
+                                    viewModel?.sportDataDeleteBigid()
+                                }
                             }
-
                         } else {
                             viewModel?.recordItems?.value?.let {
                                 item.data = it
                                 item.count = it.size.toString()
                                 item.time = viewModel?.textDate?.value
-
+                                runBlocking {
+                                    viewModel?.sportDataDeleteBigid()
+                                    viewModel?.sportDataUpload()
+                                }
                                 val gson = GsonBuilder().create()
                                 val jsonStr = gson.toJson(coActivity.memberSportRecord)
                                 requireActivity().getPreferences(Context.MODE_PRIVATE).edit()
-                                    .putString(coActivity.memberSportRecord[0].m_id, jsonStr)
+                                    //.putString(coActivity.memberSportRecord[0].m_id, jsonStr)
+                                    .putString(coActivity.binding.viewModel?.member?.value?.memberId, jsonStr)
                                     .apply()
                             }
                         }
                     }
+
                     Navigation.findNavController(view).popBackStack()
                     dialog.cancel()
                 }
+
                 val sendText =
                     if (viewModel?.recordItems?.value?.size == 0) {
                         R.string.txtCoCaMeStSmEmptySendMessage
@@ -124,10 +136,10 @@ class CoCalenderMemberStaticSmallFragment : Fragment() {
                     .show()
             }
         }
-
-
     }
-    private fun remove(id:String){
+
+
+    private fun remove(id: String) {
         val coActivity = requireActivity() as CoActivity
         coActivity.memberSportRecord.remove(coActivity.memberSportBigRecord)
         val gson = GsonBuilder().create()

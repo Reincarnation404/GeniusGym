@@ -22,10 +22,10 @@ class webRequest_spencer {
     }
 
     suspend fun httpPost(
-        url: String,
+        servlet: String,
         jsonOut: String
     ): String {
-
+        val url = "http://192.168.186.96:8080/THP101/$servlet"
         var jsonIn = ""
         withContext(Dispatchers.IO) {
             (URL(url).openConnection() as? HttpURLConnection)?.run {

@@ -27,7 +27,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_weight="1"
                 android:gravity="left|center_vertical"
-                android:text='@{viewModel.recordItem.sc_name + " " + viewModel.recordItem.sc_weight +" 公斤 " + viewModel.recordItem.sc_freq + " 次"}'
+                android:text='@{viewModel.recordItem.sc_name + " " + viewModel.recordItem.sc_weigt +" 公斤 " + viewModel.recordItem.sc_freq + " 次"}'
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

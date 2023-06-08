@@ -25,7 +25,6 @@ class CoCalenderMemberStaticViewModel : ViewModel() {
     fun loadStatistic() {
         viewModelScope.launch {
             member?.value?.memberId?.let {
-                println("a")
                 val item = memberStatisticInfo(it)
                 val string = StringBuilder("")
                 memberStatistic.value = string
@@ -60,12 +59,10 @@ class CoCalenderMemberStaticViewModel : ViewModel() {
     }
 
     private suspend fun memberStatisticInfo(memberId: String): BodyData {
-        //val url = "http://10.0.2.2:8080/THP101/test_get_member"
-        val url = "http://192.168.67.1:8080/THP101/GetMemberStatic"
         val jsonObject = JsonObject()
         jsonObject.addProperty("m_id", memberId)
         println("b\n")
-        val jsonIn: String = webRequest_spencer().httpPost(url, jsonObject.toString())
+        val jsonIn: String = webRequest_spencer().httpPost("GetMemberStatic",jsonObject.toString())
         println("c\n")
         println("d $jsonIn")
         val type = object : TypeToken<BodyData?>() {}.type

@@ -107,7 +107,6 @@ class CoCalenderMemberStaticFragment : Fragment(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         with(binding) {
-            println("SetOnClickListener----")
             when (v?.id) {
                 R.id.tvCoCaMeStecerciseRecordDate -> {
                     val calendar = Calendar.getInstance()

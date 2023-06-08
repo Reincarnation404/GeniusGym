@@ -19,10 +19,11 @@ import com.example.geniusgym.coach.calendarMemberListDetail.model.SportSmallItem
 import com.example.geniusgym.coach.calendarMemberListDetail.viewmodel.CoCalenderMemberRecordAfterViewModel
 import com.example.geniusgym.databinding.FragmentCoCalenderMemberRecordAfterBinding
 import com.google.gson.GsonBuilder
-import java.time.DayOfWeek
+import kotlinx.coroutines.runBlocking
+import java.security.MessageDigest
 import java.time.LocalDate
+import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
-import java.time.temporal.TemporalAdjusters
 import java.util.*
 
 class CoCalenderMemberRecordAfterFragment : Fragment() {
@@ -61,7 +62,9 @@ class CoCalenderMemberRecordAfterFragment : Fragment() {
                 viewModel?.m_id = member.memberId
                 viewModel?.name?.value = member.name
             }
-
+            val formatter = DateTimeFormatter.ofPattern("yyyyMMdd HH:mm:ss")
+            val str = LocalDateTime.now().format(formatter).toString()
+            viewModel?.setID?.value = str.hashCode().toString()
             rvCoCaMeReAf.layoutManager = LinearLayoutManager(requireContext())
             viewModel?.recordItems?.observe(viewLifecycleOwner) { items ->
                 if (rvCoCaMeReAf.adapter == null) {
@@ -88,7 +91,9 @@ class CoCalenderMemberRecordAfterFragment : Fragment() {
                             )
                             val gson = GsonBuilder().create()
                             val jsonStr = gson.toJson(coActivity.memberSportRecord)
-
+                            runBlocking {
+                                viewModel?.sportDataUpload()
+                            }
                             requireActivity().getPreferences(Context.MODE_PRIVATE).edit()
                                 .putString(viewModel?.m_id, jsonStr).apply()
                             println(jsonStr)
@@ -98,9 +103,7 @@ class CoCalenderMemberRecordAfterFragment : Fragment() {
                     dialog.cancel()
                 }
                 viewModel?.recordItems?.value?.let {recordItems ->
-                    for(recordItem in recordItems){
-                        recordItem.updateTime = viewModel?.textDate?.value
-                    }
+
                     android.app.AlertDialog.Builder(view.context)
                         .setMessage(R.string.txtCoCaMeReAfSendDialogMessage)
                         .setPositiveButton(R.string.txtCoCaMeReAfAdapterYes, onClickListener)

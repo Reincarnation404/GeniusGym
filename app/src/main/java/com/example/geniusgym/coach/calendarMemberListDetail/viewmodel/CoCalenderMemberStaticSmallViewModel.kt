@@ -2,9 +2,9 @@ package com.example.geniusgym.coach.calendarMemberListDetail.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.geniusgym.coach.calendarMemberList.model.MemberItem
 import com.example.geniusgym.coach.calendarMemberListDetail.model.SportRecordItem
-import com.example.geniusgym.coach.calendarMemberListDetail.model.SportSmallItem
+import com.example.geniusgym.util.webRequest_spencer
+import com.google.gson.GsonBuilder
 
 class CoCalenderMemberStaticSmallViewModel : ViewModel() {
     val recordItems: MutableLiveData<MutableList<SportRecordItem>> by lazy { MutableLiveData<MutableList<SportRecordItem>>() }
@@ -12,8 +12,9 @@ class CoCalenderMemberStaticSmallViewModel : ViewModel() {
     val errorMessage: MutableLiveData<String> by lazy { MutableLiveData<String>() }
     val name: MutableLiveData<String> by lazy { MutableLiveData<String>() }
     val sportName: MutableLiveData<String> by lazy { MutableLiveData<String>() }
-    val weight: MutableLiveData<String> by lazy { MutableLiveData<String>() }
+    val weight: MutableLiveData<String> by lazy { MutableLiveData< String>() }
     val freq: MutableLiveData<String> by lazy { MutableLiveData<String>() }
+    val setID: MutableLiveData<String> by lazy { MutableLiveData<String>() }
     val textDate: MutableLiveData<String> by lazy { MutableLiveData<String>() }
     var sc_id: String = ""
     var m_id: String = ""
@@ -34,10 +35,16 @@ class CoCalenderMemberStaticSmallViewModel : ViewModel() {
             m_name = name?.value,
             sc_id = this.sc_id,
             sc_name = sportName?.value,
-            sc_weight = weight?.value,
-            sc_freq = freq?.value,
+            sc_weigt = weight?.value?.toFloat(),
+            sc_freq = freq?.value?.toInt(),
             c_id = "RRRRR",
-            updateTime = ""
+            sd_record_time = textDate?.value,
+            sd_bigid = setID?.value,
+            sc_set = if (recordItems.value == null) {
+                1
+            } else {
+                recordItems.value!!.size + 1
+            }
         )
         println("AfterViewModel" + textDate?.value)
         recordList.add(item)
@@ -52,5 +59,18 @@ class CoCalenderMemberStaticSmallViewModel : ViewModel() {
             string.trim().isNotEmpty() &&
                     string.matches(Regex("[1-9]\\d*"))
         }
+    }
+    suspend fun sportDataDeleteBigid():String{
+        val gson = GsonBuilder().create()
+        val bigId = recordItems?.value?.get(0)?.sd_bigid
+        val jsonIn: String = webRequest_spencer().httpPost("DeleteSportData",bigId.toString())
+        return jsonIn
+    }
+    suspend fun sportDataUpload():String{
+        val gson = GsonBuilder().create()
+        val jsonListSportRecordItem = gson.toJson(recordItems?.value)
+        println(jsonListSportRecordItem)
+        val jsonIn: String = webRequest_spencer().httpPost("IsertSportData",jsonListSportRecordItem.toString())
+        return jsonIn
     }
 }
