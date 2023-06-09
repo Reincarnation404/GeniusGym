@@ -8,29 +8,9 @@ class CoCalenderMemberRecordAnoxSmallViewModel : ViewModel() {
     val items: MutableLiveData<List<SportSmallItem>> by lazy { MutableLiveData<List<SportSmallItem>>() }
     val item: MutableLiveData<SportSmallItem> by lazy { MutableLiveData<SportSmallItem>() }
     private var itemList = listOf<SportSmallItem>()
-    init {
-        load()
-    }
 
-    fun search(input: String?) {
-        val searchList = if (input == null || input.isEmpty()) {
-            println("input == null || input.isEmpty()")
-            itemList
-        } else {
-            println("!input == null && !input.isEmpty()")
-            itemList.filter { item ->
-                searchItem(item, input.trim())
-            }
-        }
-        items.value = searchList
-    }
-
-    private fun searchItem(item: SportSmallItem, searchText: String): Boolean {
-        return item.cata.contains(searchText, ignoreCase = true)
-    }
-
-    private fun load(){
-        val list = mutableListOf<SportSmallItem>()
+    fun load(sportSamllItem: List<SportSmallItem>?, id: String) {
+        /*val list = mutableListOf<SportSmallItem>()
 
         list.add(SportSmallItem("1","1", "槓鈴肩推"))
         list.add(SportSmallItem("1","2","啞鈴肩推"))
@@ -41,9 +21,27 @@ class CoCalenderMemberRecordAnoxSmallViewModel : ViewModel() {
         list.add(SportSmallItem("2","2","槓鈴握推"))
         list.add(SportSmallItem("2","3","蝴蝶機夾胸"))
         list.add(SportSmallItem("2","4","繩索下斜夾胸"))
-        list.add(SportSmallItem("2","5","槓鈴斜上推"))
+        list.add(SportSmallItem("2","5","槓鈴斜上推"))*/
 
-        this.itemList = list
-        this.items.value = this.itemList
+        sportSamllItem?.let {
+            this.itemList = it
+            this.items.value = this.itemList
+            search(id)
+        }
+    }
+    private fun search(input: String?) {
+        val searchList = if (input == null || input.isEmpty()) {
+            itemList
+        } else {
+            itemList.filter { item ->
+                searchItem(item, input.trim())
+            }
+        }
+        items.value = searchList
+    }
+
+    private fun searchItem(item: SportSmallItem, searchText: String): Boolean {
+        //return item.sb_cat.contains(searchText, ignoreCase = true)
+        return item.sb_cat.contains(searchText, ignoreCase = true)
     }
 }

@@ -3,7 +3,7 @@ package com.example.geniusgym.coach.calendarMemberListDetail.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.geniusgym.coach.calendarMemberListDetail.model.SportRecordItem
-import com.example.geniusgym.util.webRequest_spencer
+import com.example.geniusgym.util.WebRequestSpencer
 import com.google.gson.GsonBuilder
 
 class CoCalenderMemberStaticSmallViewModel : ViewModel() {
@@ -63,14 +63,14 @@ class CoCalenderMemberStaticSmallViewModel : ViewModel() {
     suspend fun sportDataDeleteBigid():String{
         val gson = GsonBuilder().create()
         val bigId = recordItems?.value?.get(0)?.sd_bigid
-        val jsonIn: String = webRequest_spencer().httpPost("DeleteSportData",bigId.toString())
+        val jsonIn: String = WebRequestSpencer().httpPost("DeleteSportData",bigId.toString())
         return jsonIn
     }
     suspend fun sportDataUpload():String{
         val gson = GsonBuilder().create()
         val jsonListSportRecordItem = gson.toJson(recordItems?.value)
         println(jsonListSportRecordItem)
-        val jsonIn: String = webRequest_spencer().httpPost("IsertSportData",jsonListSportRecordItem.toString())
+        val jsonIn: String = WebRequestSpencer().httpPost("GetSportData",jsonListSportRecordItem.toString())
         return jsonIn
     }
 }

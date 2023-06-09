@@ -20,7 +20,6 @@ import com.example.geniusgym.coach.calendarMemberListDetail.viewmodel.CoCalender
 import com.example.geniusgym.databinding.FragmentCoCalenderMemberRecordAfterBinding
 import com.google.gson.GsonBuilder
 import kotlinx.coroutines.runBlocking
-import java.security.MessageDigest
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -53,8 +52,8 @@ class CoCalenderMemberRecordAfterFragment : Fragment() {
 
             arguments?.let { bundle ->
                 bundle.getSerializable("item")?.let {
-                    viewModel?.sc_id = (it as SportSmallItem).id
-                    viewModel?.sportName?.value = it.name
+                    viewModel?.sc_id = (it as SportSmallItem).sc_id
+                    viewModel?.sportName?.value = it.sc_name
                 }
             }
             val member = coActivity.binding.viewModel?.member?.value
@@ -91,12 +90,12 @@ class CoCalenderMemberRecordAfterFragment : Fragment() {
                             )
                             val gson = GsonBuilder().create()
                             val jsonStr = gson.toJson(coActivity.memberSportRecord)
+
+                            requireActivity().getPreferences(Context.MODE_PRIVATE).edit()
+                                .putString(viewModel?.m_id, jsonStr).apply()
                             runBlocking {
                                 viewModel?.sportDataUpload()
                             }
-                            requireActivity().getPreferences(Context.MODE_PRIVATE).edit()
-                                .putString(viewModel?.m_id, jsonStr).apply()
-                            println(jsonStr)
                             Navigation.findNavController(view).popBackStack()
                         }
                     }

@@ -6,7 +6,7 @@ import androidx.lifecycle.viewModelScope
 
 import com.example.geniusgym.coach.calendarMemberList.model.MemberItem
 import com.example.geniusgym.coach.calendarMemberListDetail.model.SportRecordBigItem
-import com.example.geniusgym.util.webRequest_spencer
+import com.example.geniusgym.util.WebRequestSpencer
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
@@ -62,7 +62,7 @@ class CoCalenderMemberStaticViewModel : ViewModel() {
         val jsonObject = JsonObject()
         jsonObject.addProperty("m_id", memberId)
         println("b\n")
-        val jsonIn: String = webRequest_spencer().httpPost("GetMemberStatic",jsonObject.toString())
+        val jsonIn: String = WebRequestSpencer().httpPost("GetMemberStatic",jsonObject.toString())
         println("c\n")
         println("d $jsonIn")
         val type = object : TypeToken<BodyData?>() {}.type

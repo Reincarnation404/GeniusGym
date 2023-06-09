@@ -4,11 +4,12 @@ import kotlinx.coroutines.withContext
 import java.net.HttpURLConnection
 import java.net.URL
 
-class webRequest_spencer {
+class WebRequestSpencer {
     suspend fun httpGet(
-        url: String
+        servlet: String,
     ): String {
         var jsonIn = ""
+        val url = "http://192.168.186.96:8080/THP101/$servlet"
         withContext(Dispatchers.IO) {
             (URL(url).openConnection() as? HttpURLConnection)?.run {
                 if (responseCode == 200) {

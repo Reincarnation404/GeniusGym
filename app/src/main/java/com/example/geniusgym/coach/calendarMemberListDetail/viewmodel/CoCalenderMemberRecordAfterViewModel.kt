@@ -3,7 +3,7 @@ package com.example.geniusgym.coach.calendarMemberListDetail.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.geniusgym.coach.calendarMemberListDetail.model.SportRecordItem
-import com.example.geniusgym.util.webRequest_spencer
+import com.example.geniusgym.util.WebRequestSpencer
 import com.google.gson.GsonBuilder
 
 class CoCalenderMemberRecordAfterViewModel : ViewModel() {
@@ -45,7 +45,6 @@ class CoCalenderMemberRecordAfterViewModel : ViewModel() {
             }
 
         )
-        println("AfterViewModel" + textDate?.value)
         recordList.add(item)
         recordItems.value = recordList
     }
@@ -63,7 +62,7 @@ class CoCalenderMemberRecordAfterViewModel : ViewModel() {
         val gson = GsonBuilder().create()
         val jsonListSportRecordItem = gson.toJson(recordItems?.value)
         println(jsonListSportRecordItem)
-        val jsonIn: String = webRequest_spencer().httpPost("IsertSportData",jsonListSportRecordItem.toString())
+        val jsonIn: String = WebRequestSpencer().httpPost("GetSportData",jsonListSportRecordItem.toString())
         return jsonIn
     }
 }

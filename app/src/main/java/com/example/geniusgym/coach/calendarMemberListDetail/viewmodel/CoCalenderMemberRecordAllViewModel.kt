@@ -13,9 +13,7 @@ class CoCalenderMemberRecordAllViewModel : ViewModel() {
     private var itemList = mutableListOf<SportSmallItem>()
 
 
-    init {
-        load()
-    }
+
     fun search(searchText: String?) {
         val searchList =
             if (searchText == null || searchText.isBlank()) {
@@ -29,11 +27,11 @@ class CoCalenderMemberRecordAllViewModel : ViewModel() {
     }
 
     private fun searchItem(item: SportSmallItem, searchText: String): Boolean {
-        return item.name.contains(searchText, true)
+        return item.sc_name.contains(searchText, true)
     }
 
-    private fun load() {
-        val list = mutableListOf<SportSmallItem>()
+    fun load(sportSmallItem: List<SportSmallItem>?) {
+        /*val list = mutableListOf<SportSmallItem>()
 
         list.add(SportSmallItem("1", "1", "槓鈴肩推"))
         list.add(SportSmallItem("1", "2", "啞鈴肩推"))
@@ -49,9 +47,10 @@ class CoCalenderMemberRecordAllViewModel : ViewModel() {
         list.add(SportSmallItem("1", "2", "靜態"))
         list.add(SportSmallItem("1", "3", "心肺訓練"))
         list.add(SportSmallItem("1", "4", "跑步"))
-        list.add(SportSmallItem("1", "5", "舞蹈"))
-
-        this.itemList = list
-        this.items.value = this.itemList
+        list.add(SportSmallItem("1", "5", "舞蹈"))*/
+        sportSmallItem?.let {
+            this.itemList = it as MutableList<SportSmallItem>
+            this.items.value = this.itemList
+        }
     }
 }
