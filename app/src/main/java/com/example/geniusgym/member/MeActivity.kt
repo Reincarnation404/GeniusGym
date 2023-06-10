@@ -2,8 +2,13 @@ package com.example.geniusgym.member
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
+import androidx.navigation.NavOptions
+import androidx.navigation.NavOptionsBuilder
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -21,6 +26,15 @@ class MeActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         navController = navHostFragment.navController
 //        將底部導覽的頁面用map的key、value存儲
+        setSupportActionBar(binding.toolbarMebr)
+       supportActionBar?.apply {
+           setDisplayHomeAsUpEnabled(true)
+           setHomeAsUpIndicator(R.drawable.baseline_keyboard_backspace_24) // 如果您有自定義的返回圖標，可以使用此方法設置
+        }
+
+
+//        TODO: 設定toolbar的返回鍵
+
         val destinationMap = mapOf(
             R.id.meHomeFragment to binding.includedHome.homeMontionLayout,
             R.id.meBranchFragment to binding.includedBranch.branchMontionLayout,
@@ -35,6 +49,7 @@ class MeActivity : AppCompatActivity() {
             navController,
             AppBarConfiguration(destinationMap.keys)
         )
+
 //      使用遍例的方法將每個map中的layout(也就是底部導覽的元件)設置點擊時，會跳轉到哪一個頁面
         destinationMap.forEach{map ->
             map.value.setOnClickListener {
@@ -49,5 +64,30 @@ class MeActivity : AppCompatActivity() {
             destinationMap[destination.id]?.transitionToEnd()
 
         }
+
+//        onBackPressedDispatcher.addCallback(this, OnBackPresseClick)
+
+
+
     }
+
+    private val OnBackPresseClick = object : OnBackPressedCallback(true){
+        override fun handleOnBackPressed() {
+            val alertDialog = AlertDialog.Builder(this@MeActivity)
+            alertDialog.setTitle("確定要離開嗎")
+
+            alertDialog.setPositiveButton("確定"){dialog, which ->
+                dialog.dismiss()
+                finish()
+            }
+            alertDialog.setNegativeButton("取消"){dialog, which ->
+                dialog.dismiss()
+            }
+            alertDialog.show()
+        }
+
+    }
+
+
+
 }

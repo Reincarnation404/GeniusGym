@@ -1,4 +1,4 @@
-package com.example.ex7_2
+package com.example.geniusgym.util
 
 import com.google.gson.JsonObject
 import java.io.File

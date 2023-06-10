@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -12,23 +13,21 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
-            <EditText
+            <TextView
                 android:id="@+id/etAddPoint"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="227dp"
+                android:layout_height="32dp"
                 android:layout_weight="1"
-                android:ems="10"
-                android:hint="@string/etAddPoint"
-                android:inputType="textPersonName" />
+                tools:text="點數" />
 
             <Button
                 android:id="@+id/btAddPoint"
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:hint="@string/btAddPoint"
-                android:text="購買金額"
-                android:textColor="#050505" />
+                android:textColor="#050505"
+                tools:text="顯示購買金額" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

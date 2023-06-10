@@ -24,8 +24,7 @@ class CoCalendarClassFragment : Fragment(), View.OnClickListener {
     private lateinit var binding: FragmentCoCalendarTestBinding
     private lateinit var weekList: MutableList<weekDay>
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
 
         val viewModel: CoCalendarClassViewModel by viewModels()
@@ -45,7 +44,7 @@ class CoCalendarClassFragment : Fragment(), View.OnClickListener {
 
         with(binding) {
             viewModel?.textDate?.value =
-                LocalDate.now().format(DateTimeFormatter.ISO_LOCAL_DATE).toString()
+                date.format(DateTimeFormatter.ISO_LOCAL_DATE).toString()
             weekList = mutableListOf(
                 weekDay(tvCoCaDayOf1t, firstDayOrWeek),
                 weekDay(tvCoCaDayOf2t, firstDayOrWeek.plusDays(1)),
@@ -55,7 +54,7 @@ class CoCalendarClassFragment : Fragment(), View.OnClickListener {
                 weekDay(tvCoCaDayOf6t, firstDayOrWeek.plusDays(5)),
                 weekDay(tvCoCaDayOf7t, firstDayOrWeek.plusDays(6))
             )
-            tvDatet.setOnClickListener(this@CoCalendarClassFragment)
+            tvDate.setOnClickListener(this@CoCalendarClassFragment)
             for (textview in weekList) {
                 textview.textview.setOnClickListener(this@CoCalendarClassFragment)
             }
@@ -63,10 +62,10 @@ class CoCalendarClassFragment : Fragment(), View.OnClickListener {
             selectDay(dayOfWeek)
 
             rvClassListt.layoutManager = LinearLayoutManager(requireContext())
-            viewModel?.items?.observe(viewLifecycleOwner){items ->
-                if(rvClassListt.adapter == null){
+            viewModel?.items?.observe(viewLifecycleOwner) { items ->
+                if (rvClassListt.adapter == null) {
                     rvClassListt.adapter = ClassItemAdapter(items)
-                }else{
+                } else {
                     (rvClassListt.adapter as ClassItemAdapter).updateItem(items)
                 }
             }
@@ -84,7 +83,7 @@ class CoCalendarClassFragment : Fragment(), View.OnClickListener {
     override fun onClick(v: View?) {
         with(binding) {
             when (v?.id) {
-                R.id.tvDatet -> {
+                R.id.tvDate -> {
                     val calendar = Calendar.getInstance()
                     val datePickerDialog = DatePickerDialog(
                         requireContext(),
@@ -111,17 +110,11 @@ class CoCalendarClassFragment : Fragment(), View.OnClickListener {
                     )
 
                     datePickerDialog.show()
+                    println("Haha")
                 }
-                R.id.tvCoCaDayOf1t -> {
-                    selectDay(1)
-
-                }
-                R.id.tvCoCaDayOf2t -> {
-                    selectDay(2)
-                }
-                R.id.tvCoCaDayOf3t -> {
-                    selectDay(3)
-                }
+                R.id.tvCoCaDayOf1t -> selectDay(1)
+                R.id.tvCoCaDayOf2t -> selectDay(2)
+                R.id.tvCoCaDayOf3t -> selectDay(3)
                 R.id.tvCoCaDayOf4t -> selectDay(4)
                 R.id.tvCoCaDayOf5t -> selectDay(5)
                 R.id.tvCoCaDayOf6t -> selectDay(6)
@@ -146,5 +139,6 @@ class CoCalendarClassFragment : Fragment(), View.OnClickListener {
         binding.viewModel?.textDate?.value = weekList[index - 1].date.toString()
         binding.viewModel?.search(binding.viewModel?.textDate?.value)
     }
-    private class weekDay(var textview:TextView, var date:LocalDate)
+
+    private class weekDay(var textview: TextView, var date: LocalDate)
 }

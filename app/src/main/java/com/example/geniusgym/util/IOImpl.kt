@@ -1,4 +1,4 @@
-package com.example.ex7_2
+package com.example.geniusgym.util
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -35,7 +35,7 @@ class IOImpl {
      * 所有class共用的方法
      */
     companion object{
-        fun getEncryptedFile(file: File, context: Context): EncryptedFile {
+        private fun getEncryptedFile(file: File, context: Context): EncryptedFile {
             val masterKeyAlias = MasterKey.Builder(context)
                 .setKeyScheme(MasterKey.KeyScheme.AES256_GCM)
                 .build()

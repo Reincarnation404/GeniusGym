@@ -15,10 +15,8 @@
             android:id="@+id/bt_img_branch"
             android:layout_width="57dp"
             android:layout_height="50dp"
-            android:layout_marginStart="64dp"
             android:src="@drawable/baseline_keyboard_arrow_down_24"
             app:layout_constraintEnd_toEndOf="@+id/tv_address"
-            app:layout_constraintStart_toEndOf="@+id/tv_branch_title"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -79,7 +77,7 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/tvCmlCoCa"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/opentime"
@@ -92,7 +90,7 @@
             android:layout_height="wrap_content"
             android:text="09:00~24:00"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView2" />
+            app:layout_constraintStart_toEndOf="@+id/tvCmlCoCa" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>
