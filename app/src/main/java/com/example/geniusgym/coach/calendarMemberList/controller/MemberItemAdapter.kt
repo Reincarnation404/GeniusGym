@@ -13,6 +13,7 @@ import com.example.geniusgym.coach.CoActivity
 import com.example.geniusgym.coach.calendarMemberList.model.MemberItem
 import com.example.geniusgym.databinding.FragmentCoCalendarMemberCardviewBinding
 
+
 class MemberViewModel : ViewModel() {
     val item: MutableLiveData<MemberItem> by lazy { MutableLiveData<MemberItem>() }
 }

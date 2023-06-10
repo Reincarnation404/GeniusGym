@@ -53,6 +53,9 @@
     <string name="NaviMemTrain">自主訓練紀錄</string>
     <string name="NaviMemBodyInfo">身體數據</string>
     <string name="NaviMemSetting">設定</string>
+    <string name="txtOpen">開</string>
+    <string name="txtClose">關</string>
+
 
     <!--credit card spinner -->
     <string-array name="creditcard">

@@ -7,7 +7,7 @@
     <group >
         <item
             android:id="@+id/toolbar_mem_info"
-            android:icon="@drawable/mem_navidrawer_meminfo"
+            android:icon="@drawable/host_drawer_layout"
             android:title="@string/NaviMem"/>
         <item
             android:id="@+id/toolbar_mem_class"
