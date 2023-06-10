@@ -27,10 +27,12 @@ class MeActivity : AppCompatActivity() {
         navController = navHostFragment.navController
 //        將底部導覽的頁面用map的key、value存儲
         setSupportActionBar(binding.toolbarMebr)
-//        supportActionBar?.apply {
-//            setDisplayHomeAsUpEnabled(true)
-//            setHomeAsUpIndicator(R.drawable.ic_back) // 如果您有自定義的返回圖標，可以使用此方法設置
-//        }
+       supportActionBar?.apply {
+           setDisplayHomeAsUpEnabled(true)
+           setHomeAsUpIndicator(R.drawable.baseline_keyboard_backspace_24) // 如果您有自定義的返回圖標，可以使用此方法設置
+        }
+
+
 //        TODO: 設定toolbar的返回鍵
 
         val destinationMap = mapOf(

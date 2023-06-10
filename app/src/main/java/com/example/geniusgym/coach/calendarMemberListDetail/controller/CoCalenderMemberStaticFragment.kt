@@ -1,6 +1,7 @@
 package com.example.geniusgym.coach.calendarMemberListDetail.controller
 
 import android.app.DatePickerDialog
+import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,8 +13,11 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.geniusgym.R
 import com.example.geniusgym.coach.CoActivity
+import com.example.geniusgym.coach.calendarMemberListDetail.model.SportRecordBigItem
 import com.example.geniusgym.coach.calendarMemberListDetail.viewmodel.CoCalenderMemberStaticViewModel
 import com.example.geniusgym.databinding.FragmentCoCalenderMemberStaticBinding
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import java.time.DayOfWeek
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -36,13 +40,15 @@ class CoCalenderMemberStaticFragment : Fragment(), View.OnClickListener {
 
     override fun onResume() {
         super.onResume()
-        val mainActivity = requireActivity() as CoActivity
-        with(binding){
-            tvCoCaMeStHead.text = mainActivity.binding.viewModel?.name?.value
-            println("1" + mainActivity.binding.viewModel?.name?.value)
-            println("2" + tvCoCaMeStHead.text.toString())
+        val coActivity = requireActivity() as CoActivity
+        with(binding) {
+            val member = coActivity.binding.viewModel?.member?.value
+            viewModel?.member?.value = member
+            viewModel?.loadStatistic()
+            loadPreferences()
         }
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val date = LocalDate.now()
@@ -50,7 +56,6 @@ class CoCalenderMemberStaticFragment : Fragment(), View.OnClickListener {
 
 
         with(binding) {
-
             viewModel?.textDate?.value =
                 LocalDate.now().format(DateTimeFormatter.ISO_LOCAL_DATE).toString()
             weekList = mutableListOf(
@@ -69,18 +74,18 @@ class CoCalenderMemberStaticFragment : Fragment(), View.OnClickListener {
 
             val dayOfWeek = date.dayOfWeek.value
             selectDay(dayOfWeek)
-
+            val coActivity = requireActivity() as CoActivity
             rvCoCaMeSportStatistic.layoutManager = LinearLayoutManager(requireContext())
-            viewModel?.exerciseItems?.observe(viewLifecycleOwner) { items ->
+            viewModel?.sportRecordBigItems?.observe(viewLifecycleOwner) { items ->
                 if (rvCoCaMeSportStatistic.adapter == null) {
-                    rvCoCaMeSportStatistic.adapter = StatisticAdapter(items)
+                    rvCoCaMeSportStatistic.adapter = StatisticAdapter(items, coActivity)
+                    println("rvCoCaMeSportStatistic.adapter = StatisticAdapter(items)")
                 } else {
                     (rvCoCaMeSportStatistic.adapter as StatisticAdapter).updateItem(items)
                 }
             }
         }
     }
-
 
     private class weekDay(var textview: TextView, var date: LocalDate)
 
@@ -90,13 +95,15 @@ class CoCalenderMemberStaticFragment : Fragment(), View.OnClickListener {
         }
         weekList[index - 1].textview.setBackgroundResource(R.color.teal_700)
         binding.viewModel?.textDate?.value = weekList[index - 1].date.toString()
-        binding.viewModel?.search(binding.viewModel?.textDate?.value)
+        binding.viewModel?.search(
+            binding.viewModel?.member?.value?.memberId,
+            binding.viewModel?.textDate?.value
+        )
         println("Haha")
     }
 
     override fun onClick(v: View?) {
         with(binding) {
-            println("SetOnClickListener----")
             when (v?.id) {
                 R.id.tvCoCaMeStecerciseRecordDate -> {
                     val calendar = Calendar.getInstance()
@@ -134,9 +141,10 @@ class CoCalenderMemberStaticFragment : Fragment(), View.OnClickListener {
                 R.id.tvCoCaMeStExerciseDayOf7 -> selectDay(7)
                 else -> {}
             }
-            viewModel?.exerciseItems?.observe(viewLifecycleOwner) { items ->
+            val coActivity = requireActivity() as CoActivity
+            viewModel?.sportRecordBigItems?.observe(viewLifecycleOwner) { items ->
                 if (rvCoCaMeSportStatistic.adapter == null) {
-                    rvCoCaMeSportStatistic.adapter = StatisticAdapter(items)
+                    rvCoCaMeSportStatistic.adapter = StatisticAdapter(items, coActivity)
                 } else {
                     (rvCoCaMeSportStatistic.adapter as StatisticAdapter).updateItem(items)
                 }
@@ -149,6 +157,34 @@ class CoCalenderMemberStaticFragment : Fragment(), View.OnClickListener {
             number.toString()
         } else {
             "0$number"
+        }
+    }
+
+    private fun loadPreferences() {
+        with(binding) {
+            val gson = Gson()
+            val preferences = requireActivity().getPreferences(Context.MODE_PRIVATE)
+            val sportRecordItemsJson =
+                preferences.getString(viewModel?.member?.value?.memberId, "")
+            // 沒有儲存帳號，就無需顯示已經載入
+            if (sportRecordItemsJson!!.isEmpty()) {
+                return
+            }
+            val collectionType = object : TypeToken<MutableList<SportRecordBigItem>>() {}.type
+            val sportRecordItems =
+                (gson.fromJson<MutableList<SportRecordBigItem>>(
+                    sportRecordItemsJson,
+                    collectionType
+                ))
+            val coActivity = requireActivity() as CoActivity
+            coActivity.memberSportRecord = sportRecordItems
+            viewModel?.load(sportRecordItems)
+            // viewModel?.sportRecordBigLists?.value = sportRecordItems
+            binding.viewModel?.search(
+                binding.viewModel?.member?.value?.memberId,
+                binding.viewModel?.textDate?.value
+            )
+            println(viewModel?.sportRecordBigItems?.value)
         }
     }
 }

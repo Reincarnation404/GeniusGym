@@ -20,28 +20,28 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/tvCoCaReAfCard"
+                android:id="@+id/tvCoCaReStSamllCard"
                 style="@style/SettingStyleText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_weight="1"
                 android:gravity="left|center_vertical"
-                android:text="@{viewModel.item.name}"
+                android:text='@{viewModel.recordItem.sc_name + " " + viewModel.recordItem.sc_weigt +" 公斤 " + viewModel.recordItem.sc_freq + " 次"}'
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/ivCoCaReAfCard"
+                android:id="@+id/ivCoCaReAfCardRemove"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginEnd="16dp"
                 android:layout_weight="0.3"
                 android:foregroundGravity="center_vertical"
-                app:layout_constraintBottom_toBottomOf="@+id/tvCoCaReAfCard"
+                app:layout_constraintBottom_toBottomOf="@+id/tvCoCaReStSamllCard"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/tvCoCaReAfCard"
+                app:layout_constraintTop_toTopOf="@+id/tvCoCaReStSamllCard"
                 app:srcCompat="@drawable/ic_co_ca_me_re_af_remove" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 

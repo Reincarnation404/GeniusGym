@@ -4,15 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.findViewTreeLifecycleOwner
-import androidx.lifecycle.findViewTreeViewModelStoreOwner
+import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.geniusgym.R
 import com.example.geniusgym.coach.calendarMemberListDetail.model.SportSmallItem
-import com.example.geniusgym.coach.calendarMemberListDetail.viewmodel.CoCalenderMemberRecordAllViewModel
 import com.example.geniusgym.coach.calendarMemberListDetail.viewmodel.CoCalenderMemberRecordAllcardViewModel
 import com.example.geniusgym.databinding.FragmentCoCalendarMemberAllCardviewBinding
 
+private lateinit var navController: NavController
 class CoCaMeReAllAdapter(private var items: List<SportSmallItem>) :
     RecyclerView.Adapter<CoCaMeReAllAdapter.CoCaMeReAllViewHolder>() {
     class CoCaMeReAllViewHolder(val itemViewBinding: FragmentCoCalendarMemberAllCardviewBinding) :
@@ -24,6 +25,7 @@ class CoCaMeReAllAdapter(private var items: List<SportSmallItem>) :
             parent,
             false
         )
+        navController = parent.findNavController()
         itemViewBinding.viewModel = CoCalenderMemberRecordAllcardViewModel()
         itemViewBinding.lifecycleOwner = parent.findViewTreeLifecycleOwner()
         return CoCaMeReAllViewHolder(itemViewBinding)
@@ -36,7 +38,7 @@ class CoCaMeReAllAdapter(private var items: List<SportSmallItem>) :
             itemViewBinding.viewModel?.item?.value = item
             itemView.setOnClickListener {
                 bundle.putSerializable("item",item)
-                Navigation.findNavController(it).navigate(R.id.coCalenderMemberRecordAfterFragment, bundle)
+                Navigation.findNavController(it).navigate(R.id.action_coCalenderMemberRecordFragment_to_coCalenderMemberRecordAfterFragment, bundle)
             }
         }
     }

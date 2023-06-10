@@ -31,115 +31,117 @@ class CoCalendarMemberListViewModel : ViewModel() {
 
     private fun loadItems() {
         val itemList = mutableListOf<MemberItem>()
+        // memberID 不可以是 dfg
         itemList.add(
             MemberItem(
                 classId = "1234",
-                memberId = "456",
+                memberId = "R05221017",
                 name = "美秀集團",
             )
         )
         itemList.add(
             MemberItem(
                 classId = "1234",
-                memberId = "789",
+                memberId = "R05221018",
                 name = "原子邦妮",
             )
         )
         itemList.add(
             MemberItem(
                 classId = "1234",
-                memberId = "101112",
+                memberId = "R05221019",
                 name = "宋德鶴",
             )
         )
         itemList.add(
             MemberItem(
                 classId = "1234",
-                memberId = "GGGGG",
+                memberId = "R05221020",
                 name = "胡凱兒",
             )
         )
         itemList.add(
             MemberItem(
                 classId = "12311111",
-                memberId = "RX5168",
+                memberId = "R05221021",
                 name = "康士坦的變化球",
             )
         )
         itemList.add(
             MemberItem(
                 classId = "12311111",
-                memberId = "dfgdfgdf",
+                memberId = "R05221022",
                 name = "FORMOZA",
             )
         )
+
         itemList.add(
             MemberItem(
                 classId = "1231112",
-                memberId = "dfg",
-                name = "芒果醬",
+                memberId = "R05221023",
+                name = "芒果醬B",
             )
         )
         itemList.add(
             MemberItem(
                 classId = "1231112",
-                memberId = "dsdfsdfg",
+                memberId = "R05221024",
                 name = "Gummy B",
             )
         )
         itemList.add(
             MemberItem(
                 classId = "12311111",
-                memberId = "dsdfsd",
+                memberId = "R05221025",
                 name = "步行者",
             )
         )
         itemList.add(
             MemberItem(
                 classId = "12311111",
-                memberId = "dsdfd",
+                memberId = "R05221026",
                 name = "老王樂隊",
             )
         )
         itemList.add(
             MemberItem(
                 classId = "456",
-                memberId = "dsdsd",
+                memberId = "R05221027",
                 name = "草東沒有派對",
             )
         )
         itemList.add(
             MemberItem(
                 classId = "456",
-                memberId = "hohoh",
+                memberId = "R05221028",
                 name = "血肉果汁機",
             )
         )
         itemList.add(
             MemberItem(
                 classId = "789",
-                memberId = "hoho789h",
+                memberId = "R05221029",
                 name = "甜約翰",
             )
         )
         itemList.add(
             MemberItem(
                 classId = "789",
-                memberId = "hoho78h",
+                memberId = "R05221030",
                 name = "逃走鮑伯",
             )
         )
         itemList.add(
             MemberItem(
                 classId = "101112",
-                memberId = "hoho78h",
+                memberId = "R05221031",
                 name = "胭脂虎",
             )
         )
         itemList.add(
             MemberItem(
                 classId = "101112",
-                memberId = "hoo78h",
+                memberId = "R05221032",
                 name = "賀爾蒙少年",
             )
         )

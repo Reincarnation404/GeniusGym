@@ -11,14 +11,12 @@
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
 
     <androidx.core.widget.NestedScrollView
-        android:layout_width="409dp"
-        android:layout_height="593dp"
-        android:layout_marginTop="65dp"
+        android:layout_width="0dp"
+        android:layout_height="660dp"
         android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -48,7 +46,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
-                    android:hint="@string/tietBuAddNotiTitle" />
+                    android:hint="@string/tietBuAddNotiTitle"
+                    android:text="@={viewModel.title}"
+                    android:textColor="@color/black"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -56,8 +56,8 @@
                 style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
-                android:paddingHorizontal="20dp"
+                android:layout_marginTop="20dp"
+                android:paddingHorizontal="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -69,9 +69,9 @@
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:hint="@string/tietBuAddNotiSender"
-                    android:text="@={viewModel.sender}" />
+                    android:text="@={viewModel.sender}"
+                    android:textColor="@color/black"/>
             </com.google.android.material.textfield.TextInputLayout>
-
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilBuAddChooseBranch"
@@ -94,7 +94,8 @@
                     android:hint="@string/spBuAddChooseBranch"
                     android:imeOptions="flagNoExtractUi"
                     android:paddingLeft="16dp"
-                    android:textColorHint="#CDC7D2" />
+                    android:textColorHint="#CDC7D2"
+                    android:textColor="@color/black"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -119,7 +120,8 @@
                     android:hint="@string/spBuAddChooseTarget"
                     android:imeOptions="flagNoExtractUi"
                     android:paddingLeft="16dp"
-                    android:textColorHint="#CDC7D2" />
+                    android:textColorHint="#CDC7D2"
+                    android:textColor="@color/black"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -141,10 +143,11 @@
                     android:layout_height="50dp"
                     android:background="@color/white"
                     android:gravity="center|left"
-                    android:hint="@string/tvBuAddChooseDate"
+                    android:hint="@string/tvBuAddChooseDateTime"
                     android:imeOptions="flagNoExtractUi"
                     android:paddingLeft="16dp"
-                    android:textColorHint="#CDC7D2" />
+                    android:textColorHint="#CDC7D2"
+                    android:textColor="@color/black"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -167,7 +170,28 @@
                     android:layout_height="176dp"
                     android:background="@color/white"
                     android:hint="@string/tietBuAddNotiText"
-                    android:text="@={viewModel.text}" />
+                    android:text="@={viewModel.text}"
+                    android:textColor="@color/black"/>
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilBuAddNotiPic"
+                style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="221dp"
+                android:paddingHorizontal="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tilBuAddNotiText">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tietBuAddNotiPic"
+                    android:layout_width="match_parent"
+                    android:layout_height="176dp"
+                    android:background="@color/white"
+                    android:hint="@string/tietBuAddNotiPic" />
+
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
@@ -183,7 +207,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/btBuAddNotiCancel"
-                app:layout_constraintTop_toBottomOf="@+id/tilBuAddNotiText"
+                app:layout_constraintTop_toBottomOf="@+id/tilBuAddNotiPic"
                 app:layout_constraintVertical_bias="0.0" />
 
             <Button
@@ -198,7 +222,7 @@
                 android:textSize="24sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tilBuAddNotiText"
+                app:layout_constraintTop_toBottomOf="@+id/tilBuAddNotiPic"
                 app:layout_constraintVertical_bias="0.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

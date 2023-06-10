@@ -7,12 +7,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.geniusgym.coach.CoActivity
 import com.example.geniusgym.coach.calendarMemberListDetail.viewmodel.CoCalenderMemberRecordAnoxSmallViewModel
 import com.example.geniusgym.databinding.FragmentCoCalenderMemberRecordAnoxSmallBinding
 
 class CoCalenderMemberRecordAnoxSmallFragment : Fragment() {
     private lateinit var binding: FragmentCoCalenderMemberRecordAnoxSmallBinding
-
+    private lateinit var id:String
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
@@ -28,12 +29,13 @@ class CoCalenderMemberRecordAnoxSmallFragment : Fragment() {
         with(binding) {
             arguments?.let { bundle ->
                 bundle.getSerializable("id")?.let {
-                    val id = it as String
-                    println("id =" + id)
-                    viewModel?.search(id)
+                    id = it as String
                 }
             }
             rvCoCaMeReAnSmall.layoutManager = LinearLayoutManager(requireContext())
+            val coActivity = requireActivity() as CoActivity
+            val sportSmallItem = coActivity.binding.viewModel?.sportSmallItems?.value
+            viewModel?.load(sportSmallItem, id)
             viewModel?.items?.observe(viewLifecycleOwner) { items ->
                 if (rvCoCaMeReAnSmall.adapter == null) {
                     rvCoCaMeReAnSmall.adapter = CoCaMeReAnSmallAdapter(items)

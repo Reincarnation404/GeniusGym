@@ -23,15 +23,16 @@
             motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintTop_toTopOf="parent"
-            motion:layout_constraintStart_toStartOf="parent" >
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintBottom_toTopOf="@+id/textView"
+            android:layout_marginBottom="0dp">
             <CustomAttribute
                 motion:attributeName="crossfade"
                 motion:customFloatValue="0" />
             <CustomAttribute
                 motion:attributeName="colorFilter"
-                motion:customColorValue="?attr/colorControlNormal" />
+                motion:customColorValue="?android:attr/colorBackground" />
         </Constraint>
         <Constraint
             android:id="@+id/textView"
@@ -40,10 +41,11 @@
             android:layout_height="wrap_content"
             motion:layout_constraintTop_toBottomOf="@+id/imageView"
             motion:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="148dp" >
+            android:layout_marginTop="0dp"
+            motion:layout_constraintBottom_toBottomOf="parent">
             <CustomAttribute
                 motion:attributeName="textColor"
-                motion:customColorValue="?attr/colorControlNormal" />
+                motion:customColorValue="?android:attr/colorBackground" />
         </Constraint>
     </ConstraintSet>
 
@@ -53,9 +55,10 @@
             motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintTop_toTopOf="parent"
-            motion:layout_constraintStart_toStartOf="parent" >
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintBottom_toTopOf="@+id/textView"
+            android:layout_marginBottom="0dp">
             <CustomAttribute
                 motion:attributeName="crossfade"
                 motion:customFloatValue="1" />
@@ -71,7 +74,7 @@
             motion:layout_constraintBottom_toBottomOf="parent"
             motion:layout_constraintTop_toBottomOf="@+id/imageView"
             motion:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="148dp" >
+            android:layout_marginTop="0dp" >
             <CustomAttribute
                 motion:attributeName="textColor"
                 motion:customColorValue="@color/design_default_color_primary_dark" />

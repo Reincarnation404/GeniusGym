@@ -42,12 +42,12 @@
         tools:layout="@layout/fragment_me_card_apply" />
     <fragment
         android:id="@+id/meTradeCheck"
-        android:name="com.example.geniusgym.member.MeTradeCheck"
+        android:name="com.example.geniusgym.member.controller.MeTradeCheck"
         android:label="fragment_me_trade_check"
         tools:layout="@layout/fragment_me_trade_check" />
     <fragment
         android:id="@+id/mePersonalTrain"
-        android:name="com.example.geniusgym.member.MePersonalTrain"
+        android:name="com.example.geniusgym.member.controller.MePersonalTrain"
         android:label="fragment_me_personal_train"
         tools:layout="@layout/fragment_me_personal_train" />
     <fragment
@@ -61,8 +61,4 @@
             android:id="@+id/action_meMemberDetailFragment_to_mePointsFragment"
             app:destination="@id/mePointsFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/meNaviDrawer"
-        android:name="com.example.geniusgym.member.controller.MeNaviDrawer"
-        android:label="MeNaviDrawer" />
 </navigation>

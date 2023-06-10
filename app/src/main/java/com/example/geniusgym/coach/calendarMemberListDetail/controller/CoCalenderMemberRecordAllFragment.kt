@@ -8,6 +8,7 @@ import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.geniusgym.coach.CoActivity
 import com.example.geniusgym.coach.calendarMemberListDetail.controller.CoCaMeReAllAdapter
 import com.example.geniusgym.coach.calendarMemberListDetail.viewmodel.CoCalenderMemberRecordAllViewModel
 import com.example.geniusgym.databinding.FragmentCoCalenderMemberRecordAllBinding
@@ -28,6 +29,9 @@ class CoCalenderMemberRecordAllFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
+            val coActivity = requireActivity() as CoActivity
+            val sportSmallItem = coActivity.binding.viewModel?.sportSmallItems?.value
+            viewModel?.load(sportSmallItem)
             svCoCaMeReAll.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(query: String?): Boolean {
                     return false

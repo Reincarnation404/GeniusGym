@@ -17,5 +17,19 @@
     <string name="tietCoCaMeReAfWeightInput">重量（公斤）</string>
     <string name="tietCoCaMeReAfTimes">次數</string>
     <string name="btCoCaMeReAfSend">送出</string>
+    <string name="txtCoCaMeReAfAdapterYes">確定</string>
+    <string name="txtCoCaMeReAfAdapterCancel">取消</string>
+    <string name="txtCoCaMeReAfAdapterDialogMessage">您確定要刪除嗎？</string>
+    <string name="txtCoCaMeStSmSendMessage">您確定要送出變更嗎？</string>
+    <string name="txtCoCaMeStSmEmptySendMessage">您確定要送出變更嗎？現在沒有任何比數，等於是刪除整組資訊。</string>
+    <string name="txtCoCaMeStSmDeleteSendMessage">您確定要刪除整組資訊嗎？</string>
+    <string name="txtCoCaMeReAfSendDialogMessage">您確定要記錄這組嗎？</string>
+    <string name="tvCoCaMeReAfDateHead">日期：</string>
+    <string name="btCoCaMeStSmDelete">刪除</string>
+    <string name="btCoCaMeStSmCancel">取消</string>
+    <string name="tvCoCoUsername">姓名</string>
+    <string name="tvCoCoPhoneNumber">電話號碼</string>
+    <string name="tvCoCoMeNumber">教練編號</string>
+    <string name="tvCoCoMeStart">教練入職日</string>
 
 </resources>
