@@ -37,9 +37,10 @@ class CoCalendarMemberListFragment : Fragment() {
                     val classId = classItem.id
                     viewModel?.search(classId)
                     rvCoCaMe.layoutManager = LinearLayoutManager(requireContext())
+                    val coActivity = requireActivity() as CoActivity
                     viewModel?.items?.observe(viewLifecycleOwner){items ->
                         if(rvCoCaMe.adapter == null){
-                            rvCoCaMe.adapter = MemberItemAdapter(items)
+                            rvCoCaMe.adapter = MemberItemAdapter(items, coActivity)
                         }else{
                             (rvCoCaMe.adapter as MemberItemAdapter).updateItem(items)
                         }

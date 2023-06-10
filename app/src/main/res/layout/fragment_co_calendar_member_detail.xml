@@ -29,6 +29,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="@string/tvCoCaMeDetail"
+                android:textColor="@color/white"
                 android:textSize="24sp" />
 
             <TextView
@@ -38,6 +39,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="@string/tvCoCaMeRecord"
+                android:textColor="@color/white"
                 android:textSize="24sp" />
         </LinearLayout>
 
