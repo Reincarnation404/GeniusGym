@@ -42,6 +42,6 @@ class CoCalenderMemberRecordAnoxSmallViewModel : ViewModel() {
 
     private fun searchItem(item: SportSmallItem, searchText: String): Boolean {
         //return item.sb_cat.contains(searchText, ignoreCase = true)
-        return item.sb_cat.contains(searchText, ignoreCase = true)
+        return item.sb_id.contains(searchText, ignoreCase = true)
     }
 }

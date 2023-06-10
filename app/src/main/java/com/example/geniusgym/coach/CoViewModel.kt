@@ -45,14 +45,14 @@ class CoViewModel : ViewModel() {
     private suspend fun sportSmallItemImport(): List<SportSmallItem> {
         val jsonIn: String = WebRequestSpencer().httpPost("GetSportCat","start")
         val type = object : TypeToken<List<SportSmallItem>?>() {}.type
-        //println("JSONPOST: $jsonIn")
+        println("JSONPOSTSMALL: $jsonIn")
         return Gson().fromJson(jsonIn, type)
     }
 
     private suspend fun sportBigItemImport(): List<SportBigItem>{
         val jsonIn: String = WebRequestSpencer().httpGet("GetSportCat")
         val type = object : TypeToken<List<SportBigItem>?>() {}.type
-        //println("JSONGET: $jsonIn")
+        println("JSONGETBIG: $jsonIn")
         return Gson().fromJson(jsonIn, type)
     }
 }

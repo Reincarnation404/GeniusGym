@@ -1,6 +1,5 @@
 package com.example.geniusgym.coach.calendarMemberListDetail.viewmodel
 
-import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.geniusgym.coach.CoActivity
@@ -20,12 +19,14 @@ class CoCalenderMemberRecordOxViewModel : ViewModel() {
         items.add(SportSmallItem("1", "4", "跑步"))
         items.add(SportSmallItem("1", "5", "舞蹈"))
         this.items.value = items */
-        val oxId = coActivity.binding.viewModel?.sportBigItems?.value?.get(0)?.sb_cat.toString()
+        val oxId = coActivity.binding.viewModel?.sportBigItems?.value?.get(0)?.sb_id.toString()
 
         coActivity.binding.viewModel?.sportSmallItems?.value?.let {
             val items = it
+            it[0].sb_id
             this.items.value = items.filter { item ->
-                item.sb_cat.contains(oxId)
+                println(item.sb_id)
+                item.sb_id.contains(oxId)
             }
         }
 
