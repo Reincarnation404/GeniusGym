@@ -1,7 +1,91 @@
 package com.example.geniusgym.member
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.MutableLiveData
+import com.example.geniusgym.coach.calendarMemberList.model.ClassItem
+import com.example.geniusgym.member.model.MetrainBean
+import com.example.geniusgym.databinding.FragmentMePersonalTrainBinding
+import java.io.Serializable
+import java.time.LocalDate
 
 class MePersonalTrainViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+    val classname: MutableLiveData<String> by lazy { MutableLiveData<String>() }
+    val classtime: MutableLiveData<LocalDate> by lazy { MutableLiveData<LocalDate>() }
+
+    private var metrainlist = listOf<MetrainBean>()
+    val metrainitem: MutableLiveData<List<MetrainBean>> by lazy { MutableLiveData<List<MetrainBean>>() }
+    init{
+        loadItems()
+    }
+    fun search(input: String?) {
+        val searchList = if (input == null || input.isEmpty()) {
+            metrainlist
+        } else {
+            metrainlist.filter { item ->
+                searchItem(item, input.trim())
+            }
+        }
+        metrainitem.value = searchList
+
+    }
+
+    private fun searchItem(item: MetrainBean, searchText: String): Boolean {
+        return item.mtdate.contains(searchText, ignoreCase = false)
+
+    }
+    private fun loadItems(){
+
+        val metrainlist = mutableListOf<MetrainBean>()
+        metrainlist.add(
+            MetrainBean(
+                mtid="111",
+                mtstarttime = "10:00",
+                mtendtime="11:00",
+                mtdate="2023-06-05",
+                myclassname="私人教練課"))
+
+        metrainlist.add(
+            MetrainBean(
+                mtid="112",
+                mtstarttime = "13:00",
+                mtendtime="14:00",
+                mtdate="2023-06-05",
+                myclassname="有氧團體課"))
+
+        metrainlist.add(
+            MetrainBean(
+                mtid="113",
+                mtstarttime ="16:30",
+                mtendtime="17:30",
+                mtdate="2023-06-08",
+                myclassname="飛輪團體課"))
+
+        metrainlist.add(
+            MetrainBean(
+                mtid="114",
+                mtstarttime ="19:00",
+                mtendtime="20:00",
+                mtdate="2023-06-09",
+                myclassname="肌力訓練課"))
+
+        metrainlist.add(
+            MetrainBean(
+                mtid="115",
+                mtstarttime ="14:30",
+                mtendtime="15:30",
+                mtdate="2023-06-10",
+                myclassname="槓鈴啞鈴課"))
+
+        metrainlist.add(
+            MetrainBean(
+                mtid="116",
+                mtstarttime ="21:00",
+                mtendtime="22:00",
+                mtdate="2023-06-11",
+                myclassname="心肺耐力課"))
+
+        this.metrainlist = metrainlist
+        this.metrainitem.value = this.metrainlist
+    }
+
 }

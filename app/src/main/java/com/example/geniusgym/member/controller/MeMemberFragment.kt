@@ -28,5 +28,7 @@ class MeMemberFragment : Fragment() {
             .replace(R.id.navigation_me_member, navHostFragment)
             .setPrimaryNavigationFragment(navHostFragment)
             .commit()
+
+        val fragment =  mutableSetOf<Int>()
     }
 }
