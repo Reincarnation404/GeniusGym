@@ -26,6 +26,6 @@ class MeTrainingCalendarViewModel : ViewModel() {
     }
 
     private fun searchItem(item: TrainingItem, searchText: String): Boolean {
-        return item.workOutUpdateTime.contains(searchText, ignoreCase = false)
+        return item.workoutUpdateTime.contains(searchText, ignoreCase = false)
     }
 }

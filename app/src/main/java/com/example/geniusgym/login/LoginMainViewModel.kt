@@ -2,10 +2,9 @@ package com.example.geniusgym
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.navigation.Navigation
-import com.example.geniusgym.coach.calendarMemberList.model.MemberInfo
+import com.example.geniusgym.member.model.LoginMemberItem
 
 class LoginMainViewModel : ViewModel() {
-    val member: MutableLiveData<MemberInfo> by lazy { MutableLiveData<MemberInfo>(MemberInfo()) }
+    val member: MutableLiveData<LoginMemberItem> by lazy { MutableLiveData<LoginMemberItem>() }
     val result: MutableLiveData<String> by lazy { MutableLiveData<String>() }
 }
