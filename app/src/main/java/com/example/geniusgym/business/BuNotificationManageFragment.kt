@@ -36,7 +36,7 @@ class BuNotificationManageFragment : Fragment() {
     private fun setupMenu() {
         (requireActivity() as MenuHost).addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-                menuInflater.inflate(R.menu.bu_option_menu_filter_add_search, menu)
+                menuInflater.inflate(R.menu.bu_option_menu_filter_search, menu)
 
             }
 

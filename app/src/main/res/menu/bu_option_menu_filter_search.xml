@@ -8,14 +8,11 @@
         android:title="Search"
         app:actionViewClass="android.widget.SearchView"
         app:showAsAction="ifRoom" />
-    <item
-        android:id="@+id/toolbar_add"
-        android:icon="@drawable/baseline_add_24"
-        android:title="toolbar_add"
-        app:showAsAction="ifRoom" />
+
     <item
         android:id="@+id/toolbar_filter"
         android:icon="@drawable/baseline_filter_alt_24"
         android:title="toolbar_filter"
         app:showAsAction="ifRoom" />
+
 </menu>
