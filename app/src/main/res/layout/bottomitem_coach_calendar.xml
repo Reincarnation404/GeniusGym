@@ -9,22 +9,23 @@
     app:layoutDescription="@xml/bottomitem_coach_calendar_scene">
 
     <androidx.constraintlayout.utils.widget.ImageFilterView
-        android:id="@+id/imageView2"
+        android:id="@+id/ivCmlCoCa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintBottom_toTopOf="@+id/tvCmlCoCa"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/baseline_calendar" />
+        app:srcCompat="@drawable/baseline_calendar"
+        app:altSrc="@drawable/baseline_calendar_month_24"/>
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tvCmlCoCa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="行事曆"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/ivCmlCoCa" />
 </androidx.constraintlayout.motion.widget.MotionLayout>

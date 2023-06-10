@@ -16,8 +16,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/baseline_home_fill"
-        app:altSrc="@drawable/baseline_home_stroke"/>
+        app:srcCompat="@drawable/baseline_notifications_stroke"
+        app:altSrc="@drawable/baseline_notifications_fill"/>
 
     <TextView
         android:id="@+id/textView"
