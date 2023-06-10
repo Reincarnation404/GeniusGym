@@ -18,7 +18,16 @@
         android:id="@+id/coCalenderMemberRecordFragment"
         android:name="com.example.geniusgym.coach.calendarMemberListDetail.controller.CoCalenderMemberRecordFragment"
         android:label="fragment_co_calender_member_record"
-        tools:layout="@layout/fragment_co_calender_member_record" />
+        tools:layout="@layout/fragment_co_calender_member_record" >
+        <action
+            android:id="@+id/action_coCalenderMemberRecordFragment_to_coCalenderMemberRecordAfterFragment"
+            app:destination="@id/coCalenderMemberRecordAfterFragment" />
+        <action
+            android:id="@+id/action_coCalenderMemberRecordFragment_to_coCalenderMemberRecordAnoxSmallFragment"
+            app:destination="@id/coCalenderMemberRecordAnoxSmallFragment"
+            app:enterAnim="@anim/nav_default_pop_enter_anim"
+            app:exitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
     <fragment
         android:id="@+id/coCalenderMemberStaticSmallFragment"
         android:name="com.example.geniusgym.coach.calendarMemberListDetail.controller.CoCalenderMemberStaticSmallFragment"
@@ -58,7 +67,9 @@
         tools:layout="@layout/fragment_co_calender_member_record_anox_small" >
         <action
             android:id="@+id/action_coCalenderMemberRecordAnoxSmallFragment_to_coCalenderMemberRecordOxSmallFragment"
-            app:destination="@id/coCalenderMemberRecordAfterFragment" />
+            app:destination="@id/coCalenderMemberRecordAfterFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/coCalenderMemberRecordAfterFragment"

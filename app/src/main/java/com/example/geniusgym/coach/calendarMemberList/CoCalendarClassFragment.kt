@@ -44,7 +44,7 @@ class CoCalendarClassFragment : Fragment(), View.OnClickListener {
 
         with(binding) {
             viewModel?.textDate?.value =
-                LocalDate.now().format(DateTimeFormatter.ISO_LOCAL_DATE).toString()
+                date.format(DateTimeFormatter.ISO_LOCAL_DATE).toString()
             weekList = mutableListOf(
                 weekDay(tvCoCaDayOf1t, firstDayOrWeek),
                 weekDay(tvCoCaDayOf2t, firstDayOrWeek.plusDays(1)),

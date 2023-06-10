@@ -27,15 +27,16 @@ class CoCaMeReAnBigAdapter(private var items: List<SportBigItem>) :
         return AnBigItemViewHolder(itemViewBinding)
 
     }
+
     override fun onBindViewHolder(holder: AnBigItemViewHolder, position: Int) {
         val item = items[position]
         val bundle = Bundle()
-        with(holder){
+        with(holder) {
             itemViewBinding.viewModel?.item?.value = item
-            bundle.putSerializable("id",item.id)
+            bundle.putSerializable("id", item.sb_id)
             itemView.setOnClickListener {
-                Navigation.findNavController(it).navigate(R.id.coCalenderMemberRecordAnoxSmallFragment,bundle)
-                //Navigation.findNavController(it).navigate(R.id.action_coCalenderMemberRecordAnoxFragment_to_coCalenderMemberRecordAnoxSmallFragment)
+                Navigation.findNavController(it)
+                    .navigate(R.id.action_coCalenderMemberRecordFragment_to_coCalenderMemberRecordAnoxSmallFragment,bundle)
             }
         }
     }
@@ -43,7 +44,8 @@ class CoCaMeReAnBigAdapter(private var items: List<SportBigItem>) :
     override fun getItemCount(): Int {
         return items.size
     }
-    fun update(items: List<SportBigItem>){
+
+    fun update(items: List<SportBigItem>) {
         this.items = items
         notifyDataSetChanged()
     }

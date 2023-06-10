@@ -2,66 +2,78 @@ package com.example.geniusgym.coach.calendarMemberListDetail.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.geniusgym.coach.calendarMemberList.model.BodyDataItem
-import com.example.geniusgym.coach.calendarMemberList.model.ExerciseItem
+import androidx.lifecycle.viewModelScope
+
+import com.example.geniusgym.coach.calendarMemberList.model.MemberItem
+import com.example.geniusgym.coach.calendarMemberListDetail.model.SportRecordBigItem
+import com.example.geniusgym.util.WebRequestSpencer
+import com.google.gson.Gson
+import com.google.gson.JsonObject
+import com.google.gson.reflect.TypeToken
+import kotlinx.coroutines.launch
 import java.time.LocalDate
 
 class CoCalenderMemberStaticViewModel : ViewModel() {
- //   val memberName : MutableLiveData<String> by lazy { MutableLiveData<String>() }
-    val memberStatistic : MutableLiveData<String> by lazy { MutableLiveData<String>() }
+    val memberStatistic: MutableLiveData<String> by lazy { MutableLiveData<String>() }
     val textDate: MutableLiveData<String> by lazy { MutableLiveData<String>() }
     val date: MutableLiveData<LocalDate> by lazy { MutableLiveData<LocalDate>() }
-    private var itemList = listOf<ExerciseItem>()
-    val exerciseItems: MutableLiveData<List<ExerciseItem>> by lazy { MutableLiveData<List<ExerciseItem>>() }
-    val exerciseItem: MutableLiveData<ExerciseItem> by lazy { MutableLiveData<ExerciseItem>() }
-    private var exerciseLists = listOf<ExerciseItem>()
-    init {
-        load()
-    }
-    fun search(input: String?) {
-        val searchList = if (input == null || input.isEmpty()) {
-            println("input == null || input.isEmpty()")
-            itemList
-        } else {
-            println("!input == null && !input.isEmpty()")
-            itemList.filter { item ->
-                searchItem(item, input.trim())
+    var itemList = listOf<SportRecordBigItem>()
+    val sportRecordBigItems: MutableLiveData<List<SportRecordBigItem>> by lazy { MutableLiveData<List<SportRecordBigItem>>() }
+    val sportRecordBigItem: MutableLiveData<SportRecordBigItem> by lazy { MutableLiveData<SportRecordBigItem>() }
+    val member: MutableLiveData<MemberItem> by lazy { MutableLiveData<MemberItem>() }
+
+    fun loadStatistic() {
+        viewModelScope.launch {
+            member?.value?.memberId?.let {
+                val item = memberStatisticInfo(it)
+                val string = StringBuilder("")
+                memberStatistic.value = string
+                    .append("身高： ").append(item.bd_hgt.toString())
+                    .append("\n體重： ").append(item.bd_wgt.toString())
+                    .append("\n體脂： ").append(item.bd_fat.toString())
+                    .toString()
             }
         }
-        exerciseItems.value = searchList
     }
 
-    private fun searchItem(item: ExerciseItem, searchText: String): Boolean {
-        val answers = item.sportUpdateTime.contains(searchText, ignoreCase = true)
-        return answers
-    }
-    private fun load(){
-        val exerciseList = mutableListOf<ExerciseItem>()
-        memberStatistic.value ="生理性別：戰鬥直升機\n年齡：19\n身高：169 cm\n體重：169 kg\n體脂：40 %"
-        exerciseList.add(
-            ExerciseItem(
-                memberId = "R05221016",
-                sportName = "旋轉無養",
-                sportUpdateTime = "2023-05-30 23:59:59",
-                sportWeight = "100",
-                sportFreq = "4",
-                sportSet = "3",
-                sportCoach = "田聖潔"
-            )
-        )
-        exerciseList.add(
-            ExerciseItem(
-                memberId = "R05221017",
-                sportName = "旋轉有養",
-                sportUpdateTime = "2023-05-30 23:59:59",
-                sportWeight = "100",
-                sportFreq = "4",
-                sportSet = "3",
-                sportCoach = "聖潔聖潔"
-            )
-        )
 
-        this.itemList =  exerciseList
-        this.exerciseItems.value =  this.itemList
+    fun search(id: String?, input: String?) {
+        val searchList = if (input == null || input.isEmpty()) {
+            itemList
+        } else {
+            itemList.filter { item ->
+                searchItem(id!!, item, input.trim())
+            }
+        }
+        sportRecordBigItems.value = searchList
     }
+
+    private fun searchItem(id: String, item: SportRecordBigItem, searchText: String): Boolean {
+        return item.time!!.contains(searchText, ignoreCase = true) &&
+                item.m_id!!.contains(id, ignoreCase = true)
+    }
+
+    fun load(item: MutableList<SportRecordBigItem>) {
+        this.itemList = item
+        this.sportRecordBigItems.value = this.itemList
+    }
+
+    private suspend fun memberStatisticInfo(memberId: String): BodyData {
+        val jsonObject = JsonObject()
+        jsonObject.addProperty("m_id", memberId)
+        println("b\n")
+        val jsonIn: String = WebRequestSpencer().httpPost("GetMemberStatic",jsonObject.toString())
+        println("c\n")
+        println("d $jsonIn")
+        val type = object : TypeToken<BodyData?>() {}.type
+        return Gson().fromJson(jsonIn, type)
+    }
+
+    class BodyData(
+        var bd_id: Int,
+        var m_id: String,
+        var bd_hgt: Float,
+        var bd_wgt: Float,
+        var bd_fat: Float
+    )
 }

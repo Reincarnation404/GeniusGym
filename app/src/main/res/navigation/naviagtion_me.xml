@@ -36,4 +36,28 @@
         android:label="@string/social"
         tools:layout="@layout/fragment_social" />
 
+    <fragment
+        android:id="@+id/mePointsFragment"
+        android:name="com.example.geniusgym.member.MePointsFragment"
+        android:label="fragment_me_points"
+        tools:layout="@layout/fragment_me_points" />
+    <fragment
+        android:id="@+id/meCreditCard"
+        android:name="com.example.geniusgym.member.MeCreditCard"
+        android:label="fragment_me_credit_card"
+        tools:layout="@layout/fragment_me_credit_card" />
+    <fragment
+        android:id="@+id/meTrainingCalendarFragment"
+        android:name="com.example.geniusgym.member.MeTrainingCalendarFragment"
+        android:label="MeTrainingCalendarFragment" >
+        <action
+            android:id="@+id/action_meTrainingCalendarFragment_to_meTrainingAerobicFragment"
+            app:destination="@id/meTrainingAerobicFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/meTrainingAerobicFragment"
+        android:name="com.example.geniusgym.member.MeTrainingAerobicFragment"
+        android:label="fragment_me_training_aerobic"
+        tools:layout="@layout/fragment_me_training_aerobic" />
+
 </navigation>

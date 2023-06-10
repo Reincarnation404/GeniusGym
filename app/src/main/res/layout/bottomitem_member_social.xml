@@ -16,8 +16,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/baseline_home_fill"
-        app:altSrc="@drawable/baseline_home_stroke"/>
+        app:srcCompat="@drawable/baseline_social_empty"
+        app:altSrc="@drawable/baseline_social_solid"/>
 
     <TextView
         android:id="@+id/textView"

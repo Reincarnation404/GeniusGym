@@ -5,29 +5,27 @@
 
     <ConstraintSet android:id="@+id/start">
         <Constraint
-            android:id="@+id/imageView2"
+            android:id="@+id/ivCmlCoCa"
             motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            motion:layout_constraintBottom_toTopOf="@+id/textView2"
+            motion:layout_constraintBottom_toTopOf="@+id/tvCmlCoCa"
             motion:layout_constraintTop_toTopOf="parent"
             motion:layout_constraintStart_toStartOf="parent" >
             <CustomAttribute
-                motion:attributeName="crossfades" />
-            <CustomAttribute
-                motion:attributeName="crossfade"
+                motion:attributeName="Crossfade"
                 motion:customFloatValue="0" />
             <CustomAttribute
                 motion:attributeName="colorFilter"
                 motion:customColorValue="?android:attr/colorBackground" />
         </Constraint>
         <Constraint
-            android:id="@+id/textView2"
+            android:id="@+id/tvCmlCoCa"
             motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             motion:layout_constraintBottom_toBottomOf="parent"
-            motion:layout_constraintTop_toBottomOf="@+id/imageView2"
+            motion:layout_constraintTop_toBottomOf="@+id/ivCmlCoCa"
             motion:layout_constraintStart_toStartOf="parent" >
             <CustomAttribute
                 motion:attributeName="textColor"
@@ -37,27 +35,27 @@
 
     <ConstraintSet android:id="@+id/end">
         <Constraint
-            android:id="@+id/imageView2"
+            android:id="@+id/ivCmlCoCa"
             motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            motion:layout_constraintBottom_toTopOf="@+id/textView2"
+            motion:layout_constraintBottom_toTopOf="@+id/tvCmlCoCa"
             motion:layout_constraintTop_toTopOf="parent"
             motion:layout_constraintStart_toStartOf="parent" >
             <CustomAttribute
-                motion:attributeName="crossfade"
+                motion:attributeName="Crossfade"
                 motion:customFloatValue="1" />
             <CustomAttribute
                 motion:attributeName="colorFilter"
                 motion:customColorValue="@color/design_default_color_primary_variant" />
         </Constraint>
         <Constraint
-            android:id="@+id/textView2"
+            android:id="@+id/tvCmlCoCa"
             motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             motion:layout_constraintBottom_toBottomOf="parent"
-            motion:layout_constraintTop_toBottomOf="@+id/imageView2"
+            motion:layout_constraintTop_toBottomOf="@+id/ivCmlCoCa"
             motion:layout_constraintStart_toStartOf="parent" >
             <CustomAttribute
                 motion:attributeName="textColor"
@@ -70,7 +68,7 @@
         motion:duration="300" >
         <KeyFrameSet >
             <KeyCycle
-                motion:motionTarget="@+id/imageView2"
+                motion:motionTarget="@+id/ivCmlCoCa"
                 motion:framePosition="4"
                 motion:wavePeriod="1"
                 android:translationX="10dp"

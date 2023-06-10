@@ -34,8 +34,10 @@ class CoCaMeReOxAdapter(private var items: List<SportSmallItem>) :
             itemViewBinding.viewModel?.item?.value = item
             bundle.putSerializable("item", item)
             itemView.setOnClickListener {
-                Navigation.findNavController(it)
-                    .navigate(R.id.coCalenderMemberRecordAfterFragment, bundle)
+                Navigation.findNavController(it).navigate(
+                    R.id.action_coCalenderMemberRecordFragment_to_coCalenderMemberRecordAfterFragment,
+                    bundle
+                )
             }
         }
     }

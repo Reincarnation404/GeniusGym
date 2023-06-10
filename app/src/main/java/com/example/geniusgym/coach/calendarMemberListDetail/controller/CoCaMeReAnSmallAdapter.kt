@@ -35,7 +35,7 @@ class CoCaMeReAnSmallAdapter(
             itemViewBinding.viewModel?.item?.value = item
             itemView.setOnClickListener {
                 bundle.putSerializable("item",item)
-                Navigation.findNavController(it).navigate(R.id.coCalenderMemberRecordAfterFragment, bundle)
+                Navigation.findNavController(it).navigate(R.id.action_coCalenderMemberRecordAnoxSmallFragment_to_coCalenderMemberRecordOxSmallFragment, bundle)
             }
         }
     }
