@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_co"
-    app:startDestination="@id/coCalendarTestFragment">
+    app:startDestination="@id/coHomeFragment">
     <fragment
         android:id="@+id/coHomeFragment"
         android:name="com.example.geniusgym.coach.CoHomeFragment"
@@ -11,21 +11,19 @@
         tools:layout="@layout/fragment_co_home" />
 
     <fragment
-        android:id="@+id/settingFragment"
-        android:name="com.example.geniusgym.setting.SettingFragment"
-        android:label="SettingFragment" />
-    <fragment
         android:id="@+id/coCalendarTestFragment"
         android:name="com.example.geniusgym.coach.calendarMemberList.CoCalendarClassFragment"
-        android:label="CoCalendarTestFragment" >
+        android:label="CoCalendarTestFragment"
+        tools:layout="@layout/fragment_co_calendar_test">
         <action
             android:id="@+id/action_coCalendarTestFragment_to_coCalendarMemberListFragment2"
-            app:destination="@id/coCalendarMemberListFragment2" />
+            app:destination="@id/coCalendarMemberListFragment" />
     </fragment>
     <fragment
-        android:id="@+id/coCalendarMemberListFragment2"
+        android:id="@+id/coCalendarMemberListFragment"
         android:name="com.example.geniusgym.coach.CoCalendarMemberListFragment"
-        android:label="CoCalendarMemberListFragment" >
+        android:label="CoCalendarMemberListFragment"
+        tools:layout="@layout/fragment_co_calendar_member_list">
         <action
             android:id="@+id/action_coCalendarMemberListFragment2_to_coCalendarMemberDetailFragment"
             app:destination="@id/coCalendarMemberDetailFragment" />
@@ -40,6 +38,16 @@
         android:name="com.example.geniusgym.notification.NotificationFragment"
         android:label="fragment_notification"
         tools:layout="@layout/fragment_notification" />
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.example.geniusgym.setting.SettingFragment"
+        android:label="SettingFragment"
+        tools:layout="@layout/fragment_setting"/>
+    <fragment
+        android:id="@+id/coCoachFragment"
+        android:name="com.example.geniusgym.coach.CoCoachFragment"
+        android:label="fragment_co_coach"
+        tools:layout="@layout/fragment_co_coach" />
     <!--<fragment
         android:id="@+id/coCalenderMemberStaticFragment"
         android:name="com.example.geniusgym.coach.calendarMemberListDetail.controller.CoCalenderMemberStaticFragment"

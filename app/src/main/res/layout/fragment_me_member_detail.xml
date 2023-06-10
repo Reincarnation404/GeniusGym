@@ -30,7 +30,7 @@
              />
 
         <TextView
-            android:id="@+id/tvPhoneNumber"
+            android:id="@+id/tvCoCoPhoneNumber"
             style="@style/Mehoinf"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -41,7 +41,7 @@
             app:layout_constraintTop_toBottomOf="@+id/tvUsername" />
 
     <EditText
-        android:id="@+id/etPhoneNumber"
+        android:id="@+id/etCoCoPhoneNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -53,12 +53,12 @@
         android:textColor="#F4F3F3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/tvPhoneNumber"
-        app:layout_constraintTop_toBottomOf="@+id/etMeName"
+        app:layout_constraintStart_toEndOf="@+id/tvCoCoPhoneNumber"
+        app:layout_constraintTop_toBottomOf="@+id/etCoCoMeName"
         tools:text="顯示電話號碼" />
 
         <TextView
-            android:id="@+id/tvMeNumber"
+            android:id="@+id/tvCoCoMeNumber"
             style="@style/Mehoinf"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -67,10 +67,10 @@
             android:hint="@string/tvMeNumber"
             android:text="會員編號"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvPhoneNumber" />
+            app:layout_constraintTop_toBottomOf="@+id/tvCoCoPhoneNumber" />
 
     <EditText
-        android:id="@+id/etMeNumber"
+        android:id="@+id/etCoCoMeNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -82,12 +82,12 @@
         android:textColor="#F4F3F3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/tvMeNumber"
-        app:layout_constraintTop_toBottomOf="@+id/etPhoneNumber"
+        app:layout_constraintStart_toEndOf="@+id/tvCoCoMeNumber"
+        app:layout_constraintTop_toBottomOf="@+id/etCoCoPhoneNumber"
         tools:text="顯示會員編號" />
 
         <TextView
-            android:id="@+id/tvAdmi"
+            android:id="@+id/tvCoCoAdmi"
             style="@style/Mehoinf"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -96,7 +96,7 @@
             android:hint="@string/tvAdmi"
             android:text="上次入場時間"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvMeNumber" />
+            app:layout_constraintTop_toBottomOf="@+id/tvCoCoMeNumber" />
 
     <EditText
         android:id="@+id/etAdmi"
@@ -112,12 +112,12 @@
         android:textColor="#F4F3F3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/tvAdmi"
-        app:layout_constraintTop_toBottomOf="@+id/etMeNumber"
+        app:layout_constraintStart_toEndOf="@+id/tvCoCoAdmi"
+        app:layout_constraintTop_toBottomOf="@+id/etCoCoMeNumber"
         tools:text="顯示上次入場時間" />
 
         <TextView
-            android:id="@+id/tvMeStart"
+            android:id="@+id/tvCoCoMeStart"
             style="@style/Mehoinf"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -126,7 +126,7 @@
             android:hint="@string/tvMeStart"
             android:text="會員起訖日"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvAdmi" />
+            app:layout_constraintTop_toBottomOf="@+id/tvCoCoAdmi" />
 
     <EditText
         android:id="@+id/etMeStart"
@@ -141,12 +141,12 @@
         android:textColor="#F4F3F3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/tvMeStart"
+        app:layout_constraintStart_toEndOf="@+id/tvCoCoMeStart"
         app:layout_constraintTop_toBottomOf="@+id/etAdmi"
         tools:text="顯示會員起始日" />
 
     <EditText
-        android:id="@+id/etMeName"
+        android:id="@+id/etCoCoMeName"
         style="@style/Mehoinf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

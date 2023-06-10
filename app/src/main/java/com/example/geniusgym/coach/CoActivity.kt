@@ -9,12 +9,12 @@ import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.example.geniusgym.R
 import com.example.geniusgym.coach.calendarMemberListDetail.model.SportRecordBigItem
-import com.example.geniusgym.databinding.ActivityCo2Binding
+import com.example.geniusgym.databinding.ActivityCoBinding
 import com.google.gson.GsonBuilder
 
 class CoActivity : AppCompatActivity() {
 
-    public lateinit var binding: ActivityCo2Binding
+    public lateinit var binding: ActivityCoBinding
     private lateinit var navigateController: NavController
     public var memberSportRecord =  mutableListOf<SportRecordBigItem>()
     public var memberSportBigRecord : SportRecordBigItem? = null
@@ -22,32 +22,38 @@ class CoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val viewModel : CoViewModel by viewModels()
-        binding = ActivityCo2Binding.inflate(LayoutInflater.from(this))
+        binding = ActivityCoBinding.inflate(LayoutInflater.from(this))
         binding.viewModel = viewModel
         setContentView(binding.root)
     }
 
     override fun onStart() {
         super.onStart()
+
         this.binding.viewModel?.loadSportFromPreference(this)
         this.binding.viewModel?.loadSportSmallItem()
         this.binding.viewModel?.loadSportBigItem()
         navigateController = findNavController(R.id.fragmentCoContainerView)
         with(binding){
+            tvCoActivityHead.text = "首頁"
             includeHome.homeMontionLayout.setOnClickListener {
+                tvCoActivityHead.text = "首頁"
                 navigateController.navigate(R.id.coHomeFragment)
             }
             includeCalendar.coachMotionLayout.setOnClickListener {
+                tvCoActivityHead.text = "行事曆"
                 navigateController.navigate(R.id.coCalendarTestFragment)
             }
             includeSocial.socialMontionLayout.setOnClickListener {
-               // navigateController.navigate(R.id.settingFragment)
+                navigateController.navigate(R.id.socialFragment)
             }
             includeNotification.notificationMontionLayout.setOnClickListener {
+                tvCoActivityHead.text = "通知"
                navigateController.navigate(R.id.notificationFragment)
             }
             includeMember.memberMontionLayout.setOnClickListener {
-                navigateController.navigate(R.id.settingFragment)
+                tvCoActivityHead.text = "資訊"
+                navigateController.navigate(R.id.coCoachFragment)
             }
             navigateController.addOnDestinationChangedListener{controller, destination, arguments->
                 includeHome.homeMontionLayout.progress =0f
@@ -58,8 +64,9 @@ class CoActivity : AppCompatActivity() {
                 when(destination.id){
                     R.id.coHomeFragment -> includeHome.homeMontionLayout.transitionToEnd()
                     R.id.coCalendarTestFragment -> includeCalendar.coachMotionLayout.transitionToEnd()
-                    R.id.settingFragment -> includeMember.memberMontionLayout.transitionToEnd()
+                    R.id.coCoachFragment -> includeMember.memberMontionLayout.transitionToEnd()
                     R.id.notificationFragment -> includeNotification.notificationMontionLayout.transitionToEnd()
+                    R.id.socialFragment -> includeSocial.socialMontionLayout.transitionToEnd()
                 }
             }
         }

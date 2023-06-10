@@ -15,6 +15,29 @@
         android:layout_height="match_parent"
         tools:context=".coach.CoActivity">
 
+        <LinearLayout
+            android:id="@+id/linearLayout7"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="#FED100"
+            android:backgroundTint="#FED100"
+            android:gravity="left|center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tvCoActivityHead"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_weight="1"
+                android:text="TextView"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
+        </LinearLayout>
+
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fragmentCoContainerView"
             android:name="androidx.navigation.fragment.NavHostFragment"
@@ -25,7 +48,7 @@
             app:layout_constraintBottom_toTopOf="@+id/co_bottom"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout7"
             app:navGraph="@navigation/navigation_co" />
 
         <LinearLayout
