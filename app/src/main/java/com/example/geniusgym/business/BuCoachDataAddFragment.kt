@@ -2,6 +2,7 @@ package com.example.geniusgym.business
 
 import android.app.AlertDialog
 import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.graphics.Color
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -51,6 +52,8 @@ class BuCoachDataAddFragment : Fragment() {
                 Navigation.findNavController(it).popBackStack()
             }
         }
+
+
     }
 
     private fun openDateTimeDialogs() {
@@ -58,7 +61,7 @@ class BuCoachDataAddFragment : Fragment() {
             calendar.set(Calendar.YEAR, year)
             calendar.set(Calendar.MONTH, month)
             calendar.set(Calendar.DAY_OF_MONTH, day)
-            updateTvBuAddChooseCoaOBDate()
+            openTimePickerDialog()
         }
 
         val datePickerDialog = DatePickerDialog(
@@ -70,8 +73,24 @@ class BuCoachDataAddFragment : Fragment() {
         )
         datePickerDialog.show()
     }
+    private fun openTimePickerDialog() {
+        val timeListener = TimePickerDialog.OnTimeSetListener { _, hour, minute ->
+            calendar.set(Calendar.HOUR_OF_DAY, hour)
+            calendar.set(Calendar.MINUTE, minute)
+            updateTvBuAddChooseCoaOBDate()
+        }
+
+        val timePickerDialog = TimePickerDialog(
+            requireContext(),
+            timeListener,
+            calendar.get(Calendar.HOUR_OF_DAY),
+            calendar.get(Calendar.MINUTE),
+            true
+        )
+        timePickerDialog.show()
+    }
     private fun updateTvBuAddChooseCoaOBDate() {
-        val format = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val format = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
         val dateTime = format.format(calendar.time)
         binding.tvBuAddCoaDataOBDate.text = dateTime
         binding.tvBuAddCoaDataOBDate.setTextColor(Color.BLACK)
@@ -80,29 +99,33 @@ class BuCoachDataAddFragment : Fragment() {
 
     private fun showBranchSelection(){
         var choice = arrayOf("分店A","分店B","分店C","分店D")
-        var selectchoice = booleanArrayOf(false,false,false,false)
+        var selectItem = -1
 
 
         AlertDialog.Builder(view?.context)
             // 設定標題文字
             .setTitle(R.string.spBuAddChooseBranch)
-            .setMultiChoiceItems(choice,selectchoice){ _, position, checked ->
-                selectchoice[position] = checked
+            .setSingleChoiceItems(choice,selectItem){ _, position->
+                selectItem = position
             }
             .setPositiveButton(R.string.bu_add_choose_branch_confirm){ _, _ ->
-                val selectedBranches = mutableListOf<String>()
-                for (i in choice.indices) {
-                    if (selectchoice[i]) {
-                        selectedBranches.add(choice[i])
-                    }
+                if (selectItem != -1) {
+                    val selectedBranch = choice[selectItem]
+                    updateSpBuAddChooseBranch(selectedBranch)
                 }
-                updateSpBuAddChooseBranch(selectedBranches)
             }
             // false代表要點擊按鈕方能關閉，預設為true
             .setCancelable(true)
             .show()
     }
-    private fun updateSpBuAddChooseBranch(branches: List<String>) {
-        binding.spBuAddCoaDataChooseBranch.text = branches.joinToString("、")
+    private fun updateSpBuAddChooseBranch(branch: String) {
+        binding.spBuAddCoaDataChooseBranch.text = branch
     }
+
+    // 這是送出資料的那個葉面
+//    frafdf : fragmwnt(){
+//        val branchMap = mapOf<String,Int>("分店 A" to 1, "分店 B" to 2)
+//        branchMap[branch]
+//
+//    }
 }

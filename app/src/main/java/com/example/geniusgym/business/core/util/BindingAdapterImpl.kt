@@ -50,7 +50,8 @@ fun ImageView.setOnImgBase64AttrChangedListener(listener: InverseBindingListener
                                                 //大致可理解為onChange會去呼叫getImgBase64
 }
 
-val SDF = SimpleDateFormat("yyyy/MM/dd HH:mm:ss")
+val SDF = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+
 @BindingAdapter("text")
 fun TextView.setText(timestamp: Timestamp){
     text = SDF.format(timestamp)

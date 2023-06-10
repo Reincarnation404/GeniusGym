@@ -7,6 +7,7 @@ import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.geniusgym.R
+import com.example.geniusgym.business.model.Coach
 import com.example.geniusgym.business.model.testBuCoach
 import com.example.geniusgym.business.viewModel.BuCoachViewModel
 import com.example.geniusgym.databinding.FragmentBuCoachDataItemBinding
@@ -15,13 +16,13 @@ import com.example.geniusgym.databinding.FragmentBuCoachDataItemBinding
 /**
  * 教練列表所需的Adapter
  */
-class BuCoachDataAdapter(private var bucoaches: List<testBuCoach>):
+class BuCoachDataAdapter(private var bucoaches: List<Coach>):
     RecyclerView.Adapter<BuCoachDataAdapter.BuCoachDataViewHolder>() {
     /**
      * 更新教練列表內容
      * @param bucoaches 新的教練列表
      */
-    fun updateBuCoaches(bucoaches: List<testBuCoach>) {
+    fun updateBuCoaches(bucoaches: List<Coach>) {
         this.bucoaches = bucoaches
         notifyDataSetChanged()
     }
@@ -48,14 +49,17 @@ class BuCoachDataAdapter(private var bucoaches: List<testBuCoach>):
         position: Int
     ) {
         val bucoach = bucoaches[position]
-        with(holder){
-            // 將欲顯示的coach物件指派給LiveData，就會自動更新layout檔案的view顯示
-            itemViewBinding.viewModel?.coach?.value = bucoach
-            val bundle = Bundle()
-            bundle.putSerializable("bucoach", bucoach)
-            itemView.setOnClickListener {
-                // 點擊list要跳到資料顯示頁面
-                Navigation.findNavController(it).navigate(R.id.buCoachDataDetailFragment, bundle)
+        with(holder) {
+            with(itemViewBinding) {
+                // 將欲顯示的coach物件指派給LiveData，就會自動更新layout檔案的view顯示
+                viewModel?.coach?.value = bucoach
+                val bundle = Bundle()
+                bundle.putSerializable("bucoach", bucoach)
+                println(bundle)
+                itemView.setOnClickListener {
+                    // 點擊list要跳到資料顯示頁面
+                    Navigation.findNavController(it).navigate(R.id.buCoachDataDetailFragment, bundle)
+                }
             }
         }
     }

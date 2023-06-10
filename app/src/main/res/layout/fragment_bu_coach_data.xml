@@ -15,8 +15,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvBuCoachData"
         android:layout_width="0dp"
-        android:layout_height="590dp"
-        android:layout_marginTop="65dp"
+        android:layout_height="660dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

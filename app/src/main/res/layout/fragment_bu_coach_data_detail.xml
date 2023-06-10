@@ -31,26 +31,38 @@
             tools:layout_editor_absoluteX="3dp"
             tools:layout_editor_absoluteY="73dp">
 
+            <ImageView
+                android:id="@+id/ivBuAddCoaDataDetailPic"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/baseline_add_a_photo_24"
+                app:imgBase64="@{viewModel.coach.c_picBase64}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.496"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilBuAddCoaDataDetailName"
                 style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+
                 android:paddingHorizontal="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toBottomOf="@id/ivBuAddCoaDataDetailPic" >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tietBuAddCoaDataDetailName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
-                    android:hint="@string/tietBuAddCoaDataName"
                     android:enabled="false"
-                    android:textColor="@color/black"
-                    android:text="@{viewModel.coach.c_name}"/>
+                    android:hint="@string/tietBuAddCoaDataName"
+                    android:text="@={viewModel.coach.c_name}"
+                    android:textColor="@color/black" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -94,7 +106,7 @@
                     android:hint="@string/tietBuAddCoaDataPwd"
                     android:enabled="false"
                     android:textColor="@color/black"
-                    android:text="@{viewModel.coach.c_pwd}"/>
+                    android:text="@={viewModel.coach.c_pwd}"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -115,8 +127,7 @@
                     android:background="@color/white"
                     android:hint="@string/tietBuAddCoaDataGen"
                     android:enabled="false"
-                    android:textColor="@color/black"
-                    android:text="@{viewModel.coach.c_gen}"/>
+                    android:textColor="@color/black"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -138,7 +149,7 @@
                     android:hint="@string/tietBuAddCoaDataCell"
                     android:enabled="false"
                     android:textColor="@color/black"
-                    android:text="@{viewModel.coach.c_cell}"/>
+                    android:text="@={viewModel.coach.c_cell}"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -160,7 +171,7 @@
                     android:hint="@string/tietBuAddCoaDataTwid"
                     android:enabled="false"
                     android:textColor="@color/black"
-                    android:text="@{viewModel.coach.c_twid}"/>
+                    android:text="@={viewModel.coach.c_twid}"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -182,7 +193,7 @@
                     android:hint="@string/tietBuAddCoaDataAddr"
                     android:enabled="false"
                     android:textColor="@color/black"
-                    android:text="@{viewModel.coach.c_addr}"/>
+                    android:text="@={viewModel.coach.c_addr}"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -204,7 +215,7 @@
                     android:hint="@string/tietBuAddCoaDataEmail"
                     android:enabled="false"
                     android:textColor="@color/black"
-                    android:text="@{viewModel.coach.c_email}"/>
+                    android:text="@={viewModel.coach.c_email}"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -230,10 +241,35 @@
                     android:textColorHint="#CDC7D2"
                     android:enabled="false"
                     android:textColor="@color/black"
-                    android:text="@{viewModel.coach.c_start_time}"/>
+                    app:text="@{viewModel.coach.c_start_date}"/>
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- 要分店ID的話 去AddNotification那裡複製 -->
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilBuAddCoaDataDetailChooseBranch"
+                style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox.Dense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:paddingHorizontal="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tilBuAddCoaDataDetailOBDate">
+
+                <TextView
+                    android:id="@+id/tvBuAddCoaDataDetailChooseBranch"
+                    android:layout_width="377dp"
+                    android:layout_height="50dp"
+                    android:background="@color/white"
+                    android:gravity="center|left"
+                    android:hint="@string/spBuAddChooseBranch"
+                    android:imeOptions="flagNoExtractUi"
+                    android:paddingLeft="16dp"
+                    android:textColorHint="#CDC7D2"
+                    android:textColor="@color/black"
+                    android:text="@{viewModel.coach.bt_name}"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilBuAddCoaDataDetailIntro"
@@ -242,7 +278,7 @@
                 android:layout_height="221dp"
                 android:paddingHorizontal="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tilBuAddCoaDataDetailOBDate">
+                app:layout_constraintTop_toBottomOf="@+id/tilBuAddCoaDataDetailChooseBranch">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tietBuAddCoaDataDetailIntro"
@@ -252,9 +288,38 @@
                     android:hint="@string/tietBuAddCoaDataIntro"
                     android:enabled="false"
                     android:textColor="@color/black"
-                    android:text="@{viewModel.coach.c_intro}"/>
-
+                    android:text="@={viewModel.coach.c_intro}"/>
             </com.google.android.material.textfield.TextInputLayout>
+
+
+            <Button
+                android:id="@+id/btBuAddCoaDataDetailModify"
+                android:layout_width="155dp"
+                android:layout_height="84dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:text="@string/btBuDataModify"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tilBuAddCoaDataDetailIntro" />
+
+            <Button
+                android:id="@+id/btBuAddCoaDataDetailSave"
+                android:layout_width="155dp"
+                android:layout_height="84dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:text="@string/btBuAddNotiSaveNoti"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tilBuAddCoaDataDetailIntro" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

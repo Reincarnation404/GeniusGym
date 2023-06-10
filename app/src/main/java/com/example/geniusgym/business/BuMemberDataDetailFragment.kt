@@ -1,13 +1,17 @@
 package com.example.geniusgym.business
 
+import android.app.Activity
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.provider.MediaStore
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
 import com.example.geniusgym.business.model.Member
 import com.example.geniusgym.business.model.testBuMember
@@ -22,7 +26,7 @@ import java.util.*
 class BuMemberDataDetailFragment : Fragment() {
     private lateinit var binding: FragmentBuMemberDataDetailBinding
     private val calendar = Calendar.getInstance()
-    val url = "http://10.0.2.2:8080/geninusgym_bg/business"
+    val url = "http://10.0.2.2:8080/geninusgym_bg/buMember"
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -45,6 +49,13 @@ class BuMemberDataDetailFragment : Fragment() {
             tietBuAddMemDataDetailGen.setText(viewModel?.genToString())
 
             btBuAddMemDataDetailModify.setOnClickListener {
+//                ivBuAddMemDataDetailPic.setOnClickListener {
+//                    val intent = Intent(
+//                        Intent.ACTION_PICK,
+//                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI
+//                    )
+//                    pickPictureLauncher.launch(intent)
+//                }
                 tietBuAddMemDataDetailName.isEnabled = true
                 tietBuAddMemDataDetailPwd.isEnabled = true
                 tietBuAddMemDataDetailGen.isEnabled = true
@@ -144,4 +155,12 @@ class BuMemberDataDetailFragment : Fragment() {
         binding.tietBuAddMemDataDetailExpireDate.text = dateTime
         binding.tietBuAddMemDataDetailExpireDate.setTextColor(Color.BLACK)
     }
+
+
+//    private var pickPictureLauncher =
+//        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+//            if (result.resultCode == Activity.RESULT_OK) {
+//                result.data?.data?.let { uri -> binding.ivBuAddMemDataDetailPic.setImageURI(uri) }
+//            }
+//        }
 }

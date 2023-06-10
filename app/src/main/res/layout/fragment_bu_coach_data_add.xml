@@ -232,6 +232,7 @@
                     android:layout_height="50dp"
                     android:background="@color/white"
                     android:gravity="center|left"
+
                     android:hint="@string/spBuAddChooseBranch"
                     android:imeOptions="flagNoExtractUi"
                     android:paddingLeft="16dp"

@@ -20,7 +20,7 @@ import tw.idv.william.androidwebserver.core.service.requestTask
 class BuMemberDataAdapter(private var bumembers: List<Member>):
     RecyclerView.Adapter<BuMemberDataAdapter.BuMemberDataViewHolder>(){
 
-    val url = "http://10.0.2.2:8080/geninusgym_bg/business"
+    val url = "http://10.0.2.2:8080/geninusgym_bg/buMember"
 
     /**
      * 更新會員列表內容

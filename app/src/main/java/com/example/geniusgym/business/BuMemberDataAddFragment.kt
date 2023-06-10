@@ -57,7 +57,7 @@ class BuMemberDataAddFragment : Fragment() {
                 Navigation.findNavController(it).popBackStack()
             }
 
-            ivBuAddMemPic.setOnClickListener {
+            ivBuAddMemDataPic.setOnClickListener {
                 val intent = Intent(
                     Intent.ACTION_PICK,
                     MediaStore.Images.Media.EXTERNAL_CONTENT_URI
@@ -86,7 +86,7 @@ class BuMemberDataAddFragment : Fragment() {
                         val timestamp = Timestamp.valueOf(m_date)
                         viewModel?.member?.value?.m_ed_date = timestamp
 
-                        val url = "http://10.0.2.2:8080/geninusgym_bg/business"
+                        val url = "http://10.0.2.2:8080/geninusgym_bg/buMember"
 
                         val respbody = requestTask<JsonObject>(url, "POST", viewModel?.member?.value)
                         //println(viewModel?.member?.value.toString())
@@ -144,7 +144,7 @@ class BuMemberDataAddFragment : Fragment() {
     private var pickPictureLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
-                result.data?.data?.let { uri -> binding.ivBuAddMemPic.setImageURI(uri) }
+                result.data?.data?.let { uri -> binding.ivBuAddMemDataPic.setImageURI(uri) }
             }
         }
 }

@@ -15,7 +15,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white">
+        android:background="@color/white"
+        android:layout_margin="20dp">
 
         <ImageView
             android:id="@+id/ivBuCoachDataPic"
@@ -24,7 +25,7 @@
             android:layout_marginStart="48dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
-            app:imageResource="@{viewModel.coach.c_pic}"
+            app:imgBase64="@{viewModel.coach.c_picBase64}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

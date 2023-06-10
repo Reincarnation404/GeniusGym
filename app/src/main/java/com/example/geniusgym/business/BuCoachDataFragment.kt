@@ -32,6 +32,9 @@ class BuCoachDataFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         with(binding){
+
+            viewModel?.inti()
+
             rvBuCoachData.layoutManager = LinearLayoutManager(requireContext())
             viewModel?.coaches?.observe(viewLifecycleOwner) { coaches ->
                 // adapter為null要建立新的adapter；之後只要呼叫updateFriends(friends)即可
