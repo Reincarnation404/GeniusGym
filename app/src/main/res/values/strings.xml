@@ -64,5 +64,13 @@
     <string name="meCoachInfoDetailFragment">教練介紹細節</string>
     <string name="meCoachInfoFragment">教練介紹</string>
     <string name="meMapDirectFragment">導覽</string>
+    <string name="meShopCart">購物車</string>
+    <string name="meSearchViewLessonName">全課程名稱、教練名稱</string>
+    <string name="btnTextConfirm">確認</string>
+    <string name="meExerciseKindO2">有氧</string>
+    <string name="meExerciseKindAttack">突刺</string>
+    <string name="me_shoping_lessonName">課程名稱: </string>
+    <string name="meDialogDetailSearch">關鍵字查詢</string>
+    <string name="meDialogDetailKindSearch">類別查詢</string>
 
 </resources>

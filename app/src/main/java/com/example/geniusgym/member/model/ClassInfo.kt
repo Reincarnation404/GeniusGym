@@ -10,6 +10,7 @@ data class ClassInfo(
     val ci_ed_time: String = "18:00",
     val ci_place: String = "緯育分店",
     val ci_cost: Int? = 99999999,
+    val sc_id : Int? = 1,
 //    val ci_date: Timestamp = Timestamp.valueOf(LocalDateTime.now().toString()),
     val ci_date: String = "2023/12/31",
     val ci_text: String = "本課程希望大家能認真學習",
