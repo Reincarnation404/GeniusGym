@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isGone
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import com.example.geniusgym.R
@@ -45,7 +46,7 @@ class CoActivity : AppCompatActivity() {
                 navigateController.navigate(R.id.coCalendarTestFragment)
             }
             includeSocial.socialMontionLayout.setOnClickListener {
-                navigateController.navigate(R.id.socialFragment)
+                navigateController.navigate(R.id.socialHomeFragment2)
             }
             includeNotification.notificationMontionLayout.setOnClickListener {
                 tvCoActivityHead.text = "通知"

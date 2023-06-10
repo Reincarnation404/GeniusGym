@@ -16,7 +16,7 @@
         tools:context=".coach.CoActivity">
 
         <LinearLayout
-            android:id="@+id/linearLayout7"
+            android:id="@+id/llCoActivityHead"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:background="#FED100"
@@ -48,7 +48,7 @@
             app:layout_constraintBottom_toTopOf="@+id/co_bottom"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout7"
+            app:layout_constraintTop_toBottomOf="@+id/llCoActivityHead"
             app:navGraph="@navigation/navigation_co" />
 
         <LinearLayout

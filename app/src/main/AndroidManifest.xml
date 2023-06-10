@@ -24,7 +24,7 @@
 
             android:name=".coach.CoActivity"
             android:exported="true">
-
+            
         </activity>
 
         <activity

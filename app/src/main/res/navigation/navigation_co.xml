@@ -48,6 +48,26 @@
         android:name="com.example.geniusgym.coach.CoCoachFragment"
         android:label="fragment_co_coach"
         tools:layout="@layout/fragment_co_coach" />
+    <fragment
+        android:id="@+id/socialHomeFragment2"
+        android:name="com.example.geniusgym.social.SocialHomeFragment"
+        android:label="fragment_social_home"
+        tools:layout="@layout/fragment_social_home" />
+    <fragment
+        android:id="@+id/socialMessageFragment2"
+        android:name="com.example.geniusgym.social.SocialMessageFragment"
+        android:label="fragment_social_message"
+        tools:layout="@layout/fragment_social_message" />
+    <fragment
+        android:id="@+id/socialPostFragment2"
+        android:name="com.example.geniusgym.social.SocialPostFragment"
+        android:label="fragment_social_post"
+        tools:layout="@layout/fragment_social_post" />
+    <fragment
+        android:id="@+id/socialProfileFragment2"
+        android:name="com.example.geniusgym.social.SocialProfileFragment"
+        android:label="fragment_social_profile"
+        tools:layout="@layout/fragment_social_profile" />
     <!--<fragment
         android:id="@+id/coCalenderMemberStaticFragment"
         android:name="com.example.geniusgym.coach.calendarMemberListDetail.controller.CoCalenderMemberStaticFragment"
