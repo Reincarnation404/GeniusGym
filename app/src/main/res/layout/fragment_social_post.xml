@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".social.SocialPostFragment">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#F9A825"
+        tools:ignore="MissingConstraints">
+
+        <Button
+            android:id="@+id/turnLeft"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|start"
+            android:background="@drawable/social_turn_left"
+            android:foreground="?attr/selectableItemBackground"
+            android:text="" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|center_vertical"
+            android:textColor="@color/black"
+            android:text="新增貼文"
+            android:textSize="26dp"
+            android:textStyle="bold"/>
+
+        <Button
+            android:id="@+id/SendPost"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|end"
+            android:text="發布" />
+
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
