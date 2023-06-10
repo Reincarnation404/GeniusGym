@@ -44,6 +44,7 @@ class CoCalenderMemberStaticFragment : Fragment(), View.OnClickListener {
         with(binding) {
             val member = coActivity.binding.viewModel?.member?.value
             viewModel?.member?.value = member
+            viewModel?.loadStatistic()
             loadPreferences()
         }
     }
@@ -77,20 +78,14 @@ class CoCalenderMemberStaticFragment : Fragment(), View.OnClickListener {
             rvCoCaMeSportStatistic.layoutManager = LinearLayoutManager(requireContext())
             viewModel?.sportRecordBigItems?.observe(viewLifecycleOwner) { items ->
                 if (rvCoCaMeSportStatistic.adapter == null) {
-                    rvCoCaMeSportStatistic.adapter = StatisticAdapter(items,coActivity)
+                    rvCoCaMeSportStatistic.adapter = StatisticAdapter(items, coActivity)
                     println("rvCoCaMeSportStatistic.adapter = StatisticAdapter(items)")
                 } else {
                     (rvCoCaMeSportStatistic.adapter as StatisticAdapter).updateItem(items)
                 }
             }
-            /*viewModel?.sportRecordBigLists?.observe(viewLifecycleOwner){
-                viewModel.itemList = it
-                val temp = viewModel.itemList
-                viewModel.sportRecordBigItems.value = temp
-            }*/
         }
     }
-
 
     private class weekDay(var textview: TextView, var date: LocalDate)
 
@@ -109,7 +104,6 @@ class CoCalenderMemberStaticFragment : Fragment(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         with(binding) {
-            println("SetOnClickListener----")
             when (v?.id) {
                 R.id.tvCoCaMeStecerciseRecordDate -> {
                     val calendar = Calendar.getInstance()

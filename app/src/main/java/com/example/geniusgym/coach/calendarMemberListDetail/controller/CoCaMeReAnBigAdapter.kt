@@ -33,7 +33,7 @@ class CoCaMeReAnBigAdapter(private var items: List<SportBigItem>) :
         val bundle = Bundle()
         with(holder) {
             itemViewBinding.viewModel?.item?.value = item
-            bundle.putSerializable("id", item.id)
+            bundle.putSerializable("id", item.sb_id)
             itemView.setOnClickListener {
                 Navigation.findNavController(it)
                     .navigate(R.id.action_coCalenderMemberRecordFragment_to_coCalenderMemberRecordAnoxSmallFragment,bundle)

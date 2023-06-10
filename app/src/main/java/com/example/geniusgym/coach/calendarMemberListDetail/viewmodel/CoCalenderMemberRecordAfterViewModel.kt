@@ -2,9 +2,9 @@ package com.example.geniusgym.coach.calendarMemberListDetail.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.geniusgym.coach.calendarMemberList.model.MemberItem
 import com.example.geniusgym.coach.calendarMemberListDetail.model.SportRecordItem
-import com.example.geniusgym.coach.calendarMemberListDetail.model.SportSmallItem
+import com.example.geniusgym.util.WebRequestSpencer
+import com.google.gson.GsonBuilder
 
 class CoCalenderMemberRecordAfterViewModel : ViewModel() {
     val recordItems: MutableLiveData<MutableList<SportRecordItem>> by lazy { MutableLiveData<MutableList<SportRecordItem>>() }
@@ -15,6 +15,7 @@ class CoCalenderMemberRecordAfterViewModel : ViewModel() {
     val weight: MutableLiveData<String> by lazy { MutableLiveData<String>() }
     val freq: MutableLiveData<String> by lazy { MutableLiveData<String>() }
     val textDate: MutableLiveData<String> by lazy { MutableLiveData<String>() }
+    val setID: MutableLiveData<String> by lazy { MutableLiveData<String>() }
     var sc_id: String = ""
     var m_id: String = ""
     private val recordList = mutableListOf<SportRecordItem>()
@@ -32,12 +33,18 @@ class CoCalenderMemberRecordAfterViewModel : ViewModel() {
             m_name = name?.value,
             sc_id = this.sc_id,
             sc_name = sportName?.value,
-            sc_weight = weight?.value,
-            sc_freq = freq?.value,
+            sc_weigt = weight?.value?.toFloat(),
+            sc_freq = freq?.value?.toInt(),
             c_id = "RRRRR",
-            updateTime = ""
+            sd_record_time = textDate?.value,
+            sd_bigid = setID?.value,
+            sc_set = if (recordItems.value == null) {
+                1
+            } else {
+                recordItems.value!!.size + 1
+            }
+
         )
-        println("AfterViewModel" + textDate?.value)
         recordList.add(item)
         recordItems.value = recordList
     }
@@ -50,5 +57,12 @@ class CoCalenderMemberRecordAfterViewModel : ViewModel() {
             string.trim().isNotEmpty() &&
                     string.matches(Regex("[1-9]\\d*"))
         }
+    }
+    suspend fun sportDataUpload():String{
+        val gson = GsonBuilder().create()
+        val jsonListSportRecordItem = gson.toJson(recordItems?.value)
+        println(jsonListSportRecordItem)
+        val jsonIn: String = WebRequestSpencer().httpPost("GetSportData",jsonListSportRecordItem.toString())
+        return jsonIn
     }
 }

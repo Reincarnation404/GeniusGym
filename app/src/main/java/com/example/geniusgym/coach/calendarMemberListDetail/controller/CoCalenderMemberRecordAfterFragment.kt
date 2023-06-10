@@ -19,10 +19,10 @@ import com.example.geniusgym.coach.calendarMemberListDetail.model.SportSmallItem
 import com.example.geniusgym.coach.calendarMemberListDetail.viewmodel.CoCalenderMemberRecordAfterViewModel
 import com.example.geniusgym.databinding.FragmentCoCalenderMemberRecordAfterBinding
 import com.google.gson.GsonBuilder
-import java.time.DayOfWeek
+import kotlinx.coroutines.runBlocking
 import java.time.LocalDate
+import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
-import java.time.temporal.TemporalAdjusters
 import java.util.*
 
 class CoCalenderMemberRecordAfterFragment : Fragment() {
@@ -52,8 +52,8 @@ class CoCalenderMemberRecordAfterFragment : Fragment() {
 
             arguments?.let { bundle ->
                 bundle.getSerializable("item")?.let {
-                    viewModel?.sc_id = (it as SportSmallItem).id
-                    viewModel?.sportName?.value = it.name
+                    viewModel?.sc_id = (it as SportSmallItem).sc_id
+                    viewModel?.sportName?.value = it.sc_name
                 }
             }
             val member = coActivity.binding.viewModel?.member?.value
@@ -61,7 +61,9 @@ class CoCalenderMemberRecordAfterFragment : Fragment() {
                 viewModel?.m_id = member.memberId
                 viewModel?.name?.value = member.name
             }
-
+            val formatter = DateTimeFormatter.ofPattern("yyyyMMdd HH:mm:ss")
+            val str = LocalDateTime.now().format(formatter).toString()
+            viewModel?.setID?.value = str.hashCode().toString()
             rvCoCaMeReAf.layoutManager = LinearLayoutManager(requireContext())
             viewModel?.recordItems?.observe(viewLifecycleOwner) { items ->
                 if (rvCoCaMeReAf.adapter == null) {
@@ -91,16 +93,16 @@ class CoCalenderMemberRecordAfterFragment : Fragment() {
 
                             requireActivity().getPreferences(Context.MODE_PRIVATE).edit()
                                 .putString(viewModel?.m_id, jsonStr).apply()
-                            println(jsonStr)
+                            runBlocking {
+                                viewModel?.sportDataUpload()
+                            }
                             Navigation.findNavController(view).popBackStack()
                         }
                     }
                     dialog.cancel()
                 }
                 viewModel?.recordItems?.value?.let {recordItems ->
-                    for(recordItem in recordItems){
-                        recordItem.updateTime = viewModel?.textDate?.value
-                    }
+
                     android.app.AlertDialog.Builder(view.context)
                         .setMessage(R.string.txtCoCaMeReAfSendDialogMessage)
                         .setPositiveButton(R.string.txtCoCaMeReAfAdapterYes, onClickListener)

@@ -13,10 +13,10 @@ class CoCalenderMemberRecordAnoxBigViewModel : ViewModel(){
     private fun load(){
         val AnoxList : MutableList<SportBigItem> = mutableListOf<SportBigItem>()
 
-        AnoxList.add(SportBigItem("1", "肩"))
-        AnoxList.add(SportBigItem("2","胸"))
-        AnoxList.add(SportBigItem("3","背"))
-        AnoxList.add(SportBigItem("4", "腿"))
+        AnoxList.add(SportBigItem("2", "肩"))
+        AnoxList.add(SportBigItem("3","胸"))
+        AnoxList.add(SportBigItem("4","背"))
+        AnoxList.add(SportBigItem("5", "腿"))
 
         this.items.value = AnoxList
     }
