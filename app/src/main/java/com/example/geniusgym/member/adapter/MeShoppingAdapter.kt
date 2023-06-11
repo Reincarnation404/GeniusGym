@@ -34,6 +34,25 @@ class MeShoppingAdapter(private var shopitems : List<ClassInfo>) :
         val shopitem = shopitems[position]
 
         with(holder.binding.viewModel!!){
+            val kind = when(shopitem.sc_id){
+                1 -> "飛輪"
+                2 -> "靜態"
+                3 -> "心肺訓練"
+                4 -> "跑步"
+                5 -> "槓鈴肩推"
+                6 -> "啞鈴肩推"
+                7 -> "啞鈴側平舉"
+                8 -> "啞鈴前平舉"
+                9 -> "站姿肩推"
+                10 -> "啞鈴握推"
+                11 -> "槓鈴握推"
+                12 -> "蝴蝶機夾胸"
+                13 -> "繩索下斜夾胸"
+                14 -> "槓鈴斜上推"
+                else -> "查無此類"
+            }
+            lessonKind.value = kind
+            lessonName.value = shopitem.ci_name
             coachName.value = shopitem.c_id
             startToEnd.value = shopitem.ci_start_time + "~" + shopitem.ci_ed_time
             point.value = shopitem.ci_cost.toString()

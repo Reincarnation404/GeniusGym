@@ -3,6 +3,7 @@ package com.example.geniusgym.util
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Environment
+import android.util.Log
 import android.widget.Toast
 import androidx.security.crypto.EncryptedFile
 import androidx.security.crypto.EncryptedSharedPreferences
@@ -53,12 +54,21 @@ class IOImpl {
 
     class Internal(private val context: Context) : IO {
         override fun saveFile(jsonObject: JsonObject, filename: String, mode : Int, encrypted : Boolean) {
+
             when (mode) {
                 Mode.MODE_MEMORY -> {
                     if (encrypted){
                         val filerDir = File(context.filesDir, filename)
+                        if (filerDir.exists()){
+                            if (filerDir.delete()){
+                                Log.d("IO_In_ME_FILE", "移除成功")
+                            }else{
+                                Log.d("IO_In_ME_FILE", "移除失敗")
+                            }
+                        }
                         getEncryptedFile(filerDir, context).openFileOutput()
                     }else{
+                        context.deleteFile(filename)
                         context.openFileOutput(filename, Context.MODE_PRIVATE)
                     }
                         .bufferedWriter().use {
@@ -67,6 +77,13 @@ class IOImpl {
                 }
                 Mode.MODE_CACHE -> {
                     val cacheFile = File(context.cacheDir, filename)
+                    if (cacheFile.exists()){
+                        if (cacheFile.delete()){
+                            Log.d("IO_In_CA_FILE", "移除成功")
+                        }else{
+                            Log.d("IO_In_CA_FILE", "移除失敗")
+                        }
+                    }
                     if (encrypted){
                         getEncryptedFile(cacheFile, context).openFileOutput()
                     }else{
@@ -87,8 +104,16 @@ class IOImpl {
                 Mode.MODE_MEMORY -> {
                     if (encrypted){
                         val filerDir = File(context.filesDir, filename)
+                        if (filerDir.exists()){
+                            if (filerDir.delete()){
+                                Log.d("IO_In_ME_AR_FILE", "移除成功")
+                            }else{
+                                Log.d("IO_In_ME_AR_FILE", "移除失敗")
+                            }
+                        }
                         getEncryptedFile(filerDir, context).openFileOutput()
                     }else{
+                        context.deleteFile(filename)
                         context.openFileOutput(filename, Context.MODE_PRIVATE)
                     }
                         .bufferedWriter().use {
@@ -97,6 +122,13 @@ class IOImpl {
                 }
                 Mode.MODE_CACHE -> {
                     val cacheFile = File(context.cacheDir, filename)
+                    if (cacheFile.exists()){
+                        if (cacheFile.delete()){
+                            Log.d("IO_In_CA_AR_FILE", "移除成功")
+                        }else{
+                            Log.d("IO_In_CA_AR_FILE", "移除失敗")
+                        }
+                    }
                     if (encrypted){
                         getEncryptedFile(cacheFile, context).openFileOutput()
                     }else{
@@ -195,6 +227,13 @@ class IOImpl {
                         throw FileNotFoundException("讀取資料錯誤")
                     }
                 }
+            if (file.exists()){
+                if (file.delete()){
+                    Log.d("IO_EX_FILE", "移除成功")
+                }else{
+                    Log.d("IO_EX_FILE", "移除成功")
+                }
+            }
             if (encrypted){
                 getEncryptedFile(file, context).openFileOutput()
             }else{
@@ -222,6 +261,13 @@ class IOImpl {
                         throw FileNotFoundException("讀取資料錯誤")
                     }
                 }
+            if (file.exists()){
+                if (file.delete()){
+                    Log.d("IO_EX_FILE", "移除成功")
+                }else{
+                    Log.d("IO_EX_FILE", "移除成功")
+                }
+            }
             if (encrypted){
                 getEncryptedFile(file, context).openFileOutput()
             }else{

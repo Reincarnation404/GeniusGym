@@ -24,9 +24,27 @@ class MeShoppingDetailViewModel : ViewModel() {
 
     fun setTextToCell(binding: FragmentMeShoppingDetailBinding){
         with(binding){
+            val kind = when(_clasinfo?.sc_id) {
+                1 -> "飛輪"
+                2 -> "靜態"
+                3 -> "心肺訓練"
+                4 -> "跑步"
+                5 -> "槓鈴肩推"
+                6 -> "啞鈴肩推"
+                7 -> "啞鈴側平舉"
+                8 -> "啞鈴前平舉"
+                9 -> "站姿肩推"
+                10 -> "啞鈴握推"
+                11 -> "槓鈴握推"
+                12 -> "蝴蝶機夾胸"
+                13 -> "繩索下斜夾胸"
+                14 -> "槓鈴斜上推"
+                else -> "查無此類"
+            }
+            include.tvMeLessonKind.text = kind
             include.tvMeCoachName.text = _clasinfo?.c_id
             include.tvMeLessonDate.text = _clasinfo?.ci_date
-            include.tvMeLessonName.text
+            include.tvMeLessonName.text = _clasinfo?.ci_name
             include.tvMePoint.text = _clasinfo?.ci_cost.toString()
             val timeText = _clasinfo?.ci_start_time + "~" +  _clasinfo?.ci_ed_time
             include.tvMeLessonTime.text = timeText
@@ -38,6 +56,7 @@ class MeShoppingDetailViewModel : ViewModel() {
         var jsonArray = internal.loadArrayFile("meShoppingCart", IOImpl.Mode.MODE_MEMORY, true)
         if (jsonArray == null){
             jsonArray = JsonArray()
+
         }
         val jsonObject = JsonObject()
         jsonObject.addProperty("c_id", _clasinfo?.c_id)
@@ -52,6 +71,7 @@ class MeShoppingDetailViewModel : ViewModel() {
         }catch (e : Exception){
             Toast.makeText(view.context, "添加失敗，請在試一次", Toast.LENGTH_SHORT).show()
         }
+        Navigation.findNavController(view).navigateUp()
     }
 
     fun directBuy(view: View){

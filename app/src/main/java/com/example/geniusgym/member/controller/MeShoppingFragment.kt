@@ -28,9 +28,6 @@ class MeShoppingFragment : Fragment() {
     private lateinit var binding : FragmentMeShoppingBinding
     private lateinit var containerView: ViewGroup
     private lateinit var meAdapter: MeShoppingAdapter
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

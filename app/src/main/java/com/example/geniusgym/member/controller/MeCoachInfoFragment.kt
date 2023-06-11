@@ -17,14 +17,6 @@ class MeCoachInfoFragment : Fragment() {
 
     private val viewModel: MeCoachInfoViewModel by viewModels()
     private lateinit var binding: FragmentMeCoachInfoBinding
-    private lateinit var activity : AppCompatActivity
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        viewModel.update()
-        viewModel.update()
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

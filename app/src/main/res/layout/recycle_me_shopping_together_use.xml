@@ -38,12 +38,13 @@
                 tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
+                android:id="@+id/tvMeLessonKind"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="有氧"
                 app:layout_constraintBottom_toBottomOf="@+id/textView5"
                 app:layout_constraintStart_toEndOf="@+id/textView5"
-                app:layout_constraintTop_toTopOf="@+id/textView5" />
+                app:layout_constraintTop_toTopOf="@+id/textView5"
+                tools:text="有氧" />
 
             <TextView
                 android:id="@+id/tvMeCoachName"

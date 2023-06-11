@@ -15,11 +15,33 @@ class MeShoppingViewModel : ViewModel() {
     val branchName : MutableLiveData<String> by lazy { MutableLiveData() }
     init {
         update()
+
     }
     private fun update(){
-        _shopitems.add(ClassInfo())
+        _shopitems.add(ClassInfo(1, "基礎肌力", "09:00", "12:00", "緯育分店",
+                                    500, 1, "2023/06/11", "本課程希望大家能認真學習", 50,
+                                    1, "Sam", "employee")
+        )
+        _shopitems.add(ClassInfo(2, "燃脂肌力", "09:00", "12:00", "緯育分店",
+                                    500, 1, "2023/06/16", "本課程希望大家能認真學習", 50,
+                                    1, "Andy", "employee")
+        )
+        _shopitems.add(ClassInfo(3, "基礎壺鈴", "18:00", "21:00", "緯育分店",
+            500, 2, "2023/06/21", "本課程希望大家能認真學習", 50,
+            1, "張小喵", "employee")
+        )
+        _shopitems.add(ClassInfo(4, "下肢肌力", "014:00", "15:00", "緯育分店",
+            500, 4, "2023/06/30", "本課程希望大家能認真學習", 50,
+            1, "博博教練", "employee")
+        )
+        _shopitems.add(ClassInfo(5, "徒手肌力", "09:00", "12:00", "緯育分店",
+            500, 4, "2023/06/11", "本課程希望大家能認真學習", 50,
+            1, "余阿汪", "employee")
+        )
+
         shopitems.value = _shopitems
     }
+
 
     fun search(set: Set<Int>, searchText : String) {
         val setFiltered  = mutableSetOf<ClassInfo>()
@@ -45,8 +67,6 @@ class MeShoppingViewModel : ViewModel() {
             }
             shopitems.value = setFiltered.toList()
         }
-
-
     }
 
 //    TEST DATA
@@ -67,18 +87,18 @@ class MeShoppingViewModel : ViewModel() {
             SportCat(4, 1, "跑步"),
         ),
         listOf(
-            SportCat(1, 2, "槓鈴肩推"),
-            SportCat(2, 2, "啞鈴肩推"),
-            SportCat(3, 2, "啞鈴側平舉"),
-            SportCat(4, 2, "啞鈴前平舉"),
-            SportCat(5, 2, "站姿肩推")
+            SportCat(5, 2, "槓鈴肩推"),
+            SportCat(6, 2, "啞鈴肩推"),
+            SportCat(7, 2, "啞鈴側平舉"),
+            SportCat(8, 2, "啞鈴前平舉"),
+            SportCat(9, 2, "站姿肩推")
         ),
         listOf(
-            SportCat(1, 3, "啞鈴握推"),
-            SportCat(2, 3, "槓鈴握推"),
-            SportCat(3, 3, "蝴蝶機夾胸"),
-            SportCat(4, 3, "繩索下斜夾胸"),
-            SportCat(5,3, "槓鈴斜上推")
+            SportCat(10, 3, "啞鈴握推"),
+            SportCat(11, 3, "槓鈴握推"),
+            SportCat(12, 3, "蝴蝶機夾胸"),
+            SportCat(13, 3, "繩索下斜夾胸"),
+            SportCat(14,3, "槓鈴斜上推")
         )
 
     )

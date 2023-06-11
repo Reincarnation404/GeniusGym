@@ -12,5 +12,7 @@ class MeRecycShopViewModel : ViewModel() {
     val startToEnd : MutableLiveData<String> by lazy { MutableLiveData("是") }
     val point : MutableLiveData<String> by lazy { MutableLiveData("誰") }
     val lessondate : MutableLiveData<String> by lazy { MutableLiveData("?") }
+    val lessonName : MutableLiveData<String> by lazy { MutableLiveData() }
+    val lessonKind : MutableLiveData<String> by lazy { MutableLiveData() }
 
 }

@@ -48,7 +48,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="有氧"
+                    android:text="@{viewModel.lessonKind}"
                     app:layout_constraintBottom_toBottomOf="@+id/textView5"
                     app:layout_constraintStart_toEndOf="@+id/textView5"
                     app:layout_constraintTop_toTopOf="@+id/textView5" />
@@ -154,6 +154,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="1dp"
                     android:layout_marginBottom="1dp"
+                    android:text="@{viewModel.lessonName}"
                     app:layout_constraintBottom_toBottomOf="@+id/textView6"
                     app:layout_constraintStart_toEndOf="@+id/textView6"
                     app:layout_constraintTop_toTopOf="@+id/textView6"
