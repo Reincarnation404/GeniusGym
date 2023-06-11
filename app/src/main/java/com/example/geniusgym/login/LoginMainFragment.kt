@@ -9,9 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.example.geniusgym.LoginMainViewModel
 import com.example.geniusgym.R
-import com.example.geniusgym.coach.calendarMemberList.model.MemberInfo
 import com.example.geniusgym.databinding.FragmentLoginMainBinding
-import java.lang.reflect.Member
 
 class LoginMainFragment : Fragment() {
     private lateinit var binding: FragmentLoginMainBinding

@@ -2,7 +2,6 @@ package com.example.geniusgym.member
 
 import android.app.DatePickerDialog
 import android.graphics.Color
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,9 +11,8 @@ import android.widget.TextView
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.geniusgym.R
-import com.example.geniusgym.coach.calendarMemberList.controller.ClassItemAdapter
 import com.example.geniusgym.databinding.FragmentMeTrainingCalendarBinding
-import com.example.geniusgym.member.controller.TrainingItemAdapter
+import com.example.geniusgym.member.adapter.TrainingItemAdapter
 import com.example.geniusgym.member.model.TrainingItem
 import java.time.DayOfWeek
 import java.time.LocalDate
@@ -41,7 +39,8 @@ class MeTrainingCalendarFragment : Fragment(), View.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val trainingDate = LocalDate.now()
-        val firstTrainingDayOfWeek = trainingDate.with(TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY))
+        val firstTrainingDayOfWeek =
+            trainingDate.with(TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY))
 
         with(binding) {
             viewModel?.trainingTextDate?.value =
@@ -75,7 +74,7 @@ class MeTrainingCalendarFragment : Fragment(), View.OnClickListener {
         }
     }
 
-    private fun trainingpad(number: Int): String {
+    private fun trainingPad(number: Int): String {
         return if (number >= 10) {
             number.toString()
         } else {
@@ -87,13 +86,14 @@ class MeTrainingCalendarFragment : Fragment(), View.OnClickListener {
         with(binding) {
             when (v?.id) {
                 R.id.ivTrainingCalendar -> {
-                    val trainingcalendar = Calendar.getInstance()
-                    val traindatePickerDialog = DatePickerDialog(
+                    val trainingCalendar = Calendar.getInstance()
+                    val trainDatePickerDialog = DatePickerDialog(
                         requireContext(),
                         { _, year, month, day ->
-                            viewModel?.trainingTextDate?.value = "$year-${trainingpad(month + 1)}-${trainingpad(day)}"
+                            viewModel?.trainingTextDate?.value =
+                                "$year-${trainingPad(month + 1)}-${trainingPad(day)}"
                             viewModel?.trainingDate?.value =
-                                LocalDate.parse("$year-${trainingpad(month + 1)}-${trainingpad(day)}")
+                                LocalDate.parse("$year-${trainingPad(month + 1)}-${trainingPad(day)}")
                             val trainingFirstDayOfWeek = viewModel?.trainingDate?.value?.with(
                                 TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY)
                             )
@@ -107,12 +107,12 @@ class MeTrainingCalendarFragment : Fragment(), View.OnClickListener {
                                 trainingSelectDay(trainingDayOfWeek)
                             }
                         },
-                        trainingcalendar.get(Calendar.YEAR),
-                        trainingcalendar.get(Calendar.MONTH),
-                        trainingcalendar.get(Calendar.DAY_OF_MONTH)
+                        trainingCalendar.get(Calendar.YEAR),
+                        trainingCalendar.get(Calendar.MONTH),
+                        trainingCalendar.get(Calendar.DAY_OF_MONTH)
                     )
 
-                    traindatePickerDialog.show()
+                    trainDatePickerDialog.show()
                     println("Whoa")
                 }
                 R.id.tvMeTrainingDay1 -> trainingSelectDay(1)
@@ -135,13 +135,13 @@ class MeTrainingCalendarFragment : Fragment(), View.OnClickListener {
     }
 
     private fun trainingSelectDay(index: Int) {
-        for (day in trainingWeekList){
+        for (day in trainingWeekList) {
             day.textview.setBackgroundColor(Color.parseColor("#1C1B1F"))
         }
-    trainingWeekList[index - 1].textview.setBackgroundResource(R.color.teal_700)
-    binding.viewModel?.trainingTextDate?.value = trainingWeekList[index - 1].date.toString()
-    binding.viewModel?.trainingSearch(binding.viewModel?.trainingTextDate?.value)
-}
+        trainingWeekList[index - 1].textview.setBackgroundResource(R.color.teal_700)
+        binding.viewModel?.trainingTextDate?.value = trainingWeekList[index - 1].date.toString()
+        binding.viewModel?.trainingSearch(binding.viewModel?.trainingTextDate?.value)
+    }
 
     private class trainingWeekDay(var textview: TextView, var date: LocalDate)
 }

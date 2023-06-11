@@ -18,5 +18,19 @@
         android:id="@+id/loginForgetFragment"
         android:name="com.example.geniusgym.LoginForgetFragment"
         android:label="LoginForgetFragment"
-        tools:layout="@layout/fragment_login_forget" />
+        tools:layout="@layout/fragment_login_forget" >
+        <action
+            android:id="@+id/action_loginForgetFragment_to_meTrainingFirstPageFragment"
+            app:destination="@id/meTrainingFirstPageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/meTrainingFirstPageFragment"
+        android:name="com.example.geniusgym.member.MeTrainingFirstPageFragment"
+        android:label="MeTrainingFirstPageFragment"
+        tools:layout="@layout/fragment_me_training_first_page"/>
+    <fragment
+        android:id="@+id/meTrainingAerobicFragment2"
+        android:name="com.example.geniusgym.member.MeTrainingAerobicFragment"
+        android:label="MeTrainingAerobicFragment"
+        tools:layout="@layout/fragment_me_training_aerobic"/>
 </navigation>
