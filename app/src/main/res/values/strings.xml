@@ -110,11 +110,45 @@
     <string name="tietBuAddClassDataRegiEndTime">報名截止時間</string>
     <string name="tietBuAddClassDataIntro">課程介紹</string>
 
-    <string name="me_br_store">分店商城</string>
 
+<!--會員端字串    -->
+    <string name="me_br_store">分店商城</string>
     <string name="btPaymentConfirm">確認送出</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="MeCoachDetail">教練介紹</string>
+    <string name="me_shoping_lessonkind">課程類型: </string>
+    <string name="me_shopping_coachname">指導教練: </string>
+    <string name="me_shopping_lesson_date">上課日期: </string>
+    <string name="me_shopping_lesson_time">上課時間: </string>
+    <string name="me_shopping_lesson_point">點數價格: </string>
+    <string name="meFragmentBranch">分店</string>
+    <string name="meShoppingFragmentStore">課程商城</string>
+    <string name="meShoppingDetailFragmentItem">課程詳細資訊</string>
+    <string name="meCoachInfoDetailFragment">教練介紹細節</string>
+    <string name="meCoachInfoFragment">教練介紹</string>
+    <string name="meMapDirectFragment">導覽</string>
+    <string name="meShopCart">購物車</string>
+    <string name="meSearchViewLessonName">全課程名稱、教練名稱</string>
+    <string name="btnTextConfirm">確認</string>
+    <string name="meExerciseKindO2">有氧</string>
+    <string name="meExerciseKindAttack">突刺</string>
+    <string name="me_shoping_lessonName">課程名稱: </string>
+    <string name="meDialogDetailSearch">關鍵字查詢</string>
+    <string name="meDialogDetailKindSearch">類別查詢</string>
+    <string name="mePutIntoShoppingCart">放入購物車</string>
+    <string name="meShoppingDirectBuy">直接購買</string>
+    <string name="meShoppingDetailNotify">注意事項</string>
+    <string name="meShoppingDetailNotifyDetail">1.不要久佔器材、滑手機\n2.使用完器材記得擦拭消毒過\n3.要穿適合運動的服裝\n4.槓片卡扣一定要用\n5.不懂請多問現場教練，以免受傷\n6.請不要來自拍占用器材\n7.不要忘了離開時自己的個人配備\n8.訓練前先有充足的睡眠</string>
+    <string name="meShoppingCartConfirmBuy">確認購買</string>
+    <string name="meShoppingCartAllSelect">全選</string>
+    <string name="meShoppingCartCheckOut">結帳</string>
+    <string name="meShoppingCartSpendPoint">所需點數</string>
+    <string name="meShoppingCartMePoint">擁有點數</string>
+    <string name="meCheckoutTitle">結帳成功</string>
+    <string name="meShoppingCheckoutNotify">教練可能會利用私訓提醒您該課程的注意事項，請不要漏掉私訓與APP 的通知！</string>
+    <string name="btMeShoppingCheckoutGoToBuyRecord">前往\n購買紀錄</string>
+    <string name="meShoppingCheckoutBackToShopStore">返回\n課程主頁</string>
+    <string name="meShoppoingCartCheckouting">結帳中</string>
 
 
 
