@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.geniusgym.R
 import com.example.geniusgym.coach.calendarMemberList.controller.ClassItemAdapter
 import com.example.geniusgym.coach.calendarMemberList.viewmodel.CoCalendarClassViewModel
-import com.example.geniusgym.databinding.FragmentCoCalendarTestBinding
+import com.example.geniusgym.databinding.FragmentCoCalendarClassBinding
 import java.time.DayOfWeek
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -21,7 +21,7 @@ import java.time.temporal.TemporalAdjusters
 import java.util.*
 
 class CoCalendarClassFragment : Fragment(), View.OnClickListener {
-    private lateinit var binding: FragmentCoCalendarTestBinding
+    private lateinit var binding: FragmentCoCalendarClassBinding
     private lateinit var weekList: MutableList<weekDay>
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -29,7 +29,7 @@ class CoCalendarClassFragment : Fragment(), View.OnClickListener {
 
         val viewModel: CoCalendarClassViewModel by viewModels()
 
-        binding = FragmentCoCalendarTestBinding.inflate(inflater, container, false)
+        binding = FragmentCoCalendarClassBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
         return binding.root

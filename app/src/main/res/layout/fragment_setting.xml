@@ -150,7 +150,8 @@
                             android:id="@+id/sNotifiedEnable"
                             style="@style/SettingStyleSwitch"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:checked="@={viewModel.sNotifiedEnable}"/>
 
                         <View
                             android:id="@+id/divider1_2"
@@ -162,7 +163,8 @@
                             android:id="@+id/sClassNoEnable"
                             style="@style/SettingStyleSwitch"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:checked= "@={viewModel.sClassNoEnable}"/>
 
                         <View
                             android:id="@+id/divider1_3"
@@ -174,7 +176,8 @@
                             android:id="@+id/sNewClassEnable"
                             style="@style/SettingStyleSwitch"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:checked = "@={viewModel.sNewClassEnable}"/>
 
                         <View
                             android:id="@+id/divider1_4"
@@ -186,7 +189,8 @@
                             android:id="@+id/sClassScheNoti"
                             style="@style/SettingStyleSwitch"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:checked = "@={viewModel.sClassScheNoti}"/>
 
                         <View
                             android:id="@+id/divider1_5"
@@ -198,7 +202,8 @@
                             android:id="@+id/sWorkScheNoti"
                             style="@style/SettingStyleSwitch"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:checked = "@={viewModel.sWorkScheNoti}"/>
 
                         <View
                             android:id="@+id/divider1_6"
@@ -210,7 +215,8 @@
                             android:id="@+id/sPrivacyShowEnable"
                             style="@style/SettingStyleSwitch"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:checked="@={viewModel.sPrivacyShowEnable}"/>
 
                     </LinearLayout>
                 </LinearLayout>
@@ -252,8 +258,8 @@
                     android:layout_height="wrap_content"
                     android:backgroundTint="#808080"
                     android:ems="10"
+                    android:text = "@{viewModel.nickName}"
                     android:enabled="false"
-                    android:hint="@string/etSettingSocialNickName"
                     android:inputType="textPersonName"
                     android:nextFocusDown="@+id/etSocialNickName"
                     android:textColor="#FFFFFF"
@@ -279,25 +285,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="3dp"
+                    android:text = "@{viewModel.intro}"
                     android:ems="10"
                     android:enabled="false"
                     android:gravity="start|top"
-                    android:hint="@string/etSettingSocialIntro"
                     android:inputType="textMultiLine"
                     android:textColor="#FFFFFF"
                     android:textColorHint="#808080"
                     app:layout_constraintStart_toStartOf="@+id/etSocialNickName"
                     app:layout_constraintTop_toBottomOf="@+id/etSocialNickName" />
-
-                <ImageView
-                    android:id="@+id/ivSocialNickName"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="12dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/etSocialNickName"
-                    app:layout_constraintStart_toEndOf="@+id/etSocialNickName"
-                    app:layout_constraintTop_toTopOf="@+id/etSocialNickName"
-                    app:srcCompat="@drawable/ic_setting_edit" />
 
                 <ImageView
                     android:id="@+id/ivSocialIntro"
@@ -382,7 +378,8 @@
                             android:id="@+id/sSocialFollowEnabled"
                             style="@style/SettingStyleSwitch"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:checked="@={viewModel.sSocialFollowEnabled}"/>
 
                         <View
                             android:id="@+id/divider1_7"
@@ -394,8 +391,8 @@
                             android:id="@+id/sSocialAllowInfoAccess"
                             style="@style/SettingStyleSwitch"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
-
+                            android:layout_height="wrap_content"
+                            android:checked = "@={viewModel.sSocialAllowInfoAccess}"/>
                         <View
                             android:id="@+id/divider1_8"
                             android:layout_width="match_parent"
@@ -406,7 +403,8 @@
                             android:id="@+id/sSocialAllowFansCountsAccess"
                             style="@style/SettingStyleSwitch"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:checked = "@={viewModel.sSocialAllowFansCountsAccess}"/>
                     </LinearLayout>
 
                 </LinearLayout>
