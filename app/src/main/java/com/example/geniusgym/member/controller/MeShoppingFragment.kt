@@ -127,11 +127,12 @@ class MeShoppingFragment : Fragment() {
             val filterId = adapter.getAllKindId()
             binding.viewModel?.search(filterId, bindingDialog.edtMeShoppingSearch.text.toString())
             binding.viewModel?.shopitems?.value?.let { it1 -> meAdapter.update(it1) }
+            adapter.clearSet()
             dialog.dismiss()
         }
 
         bindingDialog.btnMeShoppingCancel.setOnClickListener {
-
+            adapter.clearSet()
             dialog.dismiss()
         }
         return dialog

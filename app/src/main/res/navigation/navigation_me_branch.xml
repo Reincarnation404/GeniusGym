@@ -32,17 +32,32 @@
         android:id="@+id/meShoppingDetailFragment"
         android:name="com.example.geniusgym.member.controller.MeShoppingDetailFragment"
         android:label="@string/meShoppingDetailFragmentItem"
-        tools:layout="@layout/fragment_me_shopping_detail" />
+        tools:layout="@layout/fragment_me_shopping_detail" >
+        <action
+            android:id="@+id/action_meShoppingDetailFragment_to_meShopCartFragment"
+            app:destination="@id/meShopCartFragment" />
+    </fragment>
     <fragment
         android:id="@+id/meShopCartFragment"
         android:name="com.example.geniusgym.member.controller.MeShopCartFragment"
         android:label="@string/meShopCart"
-        tools:layout="@layout/fragment_me_shopping_detail" />
+        tools:layout="@layout/fragment_me_shop_cart" >
+        <action
+            android:id="@+id/action_meShopCartFragment_to_meCheckoutFragment"
+            app:destination="@id/meCheckoutFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/meCheckoutFragment"
+        android:name="com.example.geniusgym.member.controller.MeCheckoutFragment"
+        android:label="@string/meShoppingCartCheckOut"
+        tools:layout="@layout/fragment_me_checkout" />
+
     <fragment
         android:id="@+id/meMapDirectFragment"
         android:name="com.example.geniusgym.member.controller.MeMapDirectFragment"
         android:label="@string/meMapDirectFragment"
         tools:layout="@layout/fragment_me_map_direct" />
+
     <fragment
         android:id="@+id/meShoppingFragment"
         android:name="com.example.geniusgym.member.controller.MeShoppingFragment"

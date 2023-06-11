@@ -22,5 +22,10 @@ class MeShopCartFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        if (arguments?.getBoolean("direct?") == true){
+            arguments?.getSerializable("classinfo")
+        }
+
     }
 }

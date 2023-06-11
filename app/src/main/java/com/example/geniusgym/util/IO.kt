@@ -1,7 +1,7 @@
 package com.example.geniusgym.util
 
+import com.google.gson.JsonArray
 import com.google.gson.JsonObject
-import java.io.File
 
 interface IO {
     /**
@@ -17,12 +17,15 @@ interface IO {
      */
     fun saveFile(jsonObject: JsonObject, filename: String, mode : Int, encrypted : Boolean)
 
+    fun saveFile(jsonArray: JsonArray, filename: String, mode : Int, encrypted : Boolean)
+
     /**
      * @param filename 要讀取的檔案名稱
      * @param mode 要選取的模式
      * @param encrypted 是否加密
      */
-    fun loadFile(filename: String, mode : Int, encrypted : Boolean):JsonObject?
+    fun loadObjectFile(filename: String, mode : Int, encrypted : Boolean):JsonObject?
+     fun loadArrayFile(filename: String, mode : Int, encrypted : Boolean):JsonArray?
 }
 
 interface SPIO{

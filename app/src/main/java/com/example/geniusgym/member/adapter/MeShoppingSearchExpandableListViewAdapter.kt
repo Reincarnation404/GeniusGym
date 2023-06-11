@@ -17,7 +17,7 @@ class MeShoppingSearchExpandableListViewAdapter(private val context: Context,
     : BaseExpandableListAdapter() {
 
     companion object{
-        private val AllKindId = mutableSetOf<Int>()
+        private var AllKindId = mutableSetOf<Int>()
 //        處理錯位問題，因為點擊大項目時，會整個資料刷新，因此放在靜態，讓資料不會被刷新掉
         private val allKindText = mutableSetOf<String>()
     }
@@ -100,6 +100,12 @@ class MeShoppingSearchExpandableListViewAdapter(private val context: Context,
 
     fun getAllKindId() : Set<Int>{
         return AllKindId
+    }
+
+    fun clearSet(){
+        AllKindId.clear()
+        allKindText.clear()
+
     }
 
 

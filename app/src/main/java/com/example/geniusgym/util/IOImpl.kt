@@ -8,6 +8,7 @@ import androidx.security.crypto.EncryptedFile
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKey
 import com.google.gson.Gson
+import com.google.gson.JsonArray
 import com.google.gson.JsonObject
 import java.io.File
 import java.io.FileInputStream
@@ -81,8 +82,39 @@ class IOImpl {
             }
         }
 
+        override fun saveFile(jsonArray: JsonArray, filename: String, mode : Int, encrypted : Boolean) {
+            when (mode) {
+                Mode.MODE_MEMORY -> {
+                    if (encrypted){
+                        val filerDir = File(context.filesDir, filename)
+                        getEncryptedFile(filerDir, context).openFileOutput()
+                    }else{
+                        context.openFileOutput(filename, Context.MODE_PRIVATE)
+                    }
+                        .bufferedWriter().use {
+                            it.write(jsonArray.toString())
+                        }
+                }
+                Mode.MODE_CACHE -> {
+                    val cacheFile = File(context.cacheDir, filename)
+                    if (encrypted){
+                        getEncryptedFile(cacheFile, context).openFileOutput()
+                    }else{
+                        FileOutputStream(cacheFile)
+                    }
+                        .bufferedWriter().use {
+                            it.write(jsonArray.toString())
+                        }
+                }
+                else -> {
+                    throw java.lang.Exception("選取了錯誤的模式")
+                }
+            }
+        }
 
-        override fun loadFile(filename: String, mode : Int, encrypted : Boolean): JsonObject? {
+
+
+        override fun loadObjectFile(filename: String, mode : Int, encrypted : Boolean): JsonObject? {
             val file : File =
                 when (mode) {
                     Mode.MODE_MEMORY -> {
@@ -112,9 +144,66 @@ class IOImpl {
             }
         }
 
+        override fun loadArrayFile(filename: String, mode : Int, encrypted : Boolean): JsonArray? {
+            val file : File =
+                when (mode) {
+                    Mode.MODE_MEMORY -> {
+                        File(context.filesDir, filename)
+                    }
+                    Mode.MODE_CACHE -> {
+                        File(context.cacheDir, filename)
+                    }
+                    else -> {
+                        throw java.lang.Exception("選取了錯誤的模式")
+                    }
+                }
+
+            return if (file.exists()) {
+                var jsonStr: String? = null
+                if (encrypted){
+                    getEncryptedFile(file, context).openFileInput()
+                }else{
+                    context.openFileInput("internal")
+                }
+                    .bufferedReader().useLines { lines ->
+                        jsonStr = lines.fold("") { text, line -> "$text$line" }
+                    }
+                Gson().fromJson(jsonStr, JsonArray::class.java)
+            } else {
+                null
+            }
+        }
+
     }
 
     class External(private val context: Context) : IO {
+
+        override fun saveFile(jsonArray: JsonArray, filename: String, mode : Int, encrypted : Boolean) {
+            if (!mediaMounted()){
+                Toast.makeText(context, "尚未連接外部記憶體", Toast.LENGTH_SHORT).show()
+                return
+            }
+            val file =
+                when (mode) {
+                    Mode.MODE_MEMORY -> {
+                        File(context.getExternalFilesDir(null), filename)
+                    }
+                    Mode.MODE_CACHE -> {
+                        File(context.externalCacheDir, filename)
+                    }
+                    else -> {
+                        throw FileNotFoundException("讀取資料錯誤")
+                    }
+                }
+            if (encrypted){
+                getEncryptedFile(file, context).openFileOutput()
+            }else{
+                FileOutputStream(file)
+            }
+                .bufferedWriter().use {
+                    it.write(jsonArray.toString())
+            }
+        }
 
         override fun saveFile(jsonObject: JsonObject, filename: String, mode : Int, encrypted : Boolean) {
             if (!mediaMounted()){
@@ -140,10 +229,10 @@ class IOImpl {
             }
                 .bufferedWriter().use {
                     it.write(jsonObject.toString())
-            }
+                }
         }
 
-        override fun loadFile(filename: String, mode : Int, encrypted : Boolean):JsonObject? {
+        override fun loadObjectFile(filename: String, mode : Int, encrypted : Boolean):JsonObject? {
             if (!mediaMounted()){
                 Toast.makeText(context, "尚未連接外部記憶體", Toast.LENGTH_SHORT).show()
                 return null
@@ -170,6 +259,38 @@ class IOImpl {
                     val jsonStr = lines.fold("") { text, line -> "$text$line" }
                     return Gson().fromJson(jsonStr, JsonObject::class.java)
                 }
+            } else {
+                return null
+            }
+        }
+
+        override fun loadArrayFile(filename: String, mode : Int, encrypted : Boolean):JsonArray? {
+            if (!mediaMounted()){
+                Toast.makeText(context, "尚未連接外部記憶體", Toast.LENGTH_SHORT).show()
+                return null
+            }
+            val file =
+                when (mode) {
+                    Mode.MODE_MEMORY -> {
+                        File(context.getExternalFilesDir(null), filename)
+                    }
+                    Mode.MODE_CACHE -> {
+                        File(context.externalCacheDir, filename)
+                    }
+                    else -> {
+                        throw FileNotFoundException("讀取資料錯誤")
+                    }
+                }
+            if (file.exists()) {
+                if (encrypted){
+                    getEncryptedFile(file, context).openFileInput()
+                }else{
+                    FileInputStream(file)
+                }
+                    .bufferedReader().useLines { lines ->
+                        val jsonStr = lines.fold("") { text, line -> "$text$line" }
+                        return Gson().fromJson(jsonStr, JsonArray::class.java)
+                    }
             } else {
                 return null
             }

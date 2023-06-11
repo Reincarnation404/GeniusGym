@@ -32,9 +32,6 @@ class MeShoppingAdapter(private var shopitems : List<ClassInfo>) :
     }
     override fun onBindViewHolder(holder: MyShopingViewHolder, position: Int) {
         val shopitem = shopitems[position]
-//        with(holder){
-//            binding.viewModel?.shopitem?.value = shopitem
-//        }
 
         with(holder.binding.viewModel!!){
             coachName.value = shopitem.c_id
