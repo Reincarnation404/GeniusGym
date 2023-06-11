@@ -14,7 +14,7 @@
         android:id="@+id/coCalendarTestFragment"
         android:name="com.example.geniusgym.coach.calendarMemberList.CoCalendarClassFragment"
         android:label="CoCalendarTestFragment"
-        tools:layout="@layout/fragment_co_calendar_test">
+        tools:layout="@layout/fragment_co_calendar_class">
         <action
             android:id="@+id/action_coCalendarTestFragment_to_coCalendarMemberListFragment2"
             app:destination="@id/coCalendarMemberListFragment" />
