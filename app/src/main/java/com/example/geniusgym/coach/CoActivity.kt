@@ -3,6 +3,7 @@ package com.example.geniusgym.coach
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isGone
@@ -39,21 +40,26 @@ class CoActivity : AppCompatActivity() {
             tvCoActivityHead.text = "首頁"
             includeHome.homeMontionLayout.setOnClickListener {
                 tvCoActivityHead.text = "首頁"
+                llCoActivityHead.visibility = View.VISIBLE
                 navigateController.navigate(R.id.coHomeFragment)
             }
             includeCalendar.coachMotionLayout.setOnClickListener {
                 tvCoActivityHead.text = "行事曆"
+                llCoActivityHead.visibility = View.VISIBLE
                 navigateController.navigate(R.id.coCalendarTestFragment)
             }
             includeSocial.socialMontionLayout.setOnClickListener {
+                llCoActivityHead.visibility = View.GONE
                 navigateController.navigate(R.id.socialHomeFragment2)
             }
             includeNotification.notificationMontionLayout.setOnClickListener {
                 tvCoActivityHead.text = "通知"
+                llCoActivityHead.visibility = View.VISIBLE
                navigateController.navigate(R.id.notificationFragment)
             }
             includeMember.memberMontionLayout.setOnClickListener {
                 tvCoActivityHead.text = "資訊"
+                llCoActivityHead.visibility = View.VISIBLE
                 navigateController.navigate(R.id.coCoachFragment)
             }
             navigateController.addOnDestinationChangedListener{controller, destination, arguments->
