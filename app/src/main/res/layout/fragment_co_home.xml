@@ -9,15 +9,18 @@
             type="com.example.geniusgym.coach.calendarMemberList.viewmodel.CoHomeViewModel" />
     </data>
 
-    <FrameLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".coach.CoHomeFragment">
+        android:layout_height="match_parent">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Hello" />
+            android:id="@+id/tvCoHomeHead"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tvCoHomeHead"
+            android:textSize="23sp"
+            tools:layout_editor_absoluteX="102dp"
+            tools:layout_editor_absoluteY="148dp" />
 
-    </FrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
