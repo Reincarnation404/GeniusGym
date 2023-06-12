@@ -31,5 +31,6 @@
     <string name="tvCoCoPhoneNumber">電話號碼</string>
     <string name="tvCoCoMeNumber">教練編號</string>
     <string name="tvCoCoMeStart">教練入職日</string>
+    <string name="tvCoHomeHead">門禁掃碼</string>
 
 </resources>
