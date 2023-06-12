@@ -50,7 +50,13 @@
         android:id="@+id/meCheckoutFragment"
         android:name="com.example.geniusgym.member.controller.MeCheckoutFragment"
         android:label="@string/meShoppingCartCheckOut"
-        tools:layout="@layout/fragment_me_checkout" />
+        tools:layout="@layout/fragment_me_checkout" >
+        <action
+            android:id="@+id/action_meCheckoutFragment_to_meShoppingFragment"
+            app:destination="@id/meShoppingFragment"
+            app:popUpTo="@id/meShoppingFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
 
     <fragment
         android:id="@+id/meMapDirectFragment"

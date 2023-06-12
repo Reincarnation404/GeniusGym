@@ -1,6 +1,5 @@
 package com.example.geniusgym.member.viewmodel
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.geniusgym.member.model.ClassInfo
@@ -17,31 +16,6 @@ class MeShoppingViewModel : ViewModel() {
         update()
 
     }
-    private fun update(){
-        _shopitems.add(ClassInfo(1, "基礎肌力", "09:00", "12:00", "緯育分店",
-                                    500, 1, "2023/06/11", "本課程希望大家能認真學習", 50,
-                                    1, "Sam", "employee")
-        )
-        _shopitems.add(ClassInfo(2, "燃脂肌力", "09:00", "12:00", "緯育分店",
-                                    500, 1, "2023/06/16", "本課程希望大家能認真學習", 50,
-                                    1, "Andy", "employee")
-        )
-        _shopitems.add(ClassInfo(3, "基礎壺鈴", "18:00", "21:00", "緯育分店",
-            500, 2, "2023/06/21", "本課程希望大家能認真學習", 50,
-            1, "張小喵", "employee")
-        )
-        _shopitems.add(ClassInfo(4, "下肢肌力", "014:00", "15:00", "緯育分店",
-            500, 4, "2023/06/30", "本課程希望大家能認真學習", 50,
-            1, "博博教練", "employee")
-        )
-        _shopitems.add(ClassInfo(5, "徒手肌力", "09:00", "12:00", "緯育分店",
-            500, 4, "2023/06/11", "本課程希望大家能認真學習", 50,
-            1, "余阿汪", "employee")
-        )
-
-        shopitems.value = _shopitems
-    }
-
 
     fun search(set: Set<Int>, searchText : String) {
         val setFiltered  = mutableSetOf<ClassInfo>()
@@ -61,13 +35,40 @@ class MeShoppingViewModel : ViewModel() {
 
         }else{
             _shopitems.forEach{
-                if (it.ci_name.contains(searchText) || it.c_id.contains(searchText)){
+                if (it.ci_name!!.contains(searchText) || it.c_id!!.contains(searchText)){
                     setFiltered.add(it)
                 }
             }
             shopitems.value = setFiltered.toList()
         }
     }
+
+    private fun update(){
+        _shopitems.add(ClassInfo(1, "基礎肌力", "09:00", "12:00", "緯育分店",
+                                    500, 1, "2023/06/11", "本課程希望大家能認真學習", 50,
+                                    "Sam")
+        )
+        _shopitems.add(ClassInfo(2, "燃脂肌力", "09:00", "12:00", "緯育分店",
+                                    500, 1, "2023/06/16", "本課程希望大家能認真學習", 50,
+                                    "Andy")
+        )
+        _shopitems.add(ClassInfo(3, "基礎壺鈴", "18:00", "21:00", "緯育分店",
+            500, 2, "2023/06/21", "本課程希望大家能認真學習", 50,
+            "張小喵")
+        )
+        _shopitems.add(ClassInfo(4, "下肢肌力", "014:00", "15:00", "緯育分店",
+            500, 4, "2023/06/30", "本課程希望大家能認真學習", 50,
+            "博博教練")
+        )
+        _shopitems.add(ClassInfo(5, "徒手肌力", "09:00", "12:00", "緯育分店",
+            500, 4, "2023/06/11", "本課程希望大家能認真學習", 50,
+            "余阿汪")
+        )
+
+        shopitems.value = _shopitems
+    }
+
+
 
 //    TEST DATA
     val sportbigcats : List<SportBigCat> = listOf(
