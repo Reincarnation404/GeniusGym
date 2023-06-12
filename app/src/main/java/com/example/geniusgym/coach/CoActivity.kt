@@ -79,6 +79,7 @@ class CoActivity : AppCompatActivity() {
         }
 
     }
+    
 
     override fun onPause() {
         super.onPause()
