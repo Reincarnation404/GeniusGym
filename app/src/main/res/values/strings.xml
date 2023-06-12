@@ -149,6 +149,7 @@
     <string name="btMeShoppingCheckoutGoToBuyRecord">前往\n購買紀錄</string>
     <string name="meShoppingCheckoutBackToShopStore">返回\n課程主頁</string>
     <string name="meShoppoingCartCheckouting">結帳中</string>
+    <string name="meShoppoingCheckoutNoMony">餘額不足</string>
 
 
 

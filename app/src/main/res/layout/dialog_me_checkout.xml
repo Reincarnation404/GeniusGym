@@ -27,18 +27,18 @@
         app:layout_constraintTop_toBottomOf="@+id/textView27" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btMeShoppingBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:text="@string/meShoppingCheckoutBackToShopStore"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
-        app:layout_constraintEnd_toEndOf="@+id/button3"
-        app:layout_constraintStart_toStartOf="@+id/button3" />
+        app:layout_constraintBottom_toTopOf="@+id/btMeGoToShoppingRecord"
+        app:layout_constraintEnd_toEndOf="@+id/btMeGoToShoppingRecord"
+        app:layout_constraintStart_toStartOf="@+id/btMeGoToShoppingRecord" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btMeGoToShoppingRecord"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"

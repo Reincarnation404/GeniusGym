@@ -5,5 +5,6 @@ const val MinUpdateDistanceMeters = 1000f
 const val MapZoom = 50f
 object MeShareData {
     var branchName : String = ""
+    var personPoint : Int = 10000
 
 }

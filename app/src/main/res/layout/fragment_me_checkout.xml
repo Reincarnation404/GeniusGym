@@ -2,7 +2,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/meRecycleShoppingCart"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".member.controller.MeCheckoutFragment">
@@ -18,7 +17,7 @@
         app:layout_constraintStart_toStartOf="@+id/textView25" />
 
     <TextView
-        android:id="@+id/textView24"
+        android:id="@+id/tvMeShoppingPointNeed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@+id/textView23"
@@ -35,7 +34,7 @@
         app:layout_constraintStart_toStartOf="@+id/button" />
 
     <TextView
-        android:id="@+id/textView26"
+        android:id="@+id/meShoppingPointHave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@+id/textView25"
@@ -59,11 +58,11 @@
         android:layout_marginBottom="30dp"
         android:text="@string/btTopup"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/textView28"
+        app:layout_constraintBottom_toTopOf="@+id/btMeShoppingCheckout"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/textView28"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btMeShoppingCheckout"
         android:layout_width="0dp"
         android:layout_height="70dp"
         android:background="@drawable/shapblackline"
@@ -76,7 +75,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/RecycleMeShoppingCheckout"
+        android:id="@+id/meRecycleShoppingCart"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="20dp"

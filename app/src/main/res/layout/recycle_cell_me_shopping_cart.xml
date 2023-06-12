@@ -44,14 +44,16 @@
                     tools:srcCompat="@tools:sample/avatars" />
 
                 <TextView
+                    android:id="@+id/tvMeShoppingCheckoutKind"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="有氧"
                     app:layout_constraintBottom_toBottomOf="@+id/textView5"
                     app:layout_constraintStart_toEndOf="@+id/textView5"
-                    app:layout_constraintTop_toTopOf="@+id/textView5" />
+                    app:layout_constraintTop_toTopOf="@+id/textView5"
+                    tools:text="有氧" />
 
                 <TextView
+                    android:id="@+id/tvMeShoppingCheckoutChoachName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@{viewModel.coachName}"
@@ -61,6 +63,7 @@
                     tools:text="我是誰我在哪裡" />
 
                 <TextView
+                    android:id="@+id/tvMeShoppingCheckoutDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@{viewModel.lessondate}"
@@ -70,6 +73,7 @@
                     tools:text="2023/04/24" />
 
                 <TextView
+                    android:id="@+id/tvMeShoppingCheckoutTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@{viewModel.startToEnd}"
@@ -80,6 +84,7 @@
                     tools:text="09:00~18:00" />
 
                 <TextView
+                    android:id="@+id/tvMeShoppingCheckoutPoint"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="1dp"
@@ -143,6 +148,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
                 <TextView
+                    android:id="@+id/tvMeShoppingCheckoutLessonName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="1dp"

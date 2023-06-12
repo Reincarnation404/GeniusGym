@@ -75,7 +75,9 @@ class MeShoppingFragment : Fragment() {
                 when(menuItem.itemId){
 
                     R.id.meShoppingCartIcon -> {
-                        Navigation.findNavController(binding.root).navigate(R.id.action_meShoppingFragment_to_meShopCartFragment)
+                        val bundle = Bundle()
+                        bundle.putBoolean("direct", false)
+                        Navigation.findNavController(binding.root).navigate(R.id.action_meShoppingFragment_to_meShopCartFragment, bundle)
                     }
 
                     R.id.meShoppingFilterIcon -> {

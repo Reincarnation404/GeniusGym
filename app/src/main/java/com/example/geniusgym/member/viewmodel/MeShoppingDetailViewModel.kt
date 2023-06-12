@@ -61,9 +61,12 @@ class MeShoppingDetailViewModel : ViewModel() {
         val jsonObject = JsonObject()
         jsonObject.addProperty("c_id", _clasinfo?.c_id)
         jsonObject.addProperty("c_date", _clasinfo?.ci_date)
-//        jsonObject.addProperty("c_id", _clasinfo?.c_id)
+        jsonObject.addProperty("sc_id", _clasinfo?.sc_id)
+        jsonObject.addProperty("ci_name", _clasinfo?.ci_name)
         jsonObject.addProperty("c_cost", _clasinfo?.ci_cost.toString())
-        jsonObject.addProperty("c_timeText", _clasinfo?.ci_start_time + "~" +  _clasinfo?.ci_ed_time)
+        jsonObject.addProperty("ci_start_time", _clasinfo?.ci_start_time)
+        jsonObject.addProperty("ci_ed_time", _clasinfo?.ci_ed_time)
+
         jsonArray.add(jsonObject)
         try {
             internal.saveFile(jsonArray, "meShoppingCart", IOImpl.Mode.MODE_MEMORY, true)
@@ -77,7 +80,7 @@ class MeShoppingDetailViewModel : ViewModel() {
     fun directBuy(view: View){
         val bundle = Bundle()
         bundle.putSerializable("classinfo", _clasinfo)
-        bundle.putSerializable("direct?", false)
+        bundle.putSerializable("direct?", true)
         Navigation.findNavController(view).navigate(R.id.action_meShoppingDetailFragment_to_meShopCartFragment, bundle)
     }
 
