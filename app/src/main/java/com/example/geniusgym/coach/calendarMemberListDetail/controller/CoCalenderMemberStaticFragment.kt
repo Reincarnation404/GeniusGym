@@ -42,8 +42,6 @@ class CoCalenderMemberStaticFragment : Fragment(), View.OnClickListener {
         super.onResume()
         val coActivity = requireActivity() as CoActivity
         with(binding) {
-            val member = coActivity.binding.viewModel?.member?.value
-            viewModel?.member?.value = member
             viewModel?.loadStatistic()
             loadPreferences()
         }
@@ -53,9 +51,11 @@ class CoCalenderMemberStaticFragment : Fragment(), View.OnClickListener {
         super.onViewCreated(view, savedInstanceState)
         val date = LocalDate.now()
         val firstDayOrWeek = date.with(TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY))
-
+        val coActivity = requireActivity() as CoActivity
 
         with(binding) {
+            val member = coActivity.binding.viewModel?.member?.value
+            viewModel?.member?.value = member
             viewModel?.textDate?.value =
                 LocalDate.now().format(DateTimeFormatter.ISO_LOCAL_DATE).toString()
             weekList = mutableListOf(

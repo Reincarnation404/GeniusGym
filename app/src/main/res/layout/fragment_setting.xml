@@ -239,8 +239,8 @@
 
                     app:layout_constraintStart_toStartOf="@+id/tvSocial"
                     app:layout_constraintTop_toBottomOf="@+id/tvSocial"
-                    app:srcCompat="@drawable/a005"
-                    tools:src="@drawable/a005" />
+                    app:srcCompat="@android:mipmap/sym_def_app_icon"
+                    tools:src="@tools:sample/avatars" />
 
                 <TextView
                     android:id="@+id/tvSocialNickName"
