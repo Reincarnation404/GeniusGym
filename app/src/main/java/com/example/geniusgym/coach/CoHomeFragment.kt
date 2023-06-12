@@ -55,7 +55,7 @@ class CoHomeFragment : Fragment() {
         }
 
         binding.ivCoHomeQRCode.setImageBitmap(mImage)
-        timer = object : CountDownTimer(10 * second, 1 * second) {
+        timer = object : CountDownTimer(5 * minute, 1 * second) {
             // 每過一秒，該方法會被呼叫一次
             override fun onTick(millisUntilFinished: Long) {
                 val secondsUntilFinished = millisUntilFinished / second
