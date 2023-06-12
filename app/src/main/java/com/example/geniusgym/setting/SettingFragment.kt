@@ -112,7 +112,7 @@ class SettingFragment : Fragment(), View.OnClickListener {
                 .putString("sNickName",viewModel?.nickName?.value)
                 .putString("sIntro",viewModel?.Intro?.value)
                 .apply()
-            Toast.makeText(requireContext(), getString(R.string.toastSavePreference), Toast.LENGTH_SHORT).show()
+           // Toast.makeText(requireContext(), getString(R.string.toastSavePreference), Toast.LENGTH_SHORT).show()
         }
     }
 }

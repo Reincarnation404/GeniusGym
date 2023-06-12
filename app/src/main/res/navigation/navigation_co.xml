@@ -11,9 +11,9 @@
         tools:layout="@layout/fragment_co_home" />
 
     <fragment
-        android:id="@+id/coCalendarTestFragment"
+        android:id="@+id/coCalendarClassFragment"
         android:name="com.example.geniusgym.coach.calendarMemberList.CoCalendarClassFragment"
-        android:label="CoCalendarTestFragment"
+        android:label="CoCalendarClassFragment"
         tools:layout="@layout/fragment_co_calendar_class">
         <action
             android:id="@+id/action_coCalendarTestFragment_to_coCalendarMemberListFragment2"

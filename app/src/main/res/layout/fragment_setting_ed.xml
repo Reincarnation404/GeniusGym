@@ -25,7 +25,7 @@
             android:layout_height="105dp"
             android:layout_marginStart="36dp"
             android:layout_marginTop="40dp"
-            android:src="@drawable/a005"
+            android:src="@android:mipmap/sym_def_app_icon"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

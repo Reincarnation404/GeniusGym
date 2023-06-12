@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -17,10 +18,22 @@
             android:id="@+id/tvCoHomeHead"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="148dp"
             android:text="@string/tvCoHomeHead"
             android:textSize="23sp"
-            tools:layout_editor_absoluteX="102dp"
-            tools:layout_editor_absoluteY="148dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/ivCoHomeQRCode"
+            android:layout_width="188dp"
+            android:layout_height="247dp"
+            android:layout_marginTop="33dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvCoHomeHead"
+            tools:srcCompat="@tools:sample/avatars" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
