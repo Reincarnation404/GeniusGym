@@ -81,13 +81,14 @@ class MeMapDirectFragment : Fragment() {
         val locationName = arguments?.getString("branchlocation")
 
         checkLocationSettings()
-        latLng = LatLng(0.0, 0.0);
+
         with(binding){
             mapView.onCreate(savedInstanceState)
             mapView.onStart()
             mapView.getMapAsync{ googleMap ->
                 map = googleMap
             }
+            latLng = LatLng(0.0, 0.0);
             viewModel.moveMap(latLng, map)
 //            if (locationName != null) {
 //                viewModel.geocode(locationName, requireContext())?.let { addressDestination ->
