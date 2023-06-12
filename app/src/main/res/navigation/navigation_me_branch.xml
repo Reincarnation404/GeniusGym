@@ -7,43 +7,72 @@
     <fragment
         android:id="@+id/meBranchDetailFragment"
         android:name="com.example.geniusgym.member.controller.MeBranchDetailFragment"
-        android:label="fragment_me_branch_detail"
-        tools:layout="@layout/fragment_me_branch_detail" >
+        android:label="@string/meFragmentBranch"
+        tools:layout="@layout/fragment_me_branch_detail">
         <action
             android:id="@+id/action_meBranchDetailFragment_to_meShoppingFragment"
-            app:popUpTo="@id/meBranchDetailFragment"
             app:destination="@id/meShoppingFragment" />
         <action
             android:id="@+id/action_meBranchDetailFragment_to_meCoachInfoFragment"
-            app:popUpTo="@id/meBranchDetailFragment"
             app:destination="@id/meCoachInfoFragment" />
         <action
             android:id="@+id/action_meBranchDetailFragment_to_meMapDirectFragment"
-            app:popUpTo="@id/meBranchDetailFragment"
             app:destination="@id/meMapDirectFragment" />
     </fragment>
     <fragment
         android:id="@+id/meCoachInfoFragment"
         android:name="com.example.geniusgym.member.controller.MeCoachInfoFragment"
-        android:label="fragment_me_coach_info"
-        tools:layout="@layout/fragment_me_coach_info" >
+        android:label="@string/meCoachInfoFragment"
+        tools:layout="@layout/fragment_me_coach_info">
         <action
             android:id="@+id/action_meCoachInfoFragment_to_meCoachInfoDetailFragment"
             app:destination="@id/meCoachInfoDetailFragment" />
     </fragment>
     <fragment
+        android:id="@+id/meShoppingDetailFragment"
+        android:name="com.example.geniusgym.member.controller.MeShoppingDetailFragment"
+        android:label="@string/meShoppingDetailFragmentItem"
+        tools:layout="@layout/fragment_me_shopping_detail" >
+        <action
+            android:id="@+id/action_meShoppingDetailFragment_to_meShopCartFragment"
+            app:destination="@id/meShopCartFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/meShopCartFragment"
+        android:name="com.example.geniusgym.member.controller.MeShopCartFragment"
+        android:label="@string/meShopCart"
+        tools:layout="@layout/fragment_me_shop_cart" >
+        <action
+            android:id="@+id/action_meShopCartFragment_to_meCheckoutFragment"
+            app:destination="@id/meCheckoutFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/meCheckoutFragment"
+        android:name="com.example.geniusgym.member.controller.MeCheckoutFragment"
+        android:label="@string/meShoppingCartCheckOut"
+        tools:layout="@layout/fragment_me_checkout" />
+
+    <fragment
         android:id="@+id/meMapDirectFragment"
         android:name="com.example.geniusgym.member.controller.MeMapDirectFragment"
-        android:label="fragment_me_map_direct"
+        android:label="@string/meMapDirectFragment"
         tools:layout="@layout/fragment_me_map_direct" />
+
     <fragment
         android:id="@+id/meShoppingFragment"
         android:name="com.example.geniusgym.member.controller.MeShoppingFragment"
-        android:label="fragment_me_shopping"
-        tools:layout="@layout/fragment_me_shopping" />
+        android:label="@string/meShoppingFragmentStore"
+        tools:layout="@layout/fragment_me_shopping">
+        <action
+            android:id="@+id/action_meShoppingFragment_to_MeShoppingDetailFragment"
+            app:destination="@id/meShoppingDetailFragment" />
+        <action
+            android:id="@+id/action_meShoppingFragment_to_meShopCartFragment"
+            app:destination="@id/meShopCartFragment" />
+    </fragment>
     <fragment
         android:id="@+id/meCoachInfoDetailFragment"
         android:name="com.example.geniusgym.member.controller.MeCoachInfoDetailFragment"
-        android:label="fragment_me_coach_info_detail"
+        android:label="@string/meCoachInfoDetailFragment"
         tools:layout="@layout/fragment_me_coach_info_detail" />
 </navigation>

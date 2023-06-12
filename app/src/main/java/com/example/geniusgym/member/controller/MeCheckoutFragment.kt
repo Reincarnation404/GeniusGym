@@ -7,7 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.geniusgym.R
-import com.example.geniusgym.member.MeCheckoutViewModel
+
+import com.example.geniusgym.member.viewmodel.MeCheckoutViewModel
+
 
 class MeCheckoutFragment : Fragment() {
 
