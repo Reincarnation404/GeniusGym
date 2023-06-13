@@ -73,10 +73,10 @@ class CoActivity : AppCompatActivity() {
                 llCoActivityHead.visibility = View.VISIBLE
                 navigateController.navigate(R.id.notificationFragment)
             }
-            includeMember.memberMontionLayout.setOnClickListener {
-                if (includeMember.memberMontionLayout.progress == 0f) {
+            includeInformation.memberMontionLayout.setOnClickListener {
+                if (includeInformation.memberMontionLayout.progress == 0f) {
                     MotionToZero()
-                    includeMember.memberMontionLayout.transitionToEnd()
+                    includeInformation.memberMontionLayout.transitionToEnd()
                 }
                 tvCoActivityHead.text = "資訊"
                 llCoActivityHead.visibility = View.VISIBLE
@@ -91,7 +91,7 @@ class CoActivity : AppCompatActivity() {
             includeCalendar.coachMotionLayout.progress = 0f
             includeSocial.socialMontionLayout.progress = 0f
             includeNotification.notificationMontionLayout.progress = 0f
-            includeMember.memberMontionLayout.progress = 0f
+            includeInformation.memberMontionLayout.progress = 0f
         }
     }
 
