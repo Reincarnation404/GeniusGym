@@ -1,5 +1,6 @@
 package com.example.geniusgym.coach
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -30,20 +31,16 @@ class CoCalendarMemberDetailFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         val coActivity = requireActivity() as CoActivity
         with(binding){
+            tvCoCaMeDetail.setBackgroundResource(R.color.teal_700)
             tvCoCaMeDetail.setOnClickListener{
-                println("tvCoCaMeDetail")
                 Navigation.findNavController(requireActivity(), R.id.fcvCoCaMe).navigate(R.id.coCalenderMemberStaticFragment)
-
+                tvCoCaMeDetail.setBackgroundResource(R.color.teal_700)
+                tvCoCaMeRecord.setBackgroundColor(Color.parseColor("#1C1B1F"))
             }
             tvCoCaMeRecord.setOnClickListener {
-                println("tvCoCaMeRecord")
                 Navigation.findNavController(requireActivity(), R.id.fcvCoCaMe).navigate(R.id.coCalenderMemberRecordFragment)
-
-            }
-        }
-        arguments?.let{bundle ->
-            bundle.getSerializable("Member")?.let {
-                coActivity.binding.viewModel?.member?.value = it as MemberItem
+                tvCoCaMeRecord.setBackgroundResource(R.color.teal_700)
+                tvCoCaMeDetail.setBackgroundColor(Color.parseColor("#1C1B1F"))
             }
         }
     }

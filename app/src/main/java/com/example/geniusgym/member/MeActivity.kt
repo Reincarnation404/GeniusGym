@@ -2,15 +2,20 @@ package com.example.geniusgym.member
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
 import androidx.navigation.NavOptionsBuilder
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.geniusgym.R
 import com.example.geniusgym.databinding.ActivityMeBinding
@@ -18,6 +23,8 @@ import com.example.geniusgym.databinding.ActivityMeBinding
 class MeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMeBinding
     private lateinit var navController: NavController
+    private lateinit var destinationMap : Map<Int, MotionLayout>
+    private lateinit var appBarConfiguration: AppBarConfiguration
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMeBinding.inflate(LayoutInflater.from(this))
@@ -27,15 +34,13 @@ class MeActivity : AppCompatActivity() {
         navController = navHostFragment.navController
 //        將底部導覽的頁面用map的key、value存儲
         setSupportActionBar(binding.toolbarMebr)
+
        supportActionBar?.apply {
            setDisplayHomeAsUpEnabled(true)
            setHomeAsUpIndicator(R.drawable.baseline_keyboard_backspace_24) // 如果您有自定義的返回圖標，可以使用此方法設置
         }
 
-
-//        TODO: 設定toolbar的返回鍵
-
-        val destinationMap = mapOf(
+        destinationMap = mapOf(
             R.id.meHomeFragment to binding.includedHome.homeMontionLayout,
             R.id.meBranchFragment to binding.includedBranch.branchMontionLayout,
             R.id.socialFragment to binding.includedSocial.socialMontionLayout,
@@ -44,10 +49,11 @@ class MeActivity : AppCompatActivity() {
             R.id.settingFragment to binding.includedSetting.settingMontionLayout
 
         )
+        appBarConfiguration = AppBarConfiguration(destinationMap.keys)
 //      設定這個方法自動更新ActionBar的title
         setupActionBarWithNavController(
             navController,
-            AppBarConfiguration(destinationMap.keys)
+            appBarConfiguration
         )
 
 //      使用遍例的方法將每個map中的layout(也就是底部導覽的元件)設置點擊時，會跳轉到哪一個頁面
@@ -71,23 +77,26 @@ class MeActivity : AppCompatActivity() {
 
     }
 
-    private val OnBackPresseClick = object : OnBackPressedCallback(true){
-        override fun handleOnBackPressed() {
-            val alertDialog = AlertDialog.Builder(this@MeActivity)
-            alertDialog.setTitle("確定要離開嗎")
+//    private val OnBackPresseClick = object : OnBackPressedCallback(true){
+//        override fun handleOnBackPressed() {
+//            val alertDialog = AlertDialog.Builder(this@MeActivity)
+//            alertDialog.setTitle("確定要離開嗎")
+//
+//            alertDialog.setPositiveButton("確定"){dialog, which ->
+//                dialog.dismiss()
+//                finish()
+//            }
+//            alertDialog.setNegativeButton("取消"){dialog, which ->
+//                dialog.dismiss()
+//            }
+//            alertDialog.show()
+//        }
+//
+//    }
 
-            alertDialog.setPositiveButton("確定"){dialog, which ->
-                dialog.dismiss()
-                finish()
-            }
-            alertDialog.setNegativeButton("取消"){dialog, which ->
-                dialog.dismiss()
-            }
-            alertDialog.show()
-        }
-
-    }
 
 
 
 }
+
+

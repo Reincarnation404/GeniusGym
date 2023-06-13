@@ -2,9 +2,10 @@ package com.example.geniusgym.member.model
 import java.io.Serializable
 
 class TrainingItem (
-    val workOutName: String,
-    val workOutUpdateTime:String,
-    val workOutWeight: String,
-    val workOutFreq : String,
-    val workOutSet: String
+    val memberId: String,
+    val workoutName: String,
+    val workoutUpdateTime:String,
+    val workoutWeight: String,
+    val workoutFreq : String,
+    val workoutSet: String
     ):Serializable

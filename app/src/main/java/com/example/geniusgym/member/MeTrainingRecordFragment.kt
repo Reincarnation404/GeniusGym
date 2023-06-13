@@ -6,27 +6,38 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import com.example.geniusgym.R
+import com.example.geniusgym.coach.CoActivity
+import com.example.geniusgym.databinding.FragmentMeTrainingRecordBinding
+import com.example.geniusgym.member.model.WorkoutSmallItem
 
 class MeTrainingRecordFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = MeTrainingRecordFragment()
-    }
-
-    private lateinit var viewModel: MeTrainingRecordViewModel
+    private lateinit var binding: FragmentMeTrainingRecordBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_me_training_record, container, false)
+        binding = FragmentMeTrainingRecordBinding.inflate(inflater, container, false)
+        val viewModel: MeTrainingRecordViewModel by viewModels()
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = this
+        return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(MeTrainingRecordViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val MeActivity = requireActivity() as MeActivity
+        with(binding) {
+            arguments?.let { bundle ->
+                bundle.getSerializable("item")?.let {
+                    viewModel?.sc_id = (it as WorkoutSmallItem).sc_id
+                    viewModel?.sportName?.value = it.sc_name
+                }
+            }
+            val member = MeActivity
+        }
     }
 
 }

@@ -16,11 +16,11 @@ abstract class OnRepeatClickListener : OnClickListener {
 
         val nowTime = System.currentTimeMillis()
         if ((nowTime - mLastClickTime) > timeInterval || mLastClickTime == 0L){
-            onSingleClick()
+            onSingleClick(v)
         }
         mLastClickTime = nowTime
     }
 
-    protected abstract fun onSingleClick()
+    protected abstract fun onSingleClick(v : View?)
 
 }

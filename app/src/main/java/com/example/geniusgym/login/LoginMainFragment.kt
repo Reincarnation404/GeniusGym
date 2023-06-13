@@ -1,17 +1,21 @@
 package com.example.geniusgym.login
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.example.geniusgym.LoginMainViewModel
 import com.example.geniusgym.R
-import com.example.geniusgym.coach.calendarMemberList.model.MemberInfo
+import com.example.geniusgym.business.BuActivity
+import com.example.geniusgym.coach.CoActivity
 import com.example.geniusgym.databinding.FragmentLoginMainBinding
-import java.lang.reflect.Member
+import com.example.geniusgym.member.MeActivity
+import kotlin.math.log
 
 class LoginMainFragment : Fragment() {
     private lateinit var binding: FragmentLoginMainBinding
@@ -36,6 +40,7 @@ class LoginMainFragment : Fragment() {
             btLoginConfirm.setOnClickListener {
                 val loginId = binding.tietLoginAccount.text.toString()
                 val password = binding.tietLoginPassword.text.toString()
+                val accountType = getAccountTypeFromLogin(loginId)
 
                 if (loginId.isEmpty()) {
                     tietLoginAccount.error = "帳號不可為空白"
@@ -43,14 +48,56 @@ class LoginMainFragment : Fragment() {
                     tietLoginAccount.error = null
                 }
 
-                if (password.isEmpty()) {
-                    tietLoginPassword.error = "密碼不可為空白"
-                } else if (password.length < 6 || password.length > 12) {
-                    tietLoginPassword.error = "密碼須介於6~12個字"
+                if (accountType == "business") {
+                    if (password.isEmpty()) {
+                        tietLoginPassword.error = "密碼不可為空白"
+                    } else if (password.length < 6 || password.length > 12) {
+                        tietLoginPassword.error = "密碼須介於6~12個字"
+                    } else {
+                        tietLoginPassword.error = null
+                        val intent = Intent(requireActivity(), BuActivity::class.java)
+                        startActivity(intent)
+                    }
+                } else if (accountType == "member") {
+                    if (password.isEmpty()) {
+                        tietLoginPassword.error = "密碼不可為空白"
+                    } else if (password.length < 6 || password.length > 12) {
+                        tietLoginPassword.error = "密碼須介於6~12個字"
+                    } else {
+                        tietLoginPassword.error = null
+                        val intent = Intent(requireActivity(), MeActivity::class.java)
+                        startActivity(intent)
+                    }
+                } else if (accountType == "coach") {
+                    if (password.isEmpty()) {
+                        tietLoginPassword.error = "密碼不可為空白"
+                    } else if (password.length < 6 || password.length > 12) {
+                        tietLoginPassword.error = "密碼須介於6~12個字"
+                    } else {
+                        tietLoginPassword.error = null
+                        val intent = Intent(requireActivity(), CoActivity::class.java)
+                        startActivity(intent)
+                    }
                 } else {
-                    tietLoginPassword.error = null
+                    Toast.makeText(requireContext(), "無效帳號類型", Toast.LENGTH_SHORT).show()
+                    return@setOnClickListener
                 }
             }
         }
     }
+}
+
+private fun getAccountTypeFromLogin(loginId: String): String {
+    val accountType: String
+
+    if (loginId.startsWith("B", ignoreCase = true)) {
+        accountType = "business"
+    } else if (loginId.startsWith("M", ignoreCase = true)) {
+        accountType = "member"
+    } else if (loginId.startsWith("C", ignoreCase = true)) {
+        accountType = "coach"
+    } else {
+        accountType = "unknown"
+    }
+    return accountType
 }
