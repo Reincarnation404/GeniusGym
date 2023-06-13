@@ -25,7 +25,7 @@ import java.util.*
 class BuCoachDataDetailFragment : Fragment() {
     private lateinit var binding: FragmentBuCoachDataDetailBinding
     private val calendar = Calendar.getInstance()
-    val url = "http://10.0.2.2:8080/geninusgym_bg/buCoach"
+    val url = "http://10.0.2.2:8080/geninusgym_bg/" + "buCoach"
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

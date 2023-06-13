@@ -6,6 +6,7 @@
     <string name="notification">通知</string>
     <string name="setting">設定</string>
     <string name="member">會員</string>
+    <string name="information">個人</string>
     <string name="title_activity_main_me">MainMeActivity</string>
 
 
