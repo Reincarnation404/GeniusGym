@@ -6,27 +6,37 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.geniusgym.R
+import com.example.geniusgym.coach.calendarMemberListDetail.controller.CoCaMeReAnBigAdapter
+import com.example.geniusgym.databinding.FragmentMeTrainingMuscleBinding
+import com.example.geniusgym.member.adapter.MeTrainingMuscleMainAdapter
 
 class MeTrainingMuscleFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = MeTrainingMuscleFragment()
-    }
-
-    private lateinit var viewModel: MeTrainingMuscleViewModel
-
+    private lateinit var binding: FragmentMeTrainingMuscleBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_me_training_muscle, container, false)
+        val viewModel: MeTrainingMuscleViewModel by viewModels()
+        binding = FragmentMeTrainingMuscleBinding.inflate(inflater, container, false)
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = this
+        return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(MeTrainingMuscleViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        with(binding) {
+            rvMeTrainingMuscle.layoutManager = LinearLayoutManager(requireContext())
+            viewModel?.items?.observe(viewLifecycleOwner) { items ->
+                if (rvMeTrainingMuscle.adapter == null) {
+                    rvMeTrainingMuscle.adapter = MeTrainingMuscleMainAdapter(items)
+                } else {
+                    (rvMeTrainingMuscle.adapter as MeTrainingMuscleMainAdapter).update(items)
+                }
+            }
+        }
     }
-
 }
