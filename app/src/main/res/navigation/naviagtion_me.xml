@@ -67,9 +67,9 @@
         tools:layout="@layout/fragment_me_training_record"/>
     <fragment
         android:id="@+id/socailNavFragment"
-        android:name="com.example.geniusgym.social.SocailNavFragment"
+        android:name="com.example.geniusgym.social.SocialNavFragment"
         android:label="fragment_socail_nav"
-        tools:layout="@layout/fragment_socail_nav" />
+        tools:layout="@layout/fragment_social_nav" />
 
 
 </navigation>

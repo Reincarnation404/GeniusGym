@@ -50,7 +50,7 @@ class CoActivity : AppCompatActivity() {
             }
             includeSocial.socialMontionLayout.setOnClickListener {
                 llCoActivityHead.visibility = View.GONE
-                navigateController.navigate(R.id.socialHomeFragment2)
+                navigateController.navigate(R.id.socialNavFragment)
             }
             includeNotification.notificationMontionLayout.setOnClickListener {
                 tvCoActivityHead.text = "通知"
