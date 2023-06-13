@@ -53,7 +53,9 @@ class MeCheckoutFragment : Fragment() {
            viewModel.buylist = buylist
         }
         with(binding){
-            meRecycleShoppingCart.adapter = MeShoppingAdapter(viewModel.buylist)
+            val adapter = MeShoppingAdapter(viewModel.buylist)
+            adapter.unclickable()
+            meRecycleShoppingCart.adapter = adapter
             meRecycleShoppingCart.layoutManager = LinearLayoutManager(requireContext())
             var total = 0
             viewModel.buylist.forEach{ClassInfo ->

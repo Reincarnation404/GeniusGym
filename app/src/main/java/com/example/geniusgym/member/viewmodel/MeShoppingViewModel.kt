@@ -1,7 +1,19 @@
 package com.example.geniusgym.member.viewmodel
 
+import android.annotation.SuppressLint
+import android.app.Dialog
+import android.content.Context
+import android.text.SpannableString
+import android.text.Spanned
+import android.text.style.ImageSpan
+import android.view.Gravity
+import android.view.LayoutInflater
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.geniusgym.R
+import com.example.geniusgym.databinding.DialogShopitemBinding
+import com.example.geniusgym.member.adapter.MeShoppingAdapter
+import com.example.geniusgym.member.adapter.MeShoppingSearchExpandableListViewAdapter
 import com.example.geniusgym.member.model.ClassInfo
 import com.example.geniusgym.member.model.SportBigCat
 import com.example.geniusgym.member.model.SportCat
@@ -32,7 +44,7 @@ class MeShoppingViewModel : ViewModel() {
             shopitems.value = setFiltered.toList()
         }
         if (searchText.isEmpty() || searchText.isBlank()){
-
+//           doNothing
         }else{
             _shopitems.forEach{
                 if (it.ci_name!!.contains(searchText) || it.c_id!!.contains(searchText)){
@@ -42,6 +54,51 @@ class MeShoppingViewModel : ViewModel() {
             shopitems.value = setFiltered.toList()
         }
     }
+
+    @SuppressLint("ResourceType")
+    fun createDiaglog(context : Context, meAdapter: MeShoppingAdapter) : Dialog {
+        val dialog = Dialog(context)
+        val bindingDialog : DialogShopitemBinding = DialogShopitemBinding.inflate(LayoutInflater.from(context))
+
+        //        設定dialog
+        val window = dialog.window
+        window?.setGravity(Gravity.CENTER)
+        window?.setContentView(bindingDialog.root)
+        window?.setWindowAnimations(R.xml.dialog_style)
+//        TODO:動畫執行失敗、設定dialog大小失敗
+//        val lp = window?.attributes
+//        lp?.width = WindowManager.LayoutParams.MATCH_PARENT
+//        lp?.height = containerView.layoutParams.height
+
+
+
+        //        設定提示文字附加圖片
+        val imageHint = ImageSpan(context, R.drawable.baseline_search_24)
+        val spannableString = SpannableString(context.getString(R.string.meSearchViewLessonName))
+        spannableString.setSpan(imageHint, 0, 1, Spanned.SPAN_INCLUSIVE_EXCLUSIVE)
+        bindingDialog.edtMeShoppingSearch.hint = spannableString
+        val adapter =
+            MeShoppingSearchExpandableListViewAdapter(
+                context,
+                sportbigcats,
+                sportcats
+            )
+        bindingDialog.elvMeShopping.setAdapter(adapter)
+        bindingDialog.btnMeShoppingConfirm.setOnClickListener {
+            val filterId = adapter.getAllKindId()
+            search(filterId, bindingDialog.edtMeShoppingSearch.text.toString())
+            shopitems.value?.let { it1 -> meAdapter.update(it1) }
+            adapter.clearSet()
+            dialog.dismiss()
+        }
+
+        bindingDialog.btnMeShoppingCancel.setOnClickListener {
+            adapter.clearSet()
+            dialog.dismiss()
+        }
+        return dialog
+    }
+
 
     private fun update(){
         _shopitems.add(ClassInfo(1, "基礎肌力", "09:00", "12:00", "緯育分店",
