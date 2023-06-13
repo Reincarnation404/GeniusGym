@@ -25,10 +25,6 @@
             android:id="@+id/toolbar_mem_bodyinfo"
             android:icon="@drawable/mem_navidrawer_bodyinfo"
             android:title="@string/NaviMemBodyInfo"/>
-        <item
-            android:id="@+id/toolbar_mem_setting"
-            android:icon="@drawable/mem_navidrawer_setting"
-            android:title="@string/NaviMemSetting" />
     </group>
 
 

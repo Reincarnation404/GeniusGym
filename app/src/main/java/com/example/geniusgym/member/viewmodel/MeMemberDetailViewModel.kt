@@ -1,5 +1,4 @@
 package com.example.geniusgym.member.viewmodel
-
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.geniusgym.coach.calendarMemberList.model.Member_detail_Item
@@ -21,9 +20,9 @@ class MeMemberDetailViewModel : ViewModel() {
         val fakeMemDetail = Member_detail_Item(
                 name ="Danny",
                 phonenumber = "0962078408",
-                memberID = "Danny1023",
-                entryTime = "2023-06-02 18:00",
-                membershipdate = "2023-03-02 ~ 2023-06-02"
+                memberID = "M81023",
+                entryTime = "2023-06-13 18:00",
+                membershipdate = "2023-03-02 ~ 2024-03-02"
             )
         memdetail.value = fakeMemDetail
     }

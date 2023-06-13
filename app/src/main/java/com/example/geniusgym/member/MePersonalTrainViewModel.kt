@@ -39,50 +39,58 @@ class MePersonalTrainViewModel : ViewModel() {
         metrainlist.add(
             MetrainBean(
                 mtid="111",
-                mtstarttime = "10:00",
-                mtendtime="11:00",
-                mtdate="2023-06-05",
-                myclassname="私人教練課"))
+                mtstarttime = "12:00",
+                mtendtime="14:00",
+                mtdate="2023-06-12",
+                myclassname="螺璇有氧"))
 
         metrainlist.add(
             MetrainBean(
                 mtid="112",
-                mtstarttime = "13:00",
-                mtendtime="14:00",
-                mtdate="2023-06-05",
-                myclassname="有氧團體課"))
+                mtstarttime = "15:00",
+                mtendtime="16:00",
+                mtdate="2023-06-12",
+                myclassname="突刺有氧"))
 
         metrainlist.add(
             MetrainBean(
                 mtid="113",
-                mtstarttime ="16:30",
-                mtendtime="17:30",
-                mtdate="2023-06-08",
-                myclassname="飛輪團體課"))
+                mtstarttime ="15:00",
+                mtendtime="16:00",
+                mtdate="2023-06-13",
+                myclassname="倒立有氧"))
 
         metrainlist.add(
             MetrainBean(
                 mtid="114",
-                mtstarttime ="19:00",
-                mtendtime="20:00",
-                mtdate="2023-06-09",
-                myclassname="肌力訓練課"))
+                mtstarttime ="13:00",
+                mtendtime="14:00",
+                mtdate="2023-06-14",
+                myclassname="螺璇有氧"))
 
         metrainlist.add(
             MetrainBean(
                 mtid="115",
-                mtstarttime ="14:30",
-                mtendtime="15:30",
-                mtdate="2023-06-10",
-                myclassname="槓鈴啞鈴課"))
+                mtstarttime ="16:00",
+                mtendtime="17:00",
+                mtdate="2023-06-14",
+                myclassname="螺璇有氧"))
 
         metrainlist.add(
             MetrainBean(
                 mtid="116",
-                mtstarttime ="21:00",
-                mtendtime="22:00",
-                mtdate="2023-06-11",
-                myclassname="心肺耐力課"))
+                mtstarttime ="19:00",
+                mtendtime="20:00",
+                mtdate="2023-06-14",
+                myclassname="螺璇有氧"))
+
+        metrainlist.add(
+            MetrainBean(
+                mtid="117",
+                mtstarttime ="10:00",
+                mtendtime="11:00",
+                mtdate="2023-06-15",
+                myclassname="一對一課程"))
 
         this.metrainlist = metrainlist
         this.metrainitem.value = this.metrainlist

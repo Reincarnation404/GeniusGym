@@ -60,5 +60,12 @@
         <action
             android:id="@+id/action_meMemberDetailFragment_to_mePointsFragment"
             app:destination="@id/mePointsFragment" />
+        <action
+            android:id="@+id/action_meMemberDetailFragment_to_meBodyFragment"
+            app:destination="@id/meBodyFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/meBodyFragment"
+        android:name="com.example.geniusgym.member.controller.MeBodyFragment"
+        android:label="MeBodyFragment" />
 </navigation>
