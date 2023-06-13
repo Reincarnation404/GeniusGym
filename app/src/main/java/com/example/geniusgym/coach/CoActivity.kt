@@ -82,22 +82,6 @@ class CoActivity : AppCompatActivity() {
                 llCoActivityHead.visibility = View.VISIBLE
                 navigateController.navigate(R.id.coCoachFragment)
             }
-
-            navigateController.addOnDestinationChangedListener{controller, destination, arguments->
-                includeHome.homeMontionLayout.progress =0f
-                includeCalendar.coachMotionLayout.progress =0f
-                includeSocial.socialMontionLayout.progress =0f
-                includeNotification.notificationMontionLayout.progress =0f
-                includeInformation.memberMontionLayout.progress =0f
-                when(destination.id){
-                    R.id.coHomeFragment -> includeHome.homeMontionLayout.transitionToEnd()
-                    R.id.coCalendarTestFragment -> includeCalendar.coachMotionLayout.transitionToEnd()
-                    R.id.coCoachFragment -> includeInformation.memberMontionLayout.transitionToEnd()
-                    R.id.notificationFragment -> includeNotification.notificationMontionLayout.transitionToEnd()
-                    R.id.socailNavFragment -> includeSocial.socialMontionLayout.transitionToEnd()
-                }
-            }
-
         }
     }
 
