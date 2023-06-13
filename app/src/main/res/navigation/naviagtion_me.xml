@@ -30,11 +30,6 @@
         android:name="com.example.geniusgym.setting.SettingFragment"
         android:label="@string/setting"
         tools:layout="@layout/fragment_setting" />
-    <fragment
-        android:id="@+id/socialFragment"
-        android:name="com.example.geniusgym.social.SocialHomeFragment"
-        android:label="@string/social"
-        tools:layout="@layout/fragment_social_home" />
 
     <fragment
         android:id="@+id/mePointsFragment"
@@ -70,6 +65,11 @@
         android:name="com.example.geniusgym.member.MeTrainingRecordFragment"
         android:label="MeTrainingRecordFragment"
         tools:layout="@layout/fragment_me_training_record"/>
+    <fragment
+        android:id="@+id/socailNavFragment"
+        android:name="com.example.geniusgym.social.SocailNavFragment"
+        android:label="fragment_socail_nav"
+        tools:layout="@layout/fragment_socail_nav" />
 
 
 </navigation>

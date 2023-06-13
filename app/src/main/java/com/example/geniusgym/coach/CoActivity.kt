@@ -73,7 +73,7 @@ class CoActivity : AppCompatActivity() {
                     R.id.coCalendarTestFragment -> includeCalendar.coachMotionLayout.transitionToEnd()
                     R.id.coCoachFragment -> includeMember.memberMontionLayout.transitionToEnd()
                     R.id.notificationFragment -> includeNotification.notificationMontionLayout.transitionToEnd()
-                    R.id.socialFragment -> includeSocial.socialMontionLayout.transitionToEnd()
+                    R.id.socailNavFragment -> includeSocial.socialMontionLayout.transitionToEnd()
                 }
             }
         }
