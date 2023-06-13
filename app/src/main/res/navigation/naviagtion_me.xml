@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/naviagtion_me"
+    android:label="@string/social"
     app:startDestination="@id/meHomeFragment">
 
     <fragment
@@ -67,7 +68,7 @@
         android:id="@+id/meTrainingRecordFragment"
         android:name="com.example.geniusgym.member.MeTrainingRecordFragment"
         android:label="MeTrainingRecordFragment"
-        tools:layout="@layout/fragment_me_training_record"/>
+        tools:layout="@layout/fragment_me_training_record" />
     <fragment
 
         android:id="@+id/socailNavFragment"
@@ -78,8 +79,7 @@
         android:id="@+id/meTrainingMuscleSmallFragment"
         android:name="com.example.geniusgym.member.MeTrainingMuscleSmallFragment"
         android:label="MeTrainingMuscleSmallFragment"
-        tools:layout="@layout/fragment_me_training_muscle_small"/>
-
+        tools:layout="@layout/fragment_me_training_muscle_small" />
 
 
 </navigation>
