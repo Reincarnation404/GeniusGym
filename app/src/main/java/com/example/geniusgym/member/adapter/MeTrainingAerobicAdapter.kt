@@ -39,10 +39,10 @@ class MeTrainingAerobicAdapter(private var items: List<WorkoutSmallItem>) :
             itemViewBinding.viewModel?.item?.value = item
             bundle.putSerializable("item", item)
             itemView.setOnClickListener {
-                Navigation.findNavController(it).navigate(
-                    R.id.action_meTrainingFirstPageFragment2_to_meTrainingRecordFragment,
-                    bundle
-                )
+////                Navigation.findNavController(it).navigate(
+////                    R.id.action_meTrainingFirstPageFragment_to_meTrainingRecordFragment2,
+//                    bundle
+//                )
 
             }
         }
