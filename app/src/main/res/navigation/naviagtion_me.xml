@@ -32,9 +32,9 @@
         tools:layout="@layout/fragment_setting" />
     <fragment
         android:id="@+id/socialFragment"
-        android:name="com.example.geniusgym.social.SocialFragment"
+        android:name="com.example.geniusgym.social.SocialHomeFragment"
         android:label="@string/social"
-        tools:layout="@layout/fragment_social" />
+        tools:layout="@layout/fragment_social_home" />
 
     <fragment
         android:id="@+id/mePointsFragment"
@@ -59,6 +59,16 @@
             app:destination="@id/meTrainingMuscleSmallFragment" />
     </fragment>
     <fragment
+        android:id="@+id/meTrainingAerobicFragment"
+        android:name="com.example.geniusgym.member.MeTrainingAerobicFragment"
+        android:label="fragment_me_training_aerobic"
+        tools:layout="@layout/fragment_me_training_aerobic" />
+    <fragment
+        android:id="@+id/settingEdFragment"
+        android:name="com.example.geniusgym.setting.SettingEdFragment"
+        android:label="@string/setting"
+        tools:layout="@layout/fragment_setting_ed" />
+    <fragment
         android:id="@+id/meTrainingRecordFragment"
         android:name="com.example.geniusgym.member.MeTrainingRecordFragment"
         android:label="MeTrainingRecordFragment"
@@ -68,5 +78,6 @@
         android:name="com.example.geniusgym.member.MeTrainingMuscleSmallFragment"
         android:label="MeTrainingMuscleSmallFragment"
         tools:layout="@layout/fragment_me_training_muscle_small"/>
+
 
 </navigation>
