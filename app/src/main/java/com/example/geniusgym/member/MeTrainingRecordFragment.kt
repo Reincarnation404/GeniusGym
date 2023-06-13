@@ -36,7 +36,7 @@ class MeTrainingRecordFragment : Fragment() {
                     viewModel?.sportName?.value = it.sc_name
                 }
             }
-//            val member = MeActivity.
+            val member = MeActivity
         }
     }
 

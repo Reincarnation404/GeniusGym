@@ -59,6 +59,17 @@ class MeMemberDetailFragment : Fragment() {
                             .replace(R.id.mePersonalTrain, fragment)
                             .commit()*/
                     }
+
+                    R.id.toolbar_mem_points ->{
+                       val fragment  = MePointsFragment()
+                       Navigation.findNavController(view).navigate(R.id.mePointsFragment)
+                    }
+
+                    R.id.toolbar_mem_bodyinfo ->{
+                        val fragment  = MeBodyFragment()
+                        Navigation.findNavController(view).navigate(R.id.meBodyFragment)
+                    }
+
                     else -> {}
                 }
                 return true
