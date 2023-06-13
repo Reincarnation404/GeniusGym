@@ -18,6 +18,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import com.example.geniusgym.databinding.FragmentMeMapDirectBinding
 import com.example.geniusgym.member.viewmodel.MeMapDirectViewModel
 import com.example.geniusgym.sharedata.IntervalMillsOnMap
@@ -32,7 +33,7 @@ import com.google.android.gms.tasks.Task
 
 class MeMapDirectFragment : Fragment() {
 
-    private val viewModel: MeMapDirectViewModel by viewModels()
+    private lateinit var viewModel :MeMapDirectViewModel
     private lateinit var binding: FragmentMeMapDirectBinding
     private lateinit var map: GoogleMap
     private lateinit var latLng: LatLng
@@ -62,6 +63,7 @@ class MeMapDirectFragment : Fragment() {
                 lastLocation?.let {
                     latLng = LatLng(it.latitude, it.longitude)
                     viewModel.moveMap(latLng, map)
+
                 }
             }
         }
@@ -71,6 +73,7 @@ class MeMapDirectFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        viewModel = ViewModelProvider(this)[MeMapDirectViewModel::class.java]
         binding = FragmentMeMapDirectBinding.inflate(LayoutInflater.from(requireContext()))
         return binding.root
     }
@@ -81,26 +84,23 @@ class MeMapDirectFragment : Fragment() {
         val locationName = arguments?.getString("branchlocation")
 
         checkLocationSettings()
-        latLng = LatLng(0.0, 0.0);
+        latLng = LatLng(24.9, 121.1)
         with(binding){
             mapView.onCreate(savedInstanceState)
             mapView.onStart()
             mapView.getMapAsync{ googleMap ->
                 map = googleMap
+                viewModel.moveMap(latLng, map)
             }
-            viewModel.moveMap(latLng, map)
-//            if (locationName != null) {
-//                viewModel.geocode(locationName, requireContext())?.let { addressDestination ->
-//                    direct(
-//                        latLng.latitude,
-//                        latLng.longitude,
-//                        addressDestination.latitude,
-//                        addressDestination.longitude
-//                    )
-//                }
-//            }else{
-//                Toast.makeText(requireContext(), "載入錯誤，請重新啟動app", Toast.LENGTH_SHORT).show()
-//            }
+            btMapDirect.setOnClickListener {
+                if (locationName != null) {
+                    viewModel.geocode(locationName, requireContext())?.let {address ->
+                        direct(latLng.latitude, latLng.longitude, address.latitude, address.longitude)
+                    }
+                }
+
+            }
+
         }
 
     }
@@ -137,28 +137,29 @@ class MeMapDirectFragment : Fragment() {
         )
     }
 
-//    private fun direct(
-//        fromLat: Double, fromLng: Double, toLat: Double,
-//        toLng: Double,
-//    ) {
-//        val uriStr = "https://www.google.com/maps/dir/?api=1" +
-//                "&origin=$fromLat,$fromLng&destination=$toLat,$toLng" +
-//                // 不打下面這一段的話可以自己解析經緯度，會回傳一個json格式的物件
-//                "&travelmode=driving"
-//        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(uriStr))
-//        intent.setClassName(
-//            "com.google.android.apps.maps",
-//            "com.google.android.maps.MapsActivity"
-//        )
-//        startActivity(intent)
-//    }
+
+    private fun direct(
+        fromLat: Double, fromLng: Double, toLat: Double,
+        toLng: Double,
+    ) {
+        val uriStr = "https://www.google.com/maps/dir/?api=1" +
+                "&origin=$fromLat,$fromLng&destination=$toLat,$toLng" +
+                // 不打下面這一段的話可以自己解析經緯度，會回傳一個json格式的物件
+                "&travelmode=driving"
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(uriStr))
+        intent.setClassName(
+            "com.google.android.apps.maps",
+            "com.google.android.maps.MapsActivity"
+        )
+        startActivity(intent)
+    }
 
     //請求權限
     private val resolutionForResult =
         registerForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) { activtyresult ->
             if (activtyresult.resultCode == Activity.RESULT_OK) {
                 updateMyLocation()
-                viewModel.moveMap(latLng, map)
+//                viewModel.moveMap(latLng, map)
             } else {
                 Toast.makeText(requireContext(), "尚未同意取得目前位置", Toast.LENGTH_SHORT).show()
             }
@@ -168,7 +169,7 @@ class MeMapDirectFragment : Fragment() {
         registerForActivityResult(ActivityResultContracts.RequestPermission()) {
             if (it) {
                 updateMyLocation()
-                viewModel.moveMap(latLng, map)
+//                viewModel.moveMap(latLng, map)
             } else {
                 Toast.makeText(requireContext(), "尚未同意取得目前位置", Toast.LENGTH_SHORT).show()
             }

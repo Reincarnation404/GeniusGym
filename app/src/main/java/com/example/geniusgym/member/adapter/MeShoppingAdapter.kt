@@ -14,6 +14,7 @@ import com.example.geniusgym.member.viewmodel.MeRecycShopViewModel
 
 class MeShoppingAdapter(private var shopitems : List<ClassInfo>) :
     RecyclerView.Adapter<MeShoppingAdapter.MyShopingViewHolder>() {
+    private var clickable : Boolean = true
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyShopingViewHolder {
         val binding: RecycleCellMeShoppingBinding = RecycleCellMeShoppingBinding.inflate(
             LayoutInflater.from(parent.context), parent, false)
@@ -60,10 +61,16 @@ class MeShoppingAdapter(private var shopitems : List<ClassInfo>) :
         }
         val bundle = Bundle()
         bundle.putSerializable("lesson", shopitem)
-        holder.itemView.setOnClickListener{
-            Navigation.findNavController(it).navigate(R.id.action_meShoppingFragment_to_MeShoppingDetailFragment, bundle)
+        if (clickable){
+            holder.itemView.setOnClickListener{
+                Navigation.findNavController(it).navigate(R.id.action_meShoppingFragment_to_MeShoppingDetailFragment, bundle)
+            }
         }
 
+    }
+
+    fun unclickable(){
+        clickable = false
     }
 
     class MyShopingViewHolder(val binding: RecycleCellMeShoppingBinding) : RecyclerView.ViewHolder(binding.root)

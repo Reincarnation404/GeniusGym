@@ -81,8 +81,8 @@ class MeShoppingFragment : Fragment() {
                     }
 
                     R.id.meShoppingFilterIcon -> {
-                        val dialog = createDiaglog(requireContext())
-                        dialog.show()
+                        val dialog = binding.viewModel?.createDiaglog(requireContext(), meAdapter)
+                        dialog?.show()
                     }
 
 
@@ -93,54 +93,49 @@ class MeShoppingFragment : Fragment() {
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
     }
 
-    @SuppressLint("ResourceType")
-    private fun createDiaglog(context : Context) : Dialog{
-        val dialog = Dialog(context)
-        val bindingDialog : DialogShopitemBinding = DialogShopitemBinding.inflate(LayoutInflater.from(context))
+//    @SuppressLint("ResourceType")
+//    fun createDiaglog(context : Context) : Dialog{
+//        val dialog = Dialog(context)
+//        val bindingDialog : DialogShopitemBinding = DialogShopitemBinding.inflate(LayoutInflater.from(context))
+//
+//        //        設定dialog
+//        val window = dialog.window
+//        window?.setGravity(Gravity.CENTER)
+//        window?.setContentView(bindingDialog.root)
+//        window?.setWindowAnimations(R.xml.dialog_style)
+////        TODO:動畫執行失敗、設定dialog大小失敗
+//        val lp = window?.attributes
+////        lp?.width = WindowManager.LayoutParams.MATCH_PARENT
+////        lp?.height = containerView.layoutParams.height
+//
+//
+//
+//        //        設定提示文字附加圖片
+//        val imageHint = ImageSpan(context, R.drawable.baseline_search_24)
+//        val spannableString = SpannableString(context.getString(R.string.meSearchViewLessonName))
+//        spannableString.setSpan(imageHint, 0, 1, Spanned.SPAN_INCLUSIVE_EXCLUSIVE)
+//        bindingDialog.edtMeShoppingSearch.hint = spannableString
+//        val adapter =
+//            MeShoppingSearchExpandableListViewAdapter(
+//                requireContext(),
+//                binding.viewModel!!.sportbigcats,
+//                binding.viewModel!!.sportcats
+//            )
+//        bindingDialog.elvMeShopping.setAdapter(adapter)
+//        bindingDialog.btnMeShoppingConfirm.setOnClickListener {
+//            val filterId = adapter.getAllKindId()
+//            binding.viewModel?.search(filterId, bindingDialog.edtMeShoppingSearch.text.toString())
+//            binding.viewModel?.shopitems?.value?.let { it1 -> meAdapter.update(it1) }
+//            adapter.clearSet()
+//            dialog.dismiss()
+//        }
+//
+//        bindingDialog.btnMeShoppingCancel.setOnClickListener {
+//            adapter.clearSet()
+//            dialog.dismiss()
+//        }
+//        return dialog
+//    }
 
-        //        設定dialog
-        val window = dialog.window
-        window?.setGravity(Gravity.CENTER)
-        window?.setContentView(bindingDialog.root)
-        window?.setWindowAnimations(R.xml.dialog_style)
-//        TODO:動畫執行失敗、設定dialog大小失敗
-        val lp = window?.attributes
-//        lp?.width = WindowManager.LayoutParams.MATCH_PARENT
-//        lp?.height = containerView.layoutParams.height
 
-
-
-        //        設定提示文字附加圖片
-        val imageHint = ImageSpan(context, R.drawable.baseline_search_24)
-        val spannableString = SpannableString(context.getString(R.string.meSearchViewLessonName))
-        spannableString.setSpan(imageHint, 0, 1, Spanned.SPAN_INCLUSIVE_EXCLUSIVE)
-        bindingDialog.edtMeShoppingSearch.hint = spannableString
-        val adapter =
-            MeShoppingSearchExpandableListViewAdapter(
-                requireContext(),
-                binding.viewModel!!.sportbigcats,
-                binding.viewModel!!.sportcats
-            )
-        bindingDialog.elvMeShopping.setAdapter(adapter)
-        bindingDialog.btnMeShoppingConfirm.setOnClickListener {
-            val filterId = adapter.getAllKindId()
-            binding.viewModel?.search(filterId, bindingDialog.edtMeShoppingSearch.text.toString())
-            binding.viewModel?.shopitems?.value?.let { it1 -> meAdapter.update(it1) }
-            adapter.clearSet()
-            dialog.dismiss()
-        }
-
-        bindingDialog.btnMeShoppingCancel.setOnClickListener {
-            adapter.clearSet()
-            dialog.dismiss()
-        }
-        return dialog
-    }
-
-
-
-//    ImageSpan imageHint = new ImageSpan(mContext, R.drawable.icon_hint);
-//    SpannableString spannableString = new SpannableString("_I'm the hint");
-//    spannableString.setSpan(imageHint, 0, 1, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
-//    mEditor.setHint(spannableString);
 }

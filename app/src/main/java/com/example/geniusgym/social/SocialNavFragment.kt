@@ -1,33 +1,35 @@
-package com.example.geniusgym.member.controller
+package com.example.geniusgym.social
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.NavHostFragment
 import com.example.geniusgym.R
-import com.example.geniusgym.member.MeMemberViewModel
 
-class MeMemberFragment : Fragment() {
+class SocialNavFragment : Fragment() {
 
-    private lateinit var viewModel: MeMemberViewModel
+    private val viewModel: SocialNavViewModel by viewModels()
     private lateinit var navHostFragment : NavHostFragment
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_me_member, container, false)
+        return inflater.inflate(R.layout.fragment_social_nav, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        navHostFragment = NavHostFragment.create(R.navigation.navigation_me_member)
+        navHostFragment = NavHostFragment.create(R.navigation.social_navigation)
         childFragmentManager.beginTransaction()
-            .replace(R.id.navigation_me_member, navHostFragment)
+            .replace(R.id.navigation_me_social, navHostFragment)
             .setPrimaryNavigationFragment(navHostFragment)
             .commit()
 
     }
+
 }
