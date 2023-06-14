@@ -1,8 +1,10 @@
 package com.example.geniusgym.business.adapter
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
@@ -53,6 +55,10 @@ class BuCoachDataAdapter(private var bucoaches: List<Coach>):
             with(itemViewBinding) {
                 // 將欲顯示的coach物件指派給LiveData，就會自動更新layout檔案的view顯示
                 viewModel?.coach?.value = bucoach
+
+                if (itemViewBinding.viewModel?.coach?.value!!.c_sus == false) {
+                    BuCoaList.setBackgroundColor(ContextCompat.getColor(itemView.context, R.color.gray))
+                }
                 val bundle = Bundle()
                 bundle.putSerializable("bucoach", bucoach)
                 println(bundle)
@@ -60,6 +66,14 @@ class BuCoachDataAdapter(private var bucoaches: List<Coach>):
                     // 點擊list要跳到資料顯示頁面
                     Navigation.findNavController(it).navigate(R.id.buCoachDataDetailFragment, bundle)
                 }
+
+//                if(viewModel?.coach?.value!!.c_sus == false){
+//                    itemView.background = null
+//                    itemView.setBackgroundColor(Color.DKGRAY)
+//                }else{
+//                    itemView.background = null
+//                    itemView.setBackgroundColor(Color.WHITE)
+//                }
             }
         }
     }

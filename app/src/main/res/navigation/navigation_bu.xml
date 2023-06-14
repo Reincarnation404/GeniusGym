@@ -119,4 +119,9 @@
         android:name="com.example.geniusgym.business.BuBusinessDataDetailFragment"
         android:label="fragment_bu_business_data_detail"
         tools:layout="@layout/fragment_bu_business_data_detail" />
+    <fragment
+        android:id="@+id/buClassDataDetailFragment"
+        android:name="com.example.geniusgym.business.BuClassDataDetailFragment"
+        android:label="fragment_bu_class_data_detail"
+        tools:layout="@layout/fragment_bu_class_data_detail" />
 </navigation>

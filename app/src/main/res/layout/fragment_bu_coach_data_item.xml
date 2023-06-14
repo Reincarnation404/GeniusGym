@@ -13,10 +13,11 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/BuCoaList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:layout_margin="20dp">
+        android:layout_margin="20dp"
+        android:background="@color/white">
 
         <ImageView
             android:id="@+id/ivBuCoachDataPic"
@@ -37,7 +38,7 @@
             android:layout_height="59dp"
             android:layout_marginStart="35dp"
             android:gravity="center"
-            android:textSize="34sp"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.17"

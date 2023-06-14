@@ -3,27 +3,27 @@ package com.example.geniusgym.business
 import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
-import android.graphics.Color
+import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.fragment.app.viewModels
-import androidx.navigation.Navigation
-import com.example.geniusgym.business.viewModel.BuClassDataAddViewModel
+import com.example.geniusgym.business.viewModel.BuClassViewModel
 import com.example.geniusgym.R
-import com.example.geniusgym.databinding.FragmentBuClassDataAddBinding
+import com.example.geniusgym.business.model.Business
+import com.example.geniusgym.business.model.Class_Info
+import com.example.geniusgym.business.viewModel.BuBusinessViewModel
+import com.example.geniusgym.databinding.FragmentBuClassDataDetailBinding
 import com.google.gson.JsonObject
 import tw.idv.william.androidwebserver.core.service.requestTask
 import java.sql.Timestamp
 import java.text.SimpleDateFormat
 import java.util.*
 
-class BuClassDataAddFragment : Fragment() {
-    private lateinit var binding: FragmentBuClassDataAddBinding
+class BuClassDataDetailFragment : Fragment() {
+    private lateinit var binding: FragmentBuClassDataDetailBinding
     private val calendar = Calendar.getInstance()
     val url = "http://10.0.2.2:8080/geninusgym_bg/buClass"
 
@@ -31,49 +31,76 @@ class BuClassDataAddFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentBuClassDataAddBinding.inflate(inflater, container, false)
-        val viewModel: BuClassDataAddViewModel by viewModels()
+        binding = FragmentBuClassDataDetailBinding.inflate(inflater, container, false)
+        val viewModel: BuClassViewModel by viewModels()
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        with(binding){
-
-            tvBuAddClassDataStartTime.setOnClickListener {
-                tvBuAddClassDataStartTime.showSoftInputOnFocus = false
-                openStartDateTimeDialogs()
-                tvBuAddClassDataStartTime.text = viewModel?.startTimeToString()
+        with(binding) {
+            arguments?.let { bundle ->
+                bundle.getSerializable("classs")?.let {
+                    viewModel?.classs?.value = it as Class_Info
+                    println(bundle)
+                }
             }
 
-            tvBuAddClassDataEndTime.setOnClickListener {
-                tvBuAddClassDataEndTime.showSoftInputOnFocus = false
-                openEnDateTimeDialogs()
-                tvBuAddClassDataEndTime.text = viewModel?.endTimeToString()
+            btBuAddClassDataDetailModify.setOnClickListener {
+                tietBuAddClassDataDetailName.isEnabled = true
+                tietBuAddClassDataDetailSportCat.isEnabled = true
+                tietBuAddClassDataDetailName.isEnabled = true
+                tvBuAddClassDataDetailStartTime.setOnClickListener {
+                    tvBuAddClassDataDetailStartTime.showSoftInputOnFocus = false
+                    openStartDateTimeDialogs()
+                    tvBuAddClassDataDetailStartTime.text = viewModel?.startTimeToString()
+                }
+                tvBuAddClassDataDetailEndTime.setOnClickListener {
+                    tvBuAddClassDataDetailEndTime.showSoftInputOnFocus = false
+                    openEnDateTimeDialogs()
+                    tvBuAddClassDataDetailStartTime.text = viewModel?.endTimeToString()
+                }
+                tvBuAddClassDataDetailBranch.setOnClickListener {
+                    tvBuAddClassDataDetailBranch.showSoftInputOnFocus = false
+                    showBranchSelection()
+                }
+                tietBuAddClassDataDetailPlace.isEnabled = true
+                tietBuAddClassDataDetailPoint.isEnabled = true
+                tietBuAddClassDataDetailLimit.isEnabled = true
+                tvBuAddClassDataDetailRegiStartTime.setOnClickListener {
+                    tvBuAddClassDataDetailRegiStartTime.showSoftInputOnFocus = false
+                    openRegiStartDateTimeDialogs()
+                    tvBuAddClassDataDetailRegiStartTime.text = viewModel?.regiTimeToString()
+                }
+                tvBuAddClassDataDetailRegiEndTime.setOnClickListener {
+                    tvBuAddClassDataDetailRegiEndTime.showSoftInputOnFocus = false
+                    openRegiEdDateTimeDialogs()
+                    tvBuAddClassDataDetailRegiEndTime.text = viewModel?.regiEdTimeToString()
+                }
+                btBuAddClassDataDetailModify.visibility = View.GONE
+                btBuAddClassDataDetailSave.visibility = View.VISIBLE
             }
 
-            tvBuAddClassDataBranch.setOnClickListener {
-                tvBuAddClassDataBranch.showSoftInputOnFocus = false
-                showBranchSelection()
-            }
+            btBuAddClassDataDetailSave.setOnClickListener {
+                tietBuAddClassDataDetailName.isEnabled = false
+                tietBuAddClassDataDetailSportCat.isEnabled = false
+                tietBuAddClassDataDetailName.isEnabled = false
+                tvBuAddClassDataDetailStartTime.isEnabled = false
+                tvBuAddClassDataDetailEndTime.isEnabled = false
+                tvBuAddClassDataDetailBranch.isEnabled = false
+                tietBuAddClassDataDetailPlace.isEnabled = false
+                tietBuAddClassDataDetailPoint.isEnabled = false
+                tietBuAddClassDataDetailLimit.isEnabled = false
+                tvBuAddClassDataDetailRegiStartTime.isEnabled = false
+                tvBuAddClassDataDetailRegiEndTime.isEnabled = false
+                btBuAddClassDataDetailModify.visibility = View.VISIBLE
+                btBuAddClassDataDetailSave.visibility = View.GONE
 
-            tvBuAddClassDataRegiStartTime.setOnClickListener {
-                tvBuAddClassDataRegiStartTime.showSoftInputOnFocus = false
-                openRegiStartDateTimeDialogs()
-                tvBuAddClassDataRegiStartTime.text = viewModel?.regiTimeToString()
-            }
-
-            tvBuAddClassDataRegiEndTime.setOnClickListener {
-                tvBuAddClassDataRegiEndTime.showSoftInputOnFocus = false
-                openRegiEdDateTimeDialogs()
-                tvBuAddClassDataRegiEndTime.text = viewModel?.regiEdTimeToString()
-            }
-
-
-            btBuAddClassDataSave.setOnClickListener {
                 viewModel?.classs?.value.run {
-                    val bh_name = tvBuAddClassDataBranch.text.toString().trim()
+
+                    val bh_name = tvBuAddClassDataDetailBranch.text.toString().trim()
+
                     val bh_id: Int = when (bh_name) {
                         "緯育店" -> 1
                         "台北店" -> 2
@@ -85,38 +112,39 @@ class BuClassDataAddFragment : Fragment() {
                     }
                     viewModel?.classs?.value?.bh_id = bh_id
 
-                    val ci_cost = viewModel?.classs?.value?.ci_cost
-
-
-                    val ci_start_time = tvBuAddClassDataStartTime.text.toString().trim()
+                    val ci_start_time = tvBuAddClassDataDetailStartTime.text.toString().trim()
                     val timestamp1 = Timestamp.valueOf(ci_start_time)
                     viewModel?.classs?.value?.ci_start_time = timestamp1
 
-                    val ci_ed_time =  tvBuAddClassDataEndTime.text.toString().trim()
+                    val ci_ed_time =  tvBuAddClassDataDetailEndTime.text.toString().trim()
                     val timestamp2 = Timestamp.valueOf(ci_ed_time)
                     viewModel?.classs?.value?.ci_start_time = timestamp2
 
-                    val ci_regi_start_time =  tvBuAddClassDataEndTime.text.toString().trim()
+                    val ci_regi_start_time =  tvBuAddClassDataDetailEndTime.text.toString().trim()
                     val timestamp3 = Timestamp.valueOf(ci_regi_start_time)
                     viewModel?.classs?.value?.ci_start_time = timestamp3
 
-                    val ci_regi_ed_time =  tvBuAddClassDataEndTime.text.toString().trim()
+                    val ci_regi_ed_time =  tvBuAddClassDataDetailEndTime.text.toString().trim()
                     val timestamp4 = Timestamp.valueOf(ci_regi_ed_time)
                     viewModel?.classs?.value?.ci_start_time = timestamp4
 
-
-                    requestTask<JsonObject>(url, "POST", viewModel?.classs?.value)
+                    requestTask<JsonObject>(url, "PUT", viewModel?.classs?.value)
                     println(viewModel?.classs?.value)
+
+                    }
+                }
+
+                if(viewModel?.classs?.value?.ci_avail == true){
+                    btBuAddClassDataDetailUnavailable.visibility = View.VISIBLE
+                    btBuAddClassDataDetailAvailable.visibility = View.GONE
+                }else{
+                    btBuAddClassDataDetailUnavailable.visibility = View.GONE
+                    btBuAddClassDataDetailAvailable.visibility = View.VISIBLE
                 }
             }
 
-            btBuAddClassDataCancel.setOnClickListener {
-                Navigation.findNavController(it).popBackStack()
-            }
+
         }
-
-
-    }
 
 
 
@@ -141,7 +169,7 @@ class BuClassDataAddFragment : Fragment() {
         val timeListener = TimePickerDialog.OnTimeSetListener { _, hour, minute ->
             calendar.set(Calendar.HOUR_OF_DAY, hour)
             calendar.set(Calendar.MINUTE, minute)
-            updatetvBuAddClassDataStartTime()
+            updatetvBuAddClassDataDetailStartTime()
 
         }
         val timePickerDialog = TimePickerDialog(
@@ -153,10 +181,10 @@ class BuClassDataAddFragment : Fragment() {
         )
         timePickerDialog.show()
     }
-    private fun updatetvBuAddClassDataStartTime() {
+    private fun updatetvBuAddClassDataDetailStartTime() {
         val format = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault())
         val datetime = format.format(calendar.time)
-        binding.tvBuAddClassDataStartTime.text = datetime
+        binding.tvBuAddClassDataDetailStartTime.text = datetime
     }
 
     private fun openEnDateTimeDialogs() {
@@ -180,7 +208,7 @@ class BuClassDataAddFragment : Fragment() {
         val timeListener = TimePickerDialog.OnTimeSetListener { _, hour, minute ->
             calendar.set(Calendar.HOUR_OF_DAY, hour)
             calendar.set(Calendar.MINUTE, minute)
-            updatetvBuAddClassDataEdTime()
+            updatetvBuAddClassDataDetailEdTime()
 
         }
         val timePickerDialog = TimePickerDialog(
@@ -192,10 +220,10 @@ class BuClassDataAddFragment : Fragment() {
         )
         timePickerDialog.show()
     }
-    private fun updatetvBuAddClassDataEdTime() {
+    private fun updatetvBuAddClassDataDetailEdTime() {
         val format = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault())
         val datetime = format.format(calendar.time)
-        binding.tvBuAddClassDataEndTime.text = datetime
+        binding.tvBuAddClassDataDetailEndTime.text = datetime
     }
 
 
@@ -220,7 +248,7 @@ class BuClassDataAddFragment : Fragment() {
         val timeListener = TimePickerDialog.OnTimeSetListener { _, hour, minute ->
             calendar.set(Calendar.HOUR_OF_DAY, hour)
             calendar.set(Calendar.MINUTE, minute)
-            updatetvBuAddClassDataRegiStartTime()
+            updatetvBuAddClassDataDetailRegiStartTime()
 
         }
         val timePickerDialog = TimePickerDialog(
@@ -232,10 +260,10 @@ class BuClassDataAddFragment : Fragment() {
         )
         timePickerDialog.show()
     }
-    private fun updatetvBuAddClassDataRegiStartTime() {
+    private fun updatetvBuAddClassDataDetailRegiStartTime() {
         val format = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault())
         val datetime = format.format(calendar.time)
-        binding.tvBuAddClassDataRegiStartTime.text = datetime
+        binding.tvBuAddClassDataDetailRegiStartTime.text = datetime
     }
 
 
@@ -260,7 +288,7 @@ class BuClassDataAddFragment : Fragment() {
         val timeListener = TimePickerDialog.OnTimeSetListener { _, hour, minute ->
             calendar.set(Calendar.HOUR_OF_DAY, hour)
             calendar.set(Calendar.MINUTE, minute)
-            updatetvBuAddClassDataRegiEndTime()
+            updatetvBuAddClassDataDetailRegiEndTime()
 
         }
         val timePickerDialog = TimePickerDialog(
@@ -272,10 +300,10 @@ class BuClassDataAddFragment : Fragment() {
         )
         timePickerDialog.show()
     }
-    private fun updatetvBuAddClassDataRegiEndTime() {
+    private fun updatetvBuAddClassDataDetailRegiEndTime() {
         val format = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault())
         val datetime = format.format(calendar.time)
-        binding.tvBuAddClassDataRegiStartTime.text = datetime
+        binding.tvBuAddClassDataDetailRegiStartTime.text = datetime
     }
 
 
@@ -293,14 +321,11 @@ class BuClassDataAddFragment : Fragment() {
             .setPositiveButton(R.string.bu_add_choose_branch_confirm){ _, _ ->
                 if (selectItem != -1) {
                     val selectedBranch = choice[selectItem]
-                    binding.tvBuAddClassDataBranch.text = selectedBranch
+                    binding.tvBuAddClassDataDetailBranch.text = selectedBranch
                 }
             }
             // false代表要點擊按鈕方能關閉，預設為true
             .setCancelable(true)
             .show()
     }
-
-
-
 }
