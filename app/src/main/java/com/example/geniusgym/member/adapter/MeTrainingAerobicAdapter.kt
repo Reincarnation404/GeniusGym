@@ -4,15 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.findViewTreeLifecycleOwner
-import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
-import com.example.geniusgym.R
-import com.example.geniusgym.coach.calendarMemberListDetail.controller.CoCaMeReOxAdapter
-import com.example.geniusgym.coach.calendarMemberListDetail.model.SportSmallItem
-import com.example.geniusgym.databinding.FragmentMeTrainingAerobicBinding
 import com.example.geniusgym.databinding.FragmentMeTrainingAerobicMaincataCardviewBinding
-import com.example.geniusgym.member.MeTrainingAerobicViewModel
-import com.example.geniusgym.member.model.WorkoutSecondItem
+import com.example.geniusgym.member.viewmodel.MeTrainingAerobicViewModel
 import com.example.geniusgym.member.model.WorkoutSmallItem
 
 class MeTrainingAerobicAdapter(private var items: List<WorkoutSmallItem>) :

@@ -7,13 +7,13 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.geniusgym.member.MeTrainingAllViewModel" />
+            type="com.example.geniusgym.member.viewmodel.MeTrainingAllViewModel" />
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".member.MeTrainingAllFragment" >
+    tools:context=".member.controller.MeTrainingAllFragment" >
 
     <SearchView
         android:id="@+id/svMeTrainingAll"

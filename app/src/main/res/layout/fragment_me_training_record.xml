@@ -8,13 +8,13 @@
 
 <variable
     name="viewModel"
-    type="com.example.geniusgym.member.MeTrainingRecordViewModel" />
+    type="com.example.geniusgym.member.viewmodel.MeTrainingRecordViewModel" />
 </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".member.MeTrainingRecordFragment">
+    tools:context=".member.controller.MeTrainingRecordFragment">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tilRecordFrequency"

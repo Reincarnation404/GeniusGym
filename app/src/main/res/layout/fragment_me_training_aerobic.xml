@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.geniusgym.member.MeTrainingAerobicViewModel" />
+            type="com.example.geniusgym.member.viewmodel.MeTrainingAerobicViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
