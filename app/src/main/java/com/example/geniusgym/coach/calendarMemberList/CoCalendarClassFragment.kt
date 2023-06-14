@@ -62,9 +62,11 @@ class CoCalendarClassFragment : Fragment(), View.OnClickListener {
             selectDay(dayOfWeek)
 
             rvClassListt.layoutManager = LinearLayoutManager(requireContext())
+            // 當發現到 items 的值有變動時，進行下面的動作:
             viewModel?.items?.observe(viewLifecycleOwner) { items ->
                 if (rvClassListt.adapter == null) {
                     rvClassListt.adapter = ClassItemAdapter(items)
+                    // 詳情請看我的 adapter 裡怎麼寫
                 } else {
                     (rvClassListt.adapter as ClassItemAdapter).updateItem(items)
                 }
