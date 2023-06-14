@@ -14,7 +14,7 @@
         android:required="true" />
 
     <application
-        android:allowBackup="false"
+
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
@@ -24,6 +24,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:allowBackup="false"
             android:name=".member.MeCreditCardActivity"
             android:exported="true" >
             <meta-data
@@ -52,6 +53,7 @@
             android:name=".business.BuActivity"
             android:exported="true"/>
         <activity
+            android:allowBackup="true"
             android:name=".member.MeActivity"
             android:exported="true">
             <intent-filter>
