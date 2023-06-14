@@ -30,20 +30,22 @@ class NotificationAdapter(
             parent,
             false
         )
+        itemViewBinding.viewModel = NotificationViewModel()
+        itemViewBinding.lifecycleOwner = parent.findViewTreeLifecycleOwner()
         return NotificationViewHolder(itemViewBinding)
     }
 
     override fun onBindViewHolder(holder: NotificationViewHolder, position: Int) {
         val notification = notiLists[position]
         with(holder.itemViewBinding) {
-            viewModel?.items?.value = notification
-            lifecycleOwner = holder.itemView.findViewTreeLifecycleOwner()
+            viewModel?.item?.value = notification
+            //lifecycleOwner = holder.itemView.findViewTreeLifecycleOwner()
 
-            val bundle = Bundle()
-            bundle.putSerializable("notification", notification)
-            root.setOnClickListener {
-                Navigation.findNavController(it).navigate(R.id.nav_controller_view_tag, bundle)
-            }
+//            val bundle = Bundle()
+//            bundle.putSerializable("notification", notification)
+//            root.setOnClickListener {
+//                Navigation.findNavController(it).navigate(R.id.nav_controller_view_tag, bundle)
+//            }// 我建議不要做跳轉<單純顯示通知即可好
         }
     }
 
