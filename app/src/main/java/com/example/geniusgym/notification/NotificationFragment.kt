@@ -8,20 +8,18 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.geniusgym.R
 import com.example.geniusgym.databinding.FragmentNotificationBinding
 import com.example.geniusgym.notification.adapter.NotificationAdapter
 
 class NotificationFragment : Fragment() {
     private lateinit var binding: FragmentNotificationBinding
-    private lateinit var viewModel: NotificationViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentNotificationBinding.inflate(inflater, container, false)
-        viewModel = ViewModelProvider(this)[NotificationViewModel::class.java]
+        val viewModel : NotificationViewModel by viewModels()
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
         return binding.root
@@ -32,12 +30,18 @@ class NotificationFragment : Fragment() {
         with(binding) {
             rvNotification.layoutManager = LinearLayoutManager(requireContext())
 
-            val notificationAdapter = NotificationAdapter(emptyList(), viewModel!!)
-            rvNotification.adapter = notificationAdapter
-
-            viewModel?.item?.observe(viewLifecycleOwner) { item ->
-                notificationAdapter.updateNotifications(item)
+            viewModel?.items?.observe(viewLifecycleOwner) { items ->
+                if (rvNotification.adapter == null) {
+                    val notificationAdapter = NotificationAdapter(items, viewModel!!)
+                    rvNotification.adapter = notificationAdapter
+                } else {
+                    (rvNotification.adapter as NotificationAdapter).updateNotifications(items)
+                }
             }
+
+//            viewModel?.items?.observe(viewLifecycleOwner) { item ->
+//                notificationAdapter.updateNotifications(item)
+//            }
         }
     }
 }
