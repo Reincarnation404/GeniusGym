@@ -47,9 +47,15 @@ class BuClassDataDetailFragment : Fragment() {
                 }
             }
 
+            tvBuAddClassDataDetailSportCat.setText(viewModel?.scToString())
+
+            tvBuAddClassDataDetailBranch.setText(viewModel?.bhToString())
+
             btBuAddClassDataDetailModify.setOnClickListener {
                 tietBuAddClassDataDetailName.isEnabled = true
-                tietBuAddClassDataDetailSportCat.isEnabled = true
+                tvBuAddClassDataDetailSportCat.setOnClickListener {
+
+                }
                 tietBuAddClassDataDetailName.isEnabled = true
                 tvBuAddClassDataDetailStartTime.setOnClickListener {
                     tvBuAddClassDataDetailStartTime.showSoftInputOnFocus = false
@@ -84,7 +90,7 @@ class BuClassDataDetailFragment : Fragment() {
 
             btBuAddClassDataDetailSave.setOnClickListener {
                 tietBuAddClassDataDetailName.isEnabled = false
-                tietBuAddClassDataDetailSportCat.isEnabled = false
+                tvBuAddClassDataDetailSportCat.isEnabled = false
                 tietBuAddClassDataDetailName.isEnabled = false
                 tvBuAddClassDataDetailStartTime.isEnabled = false
                 tvBuAddClassDataDetailEndTime.isEnabled = false
@@ -111,6 +117,27 @@ class BuClassDataDetailFragment : Fragment() {
                             return@setOnClickListener
                     }
                     viewModel?.classs?.value?.bh_id = bh_id
+
+                    val sc_name = tvBuAddClassDataDetailSportCat.text.toString()
+                    val sc_id: Int = when(sc_name){
+                        "靜態" -> 2
+                        "心肺訓練" -> 3
+                        "跑步" -> 4
+                        "槓鈴肩推" -> 5
+                        "啞鈴肩推" -> 6
+                        "啞鈴側平舉" -> 7
+                        "啞鈴前平舉" -> 8
+                        "站姿肩推" -> 9
+                        "啞鈴握推" -> 10
+                        "槓鈴握推"-> 11
+                        "蝴蝶機夾胸" -> 12
+                        "繩索下斜夾胸"-> 13
+                        "槓鈴斜上推" -> 14
+                        "飛輪" ->15
+                        else ->
+                            return@setOnClickListener
+                    }
+                    viewModel?.classs?.value?.sc_id = sc_id
 
                     val ci_start_time = tvBuAddClassDataDetailStartTime.text.toString().trim()
                     val timestamp1 = Timestamp.valueOf(ci_start_time)
@@ -141,6 +168,9 @@ class BuClassDataDetailFragment : Fragment() {
                     btBuAddClassDataDetailUnavailable.visibility = View.GONE
                     btBuAddClassDataDetailAvailable.visibility = View.VISIBLE
                 }
+
+
+
             }
 
 
@@ -322,6 +352,29 @@ class BuClassDataDetailFragment : Fragment() {
                 if (selectItem != -1) {
                     val selectedBranch = choice[selectItem]
                     binding.tvBuAddClassDataDetailBranch.text = selectedBranch
+                }
+            }
+            // false代表要點擊按鈕方能關閉，預設為true
+            .setCancelable(true)
+            .show()
+    }
+
+    private fun showSportCatSelection(){
+        var choice = arrayOf("靜態","心肺訓練","跑步","槓鈴肩推","啞鈴肩推","啞鈴側平舉","啞鈴前平舉","站姿肩推"
+            ,"啞鈴握推","槓鈴握推","蝴蝶機夾胸","繩索下斜夾胸","槓鈴斜上推","飛輪")
+        var selectItem = -1
+
+
+        AlertDialog.Builder(view?.context)
+            // 設定標題文字
+            .setTitle(R.string.spBuAddChooseBranch)
+            .setSingleChoiceItems(choice,selectItem){ _, position->
+                selectItem = position
+            }
+            .setPositiveButton(R.string.bu_add_choose_branch_confirm){ _, _ ->
+                if (selectItem != -1) {
+                    val selectedBranch = choice[selectItem]
+                    binding.tvBuAddClassDataDetailSportCat.text = selectedBranch
                 }
             }
             // false代表要點擊按鈕方能關閉，預設為true

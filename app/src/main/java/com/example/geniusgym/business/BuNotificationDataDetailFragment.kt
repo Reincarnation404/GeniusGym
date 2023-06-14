@@ -48,12 +48,23 @@ class BuNotificationDataDetailFragment : Fragment() {
 
 
             btBuAddNotiDataDetailModify.setOnClickListener {
-                
+                tietBuAddNotiSender.isEnabled = true
+                tietBuAddNotiSender.setBackgroundColor(Color.WHITE)
+                tietBuAddNotiText.isEnabled = true
+                tietBuAddNotiText.setBackgroundColor(Color.WHITE)
+                btBuAddNotiDataDetailModify.visibility = View.GONE
+                btBuAddNotiDataDetailSave.visibility = View.VISIBLE
             }
 
             btBuAddNotiDataDetailSave.setOnClickListener {
                 viewModel?.notify?.value.run {
-
+                    tietBuAddNotiSender.isEnabled = false
+                    tietBuAddNotiSender.setBackgroundColor(Color.GRAY)
+                    tietBuAddNotiText.isEnabled = false
+                    tietBuAddNotiText.setBackgroundColor(Color.GRAY)
+                    btBuAddNotiDataDetailModify.visibility = View.VISIBLE
+                    btBuAddNotiDataDetailSave.visibility = View.GONE
+                    //串後端
                 }
             }
 

@@ -13,18 +13,18 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.example.geniusgym.business.viewModel.BuNotificationDataAddViewModel
-import com.example.geniusgym.databinding.FragmentBuAddNotificationBinding
+import com.example.geniusgym.databinding.FragmentBuNotificationAddBinding
 import java.util.*
 
 class BuNotificationDataAddFragment : Fragment() {
-    private lateinit var binding: FragmentBuAddNotificationBinding
+    private lateinit var binding: FragmentBuNotificationAddBinding
     private val calendar = Calendar.getInstance()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentBuAddNotificationBinding.inflate(inflater, container, false)
+        binding = FragmentBuNotificationAddBinding.inflate(inflater, container, false)
         val viewModel: BuNotificationDataAddViewModel by viewModels()
         binding.viewModel = viewModel
         binding.lifecycleOwner = this

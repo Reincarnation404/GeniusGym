@@ -41,6 +41,9 @@ class BuClassDataAddFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         with(binding){
 
+            tvBuAddClassDataSportCat.setText(viewModel?.scToString())
+
+            tvBuAddClassDataBranch.setText(viewModel?.bhToString())
 //            val ci_cost = viewModel?.classs?.value?.ci_cost
 //            if (ci_cost != null) {
 //                tietBuAddClassDataCost.setText(ci_cost).toString()
@@ -122,8 +125,9 @@ class BuClassDataAddFragment : Fragment() {
                     }
                     viewModel?.classs?.value?.sc_id = sc_id
 
-                    //viewModel?.classs?.value?.ci_cost = tietBuAddClassDataCost.toInt()
 
+
+//                    viewModel?.classs?.value?.ci_cost = tietBuAddClassDataCost.toInt()
 //                    val string_limit = tietBuAddClassDataLimit.text.toString()
 //                    val int_limit = string_limit.toInt()
 //                    viewModel?.classs?.value?.ci_limit = int_limit
