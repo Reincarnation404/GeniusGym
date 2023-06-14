@@ -17,7 +17,7 @@ class LoginForgetFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentLoginForgetBinding.inflate(inflater, container, false)
         val viewModel: LoginForgetViewModel by viewModels()
         binding.viewModel = viewModel
