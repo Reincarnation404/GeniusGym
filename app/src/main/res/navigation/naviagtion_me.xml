@@ -41,7 +41,7 @@
 
         android:id="@+id/socailNavFragment"
         android:name="com.example.geniusgym.social.SocialNavFragment"
-        android:label="fragment_socail_nav"
+        android:label="@string/social"
         tools:layout="@layout/fragment_social_nav" />
 
 
