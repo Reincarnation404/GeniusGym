@@ -8,5 +8,5 @@ class Notification (
     var m_id: String?,
     var or_amt: Short?,
     var or_total: Short?,
-    var or_buy_time: Timestamp?
+    var or_buy_time: String?
         ):Serializable
