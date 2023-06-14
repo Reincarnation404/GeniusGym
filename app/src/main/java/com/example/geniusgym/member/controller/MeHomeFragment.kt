@@ -83,6 +83,7 @@ class MeHomeFragment : Fragment(), CoroutineScope by MainScope() {
                 connection.connect()
                 val inputStream: InputStream? = connection.inputStream
                 bufferedInputStream = BufferedInputStream(inputStream)
+
             }
             return BitmapFactory.decodeStream(bufferedInputStream)
                 .also { bufferedInputStream?.close() }

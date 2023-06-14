@@ -15,19 +15,15 @@ import com.example.geniusgym.business.BuActivity
 import com.example.geniusgym.coach.CoActivity
 import com.example.geniusgym.databinding.FragmentLoginMainBinding
 import com.example.geniusgym.member.MeActivity
-import kotlin.math.log
 
 class LoginMainFragment : Fragment() {
     private lateinit var binding: FragmentLoginMainBinding
-    private lateinit var viewModel: LoginMainViewModel
+    private val viewModel: LoginMainViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val viewModel: LoginMainViewModel by viewModels()
         binding = FragmentLoginMainBinding.inflate(inflater, container, false)
-        binding.viewModel = viewModel
-        binding.lifecycleOwner = this
         return binding.root
 
     }
@@ -48,56 +44,63 @@ class LoginMainFragment : Fragment() {
                     tietLoginAccount.error = null
                 }
 
-                if (accountType == "business") {
-                    if (password.isEmpty()) {
-                        tietLoginPassword.error = "密碼不可為空白"
-                    } else if (password.length < 6 || password.length > 12) {
-                        tietLoginPassword.error = "密碼須介於6~12個字"
-                    } else {
-                        tietLoginPassword.error = null
-                        val intent = Intent(requireActivity(), BuActivity::class.java)
-                        startActivity(intent)
+                if (password.isEmpty()) {
+                    tietLoginPassword.error = "密碼不可為空白"
+                    return@setOnClickListener
+                } else if (password.length < 6 || password.length > 12) {
+                    tietLoginPassword.error = "密碼須介於6~12個字"
+                    return@setOnClickListener
+                }
+
+                when(accountType){
+
+                    "business" -> {
+                        if (loginId == viewModel.buAccount && password == viewModel.buPassword){
+                            val intent = Intent(requireActivity(), BuActivity::class.java)
+                            intent.flags =
+                                Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                            startActivity(intent)
+                        }else{
+                            tvLoginResult.text = "error"
+                        }
+
                     }
-                } else if (accountType == "member") {
-                    if (password.isEmpty()) {
-                        tietLoginPassword.error = "密碼不可為空白"
-                    } else if (password.length < 6 || password.length > 12) {
-                        tietLoginPassword.error = "密碼須介於6~12個字"
-                    } else {
-                        tietLoginPassword.error = null
+                    "member" -> {
+
                         val intent = Intent(requireActivity(), MeActivity::class.java)
                         startActivity(intent)
                     }
-                } else if (accountType == "coach") {
-                    if (password.isEmpty()) {
-                        tietLoginPassword.error = "密碼不可為空白"
-                    } else if (password.length < 6 || password.length > 12) {
-                        tietLoginPassword.error = "密碼須介於6~12個字"
-                    } else {
-                        tietLoginPassword.error = null
+                    "coach" -> {
+
                         val intent = Intent(requireActivity(), CoActivity::class.java)
                         startActivity(intent)
                     }
-                } else {
-                    Toast.makeText(requireContext(), "無效帳號類型", Toast.LENGTH_SHORT).show()
-                    return@setOnClickListener
+                    else -> {
+                        Toast.makeText(requireContext(), "無效帳號類型", Toast.LENGTH_SHORT).show()
+                        return@setOnClickListener
+                    }
+
                 }
+
             }
         }
     }
-}
 
-private fun getAccountTypeFromLogin(loginId: String): String {
-    val accountType: String
 
-    if (loginId.startsWith("B", ignoreCase = true)) {
-        accountType = "business"
-    } else if (loginId.startsWith("M", ignoreCase = true)) {
-        accountType = "member"
-    } else if (loginId.startsWith("C", ignoreCase = true)) {
-        accountType = "coach"
-    } else {
-        accountType = "unknown"
+    private fun getAccountTypeFromLogin(loginId: String): String {
+
+        val accountType: String =
+        if (loginId.startsWith("B", ignoreCase = true)) {
+            "business"
+        } else if (loginId.startsWith("M", ignoreCase = true)) {
+            "member"
+        } else if (loginId.startsWith("C", ignoreCase = true)) {
+            "coach"
+        } else {
+            "unknown"
+        }
+        return accountType
     }
-    return accountType
 }
+
+
