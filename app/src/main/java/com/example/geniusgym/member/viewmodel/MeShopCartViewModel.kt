@@ -1,7 +1,11 @@
 package com.example.geniusgym.member.viewmodel
 
 import androidx.lifecycle.ViewModel
+import com.example.geniusgym.member.model.ClassInfo
 
 class MeShopCartViewModel : ViewModel() {
-    // TODO: Implement the ViewModel
+
+    var classInfos : MutableList<ClassInfo> = mutableListOf()
+
+
 }

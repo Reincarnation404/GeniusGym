@@ -56,16 +56,16 @@
                 android:text="@={viewModel.freq}" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
-            android:id="@+id/tvCoCaMeStSmMemberName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="44dp"
-            android:text="@{viewModel.name}"
-            android:textSize="30sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:id="@+id/tvCoCaMeStSmMemberName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@{viewModel.name}"
+                    android:textSize="30sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/btCoCaMeStSmDelete"
@@ -86,16 +86,16 @@
             app:layout_constraintEnd_toStartOf="@+id/tvCoCaMeStSmDate"
             app:layout_constraintTop_toTopOf="@+id/tvCoCaMeStSmDate" />
 
-        <ImageView
-            android:id="@+id/ivCoCaMeStSmAddSmallTerm"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="140dp"
-            android:layout_marginEnd="16dp"
-            android:onClick="@{_->viewModel.onClick()}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_co_ca_me_re_af_add" />
+                <ImageView
+                    android:id="@+id/ivCoCaMeStSmAddSmallTerm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="84dp"
+                    android:layout_marginEnd="16dp"
+                    android:onClick="@{_->viewModel.onClick()}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_co_ca_me_re_af_add" />
 
         <TextView
             android:id="@+id/tvCoCaMeStSmDate"
@@ -109,31 +109,31 @@
             app:layout_constraintTop_toTopOf="@+id/ivCoCaMeStSmAddSmallTerm"
             app:layout_constraintVertical_bias="0.529" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvCoCaMeStSm"
-            android:layout_width="0dp"
-            android:layout_height="220dp"
-            android:layout_marginTop="12dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvCoCaMeStSmErrorMessage" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvCoCaMeStSm"
+                    android:layout_width="0dp"
+                    android:layout_height="160dp"
+                    android:layout_marginTop="12dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvCoCaMeStSmErrorMessage" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilCoCaMeStSmWeightInput"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="200dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilCoCaMeStSmWeightInput"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="146dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tietCoCaMeStSmWeightInput"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/tietCoCaMeReAfWeightInput"
-                android:text="@={viewModel.weight}" />
-        </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tietCoCaMeStSmWeightInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/tietCoCaMeReAfWeightInput"
+                        android:text="@={viewModel.weight}" />
+                </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:id="@+id/tvCoCaMeStSmErrorMessage"
@@ -148,16 +148,16 @@
             app:layout_constraintTop_toBottomOf="@+id/tilCoCaMeStSmTimes"
             tools:text="咩匍" />
 
-        <Button
-            android:id="@+id/btCoCaMeStSmSend"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
-            android:text="@string/btCoCaMeReAfSend"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rvCoCaMeStSm" />
+                <Button
+                    android:id="@+id/btCoCaMeStSmSend"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/btCoCaMeReAfSend"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.498"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rvCoCaMeStSm" />
 
         <TextView
             android:id="@+id/tvCoCaMeStSmSportSmallItem"

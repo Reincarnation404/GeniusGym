@@ -42,11 +42,11 @@ class MemberItemAdapter(private var items: List<MemberItem>, var coActivity: CoA
 
     override fun onBindViewHolder(holder: MemberItemViewHolder, position: Int) {
         val item = items[position]
-        coActivity.binding.viewModel?.member?.value = item
-        val bundle = Bundle()
+        println(item.memberId)
         with(holder) {
             itemViewBinding.viewModel?.item?.value = item
             itemView.setOnClickListener {
+                coActivity.binding.viewModel?.member?.value = item
                 Navigation.findNavController(it)
                     .navigate(
                         R.id.action_coCalendarMemberListFragment2_to_coCalendarMemberDetailFragment,

@@ -59,4 +59,10 @@ dependencies {
     implementation 'com.github.yalantis:ucrop:2.2.4' // 圖片截圖
     implementation 'com.google.android.gms:play-services-location:21.0.1'
     implementation 'com.google.android.gms:play-services-maps:18.1.0'
+
+    // gradle.properties檔案需加上android.enableJetifier=true設定
+    implementation files('libs/tpdirect.aar')
+    // 存取手機帳戶資訊支付需要wallet函式庫
+    implementation 'com.google.android.gms:play-services-wallet:19.1.0'
+
 }

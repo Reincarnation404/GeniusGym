@@ -55,7 +55,7 @@ class BuBusinessDataAdapter(private var bubuzz: List<Business>):
 
             // 設置背景顏色
             if (itemViewBinding.viewModel?.buz?.value!!.b_sus == false) {
-                itemViewBinding.BuBuzList.setBackgroundColor(ContextCompat.getColor(itemView.context, R.color.gray))
+                itemViewBinding.BuBuzList.setBackgroundColor(ContextCompat.getColor(itemView.context, R.color.gray2))
             }
             val bundle = Bundle()
             bundle.putSerializable("bubuz", bubuz)

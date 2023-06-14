@@ -4,11 +4,8 @@ import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.location.Address
-import android.location.Geocoder
 import android.location.Location
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.os.Looper
 import android.util.Log
@@ -20,21 +17,20 @@ import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import com.example.geniusgym.databinding.FragmentMeMapDirectBinding
 import com.example.geniusgym.member.viewmodel.MeMapDirectViewModel
+import com.example.geniusgym.sharedata.MeShareData.IntervalMillsOnMap
+import com.example.geniusgym.sharedata.MeShareData.MinUpdateDistanceMeters
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.*
-import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.tasks.Task
-import java.io.IOException
 
 class MeMapDirectFragment : Fragment() {
 
-    private val viewModel: MeMapDirectViewModel by viewModels()
+    private lateinit var viewModel :MeMapDirectViewModel
     private lateinit var binding: FragmentMeMapDirectBinding
     private lateinit var map: GoogleMap
     private lateinit var latLng: LatLng
@@ -50,20 +46,21 @@ class MeMapDirectFragment : Fragment() {
 
         locationRequest = LocationRequest.Builder(
             Priority.PRIORITY_HIGH_ACCURACY,
-            10000
+            IntervalMillsOnMap
         )
 //                移動的位置超過設定的數據
-            .setMinUpdateDistanceMeters(1000f).build()
+            .setMinUpdateDistanceMeters(MinUpdateDistanceMeters).build()
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireContext())
-
+//        將座標移動到當前位置
         locationCallback = object : LocationCallback() {
             //          如果沒超過設定的距離，就不會重新更新畫面
             override fun onLocationResult(locationResult: LocationResult) {
                 lastLocation = locationResult.lastLocation
                 lastLocation?.let {
                     latLng = LatLng(it.latitude, it.longitude)
-                    moveMap(latLng)
+                    viewModel.moveMap(latLng, map)
+
                 }
             }
         }
@@ -73,6 +70,7 @@ class MeMapDirectFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        viewModel = ViewModelProvider(this)[MeMapDirectViewModel::class.java]
         binding = FragmentMeMapDirectBinding.inflate(LayoutInflater.from(requireContext()))
         return binding.root
     }
@@ -83,25 +81,23 @@ class MeMapDirectFragment : Fragment() {
         val locationName = arguments?.getString("branchlocation")
 
         checkLocationSettings()
-
+        latLng = LatLng(24.9, 121.1)
         with(binding){
             mapView.onCreate(savedInstanceState)
             mapView.onStart()
             mapView.getMapAsync{ googleMap ->
                 map = googleMap
+                viewModel.moveMap(latLng, map)
             }
-            if (locationName != null) {
-                geocode(locationName)?.let { addressDestination ->
-                    direct(
-                        latLng.latitude,
-                        latLng.longitude,
-                        addressDestination.latitude,
-                        addressDestination.longitude
-                    )
+            btMapDirect.setOnClickListener {
+                if (locationName != null) {
+                    viewModel.geocode(locationName, requireContext())?.let {address ->
+                        direct(latLng.latitude, latLng.longitude, address.latitude, address.longitude)
+                    }
                 }
-            }else{
-                Toast.makeText(requireContext(), "載入錯誤，請重新啟動app", Toast.LENGTH_SHORT).show()
+
             }
+
         }
 
     }
@@ -138,15 +134,6 @@ class MeMapDirectFragment : Fragment() {
         )
     }
 
-    private fun moveMap(latLng: LatLng) {
-        val cameraPosition = CameraPosition.builder()
-            .target(latLng)
-            .zoom(50f)
-            .build()
-        val cameraUpdate = CameraUpdateFactory
-            .newCameraPosition(cameraPosition)
-        map.animateCamera(cameraUpdate)
-    }
 
     private fun direct(
         fromLat: Double, fromLng: Double, toLat: Double,
@@ -164,34 +151,12 @@ class MeMapDirectFragment : Fragment() {
         startActivity(intent)
     }
 
-    private fun geocode(locationName: String): Address? {
-        val geocoder = Geocoder(requireContext())
-        var addressList: List<Address?>? = null
-        try {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                geocoder.getFromLocationName(locationName, 1
-                ) {
-                    addressList = it
-                }
-            }else{
-                addressList = geocoder.getFromLocationName(locationName, 1)
-            }
-        } catch (e: IOException) {
-            Log.e(myTag, e.toString())
-        }
-        return if (addressList == null || addressList!!.isEmpty()) {
-            null
-        } else {
-            addressList!![0]
-        }
-    }
-
     //請求權限
     private val resolutionForResult =
         registerForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) { activtyresult ->
             if (activtyresult.resultCode == Activity.RESULT_OK) {
                 updateMyLocation()
-                moveMap(latLng)
+//                viewModel.moveMap(latLng, map)
             } else {
                 Toast.makeText(requireContext(), "尚未同意取得目前位置", Toast.LENGTH_SHORT).show()
             }
@@ -201,7 +166,7 @@ class MeMapDirectFragment : Fragment() {
         registerForActivityResult(ActivityResultContracts.RequestPermission()) {
             if (it) {
                 updateMyLocation()
-                moveMap(latLng)
+//                viewModel.moveMap(latLng, map)
             } else {
                 Toast.makeText(requireContext(), "尚未同意取得目前位置", Toast.LENGTH_SHORT).show()
             }
