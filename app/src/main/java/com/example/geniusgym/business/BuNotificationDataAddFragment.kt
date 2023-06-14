@@ -1,11 +1,6 @@
 package com.example.geniusgym.business
 
 import android.Manifest
-import android.app.AlertDialog
-import android.app.DatePickerDialog
-import android.app.TimePickerDialog
-import android.content.DialogInterface
-import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -13,18 +8,15 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
-import com.example.geniusgym.R
-import com.example.geniusgym.business.viewModel.BuAddNotificationViewModel
+import com.example.geniusgym.business.viewModel.BuNotificationDataAddViewModel
 import com.example.geniusgym.databinding.FragmentBuAddNotificationBinding
-import java.text.SimpleDateFormat
 import java.util.*
 
-class BuAddNotificationFragment : Fragment() {
+class BuNotificationDataAddFragment : Fragment() {
     private lateinit var binding: FragmentBuAddNotificationBinding
     private val calendar = Calendar.getInstance()
 
@@ -33,7 +25,7 @@ class BuAddNotificationFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentBuAddNotificationBinding.inflate(inflater, container, false)
-        val viewModel: BuAddNotificationViewModel by viewModels()
+        val viewModel: BuNotificationDataAddViewModel by viewModels()
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
         return binding.root

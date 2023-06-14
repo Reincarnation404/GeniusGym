@@ -11,7 +11,7 @@ class Class_Info (
     var ci_ed_time: Timestamp? = null,
     var c_id: String? = null,
     var ci_place: String? = null,
-    var ci_cost: Int? = null,
+    var ci_cost: String? = null,
     var ci_date: Timestamp? = null,
     var ci_text: String? = null,
     var ci_limit: String? = null,

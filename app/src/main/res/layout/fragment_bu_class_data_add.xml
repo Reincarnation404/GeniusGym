@@ -60,10 +60,14 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tilBuAddClassDataName">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tietBuAddClassDataSportCat"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                <TextView
+                    android:id="@+id/tvBuAddClassDataSportCat"
+                    android:layout_width="380dp"
+                    android:layout_height="60dp"
+                    android:gravity="center|left"
+                    android:imeOptions="flagNoExtractUi"
+                    android:paddingLeft="16dp"
+                    android:textColorHint="#CDC7D2"
                     android:background="@color/white"
                     android:hint="@string/tietBuAddClassDataSportCat"
                     android:textColor="@color/black"/>
@@ -174,7 +178,8 @@
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:hint="@string/tietBuAddClassDataPoint"
-                    android:textColor="@color/black" />
+                    android:textColor="@color/black"
+                    android:text="@={viewModel.classs.ci_cost}"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -193,7 +198,8 @@
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:hint="@string/tietBuAddClassDataLimit"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black"
+                    android:text="@={viewModel.classs.ci_limit}"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout

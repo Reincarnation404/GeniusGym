@@ -4,15 +4,8 @@ import android.app.AlertDialog
 import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.example.geniusgym.business.model.Branch
 import com.example.geniusgym.business.model.Coach
-import com.example.geniusgym.business.model.testBuCoach
-import com.example.geniusgym.business.model.testBuMember
-import com.google.gson.Gson
 import com.google.gson.JsonObject
-import com.google.gson.reflect.TypeToken
-import kotlinx.coroutines.launch
 import tw.idv.william.androidwebserver.core.service.requestTask
 import java.text.SimpleDateFormat
 import java.util.*

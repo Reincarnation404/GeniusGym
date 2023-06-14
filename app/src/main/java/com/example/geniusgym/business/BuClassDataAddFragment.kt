@@ -41,6 +41,22 @@ class BuClassDataAddFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         with(binding){
 
+//            val ci_cost = viewModel?.classs?.value?.ci_cost
+//            if (ci_cost != null) {
+//                tietBuAddClassDataCost.setText(ci_cost).toString()
+//            }
+//
+//
+//            val ci_limit = viewModel?.classs?.value?.ci_limit
+//            if (ci_limit != null) {
+//                tietBuAddClassDataCost.setText(ci_limit).toString()
+//            }
+
+            tvBuAddClassDataSportCat.setOnClickListener {
+                tvBuAddClassDataSportCat.showSoftInputOnFocus = false
+                showSportCatSelection()
+            }
+
             tvBuAddClassDataStartTime.setOnClickListener {
                 tvBuAddClassDataStartTime.showSoftInputOnFocus = false
                 openStartDateTimeDialogs()
@@ -72,7 +88,7 @@ class BuClassDataAddFragment : Fragment() {
 
 
             btBuAddClassDataSave.setOnClickListener {
-                viewModel?.classs?.value.run {
+                viewModel?.classs?.value?.run {
                     val bh_name = tvBuAddClassDataBranch.text.toString().trim()
                     val bh_id: Int = when (bh_name) {
                         "緯育店" -> 1
@@ -85,8 +101,32 @@ class BuClassDataAddFragment : Fragment() {
                     }
                     viewModel?.classs?.value?.bh_id = bh_id
 
-                    val ci_cost = viewModel?.classs?.value?.ci_cost
+                    val sc_name = tvBuAddClassDataSportCat.text.toString()
+                    val sc_id: Int = when(sc_name){
+                        "靜態" -> 2
+                        "心肺訓練" -> 3
+                        "跑步" -> 4
+                        "槓鈴肩推" -> 5
+                        "啞鈴肩推" -> 6
+                        "啞鈴側平舉" -> 7
+                        "啞鈴前平舉" -> 8
+                        "站姿肩推" -> 9
+                        "啞鈴握推" -> 10
+                        "槓鈴握推"-> 11
+                        "蝴蝶機夾胸" -> 12
+                        "繩索下斜夾胸"-> 13
+                        "槓鈴斜上推" -> 14
+                        "飛輪" ->15
+                        else ->
+                            return@setOnClickListener
+                    }
+                    viewModel?.classs?.value?.sc_id = sc_id
 
+                    //viewModel?.classs?.value?.ci_cost = tietBuAddClassDataCost.toInt()
+
+//                    val string_limit = tietBuAddClassDataLimit.text.toString()
+//                    val int_limit = string_limit.toInt()
+//                    viewModel?.classs?.value?.ci_limit = int_limit
 
                     val ci_start_time = tvBuAddClassDataStartTime.text.toString().trim()
                     val timestamp1 = Timestamp.valueOf(ci_start_time)
@@ -154,7 +194,7 @@ class BuClassDataAddFragment : Fragment() {
         timePickerDialog.show()
     }
     private fun updatetvBuAddClassDataStartTime() {
-        val format = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault())
+        val format = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
         val datetime = format.format(calendar.time)
         binding.tvBuAddClassDataStartTime.text = datetime
     }
@@ -193,7 +233,7 @@ class BuClassDataAddFragment : Fragment() {
         timePickerDialog.show()
     }
     private fun updatetvBuAddClassDataEdTime() {
-        val format = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault())
+        val format = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
         val datetime = format.format(calendar.time)
         binding.tvBuAddClassDataEndTime.text = datetime
     }
@@ -233,7 +273,7 @@ class BuClassDataAddFragment : Fragment() {
         timePickerDialog.show()
     }
     private fun updatetvBuAddClassDataRegiStartTime() {
-        val format = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault())
+        val format = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
         val datetime = format.format(calendar.time)
         binding.tvBuAddClassDataRegiStartTime.text = datetime
     }
@@ -273,11 +313,34 @@ class BuClassDataAddFragment : Fragment() {
         timePickerDialog.show()
     }
     private fun updatetvBuAddClassDataRegiEndTime() {
-        val format = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.getDefault())
+        val format = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
         val datetime = format.format(calendar.time)
-        binding.tvBuAddClassDataRegiStartTime.text = datetime
+        binding.tvBuAddClassDataRegiEndTime.text = datetime
     }
 
+
+    private fun showSportCatSelection(){
+        var choice = arrayOf("靜態","心肺訓練","跑步","槓鈴肩推","啞鈴肩推","啞鈴側平舉","啞鈴前平舉","站姿肩推"
+                        ,"啞鈴握推","槓鈴握推","蝴蝶機夾胸","繩索下斜夾胸","槓鈴斜上推","飛輪")
+        var selectItem = -1
+
+
+        AlertDialog.Builder(view?.context)
+            // 設定標題文字
+            .setTitle(R.string.spBuAddChooseBranch)
+            .setSingleChoiceItems(choice,selectItem){ _, position->
+                selectItem = position
+            }
+            .setPositiveButton(R.string.bu_add_choose_branch_confirm){ _, _ ->
+                if (selectItem != -1) {
+                    val selectedBranch = choice[selectItem]
+                    binding.tvBuAddClassDataSportCat.text = selectedBranch
+                }
+            }
+            // false代表要點擊按鈕方能關閉，預設為true
+            .setCancelable(true)
+            .show()
+    }
 
     private fun showBranchSelection(){
         var choice = arrayOf("緯育店","台北店","桃園店","新竹店","南京復興店")
