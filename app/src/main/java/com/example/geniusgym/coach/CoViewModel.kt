@@ -63,10 +63,10 @@ class CoViewModel : ViewModel() {
     private fun loadFake() {
         coach?.value =
             CoachItem(
-                c_name = "田聖潔",
+                c_name = "桃園 hawk",
                 c_cell = "0912345678",
-                c_id = "RRRRR",
-                c_start_date = "2023/06/20"
+                c_id = "C87632",
+                c_start_date = "2023/06/15"
             )
     }
 }

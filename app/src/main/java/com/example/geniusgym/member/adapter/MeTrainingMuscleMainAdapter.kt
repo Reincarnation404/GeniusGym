@@ -3,16 +3,11 @@ package com.example.geniusgym.member.adapter
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
-import com.example.geniusgym.R
-import com.example.geniusgym.coach.calendarMemberListDetail.model.SportBigItem
-import com.example.geniusgym.databinding.FragmentCoCalendarMemberAnoxBigcataCardviewBinding
-import com.example.geniusgym.databinding.FragmentMeTrainingMuscleBinding
 import com.example.geniusgym.databinding.FragmentMeTrainingMuscleMaincataCardviewBinding
-import com.example.geniusgym.member.MeTrainingMuscleViewModel
+import com.example.geniusgym.member.viewmodel.MeTrainingMuscleViewModel
 import com.example.geniusgym.member.model.WorkoutMainItem
 
 class MeTrainingMuscleMainAdapter(private var items: List<WorkoutMainItem>) :

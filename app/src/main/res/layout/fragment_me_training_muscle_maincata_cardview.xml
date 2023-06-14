@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.geniusgym.member.MeTrainingMuscleViewModel" />
+            type="com.example.geniusgym.member.viewmodel.MeTrainingMuscleViewModel" />
     </data>
 
     <androidx.cardview.widget.CardView

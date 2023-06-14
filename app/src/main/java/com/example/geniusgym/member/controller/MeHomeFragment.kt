@@ -45,11 +45,12 @@ class MeHomeFragment : Fragment(), CoroutineScope by MainScope() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        runBlocking {
-            binding.ivMeHomeQRcode.setImageBitmap(mLoad("https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=123456789&margin=25"))
-        }
         launch {
+
             while (true){
+                withContext(Dispatchers.Main){
+                    binding.ivMeHomeQRcode.setImageBitmap(mLoad("https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=123456789&margin=25"))
+                }
                 val fiveMinutes = LocalTime.of(LocalDateTimeInitHours, LocalDateTimeInitMinutes, LocalDateTimeInitSeconds)
                 val mutex = Mutex()
                 var count = 0L
