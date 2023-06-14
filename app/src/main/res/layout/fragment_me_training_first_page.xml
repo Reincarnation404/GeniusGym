@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.geniusgym.member.MeTrainingFirstPageViewModel" />
+            type="com.example.geniusgym.member.viewmodel.MeTrainingFirstPageViewModel" />
     </data>
 
     <LinearLayout

@@ -6,9 +6,8 @@ import android.view.ViewGroup
 import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
-import com.example.geniusgym.R
 import com.example.geniusgym.databinding.FragmentMeTrainingCalendarBinding
-import com.example.geniusgym.member.MeTrainingCalendarViewModel
+import com.example.geniusgym.member.viewmodel.MeTrainingCalendarViewModel
 import com.example.geniusgym.member.model.TrainingItem
 
 class TrainingItemAdapter(private var workoutItems: List<TrainingItem>) :
