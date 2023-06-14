@@ -138,5 +138,7 @@ class MePersonalTrain : Fragment(), View.OnClickListener {
     }
 
     class weeklyDay(var textview: TextView, var date: LocalDate)
+
+
 }
 

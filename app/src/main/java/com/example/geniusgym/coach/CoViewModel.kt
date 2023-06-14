@@ -57,7 +57,6 @@ class CoViewModel : ViewModel() {
     private suspend fun sportBigItemImport(): List<SportBigItem> {
         val jsonIn: String = WebRequestSpencer().httpGet("GetSportCat")
         val type = object : TypeToken<List<SportBigItem>?>() {}.type
-        println("JSONGETBIG: $jsonIn")
         return Gson().fromJson(jsonIn, type)
     }
 

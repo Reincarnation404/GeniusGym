@@ -21,6 +21,7 @@ import androidx.navigation.Navigation
 import com.example.geniusgym.business.viewModel.BuMemberDataAddViewModel
 import com.example.geniusgym.R
 import com.example.geniusgym.databinding.FragmentBuMemberDataAddBinding
+import com.example.geniusgym.sharedata.MeShareData.javaWebUrl
 import com.google.gson.JsonObject
 import tw.idv.william.androidwebserver.core.service.requestTask
 import java.sql.Timestamp
@@ -86,7 +87,7 @@ class BuMemberDataAddFragment : Fragment() {
                         val timestamp = Timestamp.valueOf(m_date)
                         viewModel?.member?.value?.m_ed_date = timestamp
 
-                        val url = "http://10.0.2.2:8080/geninusgym_bg/buMember"
+                        val url = javaWebUrl + "buMember"
 
                         val respbody = requestTask<JsonObject>(url, "POST", viewModel?.member?.value)
                         //println(viewModel?.member?.value.toString())

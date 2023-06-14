@@ -47,17 +47,17 @@
                     app:srcCompat="@drawable/a005"
                     tools:srcCompat="@tools:sample/avatars" />
 
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="6dp"
                     android:text="@{viewModel.lessonKind}"
                     app:layout_constraintBottom_toBottomOf="@+id/textView5"
                     app:layout_constraintStart_toEndOf="@+id/textView5"
-                    app:layout_constraintTop_toTopOf="@+id/textView5" />
-
+                    app:layout_constraintTop_toTopOf="@+id/textView5"
+                    app:layout_constraintVertical_bias="0.833"
+                    tools:text="有氧" />
 
                 <TextView
                     android:id="@+id/textView11"

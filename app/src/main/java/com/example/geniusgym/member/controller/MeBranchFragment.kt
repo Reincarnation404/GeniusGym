@@ -48,7 +48,8 @@ class MeBranchFragment : Fragment() {
 //        設定topLevelDestination的Fragment，但經過測試發現如果用動態載入的navigation，
 //        會沒辦法使用預設的返回，因此將所有fragment置頂
         val fragments  = mutableSetOf<Int>( R.id.meBranchDetailFragment, R.id.meCoachInfoFragment,
-            R.id.meMapDirectFragment,  R.id.meShoppingFragment, R.id.meCoachInfoDetailFragment)
+            R.id.meMapDirectFragment,  R.id.meShoppingFragment, R.id.meCoachInfoDetailFragment,
+            R.id.meCheckoutFragment, R.id.meShopCartFragment, R.id.meShoppingDetailFragment)
         appBarConfiguration = AppBarConfiguration(fragments)
 
     }

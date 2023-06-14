@@ -6,7 +6,7 @@ import android.location.Geocoder
 import android.os.Build
 import android.util.Log
 import androidx.lifecycle.ViewModel
-import com.example.geniusgym.sharedata.MapZoom
+import com.example.geniusgym.sharedata.MeShareData.MapZoom
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.CameraPosition

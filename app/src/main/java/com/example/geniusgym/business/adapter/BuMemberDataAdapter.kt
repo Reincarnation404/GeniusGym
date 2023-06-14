@@ -11,6 +11,7 @@ import com.example.geniusgym.R
 import com.example.geniusgym.business.model.Member
 import com.example.geniusgym.business.viewModel.BuMemberViewModel
 import com.example.geniusgym.databinding.FragmentBuMemberDataItemBinding
+import com.example.geniusgym.sharedata.MeShareData.javaWebUrl
 import com.google.gson.JsonObject
 import tw.idv.william.androidwebserver.core.service.requestTask
 
@@ -20,7 +21,7 @@ import tw.idv.william.androidwebserver.core.service.requestTask
 class BuMemberDataAdapter(private var bumembers: List<Member>):
     RecyclerView.Adapter<BuMemberDataAdapter.BuMemberDataViewHolder>(){
 
-    val url = "http://10.0.2.2:8080/geninusgym_bg/buMember"
+    val url =  javaWebUrl + "buMember"
 
     /**
      * 更新會員列表內容

@@ -1,11 +1,13 @@
 package com.example.geniusgym.member.controller
 
 import android.app.Dialog
+import android.graphics.drawable.AnimationDrawable
 import android.os.Build
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.*
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -51,7 +53,9 @@ class MeCheckoutFragment : Fragment() {
            viewModel.buylist = buylist
         }
         with(binding){
-            meRecycleShoppingCart.adapter = MeShoppingAdapter(viewModel.buylist)
+            val adapter = MeShoppingAdapter(viewModel.buylist)
+            adapter.unclickable()
+            meRecycleShoppingCart.adapter = adapter
             meRecycleShoppingCart.layoutManager = LinearLayoutManager(requireContext())
             var total = 0
             viewModel.buylist.forEach{ClassInfo ->
@@ -125,6 +129,10 @@ class MeCheckoutFragment : Fragment() {
                 val dialoganim = Dialog(requireContext())
                 val windowanim = dialoganim.window
                 windowanim?.setContentView(R.layout.dialog_me_loading)
+                val iv : ImageView? = windowanim?.findViewById(R.id.ivMeShoppingLoading)
+                iv?.setImageResource(R.drawable.loading)
+                val anim = iv?.drawable as AnimationDrawable
+                anim.start()
                 dialoganim.show()
                 val timer = object : CountDownTimer(2000, 1000){
                     override fun onTick(p0: Long) {
