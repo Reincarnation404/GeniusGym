@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
@@ -12,6 +13,7 @@ import com.example.geniusgym.R
 import com.example.geniusgym.coach.calendarMemberListDetail.model.SportRecordBigItem
 import com.example.geniusgym.databinding.ActivityCoBinding
 import com.google.gson.GsonBuilder
+import java.net.ConnectException
 
 class CoActivity : AppCompatActivity() {
 
@@ -30,10 +32,14 @@ class CoActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-
-        this.binding.viewModel?.loadSportFromPreference(this)
-        this.binding.viewModel?.loadSportSmallItem()
-        this.binding.viewModel?.loadSportBigItem()
+        try {
+            this.binding.viewModel?.loadSportFromPreference(this)
+            this.binding.viewModel?.loadSportSmallItem()
+            this.binding.viewModel?.loadSportBigItem()
+        } catch (e: ConnectException) {
+            e.printStackTrace()
+            Toast.makeText(this,"連線失敗",Toast.LENGTH_SHORT)
+        }
         navigateController = findNavController(R.id.fragmentCoContainerView)
         with(binding) {
             includeHome.homeMontionLayout.progress = 1f
@@ -105,5 +111,9 @@ class CoActivity : AppCompatActivity() {
             .putString("sportBigItems", sportBigItems)
             .apply()
         println("Write prefernece successful!")
+    }
+
+    fun networkErrorToast() {
+        Toast.makeText(this, "網路連線錯誤", Toast.LENGTH_SHORT)
     }
 }

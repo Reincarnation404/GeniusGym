@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.geniusgym.R
 import com.example.geniusgym.business.model.Member
 import com.example.geniusgym.business.model.testBuMember
+import com.example.geniusgym.sharedata.MeShareData.javaWebUrl
 import com.google.gson.reflect.TypeToken
 import tw.idv.william.androidwebserver.core.service.requestTask
 
@@ -13,7 +14,7 @@ import tw.idv.william.androidwebserver.core.service.requestTask
  * 會員列表資料處理
  */
 class BuMemberDataViewModel : ViewModel() {
-    val url = "http://10.0.2.2:8080/geninusgym_bg/buMember"
+    val url = javaWebUrl + "buMember"
 
     // 原始會員列表
     private var BuMemberList = mutableListOf<Member>()

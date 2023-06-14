@@ -153,5 +153,6 @@
     <string name="meShoppoingCheckoutNoMony">餘額不足</string>
     <string name="btMeMapDirect">開始導航</string>
 
-
+    <!--系統字串    -->
+    <string name="networkConnectionError">無法連線</string>
 </resources>
