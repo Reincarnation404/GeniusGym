@@ -62,7 +62,7 @@ class CoActivity : AppCompatActivity() {
                     includeSocial.socialMontionLayout.transitionToEnd()
                 }
                 llCoActivityHead.visibility = View.GONE
-                navigateController.navigate(R.id.socialHomeFragment2)
+                navigateController.navigate(R.id.socialNavFragment)
             }
             includeNotification.notificationMontionLayout.setOnClickListener {
                 if (includeNotification.notificationMontionLayout.progress == 0f) {

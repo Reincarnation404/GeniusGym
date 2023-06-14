@@ -43,7 +43,7 @@ class MeActivity : AppCompatActivity() {
         destinationMap = mapOf(
             R.id.meHomeFragment to binding.includedHome.homeMontionLayout,
             R.id.meBranchFragment to binding.includedBranch.branchMontionLayout,
-            R.id.socialFragment to binding.includedSocial.socialMontionLayout,
+            R.id.socailNavFragment to binding.includedSocial.socialMontionLayout,
             R.id.notificationFragment to binding.includedNotification.notificationMontionLayout,
             R.id.meMemberFragment to binding.includedMember.memberMontionLayout,
             R.id.settingFragment to binding.includedSetting.settingMontionLayout
