@@ -33,53 +33,16 @@
         tools:layout="@layout/fragment_setting" />
 
     <fragment
-        android:id="@+id/mePointsFragment"
-        android:name="com.example.geniusgym.member.controller.MePointsFragment"
-        android:label="fragment_me_points"
-        tools:layout="@layout/fragment_me_points" />
-    <fragment
-        android:id="@+id/meCreditCard"
-        android:name="com.example.geniusgym.member.controller.MeCreditCard"
-        android:label="fragment_me_credit_card"
-        tools:layout="@layout/fragment_me_credit_card" />
-    <fragment
-        android:id="@+id/meTrainingFirstPageFragment2"
-        android:name="com.example.geniusgym.member.MeTrainingFirstPageFragment"
-        android:label="MeTrainingFirstPageFragment"
-        tools:layout="@layout/fragment_me_training_first_page">
-        <action
-            android:id="@+id/action_meTrainingFirstPageFragment2_to_meTrainingRecordFragment"
-            app:destination="@id/meTrainingRecordFragment" />
-        <action
-            android:id="@+id/action_meTrainingFirstPageFragment2_to_meTrainingMuscleSmallFragment"
-            app:destination="@id/meTrainingMuscleSmallFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/meTrainingAerobicFragment"
-        android:name="com.example.geniusgym.member.MeTrainingAerobicFragment"
-        android:label="fragment_me_training_aerobic"
-        tools:layout="@layout/fragment_me_training_aerobic" />
-    <fragment
         android:id="@+id/settingEdFragment"
         android:name="com.example.geniusgym.setting.SettingEdFragment"
         android:label="@string/setting"
         tools:layout="@layout/fragment_setting_ed" />
-    <fragment
-        android:id="@+id/meTrainingRecordFragment"
-        android:name="com.example.geniusgym.member.MeTrainingRecordFragment"
-        android:label="MeTrainingRecordFragment"
-        tools:layout="@layout/fragment_me_training_record" />
     <fragment
 
         android:id="@+id/socailNavFragment"
         android:name="com.example.geniusgym.social.SocialNavFragment"
         android:label="fragment_socail_nav"
         tools:layout="@layout/fragment_social_nav" />
-    <fragment
-        android:id="@+id/meTrainingMuscleSmallFragment"
-        android:name="com.example.geniusgym.member.MeTrainingMuscleSmallFragment"
-        android:label="MeTrainingMuscleSmallFragment"
-        tools:layout="@layout/fragment_me_training_muscle_small" />
 
 
 </navigation>
