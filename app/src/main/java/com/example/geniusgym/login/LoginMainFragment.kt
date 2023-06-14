@@ -40,8 +40,10 @@ class LoginMainFragment : Fragment() {
 
                 if (loginId.isEmpty()) {
                     tietLoginAccount.error = "帳號不可為空白"
-                } else {
-                    tietLoginAccount.error = null
+                    return@setOnClickListener
+                } else if (loginId.length < 6 || loginId.length > 12) {
+                    tietLoginAccount.error = "帳號須介於6~12個字"
+                    return@setOnClickListener
                 }
 
                 if (password.isEmpty()) {
@@ -52,29 +54,41 @@ class LoginMainFragment : Fragment() {
                     return@setOnClickListener
                 }
 
-                when(accountType){
+                when (accountType) {
 
                     "business" -> {
-                        if (loginId == viewModel.buAccount && password == viewModel.buPassword){
+                        if (loginId == viewModel.buAccount && password == viewModel.buPassword) {
                             val intent = Intent(requireActivity(), BuActivity::class.java)
                             intent.flags =
                                 Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                             startActivity(intent)
-                        }else{
-                            tvLoginResult.text = "error"
+                        } else {
+                            tvLoginResult.text = "帳號密碼輸入錯誤"
                         }
-
                     }
+
                     "member" -> {
-
-                        val intent = Intent(requireActivity(), MeActivity::class.java)
-                        startActivity(intent)
+                        if (loginId == viewModel.meAccount && password == viewModel.mePassword) {
+                            val intent = Intent(requireActivity(), MeActivity::class.java)
+                            intent.flags =
+                                Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                            startActivity(intent)
+                        } else {
+                            tvLoginResult.text = "帳號密碼輸入錯誤"
+                        }
                     }
+
                     "coach" -> {
-
-                        val intent = Intent(requireActivity(), CoActivity::class.java)
-                        startActivity(intent)
+                        if (loginId == viewModel.coAccount && password == viewModel.coPassword) {
+                            val intent = Intent(requireActivity(), CoActivity::class.java)
+                            intent.flags =
+                                Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                            startActivity(intent)
+                        } else {
+                            tvLoginResult.text = "帳號密碼輸入錯誤"
+                        }
                     }
+
                     else -> {
                         Toast.makeText(requireContext(), "無效帳號類型", Toast.LENGTH_SHORT).show()
                         return@setOnClickListener
@@ -86,19 +100,18 @@ class LoginMainFragment : Fragment() {
         }
     }
 
-
     private fun getAccountTypeFromLogin(loginId: String): String {
 
         val accountType: String =
-        if (loginId.startsWith("B", ignoreCase = true)) {
-            "business"
-        } else if (loginId.startsWith("M", ignoreCase = true)) {
-            "member"
-        } else if (loginId.startsWith("C", ignoreCase = true)) {
-            "coach"
-        } else {
-            "unknown"
-        }
+            if (loginId.startsWith("B", ignoreCase = true)) {
+                "business"
+            } else if (loginId.startsWith("M", ignoreCase = true)) {
+                "member"
+            } else if (loginId.startsWith("C", ignoreCase = true)) {
+                "coach"
+            } else {
+                "unknown"
+            }
         return accountType
     }
 }
