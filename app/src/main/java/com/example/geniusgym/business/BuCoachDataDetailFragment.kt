@@ -66,7 +66,6 @@ class BuCoachDataDetailFragment : Fragment() {
                 tvBuAddCoaDataDetailChooseBranch.setOnClickListener {
                     tvBuAddCoaDataDetailChooseBranch.showSoftInputOnFocus = false
                     showBranchSelection()
-                    // 還不能改分店
                 }
                 tietBuAddCoaDataDetailIntro.isEnabled = true
                 btBuAddCoaDataDetailModify.visibility = View.GONE
@@ -114,6 +113,13 @@ class BuCoachDataDetailFragment : Fragment() {
                 }
             }
 
+            if(viewModel?.coach?.value?.c_sus == true){
+                btBuAddCoaDataDetailSuspend.visibility = View.VISIBLE
+                btBuAddCoaDataDetailActive.visibility = View.GONE
+            }else{
+                btBuAddCoaDataDetailSuspend.visibility = View.GONE
+                btBuAddCoaDataDetailActive.visibility = View.VISIBLE
+            }
         }
     }
 
@@ -162,7 +168,7 @@ class BuCoachDataDetailFragment : Fragment() {
 
 
     private fun showBranchSelection(){
-        var choice = arrayOf("內壢店","中壢店","桃園店","板橋店","南京復興店")
+        var choice = arrayOf("緯育店","台北店","桃園店","新竹店","南京復興店")
         var selectItem = -1
 
 
