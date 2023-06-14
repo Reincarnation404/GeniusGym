@@ -59,6 +59,7 @@ class MeShoppingSearchExpandableListViewAdapter(private val context: Context,
     ): View {
         val bindingGroup : RecycleCellMeShoppingSearchGroupBinding = RecycleCellMeShoppingSearchGroupBinding.inflate(
             LayoutInflater.from(context), parent, false)
+        convertView?.visibility = View.INVISIBLE
         bindingGroup.tvMeSearchKind.text = LessonKind[groupPosition].sb_name
         return bindingGroup.root
     }

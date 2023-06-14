@@ -8,6 +8,7 @@ import android.text.Spanned
 import android.text.style.ImageSpan
 import android.view.Gravity
 import android.view.LayoutInflater
+import android.view.Window
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.geniusgym.R
@@ -29,7 +30,7 @@ class MeShoppingViewModel : ViewModel() {
 
     }
 
-    fun search(set: Set<Int>, searchText : String) {
+    private fun search(set: Set<Int>, searchText : String) {
         val setFiltered  = mutableSetOf<ClassInfo>()
         if (set.isEmpty()) {
 //           doNothing
@@ -59,44 +60,56 @@ class MeShoppingViewModel : ViewModel() {
     fun createDiaglog(context : Context, meAdapter: MeShoppingAdapter) : Dialog {
         val dialog = Dialog(context)
         val bindingDialog : DialogShopitemBinding = DialogShopitemBinding.inflate(LayoutInflater.from(context))
-
-        //        設定dialog
+//        設定dialog頁面
         val window = dialog.window
         window?.setGravity(Gravity.CENTER)
         window?.setContentView(bindingDialog.root)
-        window?.setWindowAnimations(R.xml.dialog_style)
-//        TODO:動畫執行失敗、設定dialog大小失敗
-//        val lp = window?.attributes
-//        lp?.width = WindowManager.LayoutParams.MATCH_PARENT
-//        lp?.height = containerView.layoutParams.height
+        window?.setWindowAnimations(R.style.dialog_style)
+//        TODO:動畫執行失敗
 
+//        設定EditText的提示文字
+        bindingDialog.edtMeShoppingSearch.hint = setDialogSpannableString(context)
 
+//        設定adapter
+        val adapter = setDialogAdapter(context)
+        bindingDialog.elvMeShopping.setAdapter(adapter)
 
-        //        設定提示文字附加圖片
-        val imageHint = ImageSpan(context, R.drawable.baseline_search_24)
-        val spannableString = SpannableString(context.getString(R.string.meSearchViewLessonName))
-        spannableString.setSpan(imageHint, 0, 1, Spanned.SPAN_INCLUSIVE_EXCLUSIVE)
-        bindingDialog.edtMeShoppingSearch.hint = spannableString
+        bindingDialog.btnMeShoppingConfirm.setOnClickListener {
+//            取得篩選的運動類型、教練名稱、課程名稱
+            val filterId = adapter.getAllKindId()
+//            執行搜尋
+            search(filterId, bindingDialog.edtMeShoppingSearch.text.toString())
+//            將結果返回並更新MeShopping的RecycleView
+            shopitems.value?.let { it1 -> meAdapter.update(it1) }
+//            清除這次已點擊的類型
+            adapter.clearSet()
+            dialog.dismiss()
+        }
+//
+        bindingDialog.btnMeShoppingCancel.setOnClickListener {
+//            清除這次已點擊的類型
+            adapter.clearSet()
+            dialog.dismiss()
+        }
+        return dialog
+    }
+
+//
+    private fun setDialogAdapter(context: Context) : MeShoppingSearchExpandableListViewAdapter{
         val adapter =
             MeShoppingSearchExpandableListViewAdapter(
                 context,
                 sportbigcats,
                 sportcats
             )
-        bindingDialog.elvMeShopping.setAdapter(adapter)
-        bindingDialog.btnMeShoppingConfirm.setOnClickListener {
-            val filterId = adapter.getAllKindId()
-            search(filterId, bindingDialog.edtMeShoppingSearch.text.toString())
-            shopitems.value?.let { it1 -> meAdapter.update(it1) }
-            adapter.clearSet()
-            dialog.dismiss()
-        }
-
-        bindingDialog.btnMeShoppingCancel.setOnClickListener {
-            adapter.clearSet()
-            dialog.dismiss()
-        }
-        return dialog
+        return adapter
+    }
+    private fun setDialogSpannableString(context : Context) : SpannableString{
+        //        設定提示文字附加圖片
+        val imageHint = ImageSpan(context, R.drawable.baseline_search_24)
+        val spannableString = SpannableString(context.getString(R.string.meSearchViewLessonName))
+        spannableString.setSpan(imageHint, 0, 1, Spanned.SPAN_INCLUSIVE_EXCLUSIVE)
+        return spannableString
     }
 
 
@@ -132,8 +145,8 @@ class MeShoppingViewModel : ViewModel() {
         SportBigCat(1, "有氧", "有氧"),
         SportBigCat(2, "無氧", "肩"),
         SportBigCat(3, "無氧", "胸"),
-//        SportBigCat(4, "缺氧", "背"),
-//        SportBigCat(5, "沒氧", "腿")
+        SportBigCat(4, "缺氧", "背"),
+        SportBigCat(5, "沒氧", "腿")
     )
 
     val sportcats : List<List<SportCat>> = listOf(

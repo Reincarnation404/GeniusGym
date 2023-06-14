@@ -17,17 +17,14 @@ import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.example.geniusgym.databinding.FragmentMeMapDirectBinding
 import com.example.geniusgym.member.viewmodel.MeMapDirectViewModel
-import com.example.geniusgym.sharedata.IntervalMillsOnMap
-import com.example.geniusgym.sharedata.MinUpdateDistanceMeters
+import com.example.geniusgym.sharedata.MeShareData.IntervalMillsOnMap
+import com.example.geniusgym.sharedata.MeShareData.MinUpdateDistanceMeters
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.*
-import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.tasks.Task
 
