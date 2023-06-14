@@ -4,7 +4,6 @@ import androidx.lifecycle.ViewModel
 import com.example.geniusgym.coach.calendarMemberList.model.Member_detail_Item
 import java.io.Serializable
 
-
 //設定成一個物件導向member detail class  ->  viewmodel (mutablelivedata)
 
 class MeMemberDetailViewModel : ViewModel() {

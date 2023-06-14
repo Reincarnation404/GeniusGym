@@ -65,7 +65,7 @@ class CoViewModel : ViewModel() {
             CoachItem(
                 c_name = "桃園 hawk",
                 c_cell = "0912345678",
-                c_id = "C8763",
+                c_id = "C87632",
                 c_start_date = "2023/06/15"
             )
     }

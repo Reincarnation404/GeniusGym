@@ -21,5 +21,5 @@ object MeShareData {
     const val LocalDateTimeToTextFormat = "mm:ss"
 
     //  url
-    const val javaWebUrl = "http://192.168.1.123:8080/geninusgym_bg/"
+    const val javaWebUrl = "http://192.168.186.96:8080/geninusgym_bg/"
 }
