@@ -79,7 +79,9 @@
                             style="@style/SettingStyleText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/tvSettingClassNoEnable" />
+                            android:enabled="true"
+                            android:text="@string/tvSettingClassNoEnable"
+                            android:visibility="gone" />
 
                         <View
                             android:id="@+id/divider3"
@@ -105,7 +107,8 @@
                             style="@style/SettingStyleText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/tvSettingClassScheNoti" />
+                            android:text="@string/tvSettingClassScheNoti"
+                            android:visibility="gone" />
 
                         <View
                             android:id="@+id/divider5"
@@ -118,7 +121,8 @@
                             style="@style/SettingStyleText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/tvSettingWorkScheNoti" />
+                            android:text="@string/tvSettingWorkScheNoti"
+                            android:visibility="gone" />
 
                         <View
                             android:id="@+id/divider6"
@@ -131,7 +135,8 @@
                             style="@style/SettingStyleText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/tvSettingPrivacyShowEnable" />
+                            android:text="@string/tvSettingPrivacyShowEnable"
+                            android:visibility="gone" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -164,7 +169,8 @@
                             style="@style/SettingStyleSwitch"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:checked= "@={viewModel.sClassNoEnable}"/>
+                            android:checked="@={viewModel.sClassNoEnable}"
+                            android:visibility="gone" />
 
                         <View
                             android:id="@+id/divider1_3"
@@ -190,7 +196,8 @@
                             style="@style/SettingStyleSwitch"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:checked = "@={viewModel.sClassScheNoti}"/>
+                            android:checked="@={viewModel.sClassScheNoti}"
+                            android:visibility="gone" />
 
                         <View
                             android:id="@+id/divider1_5"
@@ -203,7 +210,8 @@
                             style="@style/SettingStyleSwitch"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:checked = "@={viewModel.sWorkScheNoti}"/>
+                            android:checked="@={viewModel.sWorkScheNoti}"
+                            android:visibility="gone" />
 
                         <View
                             android:id="@+id/divider1_6"
@@ -216,7 +224,8 @@
                             style="@style/SettingStyleSwitch"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:checked="@={viewModel.sPrivacyShowEnable}"/>
+                            android:checked="@={viewModel.sPrivacyShowEnable}"
+                            android:visibility="gone" />
 
                     </LinearLayout>
                 </LinearLayout>

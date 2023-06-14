@@ -13,11 +13,11 @@ class LoginMainViewModel : ViewModel() {
     var password = "xxx"
 
 //    假資料
-    val buAccount = "b123456"
+    val buAccount = "B123456"
     val buPassword = "1234567"
-    val coAccount = "c123456"
+    val coAccount = "C87632"
     val coPassword = "1234567"
-    val meAccount = "m123456"
+    val meAccount = "M81032"
     val mePassword = "1234567"
 
 //    fun requireBusiness() : Boolean{

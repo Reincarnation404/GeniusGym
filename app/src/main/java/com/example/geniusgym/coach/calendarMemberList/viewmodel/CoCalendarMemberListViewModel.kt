@@ -145,6 +145,13 @@ class CoCalendarMemberListViewModel : ViewModel() {
                 name = "賀爾蒙少年",
             )
         )
+        itemList.add(
+            MemberItem(
+                classId = "99819923",
+                memberId = "M81023",
+                name = "Danny"
+            )
+        )
         this.itemList = itemList
         this.items.value = this.itemList
     }

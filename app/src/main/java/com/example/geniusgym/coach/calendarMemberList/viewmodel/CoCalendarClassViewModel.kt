@@ -85,6 +85,15 @@ class CoCalendarClassViewModel : ViewModel() {
                 className = "螺璇有氧"
             )
         )
+        itemList.add(
+            ClassItem(
+                id = "99819923",
+                startTime = "10:00",
+                endTime = "11:00",
+                date = "2023-06-15",
+                className = "一對一課程"
+            )
+        )
         this.itemList = itemList
         this.items.value = this.itemList
     }

@@ -25,7 +25,7 @@
     <string name="ht_Login_Password">請輸入密碼</string>
     <string name="tv_Login_Forget">忘記密碼</string>
     <string name="tv_LoginForget_Title">忘記密碼</string>
-    <string name="tv_LoginForget_Remind">請輸入您當時申請的手機號碼</string>
+    <string name="tv_LoginForget_Remind">請洽客服或至櫃台協助辦理</string>
     <string name="ht_LoginForget_Number">請輸入手機號碼</string>
     <string name="tv_LoginForget_Confirm">確認</string>
 
@@ -112,7 +112,7 @@
     <string name="tietBuAddClassDataIntro">課程介紹</string>
 
 
-<!--會員端字串    -->
+    <!--會員端字串    -->
     <string name="me_br_store">分店商城</string>
     <string name="btPaymentConfirm">確認送出</string>
 
@@ -155,4 +155,25 @@
 
     <!--系統字串    -->
     <string name="networkConnectionError">無法連線</string>
+
+
+    <string name="textConfirmPay">確認付款</string>
+    <string name="textCannotUseGPay">Cannot use Google Pay</string>
+    <string name="textCanceled">Canceled by the user.</string>
+    <string name="textNoNetwork">no network connection available</string>
+    <string name="textPaymentSuccess">Payment is successful</string>
+
+
+    <!-- 填上TapPay Portal上註冊的資料 -->
+    <!-- 開發人員內容 / 應用程式 -->
+    <string name="TapPay_AppID">132654</string>
+    <string name="TapPay_AppKey">app_WlvRgeMZOS9yLQaalhSi4WsbLz0tL0AY8cmisHAERybob3FyeWD3tEXyRTiJ</string>
+
+    <!-- 公司資訊 / 帳號金鑰 -->
+    <string name="TapPay_PartnerKey">partner_Qbwz7VW1gvvg35RAGtiA6Zbt59J9MUfXgGQZIUzidJMsCy45ND6qHqh2</string>
+
+    <!-- 商家管理 / 商家設置 / 收單銀行 -->
+    <string name="TapPay_MerchantName">TW_TAISHIN</string>
+    <!-- 商家管理 / 商家設置 / Merchant ID -->
+    <string name="TapPay_MerchantID">nnmm123456789_TAISHIN</string>
 </resources>
