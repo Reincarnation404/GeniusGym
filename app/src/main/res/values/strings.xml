@@ -25,7 +25,7 @@
     <string name="ht_Login_Password">請輸入密碼</string>
     <string name="tv_Login_Forget">忘記密碼</string>
     <string name="tv_LoginForget_Title">忘記密碼</string>
-    <string name="tv_LoginForget_Remind">請輸入您當時申請的手機號碼</string>
+    <string name="tv_LoginForget_Remind">請洽客服或至櫃台協助辦理</string>
     <string name="ht_LoginForget_Number">請輸入手機號碼</string>
     <string name="tv_LoginForget_Confirm">確認</string>
 
