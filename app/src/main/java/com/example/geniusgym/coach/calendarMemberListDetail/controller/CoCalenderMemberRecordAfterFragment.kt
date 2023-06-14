@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -20,6 +21,7 @@ import com.example.geniusgym.coach.calendarMemberListDetail.viewmodel.CoCalender
 import com.example.geniusgym.databinding.FragmentCoCalenderMemberRecordAfterBinding
 import com.google.gson.GsonBuilder
 import kotlinx.coroutines.runBlocking
+import java.net.ConnectException
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -94,14 +96,19 @@ class CoCalenderMemberRecordAfterFragment : Fragment() {
                             requireActivity().getPreferences(Context.MODE_PRIVATE).edit()
                                 .putString(viewModel?.m_id, jsonStr).apply()
                             runBlocking {
-                                viewModel?.sportDataUpload()
+                                try {
+                                    viewModel?.sportDataUpload()
+                                } catch (e: ConnectException) {
+                                    e.printStackTrace()
+                                    Toast.makeText(requireContext(),"連線失敗", Toast.LENGTH_SHORT)
+                                }
                             }
                             Navigation.findNavController(view).popBackStack()
                         }
                     }
                     dialog.cancel()
                 }
-                viewModel?.recordItems?.value?.let {recordItems ->
+                viewModel?.recordItems?.value?.let { recordItems ->
 
                     android.app.AlertDialog.Builder(view.context)
                         .setMessage(R.string.txtCoCaMeReAfSendDialogMessage)

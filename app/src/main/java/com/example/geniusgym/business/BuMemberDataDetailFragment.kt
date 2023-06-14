@@ -17,6 +17,7 @@ import com.example.geniusgym.business.model.Member
 import com.example.geniusgym.business.model.testBuMember
 import com.example.geniusgym.business.viewModel.BuMemberViewModel
 import com.example.geniusgym.databinding.FragmentBuMemberDataDetailBinding
+import com.example.geniusgym.sharedata.MeShareData.javaWebUrl
 import com.google.gson.JsonObject
 import tw.idv.william.androidwebserver.core.service.requestTask
 import java.sql.Timestamp
@@ -26,7 +27,7 @@ import java.util.*
 class BuMemberDataDetailFragment : Fragment() {
     private lateinit var binding: FragmentBuMemberDataDetailBinding
     private val calendar = Calendar.getInstance()
-    val url = "http://10.0.2.2:8080/geninusgym_bg/buMember"
+    val url = javaWebUrl + "buMember"
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
