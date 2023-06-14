@@ -1,12 +1,15 @@
 package com.example.geniusgym.notification.model
 
-import java.sql.Timestamp
 import java.io.Serializable
+import java.sql.Timestamp
 
 class Notification (
-    var or_id: Int?,
-    var m_id: String?,
-    var or_amt: Short?,
-    var or_total: Short?,
-    var or_buy_time: Timestamp?
+    var nt_id: Int?,
+    var b_id: String?,
+    var bh_id: Int?,
+    var nt_text: String?,
+    var nt_send_time: Timestamp?,
+
+
         ):Serializable
+// 我記得我們的通知物件裡面長這樣嗎?等喔
