@@ -7,10 +7,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.geniusgym.R
 import com.example.geniusgym.databinding.FragmentMePointsBinding
 import com.example.geniusgym.member.MePointsViewModel
 import com.example.geniusgym.member.adapter.MePointsAdapter
+
 
 
 class MePointsFragment : Fragment() {
@@ -25,6 +28,7 @@ class MePointsFragment : Fragment() {
         val viewModel = ViewModelProvider(this)[MePointsViewModel::class.java]
         binding = FragmentMePointsBinding.inflate(inflater,container,false)
         binding.viewmodel = viewModel
+        viewModel.updatePoints(10000)
         binding.lifecycleOwner = this
         return binding.root
     }
@@ -34,7 +38,18 @@ class MePointsFragment : Fragment() {
         adapter = MePointsAdapter(binding.viewmodel!!.mepointitem)
         binding.ptRecyclerlist.layoutManager = LinearLayoutManager(requireContext())
         binding.ptRecyclerlist.adapter = adapter
+
+
+        val navController = findNavController()
+        binding.btTopup.setOnClickListener {
+            navController.navigate(R.id.meBuyPointsFragment2)
+
+        }
     }
+
+
+
+
 }
 
 

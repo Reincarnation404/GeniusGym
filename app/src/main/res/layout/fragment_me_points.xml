@@ -43,24 +43,25 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
-        android:id="@+id/etShowPoints"
+    <TextView
+        android:id="@+id/tvShowPoints"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="92dp"
         android:layout_marginEnd="25dp"
-        android:ems="10"
-        android:inputType="textPersonName"
+        android:text="@{viewmodel.pointsLiveData.toString()}"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.948"
-        app:layout_constraintStart_toStartOf="@+id/tvMePoints"
-        app:layout_constraintTop_toBottomOf="@+id/tvMePoints"
+        app:layout_constraintHorizontal_bias="0.527"
+        app:layout_constraintStart_toEndOf="@+id/tvMePoints"
+        app:layout_constraintTop_toTopOf="parent"
         tools:text="顯示點數餘額" />
 
     <ImageView
         android:id="@+id/ivCmlCoCa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="52dp"
         android:layout_marginEnd="36dp"
         android:scrollbarSize="15dp"
         android:src="@drawable/baseline_credit_card_fill"
