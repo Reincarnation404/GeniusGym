@@ -1,9 +1,11 @@
 package com.example.geniusgym.business.adapter
 
 import android.app.AlertDialog
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
@@ -55,6 +57,10 @@ class BuMemberDataAdapter(private var bumembers: List<Member>):
             with(itemViewBinding) {
                 // 將欲顯示的member物件指派給LiveData，就會自動更新layout檔案的view顯示
                 viewModel?.member?.value = bumember
+
+                if (itemViewBinding.viewModel?.member?.value!!.m_sus == false) {
+                    BuMemList.setBackgroundColor(ContextCompat.getColor(itemView.context, R.color.gray))
+                }
                 val bundle = Bundle()
                 bundle.putSerializable("bumember", bumember)
                 itemView.setOnClickListener {
@@ -64,18 +70,33 @@ class BuMemberDataAdapter(private var bumembers: List<Member>):
                 }
 
                 itemView.setOnLongClickListener {
-                    AlertDialog.Builder(it.context)
-                        .setMessage("確定將此用戶停權?")
-                        .setPositiveButton("是"){ _, _ ->
+                    if (viewModel?.member?.value!!.m_sus == true) {
+                        AlertDialog.Builder(it.context)
+                            .setMessage("確定將此用戶停權?")
+                            .setPositiveButton("是") { _, _ ->
+                                viewModel?.member?.value.run {
+                                    requestTask<JsonObject>(url, "DELETE", viewModel?.member?.value)
+                                    println(viewModel?.member?.value)
+                                }
+                            }
+                            .setCancelable(true)
+                            .show()
+                    }else{AlertDialog.Builder(it.context)
+                        .setMessage("確定將此用戶解除停權?")
+                        .setPositiveButton("是") { _, _ ->
                             viewModel?.member?.value.run {
                                 requestTask<JsonObject>(url, "DELETE", viewModel?.member?.value)
                                 println(viewModel?.member?.value)
                             }
                         }
                         .setCancelable(true)
-                        .show()
-                    true
+                        .show()}
+                        true
                 }
+//
+//                if(viewModel?.member?.value!!.m_sus == false){
+//                    itemView.setBackgroundColor(Color.DKGRAY)
+//                }
             }
         }
     }

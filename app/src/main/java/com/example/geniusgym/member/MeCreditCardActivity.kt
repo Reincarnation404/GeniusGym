@@ -2,6 +2,7 @@ package com.example.geniusgym.member
 
 import android.app.Activity
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -10,6 +11,8 @@ import android.widget.RelativeLayout
 import android.widget.Toast
 import com.example.geniusgym.R
 import com.example.geniusgym.databinding.ActivityMeCreditCardBinding
+import com.example.geniusgym.member.model.MeBuyPointBean
+import com.example.geniusgym.member.model.MePointBean
 import com.example.geniusgym.util.WebRequestSpencer
 import com.google.android.gms.wallet.AutoResolveHelper
 import com.google.android.gms.wallet.PaymentData
@@ -26,6 +29,7 @@ class MeCreditCardActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMeCreditCardBinding
     private lateinit var tpdGooglePay: TPDGooglePay
     private lateinit var btGooglePay: RelativeLayout
+    private lateinit var item : MeBuyPointBean
     // 測試環境網址
     private val sandbox = "https://sandbox.tappaysdk.com/"
 
@@ -44,6 +48,15 @@ class MeCreditCardActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMeCreditCardBinding.inflate(LayoutInflater.from(this))
         setContentView(binding.root)
+//        val bundle = this.intent.extras
+//        val getItem = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+//            bundle?.getSerializable("saveItem", MeBuyPointBean::class.java)
+//        } else {
+//            bundle?.getSerializable("saveItem") as MeBuyPointBean
+//        }
+//        if (getItem != null) {
+//            item = getItem
+//        }
 
         Log.d(myTag, "SDK version is " + TPDSetup.getVersion())
         TPDSetup.initInstance(
@@ -212,10 +225,10 @@ class MeCreditCardActivity : AppCompatActivity() {
         paymentJO.addProperty("partner_key", partnerKey)
         paymentJO.addProperty("prime", prime)
         paymentJO.addProperty("merchant_id", merchantId)
-        paymentJO.addProperty("amount", 10)
+        paymentJO.addProperty("amount", 250)
         paymentJO.addProperty("currency", "TWD")
         paymentJO.addProperty("order_number", "SN0001")
-        paymentJO.addProperty("details", "茶葉蛋1顆")
+        paymentJO.addProperty("details", "500點")
         val cardHolderJO = JsonObject()
         cardHolderJO.addProperty("name", "Ron")
         cardHolderJO.addProperty("phone_number", "+886912345678")

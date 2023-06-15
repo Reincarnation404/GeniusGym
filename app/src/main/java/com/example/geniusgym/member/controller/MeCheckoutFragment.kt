@@ -147,6 +147,9 @@ class MeCheckoutFragment : Fragment() {
                 timer.start()
 
             }
+            btCheckoutSaveMoney.setOnClickListener {
+                Navigation.findNavController(it).navigate(R.id.action_meCheckoutFragment_to_meBuyPointsFragment)
+            }
         }
 
     }

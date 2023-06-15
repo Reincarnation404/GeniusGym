@@ -2,6 +2,7 @@ package com.example.geniusgym.business
 
 import android.app.AlertDialog
 import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.graphics.Color
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -14,13 +15,16 @@ import androidx.navigation.Navigation
 import com.example.geniusgym.business.viewModel.BuBusinessDataAddViewModel
 import com.example.geniusgym.R
 import com.example.geniusgym.databinding.FragmentBuBusinessDataAddBinding
+import com.google.gson.JsonObject
+import tw.idv.william.androidwebserver.core.service.requestTask
+import java.sql.Timestamp
 import java.text.SimpleDateFormat
 import java.util.*
 
 class BuBusinessDataAddFragment : Fragment() {
     private lateinit var binding: FragmentBuBusinessDataAddBinding
     private val calendar = Calendar.getInstance()
-    private lateinit var viewModel: BuBusinessDataAddViewModel
+    val url = "http://10.0.2.2:8080/geninusgym_bg/buBuz"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,6 +39,8 @@ class BuBusinessDataAddFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         with(binding){
+            tietBuAddBuzDataGen.setText(viewModel?.genToString())
+
             tvBuAddBuzDataBranch.setOnClickListener {
                 showBranchSelection()
             }
@@ -42,9 +48,35 @@ class BuBusinessDataAddFragment : Fragment() {
             tvBuAddBuzDataOBDate.setOnClickListener {
                 tvBuAddBuzDataOBDate.showSoftInputOnFocus = false
                 openDateTimeDialogs()
+                tvBuAddBuzDataOBDate.text = viewModel?.timeToString()
             }
 
-            //todo btBuAddBuzDataSave的資料儲存與頁面跳轉
+            btBuAddBuzDataSave.setOnClickListener {
+                viewModel?.buz?.value.run {
+                    val c_gender = tietBuAddBuzDataGen.text.toString().trim()
+
+                    if (c_gender.isEmpty()) {
+                        println("空的")
+                        return@setOnClickListener
+                    } else {
+                        val gender: Int = when (c_gender) {
+                            "女" -> 0
+                            "男" -> 1
+                            else ->
+                                return@setOnClickListener
+                        }
+                        viewModel?.buz?.value?.b_gen = gender
+
+                        val c_date = tvBuAddBuzDataOBDate.text.toString().trim()
+                        val timestamp = Timestamp.valueOf(c_date)
+                        viewModel?.buz?.value?.b_start_date = timestamp
+
+
+                        requestTask<JsonObject>(url, "POST", viewModel?.buz?.value)
+                        println(viewModel?.buz?.value)
+                    }
+                }
+            }
 
             btBuAddBuzDataCancel.setOnClickListener {
                 Navigation.findNavController(it).popBackStack()
@@ -53,7 +85,7 @@ class BuBusinessDataAddFragment : Fragment() {
     }
 
     private fun showBranchSelection(){
-        var choice = arrayOf("分店A","分店B","分店C","分店D")
+        var choice = arrayOf("緯育店","台北店","桃園店","新竹店","南京復興店")
         var selectItem = -1
 
 
@@ -66,16 +98,12 @@ class BuBusinessDataAddFragment : Fragment() {
             .setPositiveButton(R.string.bu_add_choose_branch_confirm){ _, _ ->
                 if (selectItem != -1) {
                     val selectedBranch = choice[selectItem]
-                    updateTvBuAddBuzChooseBranch(selectedBranch)
+                    binding.tvBuAddBuzDataBranch.text = selectedBranch
                 }
             }
             // false代表要點擊按鈕方能關閉，預設為true
             .setCancelable(true)
             .show()
-    }
-    private fun updateTvBuAddBuzChooseBranch(branch: String) {
-        binding.tvBuAddBuzDataBranch.text = branch
-        binding.tvBuAddBuzDataBranch.setTextColor(Color.BLACK)
     }
 
 
@@ -85,7 +113,7 @@ class BuBusinessDataAddFragment : Fragment() {
             calendar.set(Calendar.YEAR, year)
             calendar.set(Calendar.MONTH, month)
             calendar.set(Calendar.DAY_OF_MONTH, day)
-            updateTvBuAddChooseCoaOBDate()
+            openTimePickerDialog()
         }
 
         val datePickerDialog = DatePickerDialog(
@@ -97,11 +125,26 @@ class BuBusinessDataAddFragment : Fragment() {
         )
         datePickerDialog.show()
     }
+    private fun openTimePickerDialog() {
+        val timeListener = TimePickerDialog.OnTimeSetListener { _, hour, minute ->
+            calendar.set(Calendar.HOUR_OF_DAY, hour)
+            calendar.set(Calendar.MINUTE, minute)
+            updateTvBuAddChooseCoaOBDate()
+        }
+
+        val timePickerDialog = TimePickerDialog(
+            requireContext(),
+            timeListener,
+            calendar.get(Calendar.HOUR_OF_DAY),
+            calendar.get(Calendar.MINUTE),
+            true
+        )
+        timePickerDialog.show()
+    }
     private fun updateTvBuAddChooseCoaOBDate() {
-        val format = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        val format = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
         val dateTime = format.format(calendar.time)
         binding.tvBuAddBuzDataOBDate.text = dateTime
-        binding.tvBuAddBuzDataOBDate.setTextColor(Color.BLACK)
     }
 }
 

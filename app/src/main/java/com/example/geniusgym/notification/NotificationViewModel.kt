@@ -19,10 +19,7 @@ class NotificationViewModel : ViewModel() {
     private fun load() {
         val notificationList: MutableList<Notification> = mutableListOf<Notification>()
         val formatter = DateTimeFormatter.BASIC_ISO_DATE
-        notificationList.add(Notification(1,"m123456", 2, "歡迎", Timestamp.valueOf("2023-06-16 00:00:00")))
-        notificationList.add(Notification(2, "m123456", 1, "明天停水", Timestamp.valueOf("2023-06-15 00:00:00")))
-        notificationList.add(Notification(3, "m123456", 5, "後天缺電", Timestamp.valueOf("2023-06-14 00:00:00")))
-
+        notificationList.add(Notification(1,"m123456", 2, "4/15下午兩點在緯育分店A503有課，親愛的會員如需請假請事前告知", Timestamp.valueOf("2023-06-16 00:00:00")))
 
         this.items.value = notificationList
     }

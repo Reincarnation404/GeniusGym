@@ -65,10 +65,10 @@ class MeMemberDetailFragment : Fragment() {
                        Navigation.findNavController(view).navigate(R.id.mePointsFragment)
                     }
 
-                    R.id.toolbar_mem_bodyinfo ->{
+                    /*R.id.toolbar_mem_bodyinfo ->{
                         val fragment  = MeBodyFragment()
-                        Navigation.findNavController(view).navigate(R.id.meBodyFragment)
-                    }
+                        Navigation.findNavController(view).navigate(R.id.meBodyFragment)*//*
+                    }*/
 
                     else -> {}
                 }

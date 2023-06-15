@@ -2,11 +2,11 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".business.BuAddNotificationFragment">
+    tools:context=".business.BuNotificationDataAddFragment">
     <data>
         <variable
             name="viewModel"
-            type="com.example.geniusgym.business.viewModel.BuAddNotificationViewModel" />
+            type="com.example.geniusgym.business.viewModel.BuNotificationDataAddViewModel" />
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout
@@ -47,7 +47,8 @@
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:hint="@string/tietBuAddNotiTitle"
-                    android:text="@={viewModel.title}"
+                    android:visibility="gone"
+                    android:text="@={viewModel.notify.b_id}"
                     android:textColor="@color/black"/>
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -69,7 +70,7 @@
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:hint="@string/tietBuAddNotiSender"
-                    android:text="@={viewModel.sender}"
+                    android:text="@={viewModel.notify.b_id}"
                     android:textColor="@color/black"/>
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -78,7 +79,7 @@
                 style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
+                android:visibility="gone"
                 android:paddingHorizontal="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -95,6 +96,7 @@
                     android:imeOptions="flagNoExtractUi"
                     android:paddingLeft="16dp"
                     android:textColorHint="#CDC7D2"
+                    android:visibility="gone"
                     android:textColor="@color/black"/>
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -104,7 +106,7 @@
                 style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
+                android:visibility="gone"
                 android:paddingHorizontal="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -120,6 +122,7 @@
                     android:hint="@string/spBuAddChooseTarget"
                     android:imeOptions="flagNoExtractUi"
                     android:paddingLeft="16dp"
+                    android:visibility="gone"
                     android:textColorHint="#CDC7D2"
                     android:textColor="@color/black"/>
 
@@ -130,7 +133,7 @@
                 style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
+                android:visibility="gone"
                 android:paddingHorizontal="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -146,6 +149,7 @@
                     android:hint="@string/tvBuAddChooseDateTime"
                     android:imeOptions="flagNoExtractUi"
                     android:paddingLeft="16dp"
+                    android:visibility="gone"
                     android:textColorHint="#CDC7D2"
                     android:textColor="@color/black"/>
 
@@ -170,7 +174,7 @@
                     android:layout_height="176dp"
                     android:background="@color/white"
                     android:hint="@string/tietBuAddNotiText"
-                    android:text="@={viewModel.text}"
+                    android:text="@={viewModel.notify.nt_text}"
                     android:textColor="@color/black"/>
 
 
@@ -181,6 +185,7 @@
                 style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox.Dense"
                 android:layout_width="match_parent"
                 android:layout_height="221dp"
+                android:visibility="gone"
                 android:paddingHorizontal="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tilBuAddNotiText">
@@ -190,6 +195,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="176dp"
                     android:background="@color/white"
+                    android:visibility="gone"
                     android:hint="@string/tietBuAddNotiPic" />
 
             </com.google.android.material.textfield.TextInputLayout>

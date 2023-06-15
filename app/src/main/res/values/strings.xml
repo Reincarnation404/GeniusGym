@@ -61,7 +61,10 @@
     <string name="tietBuAddMemDataAddr">通訊地址</string>
     <string name="tietBuAddMemDataEmail">Email</string>
     <string name="tietBuAddMemDataExpireDate">會員期限</string>
-    <string name="btBuAddMemDataSuspend">停權</string>            <!-- 還沒用到 -->
+    <string name="btBuAddMemDataSuspend">停權</string>
+    <string name="btBuAddMemDataActive">解除停權</string>
+    <string name="btBuAddClassDataUnavailable">不開放報名</string>
+    <string name="btBuAddClassDataAvailable">開放報名</string>
 
     <string name="tv_Me_Training_Monday">一</string>
     <string name="tv_Me_Training_Tuesday">二</string>
@@ -99,12 +102,11 @@
     <string name="tietBuAddBuzDataOBDate">入職日期</string>
 
     <string name="tietBuAddClassDataName">課程名稱</string>
-    <string name="tietBuAddClassDataID">課程編號</string>
-
+    <string name="tietBuAddClassDataSportCat">運動種類</string>
     <string name="tietBuAddClassDataStartTime">課程開始時間</string>
     <string name="tietBuAddClassDataEndTime">課程結束時間</string>
     <string name="tvBuAddClassDataBranch">上課分店</string>
-    <string name="tietBuAddClassDataPlace">上課地點</string>
+    <string name="tietBuAddClassDataPlace">上課教室</string>
     <string name="tietBuAddClassDataPoint">點數</string>
     <string name="tietBuAddClassDataLimit">人數上限</string>
     <string name="tietBuAddClassDataRegiStartTime">報名開始時間</string>
