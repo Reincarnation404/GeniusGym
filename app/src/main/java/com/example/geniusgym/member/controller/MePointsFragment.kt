@@ -13,7 +13,7 @@ import com.example.geniusgym.R
 import com.example.geniusgym.databinding.FragmentMePointsBinding
 import com.example.geniusgym.member.MePointsViewModel
 import com.example.geniusgym.member.adapter.MePointsAdapter
-
+import com.example.geniusgym.sharedata.MeShareData
 
 
 class MePointsFragment : Fragment() {
@@ -28,7 +28,7 @@ class MePointsFragment : Fragment() {
         val viewModel = ViewModelProvider(this)[MePointsViewModel::class.java]
         binding = FragmentMePointsBinding.inflate(inflater,container,false)
         binding.viewmodel = viewModel
-        viewModel.updatePoints(10000)
+        viewModel.pointsLiveData.value = MeShareData.personPoint
         binding.lifecycleOwner = this
         return binding.root
     }
@@ -46,10 +46,6 @@ class MePointsFragment : Fragment() {
 
         }
     }
-
-
-
-
 }
 
 

@@ -39,6 +39,13 @@ class MePointsViewModel : ViewModel() {
 
           mepointitem.add(
           MePointBean(
+          ptid = "00",
+          ptdate="2023-05-31",
+          ptindecre = "11500點"
+          ))
+
+          mepointitem.add(
+          MePointBean(
           ptid = "01",
           ptdate="2023-06-11",
           ptindecre = "-500點"

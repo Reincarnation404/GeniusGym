@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:text="@string/meShoppingCartMePoint"
         app:layout_constraintBottom_toTopOf="@+id/tvMeShoppingError"
-        app:layout_constraintStart_toStartOf="@+id/button" />
+        app:layout_constraintStart_toStartOf="@+id/btCheckoutSaveMoney" />
 
     <TextView
         android:id="@+id/meShoppingPointHave"
@@ -47,11 +47,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintStart_toStartOf="@+id/button" />
+        app:layout_constraintBottom_toTopOf="@+id/btCheckoutSaveMoney"
+        app:layout_constraintStart_toStartOf="@+id/btCheckoutSaveMoney" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btCheckoutSaveMoney"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
@@ -78,6 +78,7 @@
         android:id="@+id/meRecycleShoppingCart"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toTopOf="@+id/textView23"
         app:layout_constraintEnd_toEndOf="parent"
