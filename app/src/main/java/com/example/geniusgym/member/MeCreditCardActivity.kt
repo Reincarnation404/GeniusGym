@@ -2,7 +2,6 @@ package com.example.geniusgym.member
 
 import android.app.Activity
 import android.content.Intent
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -12,7 +11,6 @@ import android.widget.Toast
 import com.example.geniusgym.R
 import com.example.geniusgym.databinding.ActivityMeCreditCardBinding
 import com.example.geniusgym.member.model.MeBuyPointBean
-import com.example.geniusgym.member.model.MePointBean
 import com.example.geniusgym.util.WebRequestSpencer
 import com.google.android.gms.wallet.AutoResolveHelper
 import com.google.android.gms.wallet.PaymentData
@@ -48,7 +46,7 @@ class MeCreditCardActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMeCreditCardBinding.inflate(LayoutInflater.from(this))
         setContentView(binding.root)
-//        val bundle = this.intent.extras
+
 //        val getItem = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
 //            bundle?.getSerializable("saveItem", MeBuyPointBean::class.java)
 //        } else {
@@ -203,6 +201,7 @@ class MeCreditCardActivity : AppCompatActivity() {
                         Toast.LENGTH_SHORT
                     ).show()
                 }
+                finish()
                 val text = "支付結束，TapPay回應的結果訊息:\n$resultJson"
                 Log.d(myTag, text)
                 binding.tvResult.text = text
