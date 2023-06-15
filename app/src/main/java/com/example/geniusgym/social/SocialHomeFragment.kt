@@ -41,7 +41,7 @@ class SocialHomeFragment : Fragment() {
             adapter = socialHomeAdapter
         }
 
-        socialHomeViewModel = ViewModelProvider(this).get(SocialHomeViewModel::class.java)
+        socialHomeViewModel = ViewModelProvider(this)[SocialHomeViewModel::class.java]
         socialHomeViewModel.getArticles().observe(viewLifecycleOwner) { articles ->
             socialHomeAdapter.setArticles(articles)
         }

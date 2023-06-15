@@ -1,22 +1,20 @@
 package com.example.geniusgym.business.viewModel
 
+import android.app.AlertDialog
+import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.example.geniusgym.business.model.Branch
 import com.example.geniusgym.business.model.Coach
-import com.example.geniusgym.business.model.testBuCoach
-import com.example.geniusgym.business.model.testBuMember
-import com.google.gson.Gson
 import com.google.gson.JsonObject
-import com.google.gson.reflect.TypeToken
-import kotlinx.coroutines.launch
+import tw.idv.william.androidwebserver.core.service.requestTask
 import java.text.SimpleDateFormat
 import java.util.*
 
 class BuCoachViewModel: ViewModel() {
     val branch: MutableLiveData<List<String>> by lazy { MutableLiveData<List<String>>() }
     val coach: MutableLiveData<Coach> by lazy { MutableLiveData<Coach>() }
+
+    val url = "http://10.0.2.2:8080/geninusgym_bg/buCoach"
 
     fun genToString():String? {
         if (coach.value?.c_gen == 0){
@@ -33,6 +31,30 @@ class BuCoachViewModel: ViewModel() {
         return coach.value?.c_start_date?.let { format.format(it) }
     }
 
+    fun Suspend(view: View){
+        if (coach?.value!!.c_sus == true) {
+            AlertDialog.Builder(view.context)
+                .setMessage("確定將此用戶停權?")
+                .setPositiveButton("是") { _, _ ->
+                    coach?.value.run {
+                        requestTask<JsonObject>(url, "DELETE", coach.value)
+                        println(coach?.value)
+                    }
+                }
+                .setCancelable(true)
+                .show()
+        }else{AlertDialog.Builder(view.context)
+            .setMessage("確定將此用戶解除停權?")
+            .setPositiveButton("是") { _, _ ->
+                coach?.value.run {
+                    requestTask<JsonObject>(url, "DELETE", coach?.value)
+                    println(coach?.value)
+                }
+            }
+            .setCancelable(true)
+            .show()}
+        true
+    }
 //    private fun loadBranches() {
 //        viewModelScope.launch {
 //            branch.value = Branches()

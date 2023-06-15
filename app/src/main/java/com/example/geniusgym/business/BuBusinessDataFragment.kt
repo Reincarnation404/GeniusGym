@@ -15,10 +15,11 @@ import com.example.geniusgym.business.adapter.BuMemberDataAdapter
 import com.example.geniusgym.business.viewModel.BuBusinessDataViewModel
 import com.example.geniusgym.business.viewModel.BuBusinessViewModel
 import com.example.geniusgym.databinding.FragmentBuBusinessDataBinding
+import java.util.*
 
 class BuBusinessDataFragment : Fragment() {
     private lateinit var binding: FragmentBuBusinessDataBinding
-    private lateinit var viewModel: BuBusinessDataViewModel
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,6 +35,9 @@ class BuBusinessDataFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         with(binding){
+
+            viewModel?.inti()
+
             rvBuBusinessData.layoutManager = LinearLayoutManager(requireContext())
             viewModel?.bubuzz?.observe(viewLifecycleOwner) { bubuzz ->
                 // adapter為null要建立新的adapter；之後只要呼叫updateBuBusiness(bubuzz)即可

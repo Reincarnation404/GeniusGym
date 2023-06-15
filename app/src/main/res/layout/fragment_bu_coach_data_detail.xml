@@ -267,7 +267,7 @@
                     android:paddingLeft="16dp"
                     android:textColorHint="#CDC7D2"
                     android:textColor="@color/black"
-                    android:text="@{viewModel.coach.bt_name}"/>
+                    android:text="@={viewModel.coach.bh_name}"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -285,32 +285,35 @@
                     android:layout_width="match_parent"
                     android:layout_height="176dp"
                     android:background="@color/white"
-                    android:hint="@string/tietBuAddCoaDataIntro"
                     android:enabled="false"
-                    android:textColor="@color/black"
-                    android:text="@={viewModel.coach.c_intro}"/>
+                    android:hint="@string/tietBuAddCoaDataIntro"
+                    android:text="@={viewModel.coach.c_intro}"
+                    android:textColor="@color/black" />
             </com.google.android.material.textfield.TextInputLayout>
 
 
             <Button
                 android:id="@+id/btBuAddCoaDataDetailModify"
-                android:layout_width="155dp"
+                android:layout_width="130dp"
                 android:layout_height="84dp"
                 android:layout_marginTop="20dp"
+                android:layout_marginEnd="50dp"
                 android:layout_marginBottom="20dp"
+                android:backgroundTint="@color/perfect_yellow"
                 android:text="@string/btBuDataModify"
                 android:textColor="#000000"
                 android:textSize="24sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tilBuAddCoaDataDetailIntro" />
+                app:layout_constraintTop_toBottomOf="@+id/tilBuAddCoaDataDetailIntro"
+                app:layout_constraintVertical_bias="1.0" />
 
             <Button
                 android:id="@+id/btBuAddCoaDataDetailSave"
-                android:layout_width="155dp"
+                android:layout_width="130dp"
                 android:layout_height="84dp"
                 android:layout_marginTop="20dp"
+                android:layout_marginEnd="50dp"
                 android:layout_marginBottom="20dp"
                 android:text="@string/btBuAddNotiSaveNoti"
                 android:textColor="#000000"
@@ -318,6 +321,39 @@
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tilBuAddCoaDataDetailIntro"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <Button
+                android:id="@+id/btBuAddCoaDataDetailSuspend"
+                android:layout_width="130dp"
+                android:layout_height="84dp"
+                android:layout_marginStart="50dp"
+                android:backgroundTint="#BC635D"
+                android:text="@string/btBuAddMemDataSuspend"
+                android:textColor="#000000"
+                android:textColorLink="#FFD200"
+                android:textSize="24sp"
+                android:onClick="@{viewModel::Suspend}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btBuAddCoaDataDetailModify"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tilBuAddCoaDataDetailIntro" />
+
+            <Button
+                android:id="@+id/btBuAddCoaDataDetailActive"
+                android:layout_width="130dp"
+                android:layout_height="84dp"
+                android:layout_marginStart="50dp"
+                android:backgroundTint="#BC635D"
+                android:text="@string/btBuAddMemDataActive"
+                android:textColor="#000000"
+                android:textColorLink="#FFD200"
+                android:textSize="20sp"
+                android:visibility="gone"
+                android:onClick="@{viewModel::Suspend}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btBuAddCoaDataDetailModify"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tilBuAddCoaDataDetailIntro" />
 

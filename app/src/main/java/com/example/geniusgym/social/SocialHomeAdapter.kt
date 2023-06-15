@@ -43,6 +43,25 @@ class SocialHomeAdapter(private var items: List<Post>) : RecyclerView.Adapter<So
             binding.commentCount.text = item.commentCount.toString()
             binding.postTime.text = item.postTime
 
+            binding.profileImage.setOnClickListener {
+                val selectedPost = items[position]
+                val fragmentManager = (binding.root.context as FragmentActivity).supportFragmentManager
+                val fragment = SocialPersonalInfoFragment.newInstance(
+                    selectedPost.username,
+                    selectedPost.profileImage,
+                    selectedPost.postContent,
+                    selectedPost.postImage,
+                    selectedPost.likeCount,
+                    selectedPost.commentCount,
+                    selectedPost.postTime
+                )
+
+                val transaction = fragmentManager.beginTransaction()
+                transaction.replace(R.id.container, fragment)
+                transaction.addToBackStack(null)
+                transaction.commit()
+            }
+
             binding.postContent.setOnClickListener {
                 // 点击事件处理
                 val selectedPost = items[position]
