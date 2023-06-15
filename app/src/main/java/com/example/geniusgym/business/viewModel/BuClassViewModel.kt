@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import com.example.geniusgym.business.model.Business
 import com.example.geniusgym.business.model.Class_Info
 import com.example.geniusgym.business.model.testClass_Info
+import com.example.geniusgym.sharedata.MeShareData
 import com.google.gson.JsonObject
 import tw.idv.william.androidwebserver.core.service.requestTask
 import java.text.SimpleDateFormat
@@ -14,7 +15,8 @@ import java.util.*
 
 class BuClassViewModel : ViewModel() {
     val classs: MutableLiveData<Class_Info> by lazy { MutableLiveData<Class_Info>() }
-    val url = "http://10.0.2.2:8080/geninusgym_bg/buClass"
+  //  val url = "http://10.0.2.2:8080/geninusgym_bg/buClass"
+    val url = MeShareData.javaWebUrl + "buClass"
 
     fun bhToString():String? {
         if (classs.value?.bh_id == 1){

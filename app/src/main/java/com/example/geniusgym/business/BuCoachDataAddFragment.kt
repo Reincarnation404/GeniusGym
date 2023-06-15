@@ -19,6 +19,7 @@ import androidx.navigation.Navigation
 import com.example.geniusgym.business.viewModel.BuCoachDataAddViewModel
 import com.example.geniusgym.R
 import com.example.geniusgym.databinding.FragmentBuCoachDataAddBinding
+import com.example.geniusgym.sharedata.MeShareData
 import com.google.gson.JsonObject
 import tw.idv.william.androidwebserver.core.service.requestTask
 import java.sql.Timestamp
@@ -28,7 +29,8 @@ import java.util.*
 class BuCoachDataAddFragment : Fragment() {
     private lateinit var binding: FragmentBuCoachDataAddBinding
     private val calendar = Calendar.getInstance()
-    val url = "http://10.0.2.2:8080/geninusgym_bg/buCoach"
+  //  val url = "http://10.0.2.2:8080/geninusgym_bg/buCoach"
+    val url = MeShareData.javaWebUrl + "buCoach"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

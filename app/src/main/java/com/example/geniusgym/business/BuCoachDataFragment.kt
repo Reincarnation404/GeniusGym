@@ -33,7 +33,7 @@ class BuCoachDataFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         with(binding){
 
-            viewModel?.inti()
+           // viewModel?.inti()
 
             rvBuCoachData.layoutManager = LinearLayoutManager(requireContext())
             viewModel?.coaches?.observe(viewLifecycleOwner) { coaches ->

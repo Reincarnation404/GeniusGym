@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import com.example.geniusgym.business.model.Business
 import com.example.geniusgym.business.model.testBuBusiness
 import com.example.geniusgym.business.model.testBuMember
+import com.example.geniusgym.sharedata.MeShareData
 import com.google.gson.JsonObject
 import tw.idv.william.androidwebserver.core.service.requestTask
 import java.text.SimpleDateFormat
@@ -14,8 +15,8 @@ import java.util.*
 
 class BuBusinessViewModel: ViewModel() {
     val buz: MutableLiveData<Business> by lazy { MutableLiveData<Business>() }
-
-    val url = "http://10.0.2.2:8080/geninusgym_bg/buBuz"
+    val url = MeShareData.javaWebUrl + "buBuz"
+   // val url = "http://10.0.2.2:8080/geninusgym_bg/buBuz"
     fun genToString():String? {
         if (buz.value?.b_gen == 0){
             return "女"

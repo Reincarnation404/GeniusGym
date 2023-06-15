@@ -16,6 +16,7 @@ import androidx.navigation.Navigation
 import com.example.geniusgym.business.viewModel.BuClassDataAddViewModel
 import com.example.geniusgym.R
 import com.example.geniusgym.databinding.FragmentBuClassDataAddBinding
+import com.example.geniusgym.sharedata.MeShareData
 import com.google.gson.JsonObject
 import tw.idv.william.androidwebserver.core.service.requestTask
 import java.sql.Timestamp
@@ -25,7 +26,7 @@ import java.util.*
 class BuClassDataAddFragment : Fragment() {
     private lateinit var binding: FragmentBuClassDataAddBinding
     private val calendar = Calendar.getInstance()
-    val url = "http://10.0.2.2:8080/geninusgym_bg/buClass"
+    val url = MeShareData.javaWebUrl + "buClass"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -138,15 +139,15 @@ class BuClassDataAddFragment : Fragment() {
 
                     val ci_ed_time =  tvBuAddClassDataEndTime.text.toString().trim()
                     val timestamp2 = Timestamp.valueOf(ci_ed_time)
-                    viewModel?.classs?.value?.ci_start_time = timestamp2
+                    viewModel?.classs?.value?.ci_ed_time = timestamp2
 
                     val ci_regi_start_time =  tvBuAddClassDataEndTime.text.toString().trim()
                     val timestamp3 = Timestamp.valueOf(ci_regi_start_time)
-                    viewModel?.classs?.value?.ci_start_time = timestamp3
+                    viewModel?.classs?.value?.ci_regi_time = timestamp3
 
                     val ci_regi_ed_time =  tvBuAddClassDataEndTime.text.toString().trim()
                     val timestamp4 = Timestamp.valueOf(ci_regi_ed_time)
-                    viewModel?.classs?.value?.ci_start_time = timestamp4
+                    viewModel?.classs?.value?.ci_regi_ed_time = timestamp4
 
 
                     requestTask<JsonObject>(url, "POST", viewModel?.classs?.value)
