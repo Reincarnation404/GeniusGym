@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,6 +19,7 @@ import com.example.geniusgym.coach.calendarMemberListDetail.viewmodel.CoCalender
 import com.example.geniusgym.databinding.FragmentCoCalenderMemberStaticBinding
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import java.net.ConnectException
 import java.time.DayOfWeek
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -42,10 +44,14 @@ class CoCalenderMemberStaticFragment : Fragment(), View.OnClickListener {
         super.onResume()
         val coActivity = requireActivity() as CoActivity
         with(binding) {
-            val member = coActivity.binding.viewModel?.member?.value
-            viewModel?.member?.value = member
-            viewModel?.loadStatistic()
-            loadPreferences()
+            try {
+                viewModel?.loadStatistic()
+                loadPreferences()
+            }catch (e: ConnectException){
+                e.printStackTrace()
+                Toast.makeText(requireContext(),"連線失敗",Toast.LENGTH_SHORT)
+            }
+
         }
     }
 
@@ -53,9 +59,11 @@ class CoCalenderMemberStaticFragment : Fragment(), View.OnClickListener {
         super.onViewCreated(view, savedInstanceState)
         val date = LocalDate.now()
         val firstDayOrWeek = date.with(TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY))
-
+        val coActivity = requireActivity() as CoActivity
 
         with(binding) {
+            val member = coActivity.binding.viewModel?.member?.value
+            viewModel?.member?.value = member
             viewModel?.textDate?.value =
                 LocalDate.now().format(DateTimeFormatter.ISO_LOCAL_DATE).toString()
             weekList = mutableListOf(

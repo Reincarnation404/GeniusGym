@@ -1,17 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout5"
+    tools:context="member.controller.MePersonalTrain" >
+
+    <data>
+        <variable
+            name="viewmodel"
+            type="com.example.geniusgym.member.MePersonalTrainViewModel" />
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+
+    android:id="@+id/fra.mem.pertrain"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".member.controller.MePersonalTrain" >
+    >
 
     <TextView
         android:id="@+id/tvPersonalTrainDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
+        android:text="@{viewmodel.classname}"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -32,6 +45,7 @@
 
         <TextView
             android:id="@+id/tvPerTrainDay1"
+            style="@style/CoCaDayofWeek"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -40,6 +54,7 @@
 
         <TextView
             android:id="@+id/tvPerTrainDay2"
+            style="@style/CoCaDayofWeek"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -48,6 +63,7 @@
 
         <TextView
             android:id="@+id/tvPerTrainDay3"
+            style="@style/CoCaDayofWeek"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -56,6 +72,7 @@
 
         <TextView
             android:id="@+id/tvPerTrainDay4"
+            style="@style/CoCaDayofWeek"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -64,6 +81,7 @@
 
         <TextView
             android:id="@+id/tvPerTrainDay5"
+            style="@style/CoCaDayofWeek"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -72,6 +90,7 @@
 
         <TextView
             android:id="@+id/tvPerTrainDay6"
+            style="@style/CoCaDayofWeek"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -80,6 +99,7 @@
 
         <TextView
             android:id="@+id/tvPerTrainDay7"
+            style="@style/CoCaDayofWeek"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -90,9 +110,13 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvPersonalTrain"
-        android:layout_width="409dp"
-        android:layout_height="645dp"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="85dp" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lf_Personal_Train_week" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

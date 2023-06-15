@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/naviagtion_me"
+    android:label="@string/social"
     app:startDestination="@id/meHomeFragment">
 
     <fragment
@@ -30,34 +31,18 @@
         android:name="com.example.geniusgym.setting.SettingFragment"
         android:label="@string/setting"
         tools:layout="@layout/fragment_setting" />
-    <fragment
-        android:id="@+id/socialFragment"
-        android:name="com.example.geniusgym.social.SocialFragment"
-        android:label="@string/social"
-        tools:layout="@layout/fragment_social" />
 
     <fragment
-        android:id="@+id/mePointsFragment"
-        android:name="com.example.geniusgym.member.MePointsFragment"
-        android:label="fragment_me_points"
-        tools:layout="@layout/fragment_me_points" />
+        android:id="@+id/settingEdFragment"
+        android:name="com.example.geniusgym.setting.SettingEdFragment"
+        android:label="@string/setting"
+        tools:layout="@layout/fragment_setting_ed" />
     <fragment
-        android:id="@+id/meCreditCard"
-        android:name="com.example.geniusgym.member.MeCreditCard"
-        android:label="fragment_me_credit_card"
-        tools:layout="@layout/fragment_me_credit_card" />
-    <fragment
-        android:id="@+id/meTrainingCalendarFragment"
-        android:name="com.example.geniusgym.member.MeTrainingCalendarFragment"
-        android:label="MeTrainingCalendarFragment" >
-        <action
-            android:id="@+id/action_meTrainingCalendarFragment_to_meTrainingAerobicFragment"
-            app:destination="@id/meTrainingAerobicFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/meTrainingAerobicFragment"
-        android:name="com.example.geniusgym.member.MeTrainingAerobicFragment"
-        android:label="fragment_me_training_aerobic"
-        tools:layout="@layout/fragment_me_training_aerobic" />
+
+        android:id="@+id/socailNavFragment"
+        android:name="com.example.geniusgym.social.SocialNavFragment"
+        android:label="@string/social"
+        tools:layout="@layout/fragment_social_nav" />
+
 
 </navigation>

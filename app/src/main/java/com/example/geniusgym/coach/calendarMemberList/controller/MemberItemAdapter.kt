@@ -9,14 +9,16 @@ import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.geniusgym.R
+import com.example.geniusgym.coach.CoActivity
 import com.example.geniusgym.coach.calendarMemberList.model.MemberItem
 import com.example.geniusgym.databinding.FragmentCoCalendarMemberCardviewBinding
+
 
 class MemberViewModel : ViewModel() {
     val item: MutableLiveData<MemberItem> by lazy { MutableLiveData<MemberItem>() }
 }
 
-class MemberItemAdapter(private var items: List<MemberItem>) :
+class MemberItemAdapter(private var items: List<MemberItem>, var coActivity: CoActivity) :
     RecyclerView.Adapter<MemberItemAdapter.MemberItemViewHolder>() {
 
     class MemberItemViewHolder(val itemViewBinding: FragmentCoCalendarMemberCardviewBinding) :
@@ -40,15 +42,14 @@ class MemberItemAdapter(private var items: List<MemberItem>) :
 
     override fun onBindViewHolder(holder: MemberItemViewHolder, position: Int) {
         val item = items[position]
-        val bundle = Bundle()
+        println(item.memberId)
         with(holder) {
             itemViewBinding.viewModel?.item?.value = item
-            bundle.putSerializable("Member", item)
             itemView.setOnClickListener {
+                coActivity.binding.viewModel?.member?.value = item
                 Navigation.findNavController(it)
                     .navigate(
                         R.id.action_coCalendarMemberListFragment2_to_coCalendarMemberDetailFragment,
-                        bundle
                     )
             }
         }
