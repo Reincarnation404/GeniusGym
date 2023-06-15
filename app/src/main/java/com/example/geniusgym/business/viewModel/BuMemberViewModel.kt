@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel
 import androidx.navigation.Navigation
 import com.example.geniusgym.business.model.Member
 import com.example.geniusgym.business.model.testBuMember
+import com.example.geniusgym.sharedata.MeShareData
 import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
 import tw.idv.william.androidwebserver.core.service.requestTask
@@ -16,7 +17,8 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class BuMemberViewModel: ViewModel() {
-    val url = "http://10.0.2.2:8080/geninusgym_bg/buMember"
+    val url = MeShareData.javaWebUrl + "buMember"
+   // val url = "http://10.0.2.2:8080/geninusgym_bg/buMember"
 
     val member: MutableLiveData<Member> by lazy { MutableLiveData<Member>() }
     val list: MutableLiveData<List<Member>> by lazy { MutableLiveData<List<Member>>() }
