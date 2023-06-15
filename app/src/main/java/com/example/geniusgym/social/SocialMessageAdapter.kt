@@ -6,6 +6,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.FragmentActivity
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.geniusgym.R
 
@@ -22,6 +25,15 @@ class SocialMessageAdapter(private val chatList: List<ChatList>) : RecyclerView.
             usernameTextView.text = chatListItem.username
             messageTextView.text = chatListItem.messageLastText
             timestampTextView.text = chatListItem.messageLastTime
+
+            itemView.setOnClickListener {
+                val fragmentManager = (itemView.context as FragmentActivity).supportFragmentManager
+                val fragment = SocialChatRoomFragment.newInstance() // 请根据需要调整参数
+                val transaction = fragmentManager.beginTransaction()
+                transaction.replace(R.id.container, fragment)
+                transaction.addToBackStack(null)
+                transaction.commit()
+            }
         }
 
         init {
@@ -29,6 +41,7 @@ class SocialMessageAdapter(private val chatList: List<ChatList>) : RecyclerView.
             itemView.background = dividerDrawable
         }
     }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.social_message_layout, parent, false)
