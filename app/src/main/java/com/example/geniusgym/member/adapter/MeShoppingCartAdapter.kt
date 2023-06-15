@@ -2,7 +2,6 @@ package com.example.geniusgym.member.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.view.drawToBitmap
 import androidx.recyclerview.widget.RecyclerView
 import com.example.geniusgym.databinding.RecycleCellMeShoppingCartBinding
 import com.example.geniusgym.member.model.ClassInfo
@@ -47,7 +46,7 @@ class MeShoppingCartAdapter(val list: List<ClassInfo>) : RecyclerView.Adapter<Me
             }
             tvMeShoppingCheckoutKind.text = kind
             tvMeShoppingCheckoutPoint.text = list[position].ci_cost.toString()
-            val time = list[position].ci_start_time + list[position].ci_ed_time
+            val time = list[position].ci_start_time + "~" + list[position].ci_ed_time
             tvMeShoppingCheckoutTime.text = time
             tvMeShoppingCheckoutLessonName.text = list[position].ci_name
             cbMeShoppingCart.isChecked = checkSet.contains(list[position])
