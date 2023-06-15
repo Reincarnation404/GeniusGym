@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.geniusgym.R
 import com.example.geniusgym.databinding.FragmentSocialMessageBinding
@@ -24,22 +24,18 @@ class SocialMessageFragment : Fragment() {
 
         val chatList = getChatList()
         socialMessageAdapter = SocialMessageAdapter(chatList)
-        binding.messageRecyclerview.apply {
+        binding.chatListRecyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = socialMessageAdapter
         }
 
         binding.toHome.setOnClickListener {
-            navigateTo(R.id.action_socialMessageFragment_to_socialHomeFragment)
+            Navigation.findNavController(it).navigate(R.id.action_socialMessageFragment_to_socialHomeFragment)
         }
 
         binding.toProfileButton.setOnClickListener {
-            navigateTo(R.id.action_socialMessageFragment_to_socialProfileFragment)
+            Navigation.findNavController(it).navigate(R.id.action_socialMessageFragment_to_socialProfileFragment)
         }
-    }
-
-    private fun navigateTo(actionId: Int) {
-        findNavController().navigate(actionId)
     }
 
     private fun getChatList(): List<ChatList> {

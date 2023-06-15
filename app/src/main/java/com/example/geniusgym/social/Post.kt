@@ -8,5 +8,5 @@ data class Post(
     val postImage: Int?,
     val likeCount: Int,
     val commentCount: Int,
-    val postTime: String
+    val postTime: String,
 )

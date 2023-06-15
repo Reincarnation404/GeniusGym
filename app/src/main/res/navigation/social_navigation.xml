@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_socialHomeFragment_to_socialProfileFragment"
             app:destination="@id/socialProfileFragment" />
+        <action
+            android:id="@+id/action_socialHomeFragment_to_socialPersonalInfoFragment"
+            app:destination="@id/socialPersonalInfoFragment" />
     </fragment>
     <fragment
         android:id="@+id/socialMessageFragment"
@@ -31,6 +34,12 @@
         <action
             android:id="@+id/action_socialMessageFragment_to_socialProfileFragment"
             app:destination="@id/socialProfileFragment" />
+        <action
+            android:id="@+id/action_socialMessageFragment_to_socialChatRoomFragment"
+            app:destination="@id/socialChatRoomFragment" />
+        <action
+            android:id="@+id/action_socialMessageFragment_to_socialPersonalInfoFragment"
+            app:destination="@id/socialPersonalInfoFragment" />
     </fragment>
     <fragment
         android:id="@+id/socialPostFragment"
@@ -52,5 +61,17 @@
         <action
             android:id="@+id/action_socialProfileFragment_to_socialMessageFragment"
             app:destination="@id/socialMessageFragment" />
+        <action
+            android:id="@+id/action_socialProfileFragment_to_socialPersonalInfoFragment"
+            app:destination="@id/socialPersonalInfoFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/socialChatRoomFragment"
+        android:name="com.example.geniusgym.social.SocialChatRoomFragment"
+        android:label="SocialChatRoomFragment" />
+    <fragment
+        android:id="@+id/socialPersonalInfoFragment"
+        android:name="com.example.geniusgym.social.SocialPersonalInfoFragment"
+        android:label="fragment_social_personal_info"
+        tools:layout="@layout/fragment_social_personal_info" />
 </navigation>
