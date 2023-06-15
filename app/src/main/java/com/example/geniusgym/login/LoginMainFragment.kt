@@ -59,8 +59,8 @@ class LoginMainFragment : Fragment() {
                     "business" -> {
                         if (loginId == viewModel.buAccount && password == viewModel.buPassword) {
                             val intent = Intent(requireActivity(), BuActivity::class.java)
-                            intent.flags =
-                                Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+//                            intent.flags =
+//                                Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                             startActivity(intent)
                         } else {
                             tvLoginResult.text = "帳號密碼輸入錯誤"
@@ -70,8 +70,8 @@ class LoginMainFragment : Fragment() {
                     "member" -> {
                         if (loginId == viewModel.meAccount && password == viewModel.mePassword) {
                             val intent = Intent(requireActivity(), MeActivity::class.java)
-                            intent.flags =
-                                Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+//                            intent.flags =
+//                                Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                             startActivity(intent)
                         } else {
                             tvLoginResult.text = "帳號密碼輸入錯誤"
@@ -81,8 +81,8 @@ class LoginMainFragment : Fragment() {
                     "coach" -> {
                         if (loginId == viewModel.coAccount && password == viewModel.coPassword) {
                             val intent = Intent(requireActivity(), CoActivity::class.java)
-                            intent.flags =
-                                Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+//                            intent.flags =
+//                                Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                             startActivity(intent)
                         } else {
                             tvLoginResult.text = "帳號密碼輸入錯誤"
