@@ -7,6 +7,7 @@ import com.example.geniusgym.business.model.Business
 import com.example.geniusgym.business.model.Coach
 import com.example.geniusgym.business.model.testBuBusiness
 import com.example.geniusgym.business.model.testBuMember
+import com.example.geniusgym.sharedata.MeShareData
 import com.google.gson.reflect.TypeToken
 import tw.idv.william.androidwebserver.core.service.requestTask
 
@@ -14,7 +15,8 @@ import tw.idv.william.androidwebserver.core.service.requestTask
  * 員工列表資料處理
  */
 class BuBusinessDataViewModel : ViewModel() {
-    val url = "http://10.0.2.2:8080/geninusgym_bg/buBuz"
+    val url = MeShareData.javaWebUrl + "buBuz"
+   // val url = "http://10.0.2.2:8080/geninusgym_bg/buBuz"
     // 原始員工列表
     private var BuBusinessList = mutableListOf<Business>()
     // 受監控的LiveData，一旦指派新值就會更新員工列表畫面

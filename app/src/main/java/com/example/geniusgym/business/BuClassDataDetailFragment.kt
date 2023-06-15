@@ -16,6 +16,7 @@ import com.example.geniusgym.business.model.Business
 import com.example.geniusgym.business.model.Class_Info
 import com.example.geniusgym.business.viewModel.BuBusinessViewModel
 import com.example.geniusgym.databinding.FragmentBuClassDataDetailBinding
+import com.example.geniusgym.sharedata.MeShareData
 import com.google.gson.JsonObject
 import tw.idv.william.androidwebserver.core.service.requestTask
 import java.sql.Timestamp
@@ -25,7 +26,8 @@ import java.util.*
 class BuClassDataDetailFragment : Fragment() {
     private lateinit var binding: FragmentBuClassDataDetailBinding
     private val calendar = Calendar.getInstance()
-    val url = "http://10.0.2.2:8080/geninusgym_bg/buClass"
+    //val url = "http://10.0.2.2:8080/geninusgym_bg/buClass"
+    val url = MeShareData.javaWebUrl + "buClass"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
