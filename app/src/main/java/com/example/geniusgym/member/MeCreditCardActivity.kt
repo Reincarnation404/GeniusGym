@@ -11,6 +11,7 @@ import android.widget.Toast
 import com.example.geniusgym.R
 import com.example.geniusgym.databinding.ActivityMeCreditCardBinding
 import com.example.geniusgym.member.model.MeBuyPointBean
+import com.example.geniusgym.sharedata.MeShareData
 import com.example.geniusgym.util.WebRequestSpencer
 import com.google.android.gms.wallet.AutoResolveHelper
 import com.google.android.gms.wallet.PaymentData
@@ -201,6 +202,7 @@ class MeCreditCardActivity : AppCompatActivity() {
                         Toast.LENGTH_SHORT
                     ).show()
                 }
+                MeShareData.personPoint += 500
                 finish()
                 val text = "支付結束，TapPay回應的結果訊息:\n$resultJson"
                 Log.d(myTag, text)
