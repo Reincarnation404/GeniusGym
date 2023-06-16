@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 import com.example.geniusgym.R
 import com.example.geniusgym.databinding.FragmentSocialChatRoomBinding
 
@@ -20,15 +21,13 @@ class SocialChatRoomFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // 隐藏 Action Bar
+        hideActionBar()
+
         // 在这里进行聊天室界面的初始化和逻辑处理
 
         val username = arguments?.getString(ArticleFragment.ARG_USERNAME)
         val profileImage = arguments?.getInt(ArticleFragment.ARG_PROFILE_IMAGE)
-
-        val toHomeButton = requireActivity().findViewById<Button>(R.id.toHome)
-        val toProfileButton = requireActivity().findViewById<Button>(R.id.toProfileButton)
-        toHomeButton.setOnClickListener(null)
-        toProfileButton.setOnClickListener(null)
 
         binding.turnLeft.setOnClickListener {
             val fragmentManager = requireActivity().supportFragmentManager
@@ -41,10 +40,21 @@ class SocialChatRoomFragment : Fragment() {
         // 示例：获取传递的参数
 
     }
-
+    override fun onPause() {
+        super.onPause()
+        showActionBar()
+    }
     companion object {
         fun newInstance(): SocialChatRoomFragment {
             return SocialChatRoomFragment()
         }
+    }
+
+    private fun hideActionBar() {
+        (requireActivity() as AppCompatActivity).supportActionBar?.hide()
+    }
+
+    private fun showActionBar() {
+        (requireActivity() as AppCompatActivity).supportActionBar?.show()
     }
 }

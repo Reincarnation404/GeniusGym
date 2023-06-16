@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
 import com.example.geniusgym.R
 import com.example.geniusgym.databinding.FragmentSocialPersonalInfoBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -24,6 +25,9 @@ class SocialPersonalInfoFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // 隐藏 Action Bar
+        hideActionBar()
 
         // 在这里进行个人信息界面的初始化和逻辑处理
         // 获取传递的数据
@@ -55,6 +59,11 @@ class SocialPersonalInfoFragment : Fragment() {
         }
     }
 
+
+    override fun onPause() {
+        super.onPause()
+        showActionBar()
+    }
     // 在这里添加其他需要的方法或逻辑
 
     // 示例：创建一个静态方法用于实例化该 Fragment
@@ -88,5 +97,13 @@ class SocialPersonalInfoFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun hideActionBar() {
+        (requireActivity() as AppCompatActivity).supportActionBar?.hide()
+    }
+
+    private fun showActionBar() {
+        (requireActivity() as AppCompatActivity).supportActionBar?.show()
     }
 }

@@ -11,16 +11,16 @@
         android:id="@+id/homeFrameLayout"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="#F9A825"
+        android:background="#FFD200"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints">
 
-        <Button
+        <ImageButton
             android:id="@+id/toProfileButton"
             android:layout_width="50dp"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_gravity="start|center_vertical"
             android:background="@drawable/social_profile"
             android:foreground="?attr/selectableItemBackground"
@@ -76,10 +76,10 @@
             android:text=""
             android:visibility="gone" />
 
-        <Button
+        <ImageButton
             android:id="@+id/customSearchButton"
             android:layout_width="50dp"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_gravity="end|center_vertical"
             android:background="@drawable/social_search"
             android:foreground="?attr/selectableItemBackground"

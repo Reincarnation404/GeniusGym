@@ -9,13 +9,13 @@
         android:id="@+id/frameLayout4"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="#F9A825"
+        android:background="@color/good_yellow"
         tools:ignore="MissingConstraints">
 
-        <Button
+        <ImageButton
             android:id="@+id/turnLeft"
             android:layout_width="50dp"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_gravity="start|center"
             android:background="@drawable/social_turn_left"
             android:foreground="?attr/selectableItemBackground"
@@ -49,15 +49,6 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_weight="1" />
-
-            <!-- ... 按鈕 -->
-            <ImageButton
-                android:id="@+id/moreOptionsButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:background="@android:color/transparent"
-                android:src="@drawable/social_more_horiz" />
 
         </LinearLayout>
 

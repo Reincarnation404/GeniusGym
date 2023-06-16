@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.geniusgym.R
 import com.example.geniusgym.databinding.FragmentArticleBinding
@@ -18,6 +19,9 @@ class ArticleFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentArticleBinding.inflate(inflater, container, false)
         val view = binding.root
+
+        // 隐藏 Action Bar
+        hideActionBar()
 
         binding.commentRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.commentRecyclerView.setHasFixedSize(true)
@@ -62,11 +66,6 @@ class ArticleFragment : Fragment() {
             transaction.commit()
         }
 
-        val toHomeButton = requireActivity().findViewById<Button>(R.id.toHome)
-        val toProfileButton = requireActivity().findViewById<Button>(R.id.toProfileButton)
-        toHomeButton.setOnClickListener(null)
-        toProfileButton.setOnClickListener(null)
-
         binding.root.setOnClickListener { }
 
         // 创建留言数据列表
@@ -81,7 +80,10 @@ class ArticleFragment : Fragment() {
 
         return view
     }
-
+    override fun onPause() {
+        super.onPause()
+        showActionBar()
+    }
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
@@ -117,5 +119,13 @@ class ArticleFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun hideActionBar() {
+        (requireActivity() as AppCompatActivity).supportActionBar?.hide()
+    }
+
+    private fun showActionBar() {
+        (requireActivity() as AppCompatActivity).supportActionBar?.show()
     }
 }
