@@ -30,7 +30,7 @@ class CoViewModel : ViewModel() {
         val bigItemType = object : TypeToken<List<SportBigItem>?>() {}.type
         val preferences = coActivity.getPreferences(Context.MODE_PRIVATE)
         val smallJson = preferences.getString("sportSmallItems", "")
-        val bigJson = preferences.getString("sportBigItems", "")
+        preferences.getString("sportBigItems", "")
         sportSmallItems?.value = gson.fromJson(smallJson, smallItemType)
         sportBigItems?.value = gson.fromJson(smallJson, bigItemType)
     }
@@ -57,7 +57,7 @@ class CoViewModel : ViewModel() {
     private suspend fun sportBigItemImport(): List<SportBigItem> {
         val jsonIn: String = WebRequestSpencer().httpGet("GetSportCat")
         val type = object : TypeToken<List<SportBigItem>?>() {}.type
-        return Gson().fromJson(jsonIn, type)
+        return Gson().fromJson(jsonIn,type)
     }
 
     private fun loadFake() {

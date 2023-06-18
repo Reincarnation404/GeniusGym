@@ -29,7 +29,7 @@
                 android:layout_marginLeft="26sp"
                 android:layout_weight="1"
                 android:gravity="left|center_vertical"
-                android:text='@{viewModel.item.startTime + " ~ " + viewModel.item.endTime}' />
+                android:text='@{viewModel.item.ci_start_time + " ~ " + viewModel.item.ci_ed_time}' />
 
             <TextView
                 android:id="@+id/tvCoCaClName"
@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="left|center_vertical"
-                android:text="@{viewModel.item.className}" />
+                android:text="@{viewModel.item.ci_name}" />
 
             <ImageView
                 android:id="@+id/ivCoCaClIcon"
