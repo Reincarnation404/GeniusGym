@@ -1,10 +1,11 @@
 package com.example.geniusgym.coach
 
 import android.content.Context
+import android.graphics.Bitmap
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
@@ -13,7 +14,13 @@ import com.example.geniusgym.R
 import com.example.geniusgym.coach.calendarMemberListDetail.model.SportRecordBigItem
 import com.example.geniusgym.databinding.ActivityCoBinding
 import com.google.gson.GsonBuilder
-import java.net.ConnectException
+import com.google.zxing.BarcodeFormat
+import com.google.zxing.MultiFormatWriter
+import com.google.zxing.common.BitMatrix
+import com.journeyapps.barcodescanner.BarcodeEncoder
+import kotlinx.coroutines.runBlocking
+import java.time.LocalTime
+import java.time.format.DateTimeFormatter
 
 class CoActivity : AppCompatActivity() {
 
@@ -21,6 +28,10 @@ class CoActivity : AppCompatActivity() {
     private lateinit var navigateController: NavController
     public var memberSportRecord = mutableListOf<SportRecordBigItem>()
     public var memberSportBigRecord: SportRecordBigItem? = null
+    public lateinit var homeQrcodeMap: Bitmap
+    private val mWriter: MultiFormatWriter = MultiFormatWriter()
+    private val mEncoder: BarcodeEncoder = BarcodeEncoder()
+    lateinit var timer: CountDownTimer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,18 +39,46 @@ class CoActivity : AppCompatActivity() {
         binding = ActivityCoBinding.inflate(LayoutInflater.from(this))
         binding.viewModel = viewModel
         setContentView(binding.root)
+
+        var now = LocalTime.now()
+        var fiveMinutes = LocalTime.of(0, 5, 0)
+        val nowFormatter = DateTimeFormatter.ofPattern("hh:mm:ss")
+        val formatter = DateTimeFormatter.ofPattern("mm:ss")
+        val second = 1000L
+        val minute = 60 * second
+        var nowString = now.format(nowFormatter)
+        var mMatrix : BitMatrix = mWriter.encode("example_$nowString" , BarcodeFormat.QR_CODE,300,300)
+        binding.viewModel?.homeQrcodeMap?.value = mEncoder.createBitmap(mMatrix)
+        timer = object : CountDownTimer(5 * minute, 1 * second) {
+            // 每過一秒，該方法會被呼叫一次
+            override fun onTick(millisUntilFinished: Long) {
+                //millisUntilFinished / second
+                fiveMinutes = fiveMinutes.minusSeconds(1)
+                binding.viewModel?.homeTimerString?.value = fiveMinutes.format(formatter)
+            }
+
+            // 計時器結束時，該方法會被呼叫
+            override fun onFinish() {
+                runBlocking {
+                    fiveMinutes = LocalTime.of(0, 5, 0)
+                    now = LocalTime.now()
+                    nowString = now.format(nowFormatter)
+                    mMatrix = mWriter.encode("example_$nowString" , BarcodeFormat.QR_CODE,300,300)
+                    binding.viewModel?.homeQrcodeMap?.value = mEncoder.createBitmap(mMatrix)
+                    binding.viewModel?.homeTimerString?.value = fiveMinutes.format(formatter)
+                    timer.start()
+                }
+            }
+        }
+        timer.start()
     }
 
     override fun onStart() {
         super.onStart()
-        try {
-            this.binding.viewModel?.loadSportFromPreference(this)
-            this.binding.viewModel?.loadSportSmallItem()
-            this.binding.viewModel?.loadSportBigItem()
-        } catch (e: ConnectException) {
-            e.printStackTrace()
-            Toast.makeText(this,"連線失敗",Toast.LENGTH_SHORT)
-        }
+        this.binding.viewModel?.loadSportFromPreference(this)
+        this.binding.viewModel?.loadSportSmallItem(this)
+        this.binding.viewModel?.loadSportBigItem(this)
+
         navigateController = findNavController(R.id.fragmentCoContainerView)
         with(binding) {
             includeHome.homeMontionLayout.progress = 1f
@@ -113,7 +152,4 @@ class CoActivity : AppCompatActivity() {
         println("Write prefernece successful!")
     }
 
-    fun networkErrorToast() {
-        Toast.makeText(this, "網路連線錯誤", Toast.LENGTH_SHORT)
-    }
 }

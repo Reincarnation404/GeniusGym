@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.example.geniusgym.coach.calendarMemberList.viewmodel.CoHomeViewModel
 import com.example.geniusgym.databinding.FragmentCoHomeBinding
@@ -33,7 +34,7 @@ class CoHomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val viewModel: CoHomeViewModel by viewModels()
+        val viewModel: CoViewModel by activityViewModels()
         binding = FragmentCoHomeBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
@@ -43,7 +44,7 @@ class CoHomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var fiveMinutes = LocalTime.of(0, 0, 10)
+        /*var fiveMinutes = LocalTime.of(0, 0, 10)
         var now = LocalTime.now()
         val nowFormatter = DateTimeFormatter.ofPattern("hh:mm:ss")
         val formatter = DateTimeFormatter.ofPattern("mm:ss")
@@ -111,6 +112,11 @@ class CoHomeFragment : Fragment() {
                 }
             }
             timer.start() // 開始計時
+        }*/
+        with(binding){
+            viewModel?.homeQrcodeMap?.observe(viewLifecycleOwner){
+                ivCoHomeQRCode.setImageBitmap(it)
+            }
         }
 
 

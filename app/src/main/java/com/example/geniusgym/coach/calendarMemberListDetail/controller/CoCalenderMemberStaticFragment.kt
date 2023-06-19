@@ -44,14 +44,8 @@ class CoCalenderMemberStaticFragment : Fragment(), View.OnClickListener {
         super.onResume()
         val coActivity = requireActivity() as CoActivity
         with(binding) {
-            try {
-                viewModel?.loadStatistic()
+                viewModel?.loadStatistic(requireContext())
                 loadPreferences()
-            }catch (e: ConnectException){
-                e.printStackTrace()
-                Toast.makeText(requireContext(),"連線失敗",Toast.LENGTH_SHORT)
-            }
-
         }
     }
 
