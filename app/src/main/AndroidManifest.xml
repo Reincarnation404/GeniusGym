@@ -8,6 +8,8 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 讓 API 可以檢查網路狀態 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- 可以 GPS 定位 -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.NEARBY_WIFI_DEVICES" />
+    
 
     <uses-feature
         android:glEsVersion="0x00020000"
@@ -46,11 +48,8 @@
         <activity
             android:name=".coach.CoActivity"
             android:exported="true">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter></activity>
+        </activity>
         <activity
             android:name=".social.SoActivity"
             android:exported="true"/>
@@ -65,7 +64,13 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true"/>
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
     </application>
 

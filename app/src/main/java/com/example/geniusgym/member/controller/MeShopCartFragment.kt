@@ -23,7 +23,7 @@ class MeShopCartFragment : Fragment() {
 
     private val viewModel: MeShopCartViewModel by viewModels()
     private lateinit var binding: FragmentMeShopCartBinding
-    private lateinit var adapter: MeShoppingCartAdapter
+    private var directBuy : Boolean = false
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,9 +34,9 @@ class MeShopCartFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        directBuy = arguments?.getBoolean("direct?") == true
 //        判定是直接購買還是點擊購物車
-        if (arguments?.getBoolean("direct?") == true){
+        if (directBuy){
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                 arguments?.getSerializable("classinfo", ClassInfo::class.java)
                     ?.let { viewModel.classInfos.value?.add(it) }
@@ -78,10 +78,15 @@ class MeShopCartFragment : Fragment() {
                 }
 
             }
+
             btMeShoppingConfirmBuy.setOnClickListener {
                 val buyList : ArrayList<ClassInfo> = ArrayList(adapter.getCheckSet())
+                if (buyList.isEmpty()){
+                    return@setOnClickListener
+                }
                 val bundle = Bundle()
                 bundle.putParcelableArrayList("buyItems", buyList)
+                bundle.putBoolean("directBuyFromCart", directBuy)
                 Navigation.findNavController(it).navigate(R.id.action_meShopCartFragment_to_meCheckoutFragment, bundle)
             }
         }

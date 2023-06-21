@@ -55,7 +55,7 @@
             android:id="@+id/action_meCheckoutFragment_to_meShoppingFragment"
             app:destination="@id/meShoppingFragment"
             app:popUpTo="@id/meShoppingFragment"
-            app:popUpToInclusive="false" />
+            app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_meCheckoutFragment_to_meBuyPointsFragment"
             app:destination="@id/meBuyPointsFragment" />
