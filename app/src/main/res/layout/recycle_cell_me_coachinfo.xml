@@ -13,7 +13,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@drawable/a005" />
+        tools:srcCompat="@drawable/a006" />
 
     <TextView
         android:id="@+id/coach_name"

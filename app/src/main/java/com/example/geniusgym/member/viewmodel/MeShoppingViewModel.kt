@@ -157,6 +157,12 @@ class MeShoppingViewModel : ViewModel() {
             SportCat(12, 3, "蝴蝶機夾胸"),
             SportCat(13, 3, "繩索下斜夾胸"),
             SportCat(14,3, "槓鈴斜上推")
+        ),
+        listOf(
+
+        ),
+        listOf(
+
         )
 
     )

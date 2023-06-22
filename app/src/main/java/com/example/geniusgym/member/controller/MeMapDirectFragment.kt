@@ -95,11 +95,8 @@ class MeMapDirectFragment : Fragment() {
                         direct(latLng.latitude, latLng.longitude, address.latitude, address.longitude)
                     }
                 }
-
             }
-
         }
-
     }
 
     override fun onStart() {
@@ -148,6 +145,7 @@ class MeMapDirectFragment : Fragment() {
             "com.google.android.apps.maps",
             "com.google.android.maps.MapsActivity"
         )
+
         startActivity(intent)
     }
 

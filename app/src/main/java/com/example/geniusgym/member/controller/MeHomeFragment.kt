@@ -36,7 +36,7 @@ class MeHomeFragment : Fragment(), CoroutineScope by MainScope() {
     private lateinit var binding : FragmentMeHomeBinding
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?, 
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentMeHomeBinding.inflate(LayoutInflater.from(requireContext()))
