@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.geniusgym.coach.calendarMemberList.viewmodel.CoHomeViewModel" />
+            type="com.example.geniusgym.coach.CoViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="148dp"
-            android:text="@string/tvCoHomeHead"
+            android:text="@{viewModel.homeTimerString}"
             android:textSize="23sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

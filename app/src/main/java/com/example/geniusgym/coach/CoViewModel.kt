@@ -1,6 +1,8 @@
 package com.example.geniusgym.coach
 
 import android.content.Context
+import android.graphics.Bitmap
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -12,6 +14,7 @@ import com.example.geniusgym.util.WebRequestSpencer
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
+import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 
 class CoViewModel : ViewModel() {
@@ -20,44 +23,65 @@ class CoViewModel : ViewModel() {
     val sportSmallItems: MutableLiveData<List<SportSmallItem>> by lazy { MutableLiveData<List<SportSmallItem>>() }
     val sportBigItems: MutableLiveData<List<SportBigItem>> by lazy { MutableLiveData<List<SportBigItem>>() }
     val coach: MutableLiveData<CoachItem> by lazy { MutableLiveData<CoachItem>() }
+    val homeQrcodeMap: MutableLiveData<Bitmap> by lazy { MutableLiveData<Bitmap>() }
+    val homeTimerString: MutableLiveData<String> by lazy { MutableLiveData<String>() }
 
     init {
         loadFake()
     }
+
     fun loadSportFromPreference(coActivity: CoActivity) {
         val gson = GsonBuilder().create()
         val smallItemType = object : TypeToken<List<SportSmallItem>?>() {}.type
         val bigItemType = object : TypeToken<List<SportBigItem>?>() {}.type
         val preferences = coActivity.getPreferences(Context.MODE_PRIVATE)
         val smallJson = preferences.getString("sportSmallItems", "")
-        val bigJson = preferences.getString("sportBigItems", "")
+        preferences.getString("sportBigItems", "")
         sportSmallItems?.value = gson.fromJson(smallJson, smallItemType)
         sportBigItems?.value = gson.fromJson(smallJson, bigItemType)
     }
 
-    fun loadSportSmallItem() {
+    fun loadSportSmallItem(coActivity: CoActivity) {
         viewModelScope.launch {
-            sportSmallItems?.value = sportSmallItemImport()
+            val deffered1 = async { sportSmallItemImport(coActivity) }
+            sportSmallItems?.value = deffered1.await()
         }
     }
 
-    fun loadSportBigItem() {
+    fun loadSportBigItem(coActivity: CoActivity) {
         viewModelScope.launch {
-            sportBigItems?.value = sportBigItemImport()
+            val deffered2 = async { sportBigItemImport(coActivity) }
+            sportBigItems?.value = deffered2.await()
         }
     }
 
-    private suspend fun sportSmallItemImport(): List<SportSmallItem> {
-        val jsonIn: String = WebRequestSpencer().httpPost("GetSportCat", "start")
-        val type = object : TypeToken<List<SportSmallItem>?>() {}.type
-        println("JSONPOSTSMALL: $jsonIn")
-        return Gson().fromJson(jsonIn, type)
+    private suspend fun sportSmallItemImport(coActivity: CoActivity): List<SportSmallItem> {
+        val json = WebRequestSpencer().httpPost("GetSportCat", "start")
+        return if (json == "ConnectError") {
+            Toast.makeText(coActivity, "連線失敗", Toast.LENGTH_SHORT).show()
+            listOf()
+
+        } else if (json != "") {
+            println("String $json")
+            val type = object : TypeToken<List<SportSmallItem>?>() {}.type
+            println("JSONPOSTSMALL: $this")
+            Gson().fromJson(json, type)
+        } else {
+            listOf()
+        }
     }
 
-    private suspend fun sportBigItemImport(): List<SportBigItem> {
-        val jsonIn: String = WebRequestSpencer().httpGet("GetSportCat")
-        val type = object : TypeToken<List<SportBigItem>?>() {}.type
-        return Gson().fromJson(jsonIn, type)
+    private suspend fun sportBigItemImport(coActivity: CoActivity): List<SportBigItem> {
+        val json = WebRequestSpencer().httpGet("GetSportCat")
+        return if (json == "ConnectError") {
+            Toast.makeText(coActivity, "連線失敗", Toast.LENGTH_SHORT)
+            listOf()
+        } else if (json != "") {
+            val type = object : TypeToken<List<SportBigItem>?>() {}.type
+            Gson().fromJson(json, type)
+        } else {
+            listOf()
+        }
     }
 
     private fun loadFake() {

@@ -1,5 +1,7 @@
 package com.example.geniusgym.coach.calendarMemberListDetail.viewmodel
 
+import android.content.Context
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -22,16 +24,17 @@ class CoCalenderMemberStaticViewModel : ViewModel() {
     val sportRecordBigItem: MutableLiveData<SportRecordBigItem> by lazy { MutableLiveData<SportRecordBigItem>() }
     val member: MutableLiveData<MemberItem> by lazy { MutableLiveData<MemberItem>() }
 
-    fun loadStatistic() {
+    fun loadStatistic(context: Context) {
         viewModelScope.launch {
             member?.value?.memberId?.let {
-                val item = memberStatisticInfo(it)
-                val string = StringBuilder("")
-                memberStatistic.value = string
-                    .append("身高： ").append(item.bd_hgt.toString())
-                    .append("\n體重： ").append(item.bd_wgt.toString())
-                    .append("\n體脂： ").append(item.bd_fat.toString())
-                    .toString()
+                memberStatisticInfo(it,context)?.let {item->
+                    val string = StringBuilder("")
+                    memberStatistic.value = string
+                        .append("身高： ").append(item.bd_hgt.toString())
+                        .append("\n體重： ").append(item.bd_wgt.toString())
+                        .append("\n體脂： ").append(item.bd_fat.toString())
+                        .toString()
+                }
             }
         }
     }
@@ -58,15 +61,17 @@ class CoCalenderMemberStaticViewModel : ViewModel() {
         this.sportRecordBigItems.value = this.itemList
     }
 
-    private suspend fun memberStatisticInfo(memberId: String): BodyData {
+    private suspend fun memberStatisticInfo(memberId: String, context: Context): BodyData? {
         val jsonObject = JsonObject()
         jsonObject.addProperty("m_id", memberId)
-        println("b\n")
-        val jsonIn: String = WebRequestSpencer().httpPost("GetMemberStatic",jsonObject.toString())
-        println("c\n")
-        println("d $jsonIn")
-        val type = object : TypeToken<BodyData?>() {}.type
-        return Gson().fromJson(jsonIn, type)
+        val jsonIn: String = WebRequestSpencer().httpPost("GetMemberStatic", jsonObject.toString())
+        return if (jsonIn == "ConnectError" || jsonIn == "") {
+            Toast.makeText(context,"連線失敗",Toast.LENGTH_SHORT).show()
+            null
+        } else {
+            val type = object : TypeToken<BodyData?>() {}.type
+            Gson().fromJson(jsonIn, type)
+        }
     }
 
     class BodyData(

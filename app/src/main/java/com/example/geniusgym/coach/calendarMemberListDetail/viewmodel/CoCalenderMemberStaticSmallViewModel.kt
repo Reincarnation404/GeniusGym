@@ -1,5 +1,7 @@
 package com.example.geniusgym.coach.calendarMemberListDetail.viewmodel
 
+import android.widget.Toast
+import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.geniusgym.coach.calendarMemberListDetail.model.SportRecordItem
@@ -60,17 +62,24 @@ class CoCalenderMemberStaticSmallViewModel : ViewModel() {
                     string.matches(Regex("[1-9]\\d*"))
         }
     }
-    suspend fun sportDataDeleteBigid():String{
+    suspend fun sportDataDeleteBigid(requireActivity: FragmentActivity):String{
         val gson = GsonBuilder().create()
         val bigId = recordItems?.value?.get(0)?.sd_bigid
         val jsonIn: String = WebRequestSpencer().httpPost("DeleteSportData",bigId.toString())
-        return jsonIn
+        return jsonInJudge(jsonIn,requireActivity)
     }
-    suspend fun sportDataUpload():String{
+    suspend fun sportDataUpload(requireActivity: FragmentActivity):String{
         val gson = GsonBuilder().create()
         val jsonListSportRecordItem = gson.toJson(recordItems?.value)
-        println(jsonListSportRecordItem)
         val jsonIn: String = WebRequestSpencer().httpPost("GetSportData",jsonListSportRecordItem.toString())
-        return jsonIn
+        return jsonInJudge(jsonIn,requireActivity)
+    }
+    fun jsonInJudge(jsonin: String,requireActivity: FragmentActivity):String{
+        return if(jsonin == "ConnectError" || jsonin == ""){
+            Toast.makeText(requireActivity, "連線失敗", Toast.LENGTH_SHORT).show()
+            "false"
+        }else{
+            jsonin
+        }
     }
 }

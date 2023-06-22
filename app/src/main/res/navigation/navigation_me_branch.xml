@@ -55,7 +55,10 @@
             android:id="@+id/action_meCheckoutFragment_to_meShoppingFragment"
             app:destination="@id/meShoppingFragment"
             app:popUpTo="@id/meShoppingFragment"
-            app:popUpToInclusive="false" />
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_meCheckoutFragment_to_meBuyPointsFragment"
+            app:destination="@id/meBuyPointsFragment" />
     </fragment>
 
     <fragment
@@ -81,4 +84,9 @@
         android:name="com.example.geniusgym.member.controller.MeCoachInfoDetailFragment"
         android:label="@string/meCoachInfoDetailFragment"
         tools:layout="@layout/fragment_me_coach_info_detail" />
+    <fragment
+        android:id="@+id/meBuyPointsFragment"
+        android:name="com.example.geniusgym.member.controller.MeBuyPointsFragment"
+        android:label="@string/btTopup"
+        tools:layout="@layout/fragment_me_buy_points" />
 </navigation>

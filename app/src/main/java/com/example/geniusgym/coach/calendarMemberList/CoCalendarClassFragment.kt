@@ -92,7 +92,7 @@ class CoCalendarClassFragment : Fragment(), View.OnClickListener {
                         { _, year, month, day ->
                             viewModel?.textDate?.value = "$year-${pad(month + 1)}-${pad(day)}"
                             viewModel?.Date?.value =
-                                LocalDate.parse("$year-${pad(month + 1)}-${pad(day)}")
+                                LocalDate.parse(viewModel?.textDate?.value)
                             val firstDayOfWeek = viewModel?.Date?.value?.with(
                                 TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY)
                             )

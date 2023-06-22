@@ -5,7 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.geniusgym.R
 import com.example.geniusgym.databinding.FragmentSocialMessageBinding
@@ -19,27 +20,32 @@ class SocialMessageFragment : Fragment() {
         return binding.root
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // 隐藏 Action Bar
+        hideActionBar()
+
         val chatList = getChatList()
         socialMessageAdapter = SocialMessageAdapter(chatList)
-        binding.messageRecyclerview.apply {
+        binding.chatListRecyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = socialMessageAdapter
         }
 
         binding.toHome.setOnClickListener {
-            navigateTo(R.id.action_socialMessageFragment_to_socialHomeFragment)
+            Navigation.findNavController(it).navigate(R.id.action_socialMessageFragment_to_socialHomeFragment)
         }
 
         binding.toProfileButton.setOnClickListener {
-            navigateTo(R.id.action_socialMessageFragment_to_socialProfileFragment)
+            Navigation.findNavController(it).navigate(R.id.action_socialMessageFragment_to_socialProfileFragment)
         }
     }
 
-    private fun navigateTo(actionId: Int) {
-        findNavController().navigate(actionId)
+    override fun onPause() {
+        super.onPause()
+        showActionBar()
     }
 
     private fun getChatList(): List<ChatList> {
@@ -48,5 +54,13 @@ class SocialMessageFragment : Fragment() {
             ChatList(2, R.drawable.walter_white, "User2", "Hi there!", "10:30 AM"),
             ChatList(3, R.drawable.saitama, "User3", "Good morning!", "11:45 AM")
         )
+    }
+
+    private fun hideActionBar() {
+        (requireActivity() as AppCompatActivity).supportActionBar?.hide()
+    }
+
+    private fun showActionBar() {
+        (requireActivity() as AppCompatActivity).supportActionBar?.show()
     }
 }

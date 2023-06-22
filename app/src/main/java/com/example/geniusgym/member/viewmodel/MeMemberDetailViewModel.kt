@@ -19,7 +19,7 @@ class MeMemberDetailViewModel : ViewModel() {
         val fakeMemDetail = Member_detail_Item(
                 name ="Danny",
                 phonenumber = "0962078408",
-                memberID = "M81023",
+                memberID = "M81032",
                 entryTime = "2023-06-13 18:00",
                 membershipdate = "2023-03-02 ~ 2024-03-02"
             )

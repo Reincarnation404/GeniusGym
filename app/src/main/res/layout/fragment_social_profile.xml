@@ -11,13 +11,13 @@
         android:id="@+id/frameLayout2"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="#F9A825"
+        android:background="@color/good_yellow"
         tools:ignore="MissingConstraints">
 
-        <Button
+        <ImageButton
             android:id="@+id/turnLeft"
             android:layout_width="50dp"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_gravity="center|start"
             android:background="@drawable/social_turn_left"
             android:foreground="?attr/selectableItemBackground"
@@ -35,7 +35,7 @@
     </FrameLayout>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btCheckoutSaveMoney"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
@@ -49,7 +49,7 @@
         android:id="@+id/btMeShoppingBack"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintTop_toBottomOf="@+id/btCheckoutSaveMoney"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"

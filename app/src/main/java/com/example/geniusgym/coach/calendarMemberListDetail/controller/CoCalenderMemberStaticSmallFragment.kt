@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -19,7 +18,6 @@ import com.example.geniusgym.coach.calendarMemberListDetail.viewmodel.CoCalender
 import com.example.geniusgym.databinding.FragmentCoCalenderMemberStaticSmallBinding
 import com.google.gson.GsonBuilder
 import kotlinx.coroutines.runBlocking
-import java.net.ConnectException
 
 class CoCalenderMemberStaticSmallFragment : Fragment() {
     private lateinit var binding: FragmentCoCalenderMemberStaticSmallBinding
@@ -74,12 +72,7 @@ class CoCalenderMemberStaticSmallFragment : Fragment() {
                         viewModel?.m_id?.let {
                             remove(it)
                             runBlocking {
-                                try {
-                                    viewModel?.sportDataDeleteBigid()
-                                }catch (e:ConnectException){
-                                    e.printStackTrace()
-                                    Toast.makeText(requireContext(),"連線失敗",Toast.LENGTH_SHORT)
-                                }
+                                viewModel?.sportDataDeleteBigid(requireActivity())
                             }
                         }
                     }
@@ -102,12 +95,7 @@ class CoCalenderMemberStaticSmallFragment : Fragment() {
                             viewModel?.m_id?.let {
                                 remove(it)
                                 runBlocking {
-                                    try {
-                                        viewModel?.sportDataDeleteBigid()
-                                    }catch (e:ConnectException){
-                                        e.printStackTrace()
-                                        Toast.makeText(requireContext(),"連線失敗",Toast.LENGTH_SHORT)
-                                    }
+                                    viewModel?.sportDataDeleteBigid(requireActivity())
                                 }
                             }
                         } else {
@@ -116,20 +104,17 @@ class CoCalenderMemberStaticSmallFragment : Fragment() {
                                 item.count = it.size.toString()
                                 item.time = viewModel?.textDate?.value
                                 runBlocking {
-                                    try {
-                                        viewModel?.sportDataDeleteBigid()
-                                        viewModel?.sportDataUpload()
-                                    }catch (e:ConnectException){
-                                        e.printStackTrace()
-                                        Toast.makeText(requireContext(),"連線失敗",Toast.LENGTH_SHORT)
-                                    }
-
+                                    viewModel?.sportDataDeleteBigid(requireActivity())
+                                    viewModel?.sportDataUpload(requireActivity())
                                 }
                                 val gson = GsonBuilder().create()
                                 val jsonStr = gson.toJson(coActivity.memberSportRecord)
                                 requireActivity().getPreferences(Context.MODE_PRIVATE).edit()
                                     //.putString(coActivity.memberSportRecord[0].m_id, jsonStr)
-                                    .putString(coActivity.binding.viewModel?.member?.value?.memberId, jsonStr)
+                                    .putString(
+                                        coActivity.binding.viewModel?.member?.value?.memberId,
+                                        jsonStr
+                                    )
                                     .apply()
                             }
                         }

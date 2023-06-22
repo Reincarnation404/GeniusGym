@@ -27,6 +27,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilBuAddBuzDataDetailName"
                 style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox.Dense"
@@ -37,7 +38,7 @@
                 android:paddingHorizontal="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent" >
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tietBuAddBuzDataDetailName"
@@ -47,7 +48,7 @@
                     android:hint="@string/tietBuAddBuzDataName"
                     android:textColor="@color/black"
                     android:enabled="false"
-                    android:text="@{viewModel.buz.b_name}"/>
+                    android:text="@={viewModel.buz.b_name}"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -69,7 +70,7 @@
                     android:hint="@string/tietBuAddBuzDataID"
                     android:textColor="@color/black"
                     android:enabled="false"
-                    android:text="@{viewModel.buz.b_id}"/>
+                    android:text="@={viewModel.buz.b_id}"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -95,7 +96,7 @@
                     android:hint="@string/tietBuAddBuzDataBranch"
                     android:textColor="@color/black"
                     android:enabled="false"
-                    android:text="@{viewModel.buz.bh_id}"/>
+                    android:text="@={viewModel.buz.bh_name}"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -117,7 +118,7 @@
                     android:hint="@string/tietBuAddBuzDataPwd"
                     android:textColor="@color/black"
                     android:enabled="false"
-                    android:text="@{viewModel.buz.b_pwd}"/>
+                    android:text="@={viewModel.buz.b_pwd}"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -138,8 +139,7 @@
                     android:background="@color/white"
                     android:hint="@string/tietBuAddBuzDataGen"
                     android:textColor="@color/black"
-                    android:enabled="false"
-                    android:text="@{viewModel.buz.b_gen}"/>
+                    android:enabled="false" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -161,7 +161,7 @@
                     android:hint="@string/tietBuAddBuzDataCell"
                     android:textColor="@color/black"
                     android:enabled="false"
-                    android:text="@{viewModel.buz.b_cell}"/>
+                    android:text="@={viewModel.buz.b_cell}"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -183,7 +183,7 @@
                     android:hint="@string/tietBuAddBuzDataTwid"
                     android:textColor="@color/black"
                     android:enabled="false"
-                    android:text="@{viewModel.buz.b_twid}"/>
+                    android:text="@={viewModel.buz.b_twid}"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -205,7 +205,7 @@
                     android:hint="@string/tietBuAddBuzDataAddr"
                     android:textColor="@color/black"
                     android:enabled="false"
-                    android:text="@{viewModel.buz.b_addr}"/>
+                    android:text="@={viewModel.buz.b_addr}"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -227,7 +227,7 @@
                     android:hint="@string/tietBuAddBuzDataEmail"
                     android:textColor="@color/black"
                     android:enabled="false"
-                    android:text="@{viewModel.buz.b_email}"/>
+                    android:text="@={viewModel.buz.b_email}"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -253,27 +253,74 @@
                     android:textColorHint="#CDC7D2"
                     android:textColor="@color/black"
                     android:enabled="false"
-                    android:text="@{viewModel.buz.b_start_date}"/>
+                    app:text="@{viewModel.buz.b_start_date}"/>
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tilBuAddBuzDataDetailPic"
-                style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox.Dense"
-                android:layout_width="match_parent"
-                android:layout_height="221dp"
-                android:paddingHorizontal="20dp"
+
+            <Button
+                android:id="@+id/btBuAddBuzDataDetailModify"
+                android:layout_width="130dp"
+                android:layout_height="84dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="50dp"
+                android:layout_marginBottom="20dp"
+                android:backgroundTint="@color/perfect_yellow"
+                android:text="@string/btBuDataModify"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tilBuAddBuzDataDetailOBDate">
+                app:layout_constraintTop_toBottomOf="@+id/tilBuAddBuzDataDetailOBDate"
+                app:layout_constraintVertical_bias="1.0" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/tietBuAddBuzDataDetailPic"
-                    android:layout_width="match_parent"
-                    android:layout_height="176dp"
-                    android:background="@color/white"
-                    android:hint="@string/tietBuAddNotiPic"
-                    android:enabled="false" />
+            <Button
+                android:id="@+id/btBuAddBuzDataDetailSave"
+                android:layout_width="130dp"
+                android:layout_height="84dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="50dp"
+                android:layout_marginBottom="20dp"
+                android:text="@string/btBuAddNotiSaveNoti"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tilBuAddBuzDataDetailOBDate"
+                app:layout_constraintVertical_bias="1.0" />
 
-            </com.google.android.material.textfield.TextInputLayout>
+            <Button
+                android:id="@+id/btBuAddBuzDataDetailSuspend"
+                android:layout_width="130dp"
+                android:layout_height="84dp"
+                android:layout_marginStart="50dp"
+                android:backgroundTint="#BC635D"
+                android:text="@string/btBuAddMemDataSuspend"
+                android:textColor="#000000"
+                android:textColorLink="#FFD200"
+                android:textSize="24sp"
+                android:onClick="@{viewModel::Suspend}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btBuAddBuzDataDetailModify"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tilBuAddBuzDataDetailOBDate" />
+
+            <Button
+                android:id="@+id/btBuAddBuzDataDetailActive"
+                android:layout_width="130dp"
+                android:layout_height="84dp"
+                android:layout_marginStart="50dp"
+                android:backgroundTint="#BC635D"
+                android:text="@string/btBuAddMemDataActive"
+                android:textColor="#000000"
+                android:textColorLink="#FFD200"
+                android:textSize="20sp"
+                android:visibility="gone"
+                android:onClick="@{viewModel::Suspend}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btBuAddBuzDataDetailModify"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tilBuAddBuzDataDetailOBDate" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
