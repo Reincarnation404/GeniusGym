@@ -16,7 +16,7 @@ import java.util.*
 class BuBusinessViewModel: ViewModel() {
     val buz: MutableLiveData<Business> by lazy { MutableLiveData<Business>() }
     val url = MeShareData.javaWebUrl + "buBuz"
-   // val url = "http://10.0.2.2:8080/geninusgym_bg/buBuz"
+
     fun genToString():String? {
         if (buz.value?.b_gen == 0){
             return "女"

@@ -12,7 +12,7 @@ import tw.idv.william.androidwebserver.core.service.requestTask
  * 通知列表資料處理
  */
 class BuNotificationManageViewModel : ViewModel() {
-  //  val url = "http://10.0.2.2:8080/geninusgym_bg/buCoach"
+
     val url = MeShareData.javaWebUrl + "buCoach"
     // 原始公告列表
     private var BuNotiList = mutableListOf<Notify>()

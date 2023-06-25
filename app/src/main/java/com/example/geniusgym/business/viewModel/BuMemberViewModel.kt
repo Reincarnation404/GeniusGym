@@ -18,7 +18,7 @@ import java.util.*
 
 class BuMemberViewModel: ViewModel() {
     val url = MeShareData.javaWebUrl + "buMember"
-   // val url = "http://10.0.2.2:8080/geninusgym_bg/buMember"
+
 
     val member: MutableLiveData<Member> by lazy { MutableLiveData<Member>() }
     val list: MutableLiveData<List<Member>> by lazy { MutableLiveData<List<Member>>() }

@@ -15,13 +15,12 @@ import tw.idv.william.androidwebserver.core.service.requestTask
 class BuCoachDataViewModel : ViewModel() {
     val url = javaWebUrl + "buCoach"
 
+
     // 原始教練列表
     private var BuCoachList = mutableListOf<Coach>()
     // 受監控的LiveData，一旦指派新值就會更新教練列表畫面
     val coaches: MutableLiveData<List<Coach>> by lazy { MutableLiveData<List<Coach>>() }
-init {
-    inti()
-}
+
     fun inti(){
         val type = object : TypeToken<List<Coach>>() {}.type
         coaches.value = requestTask<List<Coach>>(url, respBodyType = type)

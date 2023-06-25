@@ -53,13 +53,16 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
-
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
     implementation 'androidx.security:security-crypto:1.1.0-alpha05'
     implementation 'com.google.code.gson:gson:2.8.9'
     implementation 'com.github.yalantis:ucrop:2.2.4' // 圖片截圖
     implementation 'com.google.android.gms:play-services-location:21.0.1'
     implementation 'com.google.android.gms:play-services-maps:18.1.0'
 
+    // 使用Firebase BOM則無須指定Firebase單一函式庫的版次 (但BOM仍需指定版次)
+    implementation platform('com.google.firebase:firebase-bom:31.2.1')
+    implementation 'com.google.firebase:firebase-messaging-ktx'
     // gradle.properties檔案需加上android.enableJetifier=true設定
     implementation files('libs/tpdirect.aar')
     // 存取手機帳戶資訊支付需要wallet函式庫

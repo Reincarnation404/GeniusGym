@@ -16,10 +16,12 @@ import com.example.geniusgym.business.model.Notify
 import com.example.geniusgym.business.viewModel.BuBusinessViewModel
 import com.example.geniusgym.databinding.FragmentBuBusinessDataDetailBinding
 import com.example.geniusgym.databinding.FragmentBuNotificationDetailBinding
+import com.example.geniusgym.sharedata.MeShareData
 
 class BuNotificationDataDetailFragment : Fragment() {
     private lateinit var binding: FragmentBuNotificationDetailBinding
-    val url = "http://10.0.2.2:8080/geninusgym_bg/NotifyController"
+    val url = MeShareData.javaWebUrl + "NotifyController"
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

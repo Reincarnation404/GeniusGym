@@ -5,6 +5,7 @@ import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.geniusgym.business.model.Coach
+import com.example.geniusgym.sharedata.MeShareData
 import com.google.gson.JsonObject
 import tw.idv.william.androidwebserver.core.service.requestTask
 import java.text.SimpleDateFormat
@@ -13,8 +14,8 @@ import java.util.*
 class BuCoachViewModel: ViewModel() {
     val branch: MutableLiveData<List<String>> by lazy { MutableLiveData<List<String>>() }
     val coach: MutableLiveData<Coach> by lazy { MutableLiveData<Coach>() }
+    val url = MeShareData.javaWebUrl + "buCoach"
 
-    val url = "http://10.0.2.2:8080/geninusgym_bg/buCoach"
 
     fun genToString():String? {
         if (coach.value?.c_gen == 0){

@@ -28,6 +28,7 @@ class BuClassDataAddFragment : Fragment() {
     private val calendar = Calendar.getInstance()
     val url = MeShareData.javaWebUrl + "buClass"
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -152,6 +153,7 @@ class BuClassDataAddFragment : Fragment() {
 
                     requestTask<JsonObject>(url, "POST", viewModel?.classs?.value)
                     println(viewModel?.classs?.value)
+                    Navigation.findNavController(it).navigate(R.id.buClassDataFragment)
                 }
             }
 

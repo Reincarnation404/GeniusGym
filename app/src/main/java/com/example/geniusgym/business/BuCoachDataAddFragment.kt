@@ -29,7 +29,7 @@ import java.util.*
 class BuCoachDataAddFragment : Fragment() {
     private lateinit var binding: FragmentBuCoachDataAddBinding
     private val calendar = Calendar.getInstance()
-  //  val url = "http://10.0.2.2:8080/geninusgym_bg/buCoach"
+
     val url = MeShareData.javaWebUrl + "buCoach"
 
     override fun onCreateView(

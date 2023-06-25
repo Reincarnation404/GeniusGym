@@ -295,13 +295,12 @@
                 android:layout_height="84dp"
                 android:layout_marginStart="50dp"
                 android:backgroundTint="#BC635D"
+                android:onClick="@{viewModel::Suspend}"
                 android:text="@string/btBuAddMemDataSuspend"
                 android:textColor="#000000"
                 android:textColorLink="#FFD200"
                 android:textSize="24sp"
-                android:onClick="@{viewModel::Suspend}"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/btBuAddBuzDataDetailModify"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tilBuAddBuzDataDetailOBDate" />
 
@@ -311,14 +310,13 @@
                 android:layout_height="84dp"
                 android:layout_marginStart="50dp"
                 android:backgroundTint="#BC635D"
+                android:onClick="@{viewModel::Suspend}"
                 android:text="@string/btBuAddMemDataActive"
                 android:textColor="#000000"
                 android:textColorLink="#FFD200"
                 android:textSize="20sp"
                 android:visibility="gone"
-                android:onClick="@{viewModel::Suspend}"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/btBuAddBuzDataDetailModify"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tilBuAddBuzDataDetailOBDate" />
 
