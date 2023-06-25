@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -31,6 +32,9 @@ class SocialHomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // 隐藏 Action Bar
+        hideActionBar()
+
         // 顯示浮動操作按鈕
         val floatingActionButton = requireActivity().findViewById<FloatingActionButton>(R.id.toPostFloatingButton)
         floatingActionButton.show()
@@ -41,7 +45,7 @@ class SocialHomeFragment : Fragment() {
             adapter = socialHomeAdapter
         }
 
-        socialHomeViewModel = ViewModelProvider(this).get(SocialHomeViewModel::class.java)
+        socialHomeViewModel = ViewModelProvider(this)[SocialHomeViewModel::class.java]
         socialHomeViewModel.getArticles().observe(viewLifecycleOwner) { articles ->
             socialHomeAdapter.setArticles(articles)
         }
@@ -63,6 +67,11 @@ class SocialHomeFragment : Fragment() {
                 exitSearch()
             }
         }
+    }
+
+    override fun onPause() {
+        super.onPause()
+        showActionBar()
     }
 
     private fun navigateTo(actionId: Int) {
@@ -96,5 +105,13 @@ class SocialHomeFragment : Fragment() {
     private fun hideKeyboard() {
         val imm = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(requireView().windowToken, 0)
+    }
+
+    private fun hideActionBar() {
+        (requireActivity() as AppCompatActivity).supportActionBar?.hide()
+    }
+
+    private fun showActionBar() {
+        (requireActivity() as AppCompatActivity).supportActionBar?.show()
     }
 }

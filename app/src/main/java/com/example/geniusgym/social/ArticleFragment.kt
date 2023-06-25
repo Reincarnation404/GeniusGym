@@ -5,6 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.geniusgym.R
 import com.example.geniusgym.databinding.FragmentArticleBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -16,6 +19,12 @@ class ArticleFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentArticleBinding.inflate(inflater, container, false)
         val view = binding.root
+
+        // 隐藏 Action Bar
+        hideActionBar()
+
+        binding.commentRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+        binding.commentRecyclerView.setHasFixedSize(true)
 
         // 获取传递的数据
         val username = arguments?.getString(ARG_USERNAME)
@@ -52,7 +61,6 @@ class ArticleFragment : Fragment() {
         binding.turnLeft.setOnClickListener {
             val fragmentManager = requireActivity().supportFragmentManager
             val socialHomeFragment = SocialHomeFragment()
-
             val transaction = fragmentManager.beginTransaction()
             transaction.replace(R.id.container, socialHomeFragment)
             transaction.commit()
@@ -60,23 +68,35 @@ class ArticleFragment : Fragment() {
 
         binding.root.setOnClickListener { }
 
+        // 创建留言数据列表
+        val commentsList = listOf(
+            Comments(R.drawable.eren_yeager, "John Doe", "10:00 AM", "This is a comment"),
+            Comments(R.drawable.saitama, "Jane Smith", "11:30 AM", "Another comment")
+        )
+
+        // 设置留言适配器
+        val commentAdapter = CommentAdapter(commentsList)
+        binding.commentRecyclerView.adapter = commentAdapter
+
         return view
     }
-
+    override fun onPause() {
+        super.onPause()
+        showActionBar()
+    }
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-
     }
 
     companion object {
-        private const val ARG_USERNAME = "arg_username"
-        private const val ARG_PROFILE_IMAGE = "arg_profile_image"
-        private const val ARG_POST_CONTENT = "arg_post_content"
-        private const val ARG_POST_IMAGE = "arg_post_image"
-        private const val ARG_LIKE_COUNT = "arg_like_count"
-        private const val ARG_COMMENT_COUNT = "arg_comment_count"
-        private const val ARG_POST_TIME = "arg_post_time"
+        const val ARG_USERNAME = "arg_username"
+        const val ARG_PROFILE_IMAGE = "arg_profile_image"
+        const val ARG_POST_CONTENT = "arg_post_content"
+        const val ARG_POST_IMAGE = "arg_post_image"
+        const val ARG_LIKE_COUNT = "arg_like_count"
+        const val ARG_COMMENT_COUNT = "arg_comment_count"
+        const val ARG_POST_TIME = "arg_post_time"
 
         fun newInstance(
             username: String,
@@ -99,5 +119,13 @@ class ArticleFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun hideActionBar() {
+        (requireActivity() as AppCompatActivity).supportActionBar?.hide()
+    }
+
+    private fun showActionBar() {
+        (requireActivity() as AppCompatActivity).supportActionBar?.show()
     }
 }

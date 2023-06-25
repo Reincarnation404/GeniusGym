@@ -34,7 +34,7 @@ class CoCalendarMemberListFragment : Fragment() {
             arguments?.let{bundle ->
                 bundle.getSerializable("Class")?.let{
                     val classItem = it as ClassItem
-                    val classId = classItem.id
+                    val classId = classItem.ci_id
                     viewModel?.search(classId)
                     rvCoCaMe.layoutManager = LinearLayoutManager(requireContext())
                     val coActivity = requireActivity() as CoActivity
