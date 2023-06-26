@@ -29,10 +29,11 @@ class MeBranchAdapter(val storeBeans: List<StoreBean>) : RecyclerView.Adapter<Me
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.binding.tvBranchTitle.text = storeBeans[holder.adapterPosition].bh_name.toString()
-        holder.binding.tvPhonenumber.text = storeBeans[holder.adapterPosition].bh_cell.toString()
-        holder.binding.tvAddress.text = storeBeans[holder.adapterPosition].bh_address.toString()
-
+        holder.binding.tvBranchTitle.text = storeBeans[holder.adapterPosition].bh_name
+        holder.binding.tvPhonenumber.text = storeBeans[holder.adapterPosition].bh_cell
+        holder.binding.tvAddress.text = storeBeans[holder.adapterPosition].bh_address
+        val time = storeBeans[holder.adapterPosition].bh_start_time + "~" + storeBeans[holder.adapterPosition].bh_ed_time
+        holder.binding.tvBranchTime.text = time
         holder.binding.btImgBranch.setOnClickListener(object : OnRepeatClickListener(){
             override fun onSingleClick(v: View?) {
                 //            將分店名稱放到共用的文件，做資料傳遞

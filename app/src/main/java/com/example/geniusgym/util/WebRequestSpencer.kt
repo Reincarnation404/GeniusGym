@@ -11,6 +11,12 @@ import java.net.ConnectException
 import java.net.HttpURLConnection
 import java.net.URL
 class WebRequestSpencer {
+    companion object{
+        fun getInstance() : WebRequestSpencer{
+            return WebRequestSpencer()
+        }
+
+    }
 
     private val CreditCardTag = "TAG_creditCardConnect"
     suspend fun httpGet(

@@ -65,4 +65,8 @@ dependencies {
     // 存取手機帳戶資訊支付需要wallet函式庫
     implementation 'com.google.android.gms:play-services-wallet:19.1.0'
 
+//  QRcode產生器
+    implementation('com.journeyapps:zxing-android-embedded:3.6.0') { transitive = false }
+    implementation 'com.google.zxing:core:3.3.0'
+
 }

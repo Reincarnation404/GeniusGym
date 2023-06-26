@@ -85,7 +85,7 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            android:id="@+id/tv_branch_tine"
+            android:id="@+id/tv_branch_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="09:00~24:00"
