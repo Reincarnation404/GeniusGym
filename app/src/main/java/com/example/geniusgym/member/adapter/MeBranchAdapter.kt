@@ -16,7 +16,7 @@ import com.example.geniusgym.member.model.StoreBean
 import com.example.geniusgym.sharedata.MeShareData
 import com.example.geniusgym.util.OnRepeatClickListener
 
-class MeBranchAdapter(val storeBeans: List<StoreBean>) : RecyclerView.Adapter<MeBranchAdapter.MyViewHolder>() {
+class MeBranchAdapter(var storeBeans: List<StoreBean>) : RecyclerView.Adapter<MeBranchAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val binding = RecycleCellMeBranchBinding.inflate(LayoutInflater.from(parent.context))
@@ -26,6 +26,11 @@ class MeBranchAdapter(val storeBeans: List<StoreBean>) : RecyclerView.Adapter<Me
 
     override fun getItemCount(): Int {
         return storeBeans.size
+    }
+
+    fun setItems(list: List<StoreBean>){
+        storeBeans = list
+        notifyDataSetChanged()
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {

@@ -11,6 +11,7 @@ import com.example.geniusgym.databinding.FragmentMeShoppingDetailBinding
 import com.example.geniusgym.member.model.ClassInfo
 import com.example.geniusgym.util.IOImpl
 import com.example.geniusgym.util.IOImpl.Internal
+import com.google.gson.Gson
 import com.google.gson.JsonArray
 import com.google.gson.JsonObject
 
@@ -58,15 +59,7 @@ class MeShoppingDetailViewModel : ViewModel() {
             jsonArray = JsonArray()
 
         }
-        val jsonObject = JsonObject()
-        jsonObject.addProperty("c_id", _clasinfo?.c_id)
-        jsonObject.addProperty("c_date", _clasinfo?.ci_date)
-        jsonObject.addProperty("sc_id", _clasinfo?.sc_id)
-        jsonObject.addProperty("ci_name", _clasinfo?.ci_name)
-        jsonObject.addProperty("c_cost", _clasinfo?.ci_cost.toString())
-        jsonObject.addProperty("ci_start_time", _clasinfo?.ci_start_time)
-        jsonObject.addProperty("ci_ed_time", _clasinfo?.ci_ed_time)
-
+        val jsonObject = Gson().toJsonTree(_clasinfo, ClassInfo::class.java).asJsonObject
         jsonArray.add(jsonObject)
         try {
             internal.saveFile(jsonArray, "meShoppingCart", IOImpl.Mode.MODE_MEMORY, true)

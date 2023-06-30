@@ -8,7 +8,6 @@ import android.text.Spanned
 import android.text.style.ImageSpan
 import android.view.Gravity
 import android.view.LayoutInflater
-import android.view.Window
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.geniusgym.R
@@ -18,6 +17,11 @@ import com.example.geniusgym.member.adapter.MeShoppingSearchExpandableListViewAd
 import com.example.geniusgym.member.model.ClassInfo
 import com.example.geniusgym.member.model.SportBigCat
 import com.example.geniusgym.member.model.SportCat
+import com.example.geniusgym.sharedata.MeShareData
+import com.example.geniusgym.util.IOImpl
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import tw.idv.william.androidwebserver.core.service.requestTask
 
 
 class MeShoppingViewModel : ViewModel() {
@@ -25,10 +29,115 @@ class MeShoppingViewModel : ViewModel() {
     private val _shopitems = mutableListOf<ClassInfo>()
     val shopitems : MutableLiveData<List<ClassInfo>> by lazy { MutableLiveData() }
     val branchName : MutableLiveData<String> by lazy { MutableLiveData() }
+    private var sportbigcats : List<SportBigCat> = listOf()
+    private var sportcats : List<List<SportCat>> = listOf()
     init {
         update()
 
     }
+
+    fun getClassInfoFromLocal(context: Context){
+        val classType = object : TypeToken<List<ClassInfo>>(){}.type
+        val jsonArray = IOImpl.Internal(context).loadArrayFile("ClassInfoList", IOImpl.Mode.MODE_MEMORY, true)
+        val classInfoList = Gson().fromJson<List<ClassInfo>>(jsonArray, classType)
+        shopitems.value = classInfoList
+    }
+
+    fun getClassInfoFromInternal(context: Context){
+        val classType = object : TypeToken<List<ClassInfo>>(){}.type
+        val classInfoList = requestTask<List<ClassInfo>>(MeShareData.javaWebUrl + "", "GET", respBodyType = classType)
+        classInfoList?.let {
+            shopitems.value = it
+            val jsonArray = Gson().toJsonTree(it, classType).asJsonArray
+            IOImpl.Internal(context).saveFile(jsonArray, "ClassInfoList", IOImpl.Mode.MODE_MEMORY, true)
+        }
+
+
+    }
+
+    private fun update(){
+
+        _shopitems.add(ClassInfo(1, "螺旋有氧", "14:00", "15:00", "A502",
+                                    500, 8, "2023/04/15", "本課程希望大家能認真學習", 50,
+                                    "桃園 hawk")
+        )
+        _shopitems.add(ClassInfo(2, "基礎肌力", "09:00", "12:00", "A503",
+                                    500, 5, "2023/06/15", "本課程希望大家能認真學習", 50,
+                                    "王曉明")
+        )
+        shopitems.value = _shopitems
+    }
+
+    fun getCategory(context: Context){
+
+        val bcType = object : TypeToken<List<SportBigCat>>(){}.type
+        val cType = object : TypeToken<List<List<SportCat>>>(){}.type
+
+        val result = IOImpl.Internal(context).loadArrayFile("BigCategory", IOImpl.Mode.MODE_MEMORY, true)
+        val result2 = IOImpl.Internal(context).loadArrayFile("Category", IOImpl.Mode.MODE_MEMORY, true)
+
+        if (result != null || result2 != null ){
+            sportbigcats = Gson().fromJson(result, bcType)
+            sportcats = Gson().fromJson(result2, cType)
+            return
+        }
+
+        val bcList = requestTask<List<SportBigCat>>(MeShareData.javaWebUrl + "", "GET", respBodyType = bcType)
+        bcList?.let {
+            sportbigcats = it
+            val jsonArray = Gson().toJsonTree(it, bcType).asJsonArray
+            IOImpl.Internal(context).saveFile(jsonArray, "BigCategory", IOImpl.Mode.MODE_MEMORY, true)
+        }
+
+        val cList = requestTask<List<List<SportCat>>>(MeShareData.javaWebUrl + "", "GET", respBodyType = cType)
+        cList?.let {
+            sportcats = it
+            val jsonArray = Gson().toJsonTree(it, cType).asJsonArray
+            IOImpl.Internal(context).saveFile(jsonArray, "Category", IOImpl.Mode.MODE_MEMORY, true)
+        }
+    }
+
+
+
+//    TEST DATA
+//    val sportbigcats : List<SportBigCat> = listOf(
+//        SportBigCat(1, "有氧", "有氧"),
+//        SportBigCat(2, "無氧", "肩"),
+//        SportBigCat(3, "無氧", "胸"),
+//        SportBigCat(4, "缺氧", "背"),
+//        SportBigCat(5, "沒氧", "腿")
+//    )
+//
+//    val sportcats : List<List<SportCat>> = listOf(
+//
+//        listOf(
+//            SportCat(1, 1, "飛輪"),
+//            SportCat(2, 1, "靜態"),
+//            SportCat(3, 1, "心肺訓練"),
+//            SportCat(4, 1, "跑步"),
+//        ),
+//        listOf(
+//            SportCat(5, 2, "槓鈴肩推"),
+//            SportCat(6, 2, "啞鈴肩推"),
+//            SportCat(7, 2, "啞鈴側平舉"),
+//            SportCat(8, 2, "啞鈴前平舉"),
+//            SportCat(9, 2, "站姿肩推")
+//        ),
+//        listOf(
+//            SportCat(10, 3, "啞鈴握推"),
+//            SportCat(11, 3, "槓鈴握推"),
+//            SportCat(12, 3, "蝴蝶機夾胸"),
+//            SportCat(13, 3, "繩索下斜夾胸"),
+//            SportCat(14,3, "槓鈴斜上推")
+//        ),
+//        listOf(
+//
+//        ),
+//        listOf(
+//
+//        )
+//
+//    )
 
     private fun search(set: Set<Int>, searchText : String) {
         val setFiltered  = mutableSetOf<ClassInfo>()
@@ -85,7 +194,7 @@ class MeShoppingViewModel : ViewModel() {
             adapter.clearSet()
             dialog.dismiss()
         }
-//
+
         bindingDialog.btnMeShoppingCancel.setOnClickListener {
 //            清除這次已點擊的類型
             adapter.clearSet()
@@ -94,8 +203,8 @@ class MeShoppingViewModel : ViewModel() {
         return dialog
     }
 
-//
     private fun setDialogAdapter(context: Context) : MeShoppingSearchExpandableListViewAdapter{
+        getCategory(context)
         val adapter =
             MeShoppingSearchExpandableListViewAdapter(
                 context,
@@ -113,57 +222,4 @@ class MeShoppingViewModel : ViewModel() {
     }
 
 
-    private fun update(){
-        _shopitems.add(ClassInfo(1, "螺旋有氧", "14:00", "15:00", "A502",
-                                    500, 8, "2023/04/15", "本課程希望大家能認真學習", 50,
-                                    "桃園 hawk")
-        )
-        _shopitems.add(ClassInfo(2, "基礎肌力", "09:00", "12:00", "A503",
-                                    500, 5, "2023/06/15", "本課程希望大家能認真學習", 50,
-                                    "王曉明")
-        )
-        shopitems.value = _shopitems
-    }
-
-
-
-//    TEST DATA
-    val sportbigcats : List<SportBigCat> = listOf(
-        SportBigCat(1, "有氧", "有氧"),
-        SportBigCat(2, "無氧", "肩"),
-        SportBigCat(3, "無氧", "胸"),
-        SportBigCat(4, "缺氧", "背"),
-        SportBigCat(5, "沒氧", "腿")
-    )
-
-    val sportcats : List<List<SportCat>> = listOf(
-
-        listOf(
-            SportCat(1, 1, "飛輪"),
-            SportCat(2, 1, "靜態"),
-            SportCat(3, 1, "心肺訓練"),
-            SportCat(4, 1, "跑步"),
-        ),
-        listOf(
-            SportCat(5, 2, "槓鈴肩推"),
-            SportCat(6, 2, "啞鈴肩推"),
-            SportCat(7, 2, "啞鈴側平舉"),
-            SportCat(8, 2, "啞鈴前平舉"),
-            SportCat(9, 2, "站姿肩推")
-        ),
-        listOf(
-            SportCat(10, 3, "啞鈴握推"),
-            SportCat(11, 3, "槓鈴握推"),
-            SportCat(12, 3, "蝴蝶機夾胸"),
-            SportCat(13, 3, "繩索下斜夾胸"),
-            SportCat(14,3, "槓鈴斜上推")
-        ),
-        listOf(
-
-        ),
-        listOf(
-
-        )
-
-    )
 }

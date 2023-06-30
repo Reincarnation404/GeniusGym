@@ -18,6 +18,7 @@ import com.example.geniusgym.member.viewmodel.MeShopCartViewModel
 import com.example.geniusgym.util.IOImpl
 import com.google.gson.Gson
 import com.google.gson.JsonObject
+import com.google.gson.reflect.TypeToken
 
 class MeShopCartFragment : Fragment() {
 
@@ -29,17 +30,17 @@ class MeShopCartFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentMeShopCartBinding.inflate(LayoutInflater.from(requireContext()))
-        return binding.root
-    }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
         directBuy = arguments?.getBoolean("direct?") == true
 //        判定是直接購買還是點擊購物車
         if (directBuy){
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                val list : MutableList<ClassInfo> = mutableListOf()
                 arguments?.getSerializable("classinfo", ClassInfo::class.java)
-                    ?.let { viewModel.classInfos.value?.add(it) }
+                    ?.let {
+                        list.add(it)
+                    }
+                viewModel.classInfos.value = list
             }else{
                 val list = mutableListOf<ClassInfo>()
                 list.add(arguments?.getSerializable("classinfo") as ClassInfo)
@@ -47,23 +48,17 @@ class MeShopCartFragment : Fragment() {
             }
         }else{
             val cartListText = IOImpl.Internal(requireContext()).loadArrayFile("meShoppingCart",IOImpl.Mode.MODE_MEMORY, true)
-            val cartList : MutableList<ClassInfo>  = mutableListOf()
-            cartListText?.forEach {
-                val jsonObject = Gson().fromJson(it, JsonObject::class.java)
-                val classInfo = ClassInfo()
-                with(jsonObject){
-                    classInfo.sc_id = get("sc_id").asInt
-                    classInfo.ci_name = get("ci_name").asString
-                    classInfo.c_id = get("c_id").asString
-                    classInfo.ci_date = get("c_date").asString
-                    classInfo.ci_cost = get("c_cost").asInt
-                    classInfo.ci_ed_time = get("ci_ed_time").asString
-                    classInfo.ci_start_time = get("ci_ed_time").asString
-                }
-                cartList.add(classInfo)
-            }
+            val type = object : TypeToken<MutableList<ClassInfo>>(){}.type
+            val cartList = Gson().fromJson<MutableList<ClassInfo>>(cartListText, type)
             viewModel.classInfos.value = cartList
         }
+
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         with(binding){
 
             val adapter = MeShoppingCartAdapter(viewModel.classInfos.value!!)

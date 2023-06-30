@@ -16,17 +16,12 @@ class MeBranchDetailFragment : Fragment() {
     private lateinit var binding: FragmentMeBranchDetailBinding
     private val viewModel: MeBranchDetailViewModel by viewModels()
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewModel.updateData()
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentMeBranchDetailBinding.inflate(LayoutInflater.from(requireContext()))
+        viewModel.loadDataFromIO(requireContext())
         return binding.root
     }
 
@@ -36,9 +31,15 @@ class MeBranchDetailFragment : Fragment() {
         with(binding) {
             meRecycleBranch.layoutManager =
                 LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-
-            meRecycleBranch.adapter = MeBranchAdapter(viewModel.storeBeans)
+            val adapter = MeBranchAdapter(viewModel.storeBeans)
+            meRecycleBranch.adapter = adapter
+            loadData(adapter)
         }
 
+    }
+
+    private fun loadData(adapter: MeBranchAdapter){
+        viewModel.getDataFromInternet(requireContext())
+        adapter.setItems(viewModel.storeBeans)
     }
 }

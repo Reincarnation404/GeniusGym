@@ -88,8 +88,10 @@ class BuMemberDataAddFragment : Fragment() {
                         viewModel?.member?.value?.m_ed_date = timestamp
 
                         val url = javaWebUrl + "buMember"
-
-                        val respbody = requestTask<JsonObject>(url, "POST", viewModel?.member?.value)
+                        val me = viewModel?.member?.value
+                        me?.m_pwd = me?.m_pwd.hashCode().toString()
+                        val respbody = requestTask<JsonObject>(url, "POST", me)
+//                        val respbody = requestTask<JsonObject>(url, "POST", viewModel?.member?.value)
                         //println(viewModel?.member?.value.toString())
                         //println(viewModel?.member?.value?.m_ed_date)
                     }
