@@ -1,7 +1,6 @@
 package com.example.geniusgym.business
 
 import android.graphics.Color
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,24 +8,22 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
-import com.example.geniusgym.business.viewModel.BuNotificationDetailViewModel
-import com.example.geniusgym.R
-import com.example.geniusgym.business.model.Business
+import com.example.geniusgym.business.viewModel.BuNotiViewModel
 import com.example.geniusgym.business.model.Notify
-import com.example.geniusgym.business.viewModel.BuBusinessViewModel
-import com.example.geniusgym.databinding.FragmentBuBusinessDataDetailBinding
 import com.example.geniusgym.databinding.FragmentBuNotificationDetailBinding
+import com.example.geniusgym.sharedata.MeShareData
 
 class BuNotificationDataDetailFragment : Fragment() {
     private lateinit var binding: FragmentBuNotificationDetailBinding
-    val url = "http://10.0.2.2:8080/geninusgym_bg/NotifyController"
+    val url = MeShareData.javaWebUrl + "NotifyController"
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentBuNotificationDetailBinding.inflate(inflater, container, false)
-        val viewModel: BuNotificationDetailViewModel by viewModels()
+        val viewModel: BuNotiViewModel by viewModels()
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
         return binding.root

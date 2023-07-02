@@ -10,11 +10,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import com.example.geniusgym.R
 import com.example.geniusgym.business.model.Business
 import com.example.geniusgym.business.model.testBuBusiness
 import com.example.geniusgym.business.viewModel.BuBusinessViewModel
 import com.example.geniusgym.databinding.FragmentBuBusinessDataDetailBinding
+import com.example.geniusgym.sharedata.MeShareData
 import com.google.gson.JsonObject
 import tw.idv.william.androidwebserver.core.service.requestTask
 import java.sql.Timestamp
@@ -24,7 +26,8 @@ import java.util.*
 class BuBusinessDataDetailFragment : Fragment() {
     private lateinit var binding: FragmentBuBusinessDataDetailBinding
     private val calendar = Calendar.getInstance()
-    val url = "http://10.0.2.2:8080/geninusgym_bg/buBuz"
+
+    val url = MeShareData.javaWebUrl + "buBuz"
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -107,6 +110,7 @@ class BuBusinessDataDetailFragment : Fragment() {
 
                         requestTask<JsonObject>(url, "PUT", viewModel?.buz?.value)
                         println(viewModel?.buz?.value)
+                       // Navigation.findNavController(it).navigate(R.id.buBusinessDataFragment)
                     }
                 }
             }

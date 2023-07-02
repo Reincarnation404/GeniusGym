@@ -1,20 +1,15 @@
 package com.example.geniusgym.business
 
-import android.app.Activity
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
-import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
-import android.provider.MediaStore
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
 import com.example.geniusgym.business.model.Member
-import com.example.geniusgym.business.model.testBuMember
 import com.example.geniusgym.business.viewModel.BuMemberViewModel
 import com.example.geniusgym.databinding.FragmentBuMemberDataDetailBinding
 import com.example.geniusgym.sharedata.MeShareData.javaWebUrl
@@ -28,6 +23,7 @@ class BuMemberDataDetailFragment : Fragment() {
     private lateinit var binding: FragmentBuMemberDataDetailBinding
     private val calendar = Calendar.getInstance()
     val url = javaWebUrl + "buMember"
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -113,6 +109,13 @@ class BuMemberDataDetailFragment : Fragment() {
                 }
             }
 
+            if(viewModel?.member?.value?.m_sus == true){
+                btBuAddMemDataDetailSuspend.visibility = View.VISIBLE
+                btBuAddMemDataDetailActive.visibility = View.GONE
+            }else{
+                btBuAddMemDataDetailSuspend.visibility = View.GONE
+                btBuAddMemDataDetailActive.visibility = View.VISIBLE
+            }
 
         }
     }

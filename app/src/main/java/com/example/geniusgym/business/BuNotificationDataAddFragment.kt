@@ -12,7 +12,7 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
-import com.example.geniusgym.business.viewModel.BuNotificationDataAddViewModel
+import com.example.geniusgym.business.viewModel.BuNotiDataAddViewModel
 import com.example.geniusgym.databinding.FragmentBuNotificationAddBinding
 import java.util.*
 
@@ -25,7 +25,7 @@ class BuNotificationDataAddFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentBuNotificationAddBinding.inflate(inflater, container, false)
-        val viewModel: BuNotificationDataAddViewModel by viewModels()
+        val viewModel: BuNotiDataAddViewModel by viewModels()
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
         return binding.root

@@ -35,7 +35,6 @@ class BuBusinessDataFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         with(binding){
-
             viewModel?.inti()
 
             rvBuBusinessData.layoutManager = LinearLayoutManager(requireContext())

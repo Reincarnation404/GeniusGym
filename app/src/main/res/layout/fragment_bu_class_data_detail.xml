@@ -304,7 +304,6 @@
                     android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tilBuAddClassDataDetailIntro" />
 
                 <Button
@@ -319,7 +318,6 @@
                     android:textSize="16sp"
                     android:onClick="@{viewModel::Available}"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/btBuAddClassDataDetailModify"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tilBuAddClassDataDetailIntro" />
 
@@ -336,7 +334,6 @@
                     android:visibility="gone"
                     android:onClick="@{viewModel::Available}"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/btBuAddClassDataDetailModify"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tilBuAddClassDataDetailIntro" />
 

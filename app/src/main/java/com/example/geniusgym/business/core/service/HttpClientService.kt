@@ -1,6 +1,7 @@
 package tw.idv.william.androidwebserver.core.service
 
 import com.example.geniusgym.business.model.Member
+import com.example.geniusgym.sharedata.MeShareData
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonArray
@@ -29,7 +30,11 @@ import java.time.LocalDateTime
 //)
 
 fun main() {
+
+//    val url = MeShareData.javaWebUrl
+
     val url = "http://javaWebUrl/geniusgym_bg/"
+
     val type = object : TypeToken<List<Member>>(){}.type
     val list = requestTask<List<Member>>(url, respBodyType = type)
     println(list)

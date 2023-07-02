@@ -87,6 +87,7 @@ class BuMemberDataAddFragment : Fragment() {
                         val timestamp = Timestamp.valueOf(m_date)
                         viewModel?.member?.value?.m_ed_date = timestamp
 
+
                         val url = javaWebUrl + "buMember"
                         val me = viewModel?.member?.value
                         me?.m_pwd = me?.m_pwd.hashCode().toString()
@@ -94,6 +95,7 @@ class BuMemberDataAddFragment : Fragment() {
 //                        val respbody = requestTask<JsonObject>(url, "POST", viewModel?.member?.value)
                         //println(viewModel?.member?.value.toString())
                         //println(viewModel?.member?.value?.m_ed_date)
+                        Navigation.findNavController(it).navigate(R.id.buMemberDataFragment)
                     }
                 }
 

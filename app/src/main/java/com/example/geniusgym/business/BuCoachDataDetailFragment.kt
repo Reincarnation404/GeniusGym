@@ -27,6 +27,7 @@ class BuCoachDataDetailFragment : Fragment() {
     private lateinit var binding: FragmentBuCoachDataDetailBinding
     private val calendar = Calendar.getInstance()
     val url = javaWebUrl + "buCoach"
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -170,6 +171,7 @@ class BuCoachDataDetailFragment : Fragment() {
     private fun showBranchSelection(){
         var choice = arrayOf("緯育店","台北店","桃園店","新竹店","南京復興店")
         var selectItem = -1
+
 
 
         AlertDialog.Builder(view?.context)

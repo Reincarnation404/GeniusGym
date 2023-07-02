@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.geniusgym.business.viewModel.BuNotificationManageViewModel" />
+            type="com.example.geniusgym.business.viewModel.BuNotiDataViewModel" />
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"

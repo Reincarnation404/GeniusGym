@@ -3,16 +3,12 @@ package com.example.geniusgym.business.adapter
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.geniusgym.R
-import com.example.geniusgym.business.model.Business
 import com.example.geniusgym.business.model.Notify
-import com.example.geniusgym.business.viewModel.BuBusinessViewModel
-import com.example.geniusgym.business.viewModel.BuNotificationDetailViewModel
-import com.example.geniusgym.databinding.FragmentBuBusinessDataItemBinding
+import com.example.geniusgym.business.viewModel.BuNotiViewModel
 import com.example.geniusgym.databinding.FragmentBuNotificationDataItemBinding
 
 /**
@@ -41,7 +37,7 @@ class BuNotiDataAdapter(private var notifies: List<Notify>):
         val itemViewBinding = FragmentBuNotificationDataItemBinding.inflate(
             LayoutInflater.from(parent.context), parent, false
         )
-        itemViewBinding.viewModel = BuNotificationDetailViewModel()
+        itemViewBinding.viewModel = BuNotiViewModel()
         // 設定lifecycleOwner方能監控LiveData資料變化，layout檔案的view才會更新顯示
         itemViewBinding.lifecycleOwner = parent.findViewTreeLifecycleOwner()
         return BuNotiDataViewHolder(itemViewBinding)

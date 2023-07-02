@@ -35,19 +35,16 @@ class BuMemberDataFragment : Fragment() {
         with(binding){
            // setupMenu()
             viewModel?.inti()
-
             rvBuMemberData.layoutManager = LinearLayoutManager(requireContext())
             viewModel?.members?.observe(viewLifecycleOwner) { members ->
                 // adapter為null要建立新的adapter；之後只要呼叫updateFriends(friends)即可
                 if (rvBuMemberData.adapter == null) {
                     rvBuMemberData.adapter = BuMemberDataAdapter(members)
+
                 } else {
                     (rvBuMemberData.adapter as BuMemberDataAdapter).updateBuMember(members)
                 }
             }
-
-
-
 
             fabBuAddMemberData.setOnClickListener {
                 Navigation.findNavController(it).navigate(R.id.action_buMemberData_to_buMemberDataAdd)

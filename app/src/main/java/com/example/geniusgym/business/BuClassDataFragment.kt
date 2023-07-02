@@ -17,7 +17,7 @@ import com.example.geniusgym.databinding.FragmentBuClassDataBinding
 
 class BuClassDataFragment : Fragment() {
     private lateinit var binding: FragmentBuClassDataBinding
-
+    private lateinit var itemAdapter: BuClassDataAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -32,10 +32,10 @@ class BuClassDataFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         with(binding){
-
             viewModel?.inti()
 
             rvBuClassData.layoutManager = LinearLayoutManager(requireContext())
+
             viewModel?.classes?.observe(viewLifecycleOwner) { classes ->
                 // adapter為null要建立新的adapter；之後只要呼叫updateBuClass(classes)即可
                 if (rvBuClassData.adapter == null) {

@@ -29,7 +29,7 @@ import java.util.*
 class BuCoachDataAddFragment : Fragment() {
     private lateinit var binding: FragmentBuCoachDataAddBinding
     private val calendar = Calendar.getInstance()
-  //  val url = "http://10.0.2.2:8080/geninusgym_bg/buCoach"
+
     val url = MeShareData.javaWebUrl + "buCoach"
 
     override fun onCreateView(
@@ -89,6 +89,7 @@ class BuCoachDataAddFragment : Fragment() {
 
                         requestTask<JsonObject>(url, "POST", viewModel?.coach?.value)
                         println(viewModel?.coach?.value)
+                        Navigation.findNavController(view).navigate(R.id.buCoachDataFragment)
                     }
                 }
             }

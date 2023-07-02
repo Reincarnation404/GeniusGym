@@ -324,6 +324,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/tilBuAddCoaDataDetailIntro"
                 app:layout_constraintVertical_bias="1.0" />
 
+
             <Button
                 android:id="@+id/btBuAddCoaDataDetailSuspend"
                 android:layout_width="130dp"
@@ -336,7 +337,6 @@
                 android:textSize="24sp"
                 android:onClick="@{viewModel::Suspend}"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/btBuAddCoaDataDetailModify"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tilBuAddCoaDataDetailIntro" />
 
@@ -353,7 +353,6 @@
                 android:visibility="gone"
                 android:onClick="@{viewModel::Suspend}"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/btBuAddCoaDataDetailModify"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tilBuAddCoaDataDetailIntro" />
 

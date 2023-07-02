@@ -16,7 +16,7 @@ import tw.idv.william.androidwebserver.core.service.requestTask
  */
 class BuBusinessDataViewModel : ViewModel() {
     val url = MeShareData.javaWebUrl + "buBuz"
-   // val url = "http://10.0.2.2:8080/geninusgym_bg/buBuz"
+
     // 原始員工列表
     private var BuBusinessList = mutableListOf<Business>()
     // 受監控的LiveData，一旦指派新值就會更新員工列表畫面
@@ -25,7 +25,6 @@ class BuBusinessDataViewModel : ViewModel() {
     fun inti(){
         val type = object : TypeToken<List<Business>>() {}.type
         bubuzz.value = requestTask<List<Business>>(url, respBodyType = type)
-        println(bubuzz.value?.get(0))
     }
 
     /**

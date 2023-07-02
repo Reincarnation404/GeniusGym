@@ -8,6 +8,7 @@ import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.geniusgym.R
+import com.example.geniusgym.business.BuActivity
 import com.example.geniusgym.business.model.Business
 import com.example.geniusgym.business.model.Class_Info
 import com.example.geniusgym.business.model.testClass_Info
@@ -66,6 +67,7 @@ class BuClassDataAdapter(private var classes: List<Class_Info>):
                     )
                 )
             }
+
             val bundle = Bundle()
             bundle.putSerializable("classs", classs)
             itemView.setOnClickListener {
