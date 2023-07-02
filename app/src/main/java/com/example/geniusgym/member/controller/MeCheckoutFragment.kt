@@ -23,6 +23,7 @@ import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import com.google.gson.reflect.TypeToken
 import org.json.JSONArray
+import tw.idv.william.androidwebserver.core.service.requestTask
 
 class MeCheckoutFragment : Fragment() {
 
@@ -40,53 +41,40 @@ class MeCheckoutFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if (arguments?.getBoolean("directBuyFromCart") == true){
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                arguments?.getParcelableArrayList("buyItems", ClassInfo::class.java)?.let {
-                    viewModel.buylist = it
-                }
-            } else {
-                val buylist : ArrayList<ClassInfo> = arguments?.getParcelableArrayList("buyItems")?: ArrayList()
-                viewModel.buylist = buylist
-            }
-            val total = viewModel.calculateTotalCost()
-            with(binding){
-                val adapter = MeShoppingAdapter(viewModel.buylist)
-                adapter.unclickable()
-                meRecycleShoppingCart.adapter = adapter
-                meRecycleShoppingCart.layoutManager = LinearLayoutManager(requireContext())
-                tvMeShoppingPointNeed.text = total.toString()
-                meShoppingPointHave.text = MeShareData.personPoint.toString()
-                btMeShoppingCheckout.setOnClickListener(directcheckoutlistener)
-                btCheckoutSaveMoney.setOnClickListener {
-                    Navigation.findNavController(it).navigate(R.id.action_meCheckoutFragment_to_meBuyPointsFragment)
-                }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            arguments?.getParcelableArrayList("buyItems", ClassInfo::class.java)?.let {
+                viewModel.buylist = it
             }
         }else{
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                arguments?.getParcelableArrayList("buyItems", ClassInfo::class.java)?.let {
-                    viewModel.buylist = it
-                }
-            }else{
-                val buylist : ArrayList<ClassInfo> = arguments?.getParcelableArrayList("buyItems")?: ArrayList()
-                viewModel.buylist = buylist
-            }
-            with(binding){
-                val adapter = MeShoppingAdapter(viewModel.buylist)
-                adapter.unclickable()
-                meRecycleShoppingCart.adapter = adapter
-                meRecycleShoppingCart.layoutManager = LinearLayoutManager(requireContext())
-                val total = viewModel.calculateTotalCost()
-                binding.tvMeShoppingPointNeed.text = total.toString()
-                binding.meShoppingPointHave.text = MeShareData.personPoint.toString()
-
-                btMeShoppingCheckout.setOnClickListener(checkoutlistener)
-                btCheckoutSaveMoney.setOnClickListener {
-                    Navigation.findNavController(it).navigate(R.id.action_meCheckoutFragment_to_meBuyPointsFragment)
-                }
-            }
+            val buylist : ArrayList<ClassInfo> = arguments?.getParcelableArrayList("buyItems")?: ArrayList()
+            viewModel.buylist = buylist
+        }
+        val adapter = MeShoppingAdapter(viewModel.buylist)
+        setController(binding, adapter)
+        if (arguments?.getBoolean("directBuyFromCart") == true){
+            binding.btMeShoppingCheckout.setOnClickListener(directcheckoutlistener)
+        }else{
+            binding.btMeShoppingCheckout.setOnClickListener(checkoutlistener)
+        }
+        binding.btCheckoutSaveMoney.setOnClickListener {
+            Navigation.findNavController(it).navigate(R.id.action_meCheckoutFragment_to_meBuyPointsFragment)
         }
     }
+
+    private fun setController(binding: FragmentMeCheckoutBinding, adapter: MeShoppingAdapter){
+        with(binding){
+            adapter.unclickable()
+            meRecycleShoppingCart.adapter = adapter
+            meRecycleShoppingCart.layoutManager = LinearLayoutManager(requireContext())
+            val total = 0
+            tvMeShoppingPointNeed.text = total.toString()
+            meShoppingPointHave.text = MeShareData.personPoint.toString()
+        }
+    }
+
+//    private fun getTotal() : Int{
+//        requestTask<>()
+//    }
 
     private val directcheckoutlistener = View.OnClickListener {
         val total = binding.tvMeShoppingPointNeed.text.toString().toInt()

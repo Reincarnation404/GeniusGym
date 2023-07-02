@@ -77,10 +77,4 @@ class MeShoppingDetailViewModel : ViewModel() {
         Navigation.findNavController(view).navigate(R.id.action_meShoppingDetailFragment_to_meShopCartFragment, bundle)
     }
 
-
-
-
-
-
-
 }
