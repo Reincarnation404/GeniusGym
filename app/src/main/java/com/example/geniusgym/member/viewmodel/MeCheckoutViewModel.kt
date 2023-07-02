@@ -14,10 +14,21 @@ import com.example.geniusgym.R
 import com.example.geniusgym.databinding.DialogMeCheckoutBinding
 import com.example.geniusgym.databinding.FragmentMeCheckoutBinding
 import com.example.geniusgym.member.model.ClassInfo
+import com.example.geniusgym.member.model.Point
+import com.example.geniusgym.sharedata.MeShareData
+import tw.idv.william.androidwebserver.core.service.requestTask
 
 class MeCheckoutViewModel : ViewModel() {
     var buylist : ArrayList<ClassInfo> = ArrayList()
 
+    var mePoint = Point()
+
+    fun getPoint(){
+        val point = requestTask<Point>(MeShareData.javaWebUrl + "", "GET")
+        point?.let {
+            mePoint = it
+        }
+    }
 
     fun calculateTotalCost() : Int{
         var total = 0
@@ -27,6 +38,10 @@ class MeCheckoutViewModel : ViewModel() {
             }
         }
         return total
+    }
+
+    fun changeMemberPoint(point : Int){
+//        requestTask<>()
     }
 
     fun checkoutDialog(context : Context, containerDialog: ViewGroup, binding : FragmentMeCheckoutBinding) : Dialog {

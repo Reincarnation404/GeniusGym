@@ -52,7 +52,6 @@ class MeShoppingViewModel : ViewModel() {
             IOImpl.Internal(context).saveFile(jsonArray, "ClassInfoList", IOImpl.Mode.MODE_MEMORY, true)
         }
 
-
     }
 
     private fun update(){
@@ -71,73 +70,46 @@ class MeShoppingViewModel : ViewModel() {
     fun getCategory(context: Context){
 
         val bcType = object : TypeToken<List<SportBigCat>>(){}.type
-        val cType = object : TypeToken<List<List<SportCat>>>(){}.type
+        val cType = object : TypeToken<List<SportCat>>(){}.type
 
         val result = IOImpl.Internal(context).loadArrayFile("BigCategory", IOImpl.Mode.MODE_MEMORY, true)
         val result2 = IOImpl.Internal(context).loadArrayFile("Category", IOImpl.Mode.MODE_MEMORY, true)
 
-        if (result != null || result2 != null ){
+        if (result != null && result2 != null ){
             sportbigcats = Gson().fromJson(result, bcType)
-            sportcats = Gson().fromJson(result2, cType)
+            sportcats = toListArray(Gson().fromJson(result2, cType))
             return
         }
 
-        val bcList = requestTask<List<SportBigCat>>(MeShareData.javaWebUrl + "", "GET", respBodyType = bcType)
+        val bcList = requestTask<List<SportBigCat>>(MeShareData.javaWebUrl + "GetSportCat", "GET", respBodyType = bcType)
         bcList?.let {
             sportbigcats = it
             val jsonArray = Gson().toJsonTree(it, bcType).asJsonArray
             IOImpl.Internal(context).saveFile(jsonArray, "BigCategory", IOImpl.Mode.MODE_MEMORY, true)
         }
 
-        val cList = requestTask<List<List<SportCat>>>(MeShareData.javaWebUrl + "", "GET", respBodyType = cType)
+        val cList = requestTask<List<SportCat>>(MeShareData.javaWebUrl + "sportcats", "GET", respBodyType = cType)
         cList?.let {
-            sportcats = it
+            sportcats = toListArray(cList)
             val jsonArray = Gson().toJsonTree(it, cType).asJsonArray
             IOImpl.Internal(context).saveFile(jsonArray, "Category", IOImpl.Mode.MODE_MEMORY, true)
         }
+
     }
 
+    private fun toListArray( list : List<SportCat>) : List<List<SportCat>>{
 
+        val reList : MutableList<MutableList<SportCat>> = mutableListOf()
+        for (i in 0 .. 4){
+            reList.add(mutableListOf())
+        }
+        for ( i in list.indices){
+            val id = list[i].sb_id
+            reList[id-1].add(list[i])
+        }
 
-//    TEST DATA
-//    val sportbigcats : List<SportBigCat> = listOf(
-//        SportBigCat(1, "有氧", "有氧"),
-//        SportBigCat(2, "無氧", "肩"),
-//        SportBigCat(3, "無氧", "胸"),
-//        SportBigCat(4, "缺氧", "背"),
-//        SportBigCat(5, "沒氧", "腿")
-//    )
-//
-//    val sportcats : List<List<SportCat>> = listOf(
-//
-//        listOf(
-//            SportCat(1, 1, "飛輪"),
-//            SportCat(2, 1, "靜態"),
-//            SportCat(3, 1, "心肺訓練"),
-//            SportCat(4, 1, "跑步"),
-//        ),
-//        listOf(
-//            SportCat(5, 2, "槓鈴肩推"),
-//            SportCat(6, 2, "啞鈴肩推"),
-//            SportCat(7, 2, "啞鈴側平舉"),
-//            SportCat(8, 2, "啞鈴前平舉"),
-//            SportCat(9, 2, "站姿肩推")
-//        ),
-//        listOf(
-//            SportCat(10, 3, "啞鈴握推"),
-//            SportCat(11, 3, "槓鈴握推"),
-//            SportCat(12, 3, "蝴蝶機夾胸"),
-//            SportCat(13, 3, "繩索下斜夾胸"),
-//            SportCat(14,3, "槓鈴斜上推")
-//        ),
-//        listOf(
-//
-//        ),
-//        listOf(
-//
-//        )
-//
-//    )
+        return reList
+    }
 
     private fun search(set: Set<Int>, searchText : String) {
         val setFiltered  = mutableSetOf<ClassInfo>()
