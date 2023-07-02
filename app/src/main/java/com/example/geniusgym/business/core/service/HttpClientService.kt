@@ -30,7 +30,11 @@ import java.time.LocalDateTime
 //)
 
 fun main() {
-    val url = MeShareData.javaWebUrl
+
+//    val url = MeShareData.javaWebUrl
+
+    val url = "http://javaWebUrl/geniusgym_bg/"
+
     val type = object : TypeToken<List<Member>>(){}.type
     val list = requestTask<List<Member>>(url, respBodyType = type)
     println(list)

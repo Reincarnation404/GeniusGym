@@ -37,7 +37,6 @@ class MeShoppingFragment : Fragment() {
         val viewModel: MeShoppingViewModel = ViewModelProvider(this)[MeShoppingViewModel::class.java]
         binding = FragmentMeShoppingBinding.inflate(LayoutInflater.from(requireContext()))
         binding.viewModel = viewModel
-//        TODO: 資料重複、品項沒有間隔
         binding.lifecycleOwner = this
         return binding.root
     }

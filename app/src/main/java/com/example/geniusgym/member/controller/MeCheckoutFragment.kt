@@ -13,12 +13,16 @@ import com.example.geniusgym.R
 import com.example.geniusgym.databinding.FragmentMeCheckoutBinding
 import com.example.geniusgym.member.adapter.MeShoppingAdapter
 import com.example.geniusgym.member.model.ClassInfo
+import com.example.geniusgym.member.model.StoreBean
 import com.example.geniusgym.member.viewmodel.MeCheckoutViewModel
 import com.example.geniusgym.sharedata.MeShareData
 import com.example.geniusgym.util.IOImpl
 import com.google.gson.Gson
 import com.google.gson.JsonArray
 import com.google.gson.JsonObject
+import com.google.gson.JsonParser
+import com.google.gson.reflect.TypeToken
+import org.json.JSONArray
 
 class MeCheckoutFragment : Fragment() {
 
@@ -106,40 +110,19 @@ class MeCheckoutFragment : Fragment() {
 //            讀取資料
             val cartListText = IOImpl.Internal(requireContext()).loadArrayFile("meShoppingCart",
                 IOImpl.Mode.MODE_MEMORY, true)
-            val cartList : MutableList<ClassInfo>  = mutableListOf()
-            cartListText?.forEach {
-                val jsonObject = Gson().fromJson(it, JsonObject::class.java)
-                val classInfo = ClassInfo()
-                with(jsonObject){
-                    classInfo.sc_id = get("sc_id").asInt
-                    classInfo.ci_name = get("ci_name").asString
-                    classInfo.c_id = get("c_id").asString
-                    classInfo.ci_date = get("c_date").asString
-                    classInfo.ci_cost = get("c_cost").asInt
-                    classInfo.ci_ed_time = get("ci_ed_time").asString
-                    classInfo.ci_start_time = get("ci_ed_time").asString
-                }
-                cartList.add(classInfo)
-            }
+
+            val type = object : TypeToken<MutableList<ClassInfo>>() {}.type
+            val cartList = Gson().fromJson<MutableList<ClassInfo>>(cartListText, type)
+
 //            移除已結帳的所有物件
             viewModel.buylist.forEach{
                 if (cartList.contains(it)){
                     cartList.remove(it)
                 }
             }
+
 //            在將未結帳的部分存回內存
-            val jsonArray = JsonArray()
-            cartList.forEach{classde ->
-                val jsonObject = JsonObject()
-                jsonObject.addProperty("c_id", classde.c_id)
-                jsonObject.addProperty("c_date", classde .ci_date)
-                jsonObject.addProperty("sc_id", classde.sc_id)
-                jsonObject.addProperty("ci_name", classde.ci_name)
-                jsonObject.addProperty("c_cost", classde.ci_cost.toString())
-                jsonObject.addProperty("ci_start_time", classde.ci_start_time)
-                jsonObject.addProperty("ci_ed_time", classde.ci_ed_time)
-                jsonArray.add(jsonObject)
-            }
+            val jsonArray = Gson().toJsonTree(cartList, type).asJsonArray
             IOImpl.Internal(requireContext()).saveFile(jsonArray, "meShoppingCart", IOImpl.Mode.MODE_MEMORY, true)
         }
 

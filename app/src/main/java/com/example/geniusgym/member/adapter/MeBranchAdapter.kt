@@ -16,7 +16,7 @@ import com.example.geniusgym.member.model.StoreBean
 import com.example.geniusgym.sharedata.MeShareData
 import com.example.geniusgym.util.OnRepeatClickListener
 
-class MeBranchAdapter(val storeBeans: List<StoreBean>) : RecyclerView.Adapter<MeBranchAdapter.MyViewHolder>() {
+class MeBranchAdapter(var storeBeans: List<StoreBean>) : RecyclerView.Adapter<MeBranchAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val binding = RecycleCellMeBranchBinding.inflate(LayoutInflater.from(parent.context))
@@ -28,11 +28,17 @@ class MeBranchAdapter(val storeBeans: List<StoreBean>) : RecyclerView.Adapter<Me
         return storeBeans.size
     }
 
-    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.binding.tvBranchTitle.text = storeBeans[holder.adapterPosition].bh_name.toString()
-        holder.binding.tvPhonenumber.text = storeBeans[holder.adapterPosition].bh_cell.toString()
-        holder.binding.tvAddress.text = storeBeans[holder.adapterPosition].bh_address.toString()
+    fun setItems(list: List<StoreBean>){
+        storeBeans = list
+        notifyDataSetChanged()
+    }
 
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+        holder.binding.tvBranchTitle.text = storeBeans[holder.adapterPosition].bh_name
+        holder.binding.tvPhonenumber.text = storeBeans[holder.adapterPosition].bh_cell
+        holder.binding.tvAddress.text = storeBeans[holder.adapterPosition].bh_address
+        val time = storeBeans[holder.adapterPosition].bh_start_time + "~" + storeBeans[holder.adapterPosition].bh_ed_time
+        holder.binding.tvBranchTime.text = time
         holder.binding.btImgBranch.setOnClickListener(object : OnRepeatClickListener(){
             override fun onSingleClick(v: View?) {
                 //            將分店名稱放到共用的文件，做資料傳遞
