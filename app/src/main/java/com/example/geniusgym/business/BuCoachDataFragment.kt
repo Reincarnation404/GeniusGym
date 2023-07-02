@@ -1,11 +1,14 @@
 package com.example.geniusgym.business
 
 import android.os.Bundle
+import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuItemCompat
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.geniusgym.R
@@ -33,16 +36,14 @@ class BuCoachDataFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         with(binding){
             viewModel?.inti()
-
+            setupMenu()
             rvBuCoachData.layoutManager = LinearLayoutManager(requireContext())
             viewModel?.coaches?.observe(viewLifecycleOwner) { coaches ->
-                // adapter為null要建立新的adapter；之後只要呼叫updateFriends(friends)即可
+                // adapter為null要建立新的adapter；之後只要呼叫updateBuCoaches(coaches)即可
                 if (rvBuCoachData.adapter == null) {
                     rvBuCoachData.adapter = BuCoachDataAdapter(coaches)
-
                 } else {
                     (rvBuCoachData.adapter as BuCoachDataAdapter).updateBuCoaches(coaches)
-                    //viewModel?.inti()
                 }
             }
 
@@ -52,6 +53,37 @@ class BuCoachDataFragment : Fragment() {
             }
         }
     }
+
+
+    private fun setupMenu() {
+        (requireActivity() as MenuHost).addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menuInflater.inflate(R.menu.bu_option_menu_filter_search, menu)
+
+            }
+
+            override fun onMenuItemSelected(item: MenuItem): Boolean {
+                // Validate and handle the selected menu item
+                when (item.itemId) {
+                    R.id.toolbar_search -> Toast.makeText(activity,"search", Toast.LENGTH_LONG).show()
+
+                    R.id.toolbar_filter -> {
+                        Toast.makeText(activity,"filter", Toast.LENGTH_LONG).show()
+                    }
+                }
+                // binding.viewModel?.text?.value = text
+                // 只要顯示選取項目文字可改成下列方式；但實際應用較複雜，需要上面when比對寫法
+                // binding.viewModel?.text?.value = item.title.toString()
+                // 做對應的處理即可回傳true，讓Menu處理到此為止
+                return true
+            }
+
+            override fun onPrepareMenu(menu: Menu) {
+                // Handle for example visibility of menu items
+            }
+        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+    }
+
 
 
 }

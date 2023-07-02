@@ -11,13 +11,12 @@ import tw.idv.william.androidwebserver.core.service.requestTask
 class BuClassDataViewModel : ViewModel() {
     // 原始課程列表
     private var BuClassList = mutableListOf<Class_Info>()
-    // 受監控的LiveData，一旦指派新值就會更新教練列表畫面
+    // 受監控的LiveData，一旦指派新值就會更新課程列表畫面
     val classes: MutableLiveData<List<Class_Info>> by lazy { MutableLiveData<List<Class_Info>>() }
     val url = MeShareData.javaWebUrl + "buClass"
 
     fun inti(){
         val type = object : TypeToken<List<Class_Info>>() {}.type
         classes.value = requestTask<List<Class_Info>>(url, respBodyType = type)
-        println(classes.value?.get(0))
     }
 }

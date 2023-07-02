@@ -1,15 +1,10 @@
 package com.example.geniusgym.business.viewModel
 
-import android.app.AlertDialog
-import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.geniusgym.business.model.Member
 import com.example.geniusgym.business.model.Notify
-import com.google.gson.JsonObject
-import tw.idv.william.androidwebserver.core.service.requestTask
 
-class BuNotificationDetailViewModel : ViewModel() {
+class BuNotiViewModel : ViewModel() {
 //  val url = "http://10.0.2.2:8080/geninusgym_bg/NotifyController/1"
 
     val notify: MutableLiveData<Notify> by lazy { MutableLiveData<Notify>() }

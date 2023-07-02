@@ -32,20 +32,19 @@ class BuClassDataFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         with(binding){
-            rvBuClassData.layoutManager = LinearLayoutManager(requireContext())
             viewModel?.inti()
-            val buActivity = requireActivity() as BuActivity
+
+            rvBuClassData.layoutManager = LinearLayoutManager(requireContext())
+
             viewModel?.classes?.observe(viewLifecycleOwner) { classes ->
                 // adapter為null要建立新的adapter；之後只要呼叫updateBuClass(classes)即可
                 if (rvBuClassData.adapter == null) {
-                    rvBuClassData.adapter = BuClassDataAdapter(classes, buActivity)
-
+                    rvBuClassData.adapter = BuClassDataAdapter(classes)
                 } else {
                     (rvBuClassData.adapter as BuClassDataAdapter).updateBuClass(classes)
-                    viewModel?.inti()
                 }
             }
-            //viewModel?.inti()
+
             fabBuClassDataAdd.setOnClickListener {
                 Navigation.findNavController(it).navigate(R.id.action_buClassData_to_buClassDataAdd)
             }

@@ -76,7 +76,7 @@ class BuBusinessDataAddFragment : Fragment() {
 
                         requestTask<JsonObject>(url, "POST", viewModel?.buz?.value)
                         println(viewModel?.buz?.value)
-                       // Navigation.findNavController(it).navigate(R.id.buBusinessDataFragment)
+                        Navigation.findNavController(it).navigate(R.id.buBusinessDataFragment)
                     }
                 }
             }

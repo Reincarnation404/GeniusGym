@@ -20,7 +20,7 @@ import com.example.geniusgym.databinding.FragmentBuClassDataItemBinding
 /**
  * 課程列表所需的Adapter
  */
-class BuClassDataAdapter(private var classes: List<Class_Info>, var buActivity: BuActivity):
+class BuClassDataAdapter(private var classes: List<Class_Info>):
     RecyclerView.Adapter<BuClassDataAdapter.BuClassDataViewHolder>() {
 
     /**

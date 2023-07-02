@@ -42,7 +42,6 @@ class BuBusinessDataFragment : Fragment() {
                 // adapter為null要建立新的adapter；之後只要呼叫updateBuBusiness(bubuzz)即可
                 if (rvBuBusinessData.adapter == null) {
                     rvBuBusinessData.adapter = BuBusinessDataAdapter(bubuzz)
-
                 } else {
                     (rvBuBusinessData.adapter as BuBusinessDataAdapter).updateBuBusiness(bubuzz)
                 }

@@ -109,6 +109,13 @@ class BuMemberDataDetailFragment : Fragment() {
                 }
             }
 
+            if(viewModel?.member?.value?.m_sus == true){
+                btBuAddMemDataDetailSuspend.visibility = View.VISIBLE
+                btBuAddMemDataDetailActive.visibility = View.GONE
+            }else{
+                btBuAddMemDataDetailSuspend.visibility = View.GONE
+                btBuAddMemDataDetailActive.visibility = View.VISIBLE
+            }
 
         }
     }

@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.geniusgym.business.viewModel.BuNotificationDetailViewModel" />
+            type="com.example.geniusgym.business.viewModel.BuNotiViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -211,7 +211,6 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.971"
-                    app:layout_constraintStart_toEndOf="@+id/btBuAddNotiCancel"
                     app:layout_constraintTop_toBottomOf="@+id/tilBuAddNotiText"
                     app:layout_constraintVertical_bias="1.0" />
 
@@ -219,17 +218,16 @@
                     android:id="@+id/btBuAddNotiDataDetailSave"
                     android:layout_width="130dp"
                     android:layout_height="84dp"
-                    android:layout_marginTop="20dp"
                     android:layout_marginEnd="50dp"
-                    android:layout_marginBottom="20dp"
+                    android:layout_marginBottom="176dp"
                     android:text="@string/btBuAddNotiSaveNoti"
                     android:textColor="#000000"
                     android:textSize="24sp"
                     android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tilBuAddNotiText" />
+                    app:layout_constraintTop_toBottomOf="@+id/tilBuAddNotiText"
+                    app:layout_constraintVertical_bias="1.0"/>
 
                 <Button
                     android:id="@+id/btBuAddNotiCancel"
@@ -244,7 +242,7 @@
                     android:textSize="24sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tilBuAddNotiPic"
+                    app:layout_constraintTop_toBottomOf="@+id/tilBuAddNotiText"
                     app:layout_constraintVertical_bias="0.0" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

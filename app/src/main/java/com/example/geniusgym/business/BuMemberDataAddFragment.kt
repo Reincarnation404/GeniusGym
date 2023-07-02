@@ -93,6 +93,7 @@ class BuMemberDataAddFragment : Fragment() {
                         val respbody = requestTask<JsonObject>(url, "POST", viewModel?.member?.value)
                         //println(viewModel?.member?.value.toString())
                         //println(viewModel?.member?.value?.m_ed_date)
+                        Navigation.findNavController(it).navigate(R.id.buMemberDataFragment)
                     }
                 }
 

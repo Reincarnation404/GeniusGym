@@ -4,6 +4,8 @@ import android.app.AlertDialog
 import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.navigation.Navigation
+import com.example.geniusgym.R
 import com.example.geniusgym.business.model.Business
 import com.example.geniusgym.business.model.Class_Info
 import com.example.geniusgym.business.model.testClass_Info
@@ -101,13 +103,14 @@ class BuClassViewModel : ViewModel() {
     }
 
     fun Available(view: View){
-        if (classs?.value!!.ci_avail == true) {
+        if (classs.value!!.ci_avail == true) {
             AlertDialog.Builder(view.context)
                 .setMessage("確定將此課程停止報名?")
                 .setPositiveButton("是") { _, _ ->
-                    classs?.value.run {
+                    classs.value.run {
                         requestTask<JsonObject>(url, "DELETE", classs.value)
-                        println(classs?.value)
+                        println(classs.value)
+                        Navigation.findNavController(view).navigate(R.id.buClassDataFragment)
                     }
                 }
                 .setCancelable(true)
@@ -116,9 +119,10 @@ class BuClassViewModel : ViewModel() {
             AlertDialog.Builder(view.context)
                 .setMessage("確定將此課程開放報名?")
                 .setPositiveButton("是") { _, _ ->
-                    classs?.value.run {
-                        requestTask<JsonObject>(url, "DELETE", classs?.value)
-                        println(classs?.value)
+                    classs.value.run {
+                        requestTask<JsonObject>(url, "DELETE", classs.value)
+                        println(classs.value)
+                        Navigation.findNavController(view).navigate(R.id.buClassDataFragment)
                     }
                 }
                 .setCancelable(true)

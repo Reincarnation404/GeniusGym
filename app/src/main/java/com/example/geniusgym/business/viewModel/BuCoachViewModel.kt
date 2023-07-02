@@ -4,6 +4,8 @@ import android.app.AlertDialog
 import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.navigation.Navigation
+import com.example.geniusgym.R
 import com.example.geniusgym.business.model.Coach
 import com.example.geniusgym.sharedata.MeShareData
 import com.google.gson.JsonObject
@@ -33,13 +35,14 @@ class BuCoachViewModel: ViewModel() {
     }
 
     fun Suspend(view: View){
-        if (coach?.value!!.c_sus == true) {
+        if (coach.value!!.c_sus == true) {
             AlertDialog.Builder(view.context)
                 .setMessage("確定將此用戶停權?")
                 .setPositiveButton("是") { _, _ ->
-                    coach?.value.run {
+                    coach.value.run {
                         requestTask<JsonObject>(url, "DELETE", coach.value)
-                        println(coach?.value)
+                        println(coach.value)
+                        Navigation.findNavController(view).navigate(R.id.buCoachDataFragment)
                     }
                 }
                 .setCancelable(true)
@@ -47,9 +50,10 @@ class BuCoachViewModel: ViewModel() {
         }else{AlertDialog.Builder(view.context)
             .setMessage("確定將此用戶解除停權?")
             .setPositiveButton("是") { _, _ ->
-                coach?.value.run {
-                    requestTask<JsonObject>(url, "DELETE", coach?.value)
-                    println(coach?.value)
+                coach.value.run {
+                    requestTask<JsonObject>(url, "DELETE", coach.value)
+                    println(coach.value)
+                    Navigation.findNavController(view).navigate(R.id.buCoachDataFragment)
                 }
             }
             .setCancelable(true)

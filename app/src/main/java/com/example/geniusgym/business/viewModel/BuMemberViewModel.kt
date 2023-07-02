@@ -6,6 +6,7 @@ import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.navigation.Navigation
+import com.example.geniusgym.R
 import com.example.geniusgym.business.model.Member
 import com.example.geniusgym.business.model.testBuMember
 import com.example.geniusgym.sharedata.MeShareData
@@ -39,9 +40,30 @@ class BuMemberViewModel: ViewModel() {
         return member.value?.m_ed_date?.let { format.format(it) }
     }
 
-//    fun toFormattedString(): String? {
-//        var datetime = member.value?.m_ed_time
-//        datetime = SimpleDateFormat("yyyy-MM-dd HH:mm")
-//        return datetime
-//    }
+    fun Suspend(view: View){
+        if (member.value!!.m_sus == true) {
+            AlertDialog.Builder(view.context)
+                .setMessage("確定將此用戶停權?")
+                .setPositiveButton("是") { _, _ ->
+                    member.value.run {
+                        requestTask<JsonObject>(url, "DELETE", member.value)
+                        println(member.value)
+                        Navigation.findNavController(view).navigate(R.id.buMemberDataFragment)
+                    }
+                }
+                .setCancelable(true)
+                .show()
+        }else{AlertDialog.Builder(view.context)
+            .setMessage("確定將此用戶解除停權?")
+            .setPositiveButton("是") { _, _ ->
+                member.value.run {
+                    requestTask<JsonObject>(url, "DELETE", member.value)
+                    println(member.value)
+                    Navigation.findNavController(view).navigate(R.id.buMemberDataFragment)
+                }
+            }
+            .setCancelable(true)
+            .show()}
+        true
+    }
 }

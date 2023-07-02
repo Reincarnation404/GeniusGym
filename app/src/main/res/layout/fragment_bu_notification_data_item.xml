@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.geniusgym.business.viewModel.BuNotificationDetailViewModel" />
+            type="com.example.geniusgym.business.viewModel.BuNotiViewModel" />
     </data>
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"

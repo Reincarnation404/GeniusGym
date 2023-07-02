@@ -25,7 +25,6 @@ class BuBusinessDataViewModel : ViewModel() {
     fun inti(){
         val type = object : TypeToken<List<Business>>() {}.type
         bubuzz.value = requestTask<List<Business>>(url, respBodyType = type)
-        println(bubuzz.value?.get(0))
     }
 
     /**

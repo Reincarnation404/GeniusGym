@@ -2,10 +2,9 @@ package com.example.geniusgym.business.viewModel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.geniusgym.business.model.Member
 import com.example.geniusgym.business.model.Notify
 
-class BuNotificationDataAddViewModel : ViewModel() {
+class BuNotiDataAddViewModel : ViewModel() {
     val notify: MutableLiveData<Notify> by lazy { MutableLiveData<Notify>(Notify()) }
 
 //    val branches: MutableLiveData<List<String>>

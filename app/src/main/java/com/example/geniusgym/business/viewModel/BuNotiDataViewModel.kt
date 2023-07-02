@@ -2,7 +2,6 @@ package com.example.geniusgym.business.viewModel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.geniusgym.business.model.Coach
 import com.example.geniusgym.business.model.Notify
 import com.example.geniusgym.sharedata.MeShareData
 import com.google.gson.reflect.TypeToken
@@ -11,7 +10,7 @@ import tw.idv.william.androidwebserver.core.service.requestTask
 /**
  * 通知列表資料處理
  */
-class BuNotificationManageViewModel : ViewModel() {
+class BuNotiDataViewModel : ViewModel() {
 
     val url = MeShareData.javaWebUrl + "buCoach"
     // 原始公告列表

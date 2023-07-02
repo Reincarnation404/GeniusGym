@@ -89,6 +89,7 @@ class BuCoachDataAddFragment : Fragment() {
 
                         requestTask<JsonObject>(url, "POST", viewModel?.coach?.value)
                         println(viewModel?.coach?.value)
+                        Navigation.findNavController(view).navigate(R.id.buCoachDataFragment)
                     }
                 }
             }

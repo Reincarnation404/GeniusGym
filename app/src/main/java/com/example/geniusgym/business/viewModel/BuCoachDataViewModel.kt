@@ -24,7 +24,6 @@ class BuCoachDataViewModel : ViewModel() {
     fun inti(){
         val type = object : TypeToken<List<Coach>>() {}.type
         coaches.value = requestTask<List<Coach>>(url, respBodyType = type)
-        println(coaches.value?.get(0))
     }
 
     /**

@@ -244,23 +244,26 @@
 
             <Button
                 android:id="@+id/btBuAddMemDataDetailModify"
-                android:layout_width="155dp"
+                android:layout_width="130dp"
                 android:layout_height="84dp"
                 android:layout_marginTop="20dp"
+                android:layout_marginEnd="50dp"
                 android:layout_marginBottom="20dp"
+                android:backgroundTint="@color/perfect_yellow"
                 android:text="@string/btBuDataModify"
                 android:textColor="#000000"
                 android:textSize="24sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tilBuAddMemDataDetailExpireDate" />
+                app:layout_constraintTop_toBottomOf="@+id/tilBuAddMemDataDetailExpireDate"
+                app:layout_constraintVertical_bias="1.0" />
 
             <Button
                 android:id="@+id/btBuAddMemDataDetailSave"
-                android:layout_width="155dp"
+                android:layout_width="130dp"
                 android:layout_height="84dp"
                 android:layout_marginTop="20dp"
+                android:layout_marginEnd="50dp"
                 android:layout_marginBottom="20dp"
                 android:text="@string/btBuAddNotiSaveNoti"
                 android:textColor="#000000"
@@ -268,9 +271,40 @@
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tilBuAddMemDataDetailExpireDate"
+                app:layout_constraintVertical_bias="1.0" />
+
+
+            <Button
+                android:id="@+id/btBuAddMemDataDetailSuspend"
+                android:layout_width="130dp"
+                android:layout_height="84dp"
+                android:layout_marginStart="50dp"
+                android:backgroundTint="#BC635D"
+                android:text="@string/btBuAddMemDataSuspend"
+                android:textColor="#000000"
+                android:textColorLink="#FFD200"
+                android:textSize="24sp"
+                android:onClick="@{viewModel::Suspend}"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tilBuAddMemDataDetailExpireDate" />
 
+            <Button
+                android:id="@+id/btBuAddMemDataDetailActive"
+                android:layout_width="130dp"
+                android:layout_height="84dp"
+                android:layout_marginStart="50dp"
+                android:backgroundTint="#BC635D"
+                android:text="@string/btBuAddMemDataActive"
+                android:textColor="#000000"
+                android:textColorLink="#FFD200"
+                android:textSize="20sp"
+                android:visibility="gone"
+                android:onClick="@{viewModel::Suspend}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tilBuAddMemDataDetailExpireDate" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
