@@ -1,7 +1,5 @@
 package com.example.geniusgym.business.adapter
 
-import android.app.AlertDialog
-import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -14,8 +12,6 @@ import com.example.geniusgym.business.model.Member
 import com.example.geniusgym.business.viewModel.BuMemberViewModel
 import com.example.geniusgym.databinding.FragmentBuMemberDataItemBinding
 import com.example.geniusgym.sharedata.MeShareData.javaWebUrl
-import com.google.gson.JsonObject
-import tw.idv.william.androidwebserver.core.service.requestTask
 
 /**
  * 會員列表所需的Adapter

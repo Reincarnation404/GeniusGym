@@ -3,10 +3,9 @@ package com.example.geniusgym.business.viewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.geniusgym.business.model.Class_Info
-import com.example.geniusgym.business.model.Coach
 import com.example.geniusgym.sharedata.MeShareData
 import com.google.gson.reflect.TypeToken
-import tw.idv.william.androidwebserver.core.service.requestTask
+import com.example.geniusgym.business.core.service.requestTask
 
 class BuClassDataViewModel : ViewModel() {
     // 原始課程列表

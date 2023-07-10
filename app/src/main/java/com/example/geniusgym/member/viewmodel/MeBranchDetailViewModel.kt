@@ -2,17 +2,12 @@ package com.example.geniusgym.member.viewmodel
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.example.geniusgym.business.model.Member
 import com.example.geniusgym.member.model.StoreBean
 import com.example.geniusgym.sharedata.MeShareData
 import com.example.geniusgym.util.IOImpl
 import com.google.gson.Gson
-import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
-import kotlinx.coroutines.cancel
-import kotlinx.coroutines.launch
-import tw.idv.william.androidwebserver.core.service.requestTask
+import com.example.geniusgym.business.core.service.requestTask
 
 class MeBranchDetailViewModel : ViewModel() {
     var storeBeans : List<StoreBean> = listOf()

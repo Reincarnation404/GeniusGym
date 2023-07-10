@@ -48,6 +48,7 @@ class MeShoppingFragment : Fragment() {
         with(binding){
             viewModel?.branchName?.value = MeShareData.branchName
             meShoppingRecycle.layoutManager = LinearLayoutManager(requireContext())
+            viewModel?.getClassInfoFromLocal(requireContext())
             meAdapter = viewModel!!.shopitems.value?.let {
                 Log.d( "adapter", it.toString())
                 MeShoppingAdapter(
@@ -55,9 +56,10 @@ class MeShoppingFragment : Fragment() {
                 )
             }!!
             meShoppingRecycle.adapter = meAdapter
-//          TODO: 將Fragmet設定手勢，只要由左向右滑就判定要打開drawlayout
 
-//            root.onTouchEvent()
+            viewModel?.getClassInfoFromInternet(requireContext(), meAdapter)
+
+
         }
 
     }

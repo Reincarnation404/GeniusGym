@@ -5,6 +5,6 @@ import java.time.LocalDate
 import java.time.LocalDateTime
 
 data class Point(
-    var p_rec : String = ""
+    var p_left : Int = 0
 
 )

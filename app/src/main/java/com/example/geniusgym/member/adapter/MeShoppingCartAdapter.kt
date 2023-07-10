@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.geniusgym.databinding.RecycleCellMeShoppingCartBinding
 import com.example.geniusgym.member.model.ClassInfo
 
-class MeShoppingCartAdapter(val list: List<ClassInfo>) : RecyclerView.Adapter<MeShoppingCartAdapter.ShoppingCartViewHolder>() {
+class MeShoppingCartAdapter(var list: List<ClassInfo>) : RecyclerView.Adapter<MeShoppingCartAdapter.ShoppingCartViewHolder>() {
 
     class ShoppingCartViewHolder(val binding : RecycleCellMeShoppingCartBinding) : RecyclerView.ViewHolder(binding.root)
 

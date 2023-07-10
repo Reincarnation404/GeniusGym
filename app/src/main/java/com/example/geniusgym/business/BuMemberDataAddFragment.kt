@@ -5,17 +5,13 @@ import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Intent
 import android.graphics.Color
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.provider.MediaStore
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.databinding.adapters.TextViewBindingAdapter.setText
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.example.geniusgym.business.viewModel.BuMemberDataAddViewModel
@@ -23,7 +19,7 @@ import com.example.geniusgym.R
 import com.example.geniusgym.databinding.FragmentBuMemberDataAddBinding
 import com.example.geniusgym.sharedata.MeShareData.javaWebUrl
 import com.google.gson.JsonObject
-import tw.idv.william.androidwebserver.core.service.requestTask
+import com.example.geniusgym.business.core.service.requestTask
 import java.sql.Timestamp
 import java.text.SimpleDateFormat
 import java.util.*

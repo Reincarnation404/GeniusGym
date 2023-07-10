@@ -13,17 +13,8 @@ import com.example.geniusgym.R
 import com.example.geniusgym.databinding.FragmentMeCheckoutBinding
 import com.example.geniusgym.member.adapter.MeShoppingAdapter
 import com.example.geniusgym.member.model.ClassInfo
-import com.example.geniusgym.member.model.StoreBean
 import com.example.geniusgym.member.viewmodel.MeCheckoutViewModel
 import com.example.geniusgym.sharedata.MeShareData
-import com.example.geniusgym.util.IOImpl
-import com.google.gson.Gson
-import com.google.gson.JsonArray
-import com.google.gson.JsonObject
-import com.google.gson.JsonParser
-import com.google.gson.reflect.TypeToken
-import org.json.JSONArray
-import tw.idv.william.androidwebserver.core.service.requestTask
 
 class MeCheckoutFragment : Fragment() {
 
@@ -51,6 +42,7 @@ class MeCheckoutFragment : Fragment() {
         }
         val adapter = MeShoppingAdapter(viewModel.buylist)
         setController(binding, adapter)
+
         if (arguments?.getBoolean("directBuyFromCart") == true){
             binding.btMeShoppingCheckout.setOnClickListener(directcheckoutlistener)
         }else{
@@ -66,15 +58,15 @@ class MeCheckoutFragment : Fragment() {
             adapter.unclickable()
             meRecycleShoppingCart.adapter = adapter
             meRecycleShoppingCart.layoutManager = LinearLayoutManager(requireContext())
-            val total = 0
+            val total = viewModel.calculateTotalCost()
             tvMeShoppingPointNeed.text = total.toString()
-            meShoppingPointHave.text = MeShareData.personPoint.toString()
+            viewModel.getPoint()
+//            meShoppingPointHave.text = MeShareData.personPoint.toString()
+            meShoppingPointHave.text = viewModel.mePoint.p_left.toString()
         }
     }
 
-//    private fun getTotal() : Int{
-//        requestTask<>()
-//    }
+
 
     private val directcheckoutlistener = View.OnClickListener {
         val total = binding.tvMeShoppingPointNeed.text.toString().toInt()
@@ -95,23 +87,23 @@ class MeCheckoutFragment : Fragment() {
         }else{
 //      TODO: 需要更正成修改後端
             MeShareData.personPoint -= total
-//            讀取資料
-            val cartListText = IOImpl.Internal(requireContext()).loadArrayFile("meShoppingCart",
-                IOImpl.Mode.MODE_MEMORY, true)
-
-            val type = object : TypeToken<MutableList<ClassInfo>>() {}.type
-            val cartList = Gson().fromJson<MutableList<ClassInfo>>(cartListText, type)
-
-//            移除已結帳的所有物件
-            viewModel.buylist.forEach{
-                if (cartList.contains(it)){
-                    cartList.remove(it)
-                }
-            }
-
-//            在將未結帳的部分存回內存
-            val jsonArray = Gson().toJsonTree(cartList, type).asJsonArray
-            IOImpl.Internal(requireContext()).saveFile(jsonArray, "meShoppingCart", IOImpl.Mode.MODE_MEMORY, true)
+////            讀取資料
+//            val cartListText = IOImpl.Internal(requireContext()).loadArrayFile("meShoppingCart",
+//                IOImpl.Mode.MODE_MEMORY, true)
+//
+//            val type = object : TypeToken<MutableList<ClassInfo>>() {}.type
+//            val cartList = Gson().fromJson<MutableList<ClassInfo>>(cartListText, type)
+//
+////            移除已結帳的所有物件
+//            viewModel.buylist.forEach{
+//                if (cartList.contains(it)){
+//                    cartList.remove(it)
+//                }
+//            }
+//
+////            在將未結帳的部分存回內存
+//            val jsonArray = Gson().toJsonTree(cartList, type).asJsonArray
+//            IOImpl.Internal(requireContext()).saveFile(jsonArray, "meShoppingCart", IOImpl.Mode.MODE_MEMORY, true)
         }
 
 //      結帳的dialog
@@ -121,5 +113,7 @@ class MeCheckoutFragment : Fragment() {
         dialogCheckingAnim.show()
 
     }
+
+
 
 }

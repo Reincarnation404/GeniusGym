@@ -12,12 +12,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.example.geniusgym.R
 import com.example.geniusgym.business.model.Coach
-import com.example.geniusgym.business.model.testBuCoach
 import com.example.geniusgym.business.viewModel.BuCoachViewModel
 import com.example.geniusgym.databinding.FragmentBuCoachDataDetailBinding
 import com.example.geniusgym.sharedata.MeShareData.javaWebUrl
 import com.google.gson.JsonObject
-import tw.idv.william.androidwebserver.core.service.requestTask
+import com.example.geniusgym.business.core.service.requestTask
 import java.sql.Timestamp
 import java.text.SimpleDateFormat
 import java.util.*

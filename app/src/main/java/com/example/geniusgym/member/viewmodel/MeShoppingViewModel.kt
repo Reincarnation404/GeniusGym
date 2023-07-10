@@ -21,7 +21,7 @@ import com.example.geniusgym.sharedata.MeShareData
 import com.example.geniusgym.util.IOImpl
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import tw.idv.william.androidwebserver.core.service.requestTask
+import com.example.geniusgym.business.core.service.requestTask
 
 
 class MeShoppingViewModel : ViewModel() {
@@ -31,27 +31,32 @@ class MeShoppingViewModel : ViewModel() {
     val branchName : MutableLiveData<String> by lazy { MutableLiveData() }
     private var sportbigcats : List<SportBigCat> = listOf()
     private var sportcats : List<List<SportCat>> = listOf()
-    init {
-        update()
-
-    }
+//    init {
+//        update()
+//
+//    }
 
     fun getClassInfoFromLocal(context: Context){
         val classType = object : TypeToken<List<ClassInfo>>(){}.type
         val jsonArray = IOImpl.Internal(context).loadArrayFile("ClassInfoList", IOImpl.Mode.MODE_MEMORY, true)
         val classInfoList = Gson().fromJson<List<ClassInfo>>(jsonArray, classType)
-        shopitems.value = classInfoList
+        if (classInfoList == null){
+            shopitems.value = mutableListOf()
+        }else{
+            shopitems.value = classInfoList
+        }
+
     }
 
-    fun getClassInfoFromInternal(context: Context){
+    fun getClassInfoFromInternet(context: Context, adapter: MeShoppingAdapter){
         val classType = object : TypeToken<List<ClassInfo>>(){}.type
-        val classInfoList = requestTask<List<ClassInfo>>(MeShareData.javaWebUrl + "", "GET", respBodyType = classType)
+        val classInfoList = requestTask<List<ClassInfo>>(MeShareData.javaWebUrl + "member/classinfo", "GET", respBodyType = classType)
         classInfoList?.let {
             shopitems.value = it
             val jsonArray = Gson().toJsonTree(it, classType).asJsonArray
             IOImpl.Internal(context).saveFile(jsonArray, "ClassInfoList", IOImpl.Mode.MODE_MEMORY, true)
         }
-
+        shopitems.value?.let { adapter.setList(it) }
     }
 
     private fun update(){
@@ -146,7 +151,6 @@ class MeShoppingViewModel : ViewModel() {
         window?.setGravity(Gravity.CENTER)
         window?.setContentView(bindingDialog.root)
         window?.setWindowAnimations(R.style.dialog_style)
-//        TODO:動畫執行失敗
 
 //        設定EditText的提示文字
         bindingDialog.edtMeShoppingSearch.hint = setDialogSpannableString(context)
@@ -175,15 +179,13 @@ class MeShoppingViewModel : ViewModel() {
         return dialog
     }
 
-    private fun setDialogAdapter(context: Context) : MeShoppingSearchExpandableListViewAdapter{
+    private fun setDialogAdapter(context: Context): MeShoppingSearchExpandableListViewAdapter {
         getCategory(context)
-        val adapter =
-            MeShoppingSearchExpandableListViewAdapter(
-                context,
-                sportbigcats,
-                sportcats
-            )
-        return adapter
+        return MeShoppingSearchExpandableListViewAdapter(
+                    context,
+                    sportbigcats,
+                    sportcats
+                )
     }
     private fun setDialogSpannableString(context : Context) : SpannableString{
         //        設定提示文字附加圖片

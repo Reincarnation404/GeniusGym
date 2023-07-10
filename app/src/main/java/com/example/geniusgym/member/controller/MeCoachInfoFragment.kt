@@ -29,7 +29,7 @@ class MeCoachInfoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         with(binding){
-
+            viewModel.getCoachInfo()
             recycMeCoachinfo.adapter = MeCoachInfoAdapter(viewModel.coachinfos)
             recycMeCoachinfo.layoutManager = GridLayoutManager(requireContext(), 2)
 

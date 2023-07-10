@@ -1,19 +1,15 @@
 package com.example.geniusgym.business.viewModel
 
 import android.app.AlertDialog
-import android.text.Editable
 import android.view.View
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.navigation.Navigation
 import com.example.geniusgym.R
 import com.example.geniusgym.business.model.Member
-import com.example.geniusgym.business.model.testBuMember
 import com.example.geniusgym.sharedata.MeShareData
 import com.google.gson.JsonObject
-import com.google.gson.reflect.TypeToken
-import tw.idv.william.androidwebserver.core.service.requestTask
-import java.sql.Timestamp
+import com.example.geniusgym.business.core.service.requestTask
 import java.text.SimpleDateFormat
 import java.util.*
 

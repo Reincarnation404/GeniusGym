@@ -6,12 +6,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.navigation.Navigation
 import com.example.geniusgym.R
-import com.example.geniusgym.business.model.Business
 import com.example.geniusgym.business.model.Class_Info
-import com.example.geniusgym.business.model.testClass_Info
 import com.example.geniusgym.sharedata.MeShareData
 import com.google.gson.JsonObject
-import tw.idv.william.androidwebserver.core.service.requestTask
+import com.example.geniusgym.business.core.service.requestTask
 import java.text.SimpleDateFormat
 import java.util.*
 

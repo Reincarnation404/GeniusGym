@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.example.geniusgym.business.model.Notify
 import com.example.geniusgym.sharedata.MeShareData
 import com.google.gson.reflect.TypeToken
-import tw.idv.william.androidwebserver.core.service.requestTask
+import com.example.geniusgym.business.core.service.requestTask
 
 /**
  * 通知列表資料處理

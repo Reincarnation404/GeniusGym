@@ -3,7 +3,6 @@ package com.example.geniusgym.business
 import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,13 +11,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.example.geniusgym.business.viewModel.BuClassViewModel
 import com.example.geniusgym.R
-import com.example.geniusgym.business.model.Business
 import com.example.geniusgym.business.model.Class_Info
-import com.example.geniusgym.business.viewModel.BuBusinessViewModel
 import com.example.geniusgym.databinding.FragmentBuClassDataDetailBinding
 import com.example.geniusgym.sharedata.MeShareData
 import com.google.gson.JsonObject
-import tw.idv.william.androidwebserver.core.service.requestTask
+import com.example.geniusgym.business.core.service.requestTask
 import java.sql.Timestamp
 import java.text.SimpleDateFormat
 import java.util.*

@@ -1,10 +1,8 @@
-package tw.idv.william.androidwebserver.core.service
+package com.example.geniusgym.business.core.service
 
 import com.example.geniusgym.business.model.Member
-import com.example.geniusgym.sharedata.MeShareData
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.google.gson.JsonArray
 import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
@@ -17,7 +15,6 @@ import java.net.CookieManager
 import java.net.HttpURLConnection
 import java.net.HttpURLConnection.HTTP_OK
 import java.net.URL
-import java.time.LocalDateTime
 
 //data class Member(
 //    var id: Int,
@@ -57,6 +54,8 @@ inline fun <reified T> requestTask(
     deferred.await()
 }
 
+
+
 inline fun <reified T> request(
     url: String,
     method: String = "GET",
@@ -92,5 +91,5 @@ inline fun <reified T> request(
 }
 
 val GSON: Gson = GsonBuilder()
-    .setDateFormat("yyyy-MM-dd HH:mm:ss")
+//    .setDateFormat("yyyy-MM-dd HH:mm:ss")
     .create()

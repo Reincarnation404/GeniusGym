@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewmodel.viewModelFactory
 import androidx.navigation.Navigation
 import com.example.geniusgym.R
 import com.example.geniusgym.databinding.FragmentMeShoppingDetailBinding
@@ -13,7 +12,6 @@ import com.example.geniusgym.util.IOImpl
 import com.example.geniusgym.util.IOImpl.Internal
 import com.google.gson.Gson
 import com.google.gson.JsonArray
-import com.google.gson.JsonObject
 
 class MeShoppingDetailViewModel : ViewModel() {
 
@@ -60,7 +58,13 @@ class MeShoppingDetailViewModel : ViewModel() {
 
         }
         val jsonObject = Gson().toJsonTree(_clasinfo, ClassInfo::class.java).asJsonObject
-        jsonArray.add(jsonObject)
+        if (jsonArray.contains(jsonObject)){
+            Toast.makeText(view.context, "本課程已在購物車選單中", Toast.LENGTH_SHORT).show()
+            return
+        }else{
+            jsonArray.add(jsonObject)
+        }
+
         try {
             internal.saveFile(jsonArray, "meShoppingCart", IOImpl.Mode.MODE_MEMORY, true)
             Toast.makeText(view.context, "添加成功!!", Toast.LENGTH_SHORT).show()
