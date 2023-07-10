@@ -76,7 +76,6 @@ class MeBranchAdapter(var storeBeans: List<StoreBean>) : RecyclerView.Adapter<Me
             }
 
         })
-//        TODO 時間格式要等可以串接了再調整，因此缺營業時間
     }
 
     class MyViewHolder(val binding: RecycleCellMeBranchBinding) : ViewHolder(binding.root)

@@ -3,6 +3,7 @@ package com.example.geniusgym.member.viewmodel
 import android.app.Dialog
 import android.content.Context
 import android.graphics.drawable.AnimationDrawable
+import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.WindowManager
@@ -28,7 +29,6 @@ class MeCheckoutViewModel : ViewModel() {
     var mePoint = Point()
 
     fun getPoint(){
-//        val point = WebRequestSpencer.getInstance().httpGet("member/point")
         val point = requestTask<Point>(MeShareData.javaWebUrl + "member/point", "GET")
         if (point != null) {
             mePoint = point
@@ -83,27 +83,24 @@ class MeCheckoutViewModel : ViewModel() {
         val anim = iv?.drawable as AnimationDrawable
         anim.start()
 
-//        val timer = object : CountDownTimer(2000, 1000){
-//            override fun onTick(p0: Long) {
-//
-//            }
-//
-//            override fun onFinish() {
-//                dialoganim.dismiss()
-//                dialogCheck.show()
-//            }
-//        }
+        val timer = object : CountDownTimer(2000, 1000){
+            override fun onTick(p0: Long) {
 
-        if (transaction()){
-            removeCheckoutItems(context)
-            anim.stop()
-            dialoganim.dismiss()
-            dialogCheck.show()
-        }else{
-            anim.stop()
-            dialoganim.dismiss()
-            Toast.makeText(context, "結帳失敗", Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onFinish() {
+                if (transaction()){
+                    removeCheckoutItems(context)
+                    dialoganim.dismiss()
+                    dialogCheck.show()
+                }else{
+                    anim.stop()
+                    dialoganim.dismiss()
+                    Toast.makeText(context, "結帳失敗", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
+        timer.start()
         return dialoganim
     }
 

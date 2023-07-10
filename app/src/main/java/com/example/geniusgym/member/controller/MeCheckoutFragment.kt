@@ -69,9 +69,6 @@ class MeCheckoutFragment : Fragment() {
 
 
     private val directcheckoutlistener = View.OnClickListener {
-        val total = binding.tvMeShoppingPointNeed.text.toString().toInt()
-        //      TODO: 需要更正成修改後端
-        MeShareData.personPoint -= total
         //      結帳的dialog
         val dialogCheck = viewModel.checkoutDialog(requireContext(), containerDialog, binding)
         //      結帳的動畫
@@ -81,31 +78,10 @@ class MeCheckoutFragment : Fragment() {
 
     private val checkoutlistener = View.OnClickListener {
         val total = binding.tvMeShoppingPointNeed.text.toString().toInt()
-        if (MeShareData.personPoint < total){
+        if (viewModel.mePoint.p_left < total){
             binding.tvMeShoppingError.text = getString(R.string.meShoppoingCheckoutNoMony)
             return@OnClickListener
-        }else{
-//      TODO: 需要更正成修改後端
-            MeShareData.personPoint -= total
-////            讀取資料
-//            val cartListText = IOImpl.Internal(requireContext()).loadArrayFile("meShoppingCart",
-//                IOImpl.Mode.MODE_MEMORY, true)
-//
-//            val type = object : TypeToken<MutableList<ClassInfo>>() {}.type
-//            val cartList = Gson().fromJson<MutableList<ClassInfo>>(cartListText, type)
-//
-////            移除已結帳的所有物件
-//            viewModel.buylist.forEach{
-//                if (cartList.contains(it)){
-//                    cartList.remove(it)
-//                }
-//            }
-//
-////            在將未結帳的部分存回內存
-//            val jsonArray = Gson().toJsonTree(cartList, type).asJsonArray
-//            IOImpl.Internal(requireContext()).saveFile(jsonArray, "meShoppingCart", IOImpl.Mode.MODE_MEMORY, true)
         }
-
 //      結帳的dialog
         val dialogCheck = viewModel.checkoutDialog(requireContext(), containerDialog, binding)
 //      結帳的動畫
