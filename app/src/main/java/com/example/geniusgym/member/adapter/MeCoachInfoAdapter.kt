@@ -13,7 +13,8 @@ import com.example.geniusgym.databinding.RecycleCellMeCoachinfoBinding
 import com.example.geniusgym.member.model.CoachBean
 import java.io.ByteArrayInputStream
 
-class MeCoachInfoAdapter(val coaches: List<CoachBean>) : RecyclerView.Adapter<MeCoachInfoAdapter.MyViewHolder>() {
+class MeCoachInfoAdapter(val coaches: List<CoachBean>)
+    : RecyclerView.Adapter<MeCoachInfoAdapter.MyViewHolder>() {
 
     class MyViewHolder(val binding: RecycleCellMeCoachinfoBinding): RecyclerView.ViewHolder(binding.root)
 
