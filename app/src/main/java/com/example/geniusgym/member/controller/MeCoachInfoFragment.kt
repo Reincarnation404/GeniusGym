@@ -10,9 +10,10 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.geniusgym.databinding.FragmentMeCoachInfoBinding
 import com.example.geniusgym.member.MeActivity
-import com.example.geniusgym.member.adapter.MeCoachInfoAdapter
+//import com.example.geniusgym.member.adapter.MeCoachInfoAdapter
 import com.example.geniusgym.member.viewmodel.MeCoachInfoViewModel
 
+/*
 class MeCoachInfoFragment : Fragment() {
 
     private val viewModel: MeCoachInfoViewModel by viewModels()
@@ -40,4 +41,4 @@ class MeCoachInfoFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
     }
-}
+}*/

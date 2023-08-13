@@ -5,9 +5,12 @@ import com.example.geniusgym.member.model.MeBuyPointBean
 import com.example.geniusgym.member.model.MePointBean
 
 class MeBuyPointsViewModel : ViewModel() {
+   // 創建一個名為 buypoints 的 MutableList，用於保存 MeBuyPointBean 對象
     val buypoints : MutableList<MeBuyPointBean> = mutableListOf()
 
+   // 初始化塊，在創建 ViewModel 的同時執行
    init {
+      // 呼叫 loadItem 方法，用於初始化 buypoints 數據
        loadItem()
    }
 

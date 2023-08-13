@@ -17,17 +17,22 @@ import com.example.geniusgym.sharedata.MeShareData
 
 
 class MePointsFragment : Fragment() {
+    //初始化
     private lateinit var binding : FragmentMePointsBinding
     private lateinit var adapter: MePointsAdapter
-//    private lateinit var items : MutableList<MePointBean>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        // 創建 MePointsViewModel 實例並與 ViewModelProvider 關聯
         val viewModel = ViewModelProvider(this)[MePointsViewModel::class.java]
+
+        // 創建並設置 FragmentMePointsBinding
         binding = FragmentMePointsBinding.inflate(inflater,container,false)
         binding.viewmodel = viewModel
+
+        // 設置 ViewModel 的 pointsLiveData 數據為 MeShareData 中的 personPoint
         viewModel.pointsLiveData.value = MeShareData.personPoint
         binding.lifecycleOwner = this
         return binding.root
@@ -35,12 +40,16 @@ class MePointsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // 創建並設置 MePointsAdapter
         adapter = MePointsAdapter(binding.viewmodel!!.mepointitem)
+        // 設置 RecyclerView 的佈局管理器
         binding.ptRecyclerlist.layoutManager = LinearLayoutManager(requireContext())
+        // 將適配器設置給 RecyclerView
         binding.ptRecyclerlist.adapter = adapter
 
-
+        // 獲取導航圖控制器
         val navController = findNavController()
+        // 設置點擊事件監聽器，當按鈕被點擊時進行導航到 meBuyPointsFragment2
         binding.btTopup.setOnClickListener {
             navController.navigate(R.id.meBuyPointsFragment2)
 
@@ -49,14 +58,7 @@ class MePointsFragment : Fragment() {
 }
 
 
-  /* viewModel.pointsum.observe(viewLifecycleOwner,{ pointsum ->
-    val newItem = PointItem(此處要放下一頁的點數購買對應)
-    adpter.addData(newItem) })
 
-    return inflater.inflate(R.layout.fragment_a, container, false)
-    }
-}
-    }*/
 
 
 

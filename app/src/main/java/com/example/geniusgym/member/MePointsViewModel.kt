@@ -24,12 +24,6 @@ class MePointsViewModel : ViewModel() {
           pointsLiveData.value = points
      }
 
-    /* val personPoint = ObservableInt (10000)
-     *//*fun addPoints(points: Int) {
-          personPoint.add(points)
-     }*/
-
-
 
      val mepointitem : MutableList<MePointBean> = mutableListOf()
      init {
@@ -79,11 +73,6 @@ class MePointsViewModel : ViewModel() {
            ptindecre = "+500點"
                ))
      }
-
-
-
-
-
 
 }
 

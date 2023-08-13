@@ -15,6 +15,7 @@ import com.example.geniusgym.member.model.CoachBean
 import java.io.ByteArrayInputStream
 
 
+/*
 class MeCoachInfoAdapter(val coaches: List<CoachBean>)
     : RecyclerView.Adapter<MeCoachInfoAdapter.MyViewHolder>() {
 
@@ -55,4 +56,4 @@ class MeCoachInfoAdapter(val coaches: List<Coach>) : RecyclerView.Adapter<MeCoac
 
     }
 
-}}
+}}*/

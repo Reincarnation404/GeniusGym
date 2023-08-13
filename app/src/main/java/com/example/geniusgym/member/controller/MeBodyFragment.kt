@@ -16,8 +16,10 @@ class MeBodyFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        // 創建一個 MeBodyViewModel 實例，用 viewModels() 函數來創建 ViewModel
        val viewModel: MeBodyViewModel by viewModels()
         binding = FragmentMeBodyBinding.inflate(inflater,container,false)
+        // 將 ViewModel 賦值給綁定的 viewModel 變數
         binding.viewmodel = viewModel
         binding.lifecycleOwner = this
         return binding.root
