@@ -15,6 +15,7 @@ import com.example.geniusgym.business.BuActivity
 import com.example.geniusgym.coach.CoActivity
 import com.example.geniusgym.databinding.FragmentLoginMainBinding
 import com.example.geniusgym.member.MeActivity
+import com.example.geniusgym.util.OnRepeatClickListener
 import kotlinx.coroutines.runBlocking
 
 class LoginMainFragment : Fragment() {
@@ -33,14 +34,17 @@ class LoginMainFragment : Fragment() {
             tvLoginForget.setOnClickListener {
                 Navigation.findNavController(it).navigate(R.id.loginForgetFragment)
             }
-            btLoginConfirm.setOnClickListener {
-                val loginId = binding.tietLoginAccount.text.toString()
-                val password = binding.tietLoginPassword.text.toString()
+            btLoginConfirm.setOnClickListener(object  : OnRepeatClickListener(){
+                override fun onSingleClick(v: View?) {
+                    val loginId = binding.tietLoginAccount.text.toString()
+                    val password = binding.tietLoginPassword.text.toString()
 
-                if (!enterError(binding, loginId, password)){
-                    identify(binding, loginId, password)
+                    if (!enterError(binding, loginId, password)){
+                        identify(binding, loginId, password)
+                    }
                 }
-            }
+
+            })
         }
     }
 

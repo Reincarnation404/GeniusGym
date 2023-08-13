@@ -1,21 +1,31 @@
 package com.example.geniusgym.member.viewmodel
 
 import androidx.lifecycle.ViewModel
+import com.example.geniusgym.business.core.service.requestTask
+import com.example.geniusgym.business.model.Coach
 import com.example.geniusgym.member.model.CoachBean
+import com.example.geniusgym.sharedata.MeShareData
+import com.google.gson.reflect.TypeToken
 
 class MeCoachInfoViewModel : ViewModel() {
 
 
     private val _coachinfos: MutableList<CoachBean> by lazy { mutableListOf() }
-    val coachinfos : List<CoachBean> = _coachinfos
+    var coachinfos : List<Coach> = mutableListOf()
 
 //    fun update(){
 //        _coachinfos.add(CoachBean())
 //    }
 
-    init {
-        update()
+//    init {
+//        update()
+//    }
+
+    fun getCoachInfo(){
+        val type = object : TypeToken<List<Coach>>() {}.type
+        coachinfos = requestTask<List<Coach>>(MeShareData.javaWebUrl + "buCoach", respBodyType = type)!!
     }
+
     fun update(){
 
         _coachinfos.add(CoachBean("桃園 hawk", null, 1, "證照：\n" +

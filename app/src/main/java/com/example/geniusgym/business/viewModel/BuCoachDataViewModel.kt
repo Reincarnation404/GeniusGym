@@ -2,12 +2,10 @@ package com.example.geniusgym.business.viewModel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.geniusgym.R
 import com.example.geniusgym.business.model.Coach
-import com.example.geniusgym.business.model.Member
 import com.example.geniusgym.sharedata.MeShareData.javaWebUrl
 import com.google.gson.reflect.TypeToken
-import tw.idv.william.androidwebserver.core.service.requestTask
+import com.example.geniusgym.business.core.service.requestTask
 
 /**
  * 教練列表資料處理

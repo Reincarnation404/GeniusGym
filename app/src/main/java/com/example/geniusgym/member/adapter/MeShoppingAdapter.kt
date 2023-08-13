@@ -69,6 +69,11 @@ class MeShoppingAdapter(private var shopitems : List<ClassInfo>) :
 
     }
 
+    fun setList(list: List<ClassInfo>){
+        shopitems = list
+        notifyDataSetChanged()
+    }
+
     fun unclickable(){
         clickable = false
     }

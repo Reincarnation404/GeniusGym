@@ -7,11 +7,9 @@ import androidx.lifecycle.ViewModel
 import androidx.navigation.Navigation
 import com.example.geniusgym.R
 import com.example.geniusgym.business.model.Business
-import com.example.geniusgym.business.model.testBuBusiness
-import com.example.geniusgym.business.model.testBuMember
 import com.example.geniusgym.sharedata.MeShareData
 import com.google.gson.JsonObject
-import tw.idv.william.androidwebserver.core.service.requestTask
+import com.example.geniusgym.business.core.service.requestTask
 import java.text.SimpleDateFormat
 import java.util.*
 
